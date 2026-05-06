@@ -1,0 +1,13 @@
+/* 全局样式覆盖 */
+
+:root {
+  --color-primary: #165dff;
+  --color-success: #00b42a;
+  --color-warning: #ff7d00;
+  --color-danger: #f53f3f;
+  --color-info: #86909c;
+}
+
+body {
+  background: #f0f2f5;
+}

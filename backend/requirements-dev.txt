@@ -1,0 +1,25 @@
+# ═══════════════════════════════════════════════════════════
+# 开发依赖
+# ═══════════════════════════════════════════════════════════
+
+-r requirements.txt
+
+# 代码质量
+ruff>=0.4.0
+eslint>=8.57.0
+prettier>=3.2.0
+
+# 测试
+pytest>=8.0.0
+pytest-django>=4.8.0
+pytest-cov>=4.1.0
+pytest-xdist>=3.5.0
+
+# 类型检查
+mypy>=1.10.0
+django-stubs>=4.2.0
+djangorestframework-stubs>=3.15.0
+
+# Django 调试
+django-extensions>=3.2.0
+ Werkzeug>=3.0.0
