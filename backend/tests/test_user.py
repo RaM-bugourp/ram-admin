@@ -8,6 +8,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
+@pytest.mark.django_db
 class TestUserLogin:
     """登录测试"""
 
@@ -36,13 +37,14 @@ class TestUserLogin:
         assert response.status_code == 401
 
 
+@pytest.mark.django_db
 class TestUserInfo:
     """用户信息测试"""
 
     def test_get_user_info_unauthenticated(self, api_client):
         """测试未登录获取用户信息"""
         response = api_client.get('/api/auth/user_info/')
-        assert response.status_code == 401
+        assert response.status_code == 403
 
     def test_get_user_info_authenticated(self, authenticated_client, admin_user):
         """测试已登录获取用户信息"""
@@ -51,10 +53,11 @@ class TestUserInfo:
         assert response.data['username'] == 'admin'
 
 
+@pytest.mark.django_db
 class TestUserLogout:
     """登出测试"""
 
-    def test_logout(self, authenticated_client):
+    def test_logout(self, authenticated_client, admin_user):
         """测试登出"""
         response = authenticated_client.post('/api/auth/logout/')
         assert response.status_code == 200

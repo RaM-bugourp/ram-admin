@@ -5,6 +5,7 @@
 import pytest
 
 
+@pytest.mark.django_db
 class TestArticleList:
     """文章列表测试"""
 
@@ -19,6 +20,7 @@ class TestArticleList:
         assert response.status_code == 200
 
 
+@pytest.mark.django_db
 class TestArticleCreate:
     """文章创建测试"""
 
@@ -30,7 +32,6 @@ class TestArticleCreate:
             'status': 'draft',
         })
         assert response.status_code == 201
-        return response.data
 
     def test_create_article_without_title(self, authenticated_client):
         """测试缺少标题"""
@@ -40,6 +41,7 @@ class TestArticleCreate:
         assert response.status_code == 400
 
 
+@pytest.mark.django_db
 class TestArticleUpdate:
     """文章更新测试"""
 
@@ -61,6 +63,7 @@ class TestArticleUpdate:
         assert update_response.data['title'] == '更新后的标题'
 
 
+@pytest.mark.django_db
 class TestArticleDelete:
     """文章删除测试"""
 
@@ -80,5 +83,5 @@ class TestArticleDelete:
 
         # 验证软删除（列表中不再显示）
         list_response = authenticated_client.get('/api/article/articles/')
-        article_ids = [a['id'] for a in list_response.data['list']]
+        article_ids = [a['id'] for a in list_response.data['results']]
         assert article_id not in article_ids

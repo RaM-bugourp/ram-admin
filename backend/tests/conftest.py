@@ -15,15 +15,8 @@ sys.path.insert(0, str(BASE_DIR.parent / 'packages'))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ram_admin.settings')
 
 
-@pytest.fixture(scope='session')
-def django_db_setup():
-    """Django 数据库设置"""
-    import django
-    django.setup()
-
-
 @pytest.fixture
-def admin_user(django_db_setup):
+def admin_user(db):
     """创建管理员用户"""
     from django.contrib.auth import get_user_model
     User = get_user_model()

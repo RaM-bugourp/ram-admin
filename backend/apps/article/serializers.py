@@ -36,7 +36,8 @@ class ArticleCreateSerializer(serializers.ModelSerializer):
     """创建文章序列化器"""
     class Meta:
         model = Article
-        fields = ['title', 'content', 'status', 'category', 'tags']
+        fields = ['id', 'title', 'content', 'status', 'category', 'tags']
+        read_only_fields = ['id']
 
 
 class CategorySerializer(serializers.ModelSerializer):
