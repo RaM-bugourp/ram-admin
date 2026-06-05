@@ -21,10 +21,11 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { reactive, ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { Message } from '@arco-design/web-vue'
+import client from '@/api/client'
 
 const router = useRouter()
 const store = useStore()
@@ -32,6 +33,11 @@ const store = useStore()
 const form = reactive({ username: '', password: '' })
 const loading = ref(false)
 const errorMsg = ref('')
+
+// 首次加载时 GET Django 让它下发 csrftoken cookie，否则后续 POST 直接 403
+onMounted(() => {
+    client.get('/auth/csrf/').catch(() => {})
+})
 
 async function handleLogin() {
     if (!form.username || !form.password) return
