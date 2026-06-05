@@ -1,4 +1,4 @@
-import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios'
+import axios, { AxiosError } from 'axios'
 import router from '@/router'
 import store from '@/stores'
 
