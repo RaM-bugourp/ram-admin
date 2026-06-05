@@ -2,12 +2,11 @@
 import logging
 from django.contrib.auth import authenticate, login, logout
 from django.utils import timezone
-from rest_framework import viewsets, status
+from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from apps.common.exceptions import BusinessError
-from apps.rbac.models import User
 
 logger = logging.getLogger(__name__)
 
@@ -16,9 +15,19 @@ class AuthViewSet(viewsets.GenericViewSet):
     """Authentication endpoints."""
 
     def get_permissions(self):
-        if self.action in ('login',):
+        if self.action in ('login', 'csrf_token'):
             return [AllowAny()]
         return [IsAuthenticated()]
+
+    @action(detail=False, methods=['get'], url_path='csrf')
+    def csrf_token(self, request):
+        """
+        GET /api/auth/csrf/
+        SPA 首次加载时无 csrftoken cookie，此接口强制 Django 通过 Set-Cookie 下发一个。
+        """
+        from django.middleware.csrf import get_token
+        get_token(request)
+        return Response({'data': {}})
 
     @action(detail=False, methods=['post'])
     def login(self, request):
@@ -78,6 +87,6 @@ class AuthViewSet(viewsets.GenericViewSet):
                 'username': user.username,
                 'email': user.email,
                 'is_superuser': user.is_superuser,
-                'permissions': [],  # placeholder — RBAC not yet built
+                'permissions': [],
             }
         })
