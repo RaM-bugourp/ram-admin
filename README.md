@@ -1,6 +1,7 @@
-# Ram-Admin
+# Ram-Adminx
 
-> 基于 Django 5.2 + Vue 3 + Arco Design 的现代化后台管理系统，提供 RBAC 权限、代码生成器、操作日志、任务调度等企业级功能。
+> 该项目为重构复现，原项目仓库https://github.com/niezhicheng/django-vue-adminx  
+>基于 Django 5.2 + Vue 3 + Arco Design 的现代化后台管理系统，提供 RBAC 权限、代码生成器、操作日志、任务调度等企业级功能。
 
 [![Python](https://img.shields.io/badge/Python-3.13-blue)](https://python.org)
 [![Django](https://img.shields.io/badge/Django-5.2-green)](https://djangoproject.com)
@@ -129,6 +130,12 @@ django-vue-adminx/
 │   └── nginx.conf           # Nginx 反代配置
 ├── docker-compose.yml
 └── .env.example
+```
+
+## 开发模板
+```
+
+
 ```
 
 ---
