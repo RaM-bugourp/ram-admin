@@ -10,6 +10,10 @@
                     <template #icon><icon-apps /></template>
                     仪表盘
                 </a-menu-item>
+                <a-menu-item key="/system/users">
+                    <template #icon><icon-user-group /></template>
+                    用户管理
+                </a-menu-item>
             </a-menu>
         </a-layout-sider>
         <a-layout>
@@ -30,7 +34,7 @@
 import { computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from 'vuex'
-import { IconApps } from '@arco-design/web-vue/es/icon'
+import { IconApps, IconUserGroup } from '@arco-design/web-vue/es/icon'
 
 const router = useRouter()
 const route = useRoute()

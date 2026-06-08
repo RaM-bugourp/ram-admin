@@ -30,9 +30,10 @@ const user: Module<UserState, any> = {
         },
     },
     actions: {
-        async login({ dispatch }, { username, password }: { username: string; password: string }) {
-            await client.post('/auth/login/', { username, password })
-            await dispatch('fetchUserInfo')
+        async login({ commit }, { username, password }: { username: string; password: string }) {
+            const res: any = await client.post('/auth/login/', { username, password })
+            commit('SET_USER', res.data)
+            commit('SET_PERMISSIONS', [])
         },
         async fetchUserInfo({ commit }) {
             const res: any = await client.get('/auth/user-info/')

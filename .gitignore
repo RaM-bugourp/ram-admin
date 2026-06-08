@@ -1,0 +1,64 @@
+# ── Python ───────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+env/
+.venv/
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ── Django ────────────────────────────────────────────
+*.log
+db.sqlite3
+db.sqlite3-journal
+/media/
+/staticfiles/
+
+# ── Node.js / 前端 ─────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ── 构建产物 ───────────────────────────────────────────
+frontend/dist/
+*.local
+
+# ── IDE ────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ── 系统文件 ───────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ── 测试覆盖率 ─────────────────────────────────────────
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.pytest_cache/
+.tox/
+
+# ── 敏感配置 ───────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# ── 临时/工作日志 ───────────────────────────────────────
+task-summary*.md
+_test_*.py

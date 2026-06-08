@@ -20,7 +20,11 @@ client.interceptors.response.use(
             router.push('/login')
         }
         if (status === 403) {
-            router.push('/403')
+            // CSRF failure 也返回 403，但不应跳走——让调用方自行处理
+            // 只有已登录用户访问无权限资源时才跳 403 页面
+            if (store.getters['user/isAuthenticated']) {
+                router.push('/403')
+            }
         }
         return Promise.reject({
             code: error.response?.data?.error?.code || 'UNKNOWN',

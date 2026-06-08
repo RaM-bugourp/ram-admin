@@ -76,3 +76,51 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.username
+
+    def soft_delete(self):
+        """软删除用户."""
+        self.is_deleted = True
+        self.save(update_fields=['is_deleted'])
+
+
+class RoleManager(BaseManager):
+    """Role query helpers."""
+
+    def by_code(self, code: str):
+        return self.filter(code=code)
+
+
+class Role(BaseModel):
+    """角色 — 权限的集合."""
+
+    name = models.CharField(max_length=100, unique=True, verbose_name="角色名")
+    code = models.CharField(max_length=50, unique=True, verbose_name="角色编码")
+    description = models.TextField(default="", blank=True, verbose_name="描述")
+
+    objects = RoleManager()
+
+    class Meta:
+        db_table = 'rbac_roles'
+        verbose_name = '角色'
+        verbose_name_plural = '角色'
+
+    def __str__(self):
+        return self.name
+
+
+class UserRole(BaseModel):
+    """用户-角色关联（中间表）."""
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, db_index=True, verbose_name="用户")
+    role = models.ForeignKey(Role, on_delete=models.CASCADE, db_index=True, verbose_name="角色")
+
+    objects = BaseManager()
+
+    class Meta:
+        db_table = 'rbac_user_roles'
+        verbose_name = '用户角色'
+        verbose_name_plural = '用户角色'
+        unique_together = [['user', 'role']]
+
+    def __str__(self):
+        return f"{self.user_id} → {self.role_id}"
