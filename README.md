@@ -1,68 +1,97 @@
-# Ram-Adminx
+# Ram-AdminX
 
-> 该项目为重构复现，原项目仓库https://github.com/niezhicheng/django-vue-adminx  
->基于 Django 5.2 + Vue 3 + Arco Design 的现代化后台管理系统，提供 RBAC 权限、代码生成器、操作日志、任务调度等企业级功能。
+> Django 5.2 + Vue 3 + Arco Design 现代化后台管理系统
 
 [![Python](https://img.shields.io/badge/Python-3.13-blue)](https://python.org)
 [![Django](https://img.shields.io/badge/Django-5.2-green)](https://djangoproject.com)
-[![Vue](https://img.shields.io/badge/Vue-3.x-brightgreen)](https://vuejs.org)
-[![Arco Design](https://img.shields.io/badge/Arco_Design-2.x-165dff)](https://arco.design/vue)
-[![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
+[![Vue](https://img.shields.io/badge/Vue-3.5-brightgreen)](https://vuejs.org)
+[![Arco Design](https://img.shields.io/badge/Arco_Design-2.56-165dff)](https://arco.design/vue)
 
 ---
 
-## 功能特性
+## 当前版本
 
-### 权限管理
-- **RBAC 权限控制**：基于角色的访问控制，支持菜单、按钮、API 三级权限
-- **数据权限**：基于 MPTT 部门树的行级数据隔离，用户只能看本部门及子部门数据
-- **动态菜单**：菜单从数据库加载，前端动态注册路由，新增页面无需重构建
+**v0.2.0** — 已完成用户认证 + 用户管理 CRUD，项目架构搭建完成。
 
-### 系统管理
-- **用户管理**：增删改查、密码重置、角色分配、部门绑定
-- **角色管理**：角色创建、权限分配、菜单绑定
-- **菜单管理**：多级菜单树、图标选择、路由配置、权限码绑定
-- **部门管理**：多级组织架构（MPTT 树），支持部门级别的数据权限
-- **权限管理**：细粒度权限控制，resource:action 格式
+### 已实现
 
-### 代码生成器
-- **一键生成 CRUD**：根据 Model 定义自动生成前后端完整代码
-- **前后端覆盖**：Model / Service / ViewSet / Serializer / Vue 页面 / API 调用
-- **自动注册**：生成后自动注册路由、创建菜单和权限
+- **认证系统** — 自定义 User 模型（`AbstractBaseUser`）、Session + CSRF 双重保护
+- **用户管理** — 列表分页搜索、创建/编辑/删除（软删除）、密码重置
+- **基础 RBAC** — User / Role / UserRole 模型，角色分配
+- **分层架构** — ViewSet → Service → Manager → Model 四层解耦
+- **前端页面** — 登录页、仪表盘、用户列表、表单弹窗
 
-### 操作日志
-- **中间件自动捕获**：记录所有 API 请求的方法、路径、参数、响应
-- **敏感数据过滤**：自动过滤密码、Token 等敏感字段
-- **多维度查询**：按用户、操作类型、时间范围筛选
+### 规划中
 
-### 数据导出
-- **流式 CSV 导出**：支持大数据量流式导出，不撑爆内存
-- **权限独立**：导出权限与查看权限分离，能看不等于能导出
-
-### 任务调度
-- **Cron 表达式**：支持标准 Cron 定时任务配置
-- **任务管理**：创建、编辑、启用/禁用、立即执行
-
-### 系统监控
-- **仪表盘**：CPU、内存、磁盘、网络实时监控
-- **数据统计**：用户、角色、菜单、权限数量统计
+角色管理、菜单管理、权限分配、操作日志、代码生成器
 
 ---
 
 ## 技术栈
 
-| 层级 | 技术 | 说明 |
-|------|------|------|
-| 后端 | Django 5.2 + DRF | RESTful API |
-| 数据库 | PostgreSQL 16 | 主数据库 |
-| 缓存 | Redis 7 | 缓存 + Celery 消息队列 |
-| 任务队列 | Celery 5.4 | 异步任务 |
-| 前端 | Vue 3 + Composition API | SPA |
-| UI | Arco Design Vue | 字节跳动企业级组件库 |
-| 状态管理 | Vuex 4 | 集中式状态管理 |
-| 构建 | Vite | 开发构建 |
-| 语言 | TypeScript | 类型安全 |
-| 容器化 | Docker Compose | 一键部署 |
+| 层级 | 技术 |
+|------|------|
+| 后端框架 | Django 5.2 + Django REST Framework |
+| 数据库 | SQLite（开发）→ PostgreSQL（生产） |
+| 前端框架 | Vue 3 (Composition API) + TypeScript |
+| UI 组件库 | Arco Design Vue 2.56 |
+| 状态管理 | Vuex 4 |
+| 路由 | Vue Router 4 |
+| HTTP 客户端 | Axios（withCredentials + CSRF） |
+| 构建工具 | Vite 6 |
+
+---
+
+## 项目结构
+
+```
+ram-adminx/
+├── backend/
+│   ├── config/
+│   │   ├── settings/
+│   │   │   ├── base.py           # 公共配置（中间件、DRF、认证模型）
+│   │   │   └── dev.py            # 开发环境覆盖
+│   │   └── urls.py               # 根路由
+│   ├── apps/
+│   │   ├── common/               # 基础设施
+│   │   │   ├── base_model.py     # 抽象基类（时间戳 + 软删除）
+│   │   │   ├── managers.py       # BaseManager（自动过滤已删除记录）
+│   │   │   └── exceptions.py     # BusinessError + DRF 统一错误处理器
+│   │   ├── rbac/                 # 用户与权限
+│   │   │   ├── models.py         # User / Role / UserRole
+│   │   │   ├── backends.py       # 自定义认证后端 UserBackend
+│   │   │   ├── services/         # 业务逻辑层
+│   │   │   ├── serializers/      # 输入输出序列化器
+│   │   │   ├── views/            # HTTP 接口层
+│   │   │   ├── urls_auth.py      # 认证路由
+│   │   │   ├── urls_user.py      # 用户管理路由
+│   │   │   └── management/commands/init_rbac.py
+│   │   └── audit/                # 审计（预留）
+│   ├── manage.py
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── vite.config.ts            # Vite 配置（代理 /api → 后端）
+│   └── src/
+│       ├── main.ts               # 入口
+│       ├── App.vue               # 根组件
+│       ├── router/index.ts       # 路由表 + 导航守卫
+│       ├── stores/user.ts        # Vuex 认证模块
+│       ├── api/
+│       │   ├── client.ts         # Axios 实例（拦截器统一错误处理）
+│       │   └── modules/          # 按模块拆分 API
+│       ├── types/user.ts         # TS 类型契约
+│       ├── layouts/MainLayout.vue
+│       └── views/
+│           ├── login/
+│           ├── dashboard/
+│           ├── error/
+│           └── system/user/      # 用户管理（列表 + 弹窗）
+│
+├── docs/                         # 设计文档
+├── ARCHITECTURE.md               # 架构详解（给新人）
+└── README.md
+```
 
 ---
 
@@ -70,141 +99,158 @@
 
 ### 环境要求
 
-- Python 3.13+
-- Node.js 22+
-- PostgreSQL 16+
-- Redis 7+
+- **Python** 3.13+
+- **Node.js** 22+
 
+### 1. 克隆项目
 
-### 默认账号
+```bash
+git clone <repo-url>
+cd ram-adminx
+```
+
+### 2. 启动后端
+
+```bash
+cd backend
+
+# 创建虚拟环境
+python -m venv venv
+
+# 激活（Windows）
+venv\Scripts\activate
+
+# 激活（macOS / Linux）
+source venv/bin/activate
+
+# 安装依赖
+pip install -r requirements.txt
+
+# 数据库迁移
+python manage.py migrate
+
+# 初始化管理员
+python manage.py init_rbac
+
+# 启动服务
+python manage.py runserver
+```
+
+后端运行在 `http://127.0.0.1:8000`
+
+### 3. 启动前端
+
+```bash
+cd frontend
+
+# 安装依赖
+npm install
+
+# 启动开发服务器
+npm run dev
+```
+
+前端运行在 `http://localhost:5173`
+
+### 4. 登录
+
+打开浏览器访问 `http://localhost:5173/login`
 
 | 用户名 | 密码 |
 |--------|------|
-| admin | admin123 |
+| `admin` | `admin123` |
 
 ---
 
-## Docker 部署
-
-```bash
-cp .env.example .env   # 编辑环境变量
-docker compose up -d
-```
-
-| 服务 | 地址 |
-|------|------|
-| 前端 | http://localhost |
-| 后端 API | http://localhost:8000 |
-| 数据库 | localhost:5432 |
-
----
-
-## 项目结构
-
-```
-django-vue-adminx/
-├── backend/
-│   ├── apps/
-│   │   ├── common/          # 公共模块：BaseModel、BaseManager、异常处理
-│   │   ├── rbac/            # RBAC：用户、角色、权限、菜单、部门
-│   │   ├── audit/           # 操作日志：审计模型、中间件
-│   │   ├── codegen/         # 代码生成器
-│   │   └── tasks/           # 任务调度
-│   ├── config/
-│   │   └── settings/        # 配置：base / dev / prod / test
-│   ├── manage.py
-│   └── requirements.txt
-│
-├── front-end/
-│   ├── src/
-│   │   ├── api/             # Axios 封装 + 按模块 API
-│   │   ├── views/           # 页面组件（Dashboard、User、Role...）
-│   │   ├── components/      # 公共组件 + 业务组件
-│   │   ├── router/          # 动态路由注册
-│   │   ├── store/           # Vuex 4 状态管理
-│   │   └── utils/           # 工具函数
-│   ├── package.json
-│   └── vite.config.ts
-│
-├── deploy/
-│   └── nginx.conf           # Nginx 反代配置
-├── docker-compose.yml
-└── .env.example
-```
-
-## 开发模板
-```
-
-
-```
-
----
-
-## API 概览
+## API 文档
 
 ### 认证
 
 | 方法 | 端点 | 说明 |
 |------|------|------|
+| GET | `/api/auth/csrf/` | 获取 CSRF Token |
 | POST | `/api/auth/login/` | 登录 |
 | POST | `/api/auth/logout/` | 登出 |
 | GET | `/api/auth/user-info/` | 当前用户信息 |
 
-### 用户管理
+### 用户管理（需登录）
 
 | 方法 | 端点 | 说明 |
 |------|------|------|
-| GET | `/api/rbac/users/` | 用户列表（分页+搜索+过滤） |
+| GET | `/api/rbac/users/` | 列表（`?search=&page=&page_size=`） |
 | POST | `/api/rbac/users/` | 创建用户 |
-| GET | `/api/rbac/users/{id}/` | 用户详情 |
-| PUT | `/api/rbac/users/{id}/` | 更新用户 |
-| DELETE | `/api/rbac/users/{id}/` | 删除用户（软删除） |
-| GET | `/api/rbac/users/?_export=csv` | 导出 CSV |
+| GET | `/api/rbac/users/{id}/` | 详情 |
+| PUT | `/api/rbac/users/{id}/` | 更新 |
+| DELETE | `/api/rbac/users/{id}/` | 软删除 |
+| POST | `/api/rbac/users/{id}/reset-password/` | 重置密码 |
 
-### 角色 & 权限
+### 响应格式
 
-| 方法 | 端点 | 说明 |
-|------|------|------|
-| GET | `/api/rbac/roles/` | 角色列表 |
-| POST | `/api/rbac/roles/` | 创建角色 |
-| GET | `/api/rbac/permissions/` | 权限列表 |
+**成功**:
+```json
+{
+  "data": { ... },
+  "pagination": { "page": 1, "page_size": 20, "total": 42, "total_pages": 3 }
+}
+```
 
-### 菜单
-
-| 方法 | 端点 | 说明 |
-|------|------|------|
-| GET | `/api/rbac/menus/` | 当前用户菜单树 |
-| GET | `/api/rbac/menus/all/` | 全部菜单（管理员） |
-
-### 部门
-
-| 方法 | 端点 | 说明 |
-|------|------|------|
-| GET | `/api/rbac/departments/` | 部门树 |
-| POST | `/api/rbac/departments/` | 创建部门 |
-
-### 操作日志
-
-| 方法 | 端点 | 说明 |
-|------|------|------|
-| GET | `/api/audit/logs/` | 日志列表（支持多维度过滤） |
-| GET | `/api/audit/logs/{id}/` | 日志详情 |
+**错误**:
+```json
+{
+  "error": {
+    "code": "DUPLICATE_USERNAME",
+    "message": "用户名已存在"
+  }
+}
+```
 
 ---
 
-## 常见问题
+## 架构说明
 
-**登录后页面空白？**
-检查用户是否分配了角色、角色是否分配了权限。运行 `python manage.py init_rbac` 重新初始化。
+项目采用严格分层架构：
 
-**API 请求 403？**
-确认已登录（Session 认证），检查用户权限。Session Cookie 需同域，开发环境用 Vite proxy。
+```
+ViewSet (HTTP 接口) → Service (业务逻辑) → Manager (查询封装) → Model (表结构)
+   ↕
+Serializer (数据转换 / 输入校检)
+```
 
-**代码生成器生成失败？**
-检查 app_label 和 model_name 是否正确，字段配置是否完整。查看后端日志。
+- **ViewSet** — 只处理 HTTP 相关（参数解析、响应包装），不写业务逻辑
+- **Service** — 纯业务代码，使用 `@transaction.atomic` 保证事务，`BusinessError` 抛异常
+- **Manager** — `BaseManager` 自动过滤 `is_deleted=True` 的记录（软删除透明化）
+- **Serializer** — Create / Update / Output 三类严格分离，防止字段泄露
+- **前端** — 路由守卫做登录拦截，Axios 拦截器统一处理 401/403
+
+详见 [`ARCHITECTURE.md`](ARCHITECTURE.md)
 
 ---
 
-## 许可证
+## 开发命令
 
-MIT License
+```bash
+# 后端
+python manage.py runserver           # 启动 Django
+python manage.py makemigrations      # 生成迁移
+python manage.py migrate             # 执行迁移
+python manage.py init_rbac           # 初始化 RBAC 数据
+
+# 前端
+npm run dev                          # 启动 Vite
+npm run build                        # 生产构建（vue-tsc + vite）
+npm run lint                         # ESLint 检查
+```
+
+---
+
+## 安全设计
+
+| 机制 | 说明 |
+|------|------|
+| 密码存储 | bcrypt 哈希（`make_password`） |
+| 认证 | Session Cookie（HttpOnly + SameSite=Lax） |
+| 防跨站 | CSRF Token（Cookie + Header 双重校验） |
+| 软删除 | `is_deleted` 字段 + `BaseManager` 自动过滤 |
+| 事务 | `@transaction.atomic` 保证写操作原子性 |
+| 输入校验 | Serializer 字段级规则 |
+| 输出过滤 | 只暴露声明的字段，密码字段不可见 |
