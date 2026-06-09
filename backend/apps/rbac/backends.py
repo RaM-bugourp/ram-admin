@@ -9,7 +9,7 @@ class UserBackend:
         if username is None or password is None:
             return None
         try:
-            user = User.objects.get(username=username)
+            user = User.objects.get(username=username, is_deleted=False)
         except User.DoesNotExist:
             return None
         if user.check_password(password):

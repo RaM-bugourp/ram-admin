@@ -77,9 +77,11 @@ class UserService:
             is_active=data.get('is_active', True),
         )
 
-        # 分配角色
+        # 分配角色（含唯一性校验）
         role_ids = data.get('role_ids', [])
         if role_ids:
+            from apps.rbac.services.role_service import RoleService
+            RoleService.enforce_unique_role(user.id, role_ids)
             user_roles = [UserRole(user=user, role_id=rid) for rid in role_ids]
             UserRole.objects.bulk_create(user_roles)
 
@@ -115,8 +117,10 @@ class UserService:
 
         user.save()
 
-        # 全量替换角色
+        # 全量替换角色（含唯一性校验）
         if 'role_ids' in data:
+            from apps.rbac.services.role_service import RoleService
+            RoleService.enforce_unique_role(user.id, data['role_ids'])
             UserRole.objects.filter(user=user).delete()
             if data['role_ids']:
                 user_roles = [UserRole(user=user, role_id=rid) for rid in data['role_ids']]

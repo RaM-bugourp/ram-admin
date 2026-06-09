@@ -9,7 +9,7 @@
                 @search="handleSearch"
                 allow-clear
             />
-            <a-button type="primary" @click="handleCreate">
+            <a-button v-if="isAdmin" type="primary" @click="handleCreate">
                 <template #icon><icon-plus /></template>
                 新建用户
             </a-button>
@@ -29,15 +29,24 @@
                     {{ record.is_active ? '启用' : '禁用' }}
                 </a-tag>
             </template>
-            <template #is_superuser="{ record }">
-                <a-tag v-if="record.is_superuser" color="arcoblue">超管</a-tag>
-                <span v-else class="text-muted">-</span>
+            <template #roles="{ record }">
+                <a-space>
+                    <a-tag
+                        v-for="role in record.roles"
+                        :key="role.id"
+                        :color="role.code === 'root' ? 'arcoblue' : role.code === 'boss' ? 'red' : 'green'"
+                        size="small"
+                    >
+                        {{ role.name }}
+                    </a-tag>
+                    <span v-if="!record.roles?.length" class="text-muted">未分配</span>
+                </a-space>
             </template>
             <template #created_at="{ record }">
                 {{ formatTime(record.created_at) }}
             </template>
             <template #actions="{ record }">
-                <a-space>
+                <a-space v-if="isAdmin">
                     <a-button size="small" @click="handleEdit(record)">编辑</a-button>
                     <a-button size="small" status="warning" @click="handleResetPwd(record)">
                         重置密码
@@ -46,6 +55,7 @@
                         <a-button size="small" status="danger">删除</a-button>
                     </a-popconfirm>
                 </a-space>
+                <span v-else class="text-muted">—</span>
             </template>
         </a-table>
 
@@ -68,12 +78,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive, computed, onMounted } from 'vue'
+import { useStore } from 'vuex'
 import { Message } from '@arco-design/web-vue'
 import { IconPlus } from '@arco-design/web-vue/es/icon'
 import { userApi } from '@/api/modules/user'
 import type { UserOutput } from '@/types/user'
 import UserFormDialog from './UserFormDialog.vue'
+
+const store = useStore()
+const isAdmin = computed(() => store.getters['user/isAdmin'])
 
 // ── 表格列定义 ──────────────────────────────────
 const columns = [
@@ -81,7 +95,7 @@ const columns = [
     { title: '用户名', dataIndex: 'username', width: 150 },
     { title: '邮箱', dataIndex: 'email', ellipsis: true },
     { title: '状态', slotName: 'is_active', width: 80 },
-    { title: '角色', slotName: 'is_superuser', width: 80 },
+    { title: '角色', slotName: 'roles', width: 200 },
     { title: '创建时间', slotName: 'created_at', width: 170 },
     { title: '操作', slotName: 'actions', width: 230, fixed: 'right' as const },
 ]

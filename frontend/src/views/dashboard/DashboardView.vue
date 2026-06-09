@@ -17,12 +17,31 @@
 </template>
 
 <script setup lang="ts">
-const cards = [
-    { title: '用户数', value: '—' },
-    { title: '角色数', value: '—' },
-    { title: '权限数', value: '—' },
-    { title: '菜单数', value: '—' },
-]
+import { computed, reactive, onMounted } from 'vue'
+import { dashboardApi } from '@/api/modules/dashboard'
+
+const stats = reactive({
+    total_users: 0,
+    active_users: 0,
+    total_roles: 0,
+    total_assignments: 0,
+})
+
+const cards = computed(() => [
+    { title: '用户总数', value: stats.total_users || '...' },
+    { title: '活跃用户', value: stats.active_users || '...' },
+    { title: '角色数', value: stats.total_roles || '...' },
+    { title: '角色分配', value: stats.total_assignments || '...' },
+])
+
+onMounted(async () => {
+    try {
+        const res = await dashboardApi.getStats()
+        Object.assign(stats, res.data)
+    } catch {
+        // 加载失败保持占位
+    }
+})
 </script>
 
 <style scoped>

@@ -96,6 +96,11 @@ class Role(BaseModel):
     name = models.CharField(max_length=100, unique=True, verbose_name="角色名")
     code = models.CharField(max_length=50, unique=True, verbose_name="角色编码")
     description = models.TextField(default="", blank=True, verbose_name="描述")
+    is_unique = models.BooleanField(
+        default=False,
+        verbose_name="唯一角色",
+        help_text="开启后全局只能有一个用户持有该角色（如 BOSS）"
+    )
 
     objects = RoleManager()
 
@@ -124,3 +129,21 @@ class UserRole(BaseModel):
 
     def __str__(self):
         return f"{self.user_id} → {self.role_id}"
+
+
+class RolePermission(BaseModel):
+    """角色-权限关联（预留扩展）."""
+
+    role = models.ForeignKey(Role, on_delete=models.CASCADE, db_index=True, verbose_name="角色")
+    permission_code = models.CharField(max_length=100, verbose_name="权限编码")
+
+    objects = BaseManager()
+
+    class Meta:
+        db_table = 'rbac_role_permissions'
+        verbose_name = '角色权限'
+        verbose_name_plural = '角色权限'
+        unique_together = [['role', 'permission_code']]
+
+    def __str__(self):
+        return f"{self.role.code}:{self.permission_code}"

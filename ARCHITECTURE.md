@@ -1,6 +1,8 @@
 # ram-adminx 项目架构文档
 
-> 包含登陆＆用户表单模块的小型demo
+> 三级角色体系 + 前端权限控制 + 实时仪表盘
+> 
+> 版本: v0.3.0 | 最后更新: 2026-06-09
 
 ---
 
@@ -174,6 +176,16 @@ config/urls.py          ← 根路由，挂载所有子路由
     ├── PUT    /{id}/                  更新
     ├── DELETE /{id}/                  软删除
     └── POST   /{id}/reset-password/  重置密码
+│
+├── /api/rbac/roles/    → apps/rbac/urls_role.py → RoleViewSet
+│   ├── GET    /                      角色列表
+│   ├── POST   /                      创建（BOSS 唯一性校验）
+│   ├── GET    /{id}/                  详情
+│   ├── PUT    /{id}/                  更新
+│   └── DELETE /{id}/                  删除（系统角色不可删）
+│
+└── /api/dashboard/     → apps/rbac/urls_dashboard.py → DashboardViewSet
+    └── GET    /stats/                 实时统计数据
 ```
 
 **路由是怎么匹配的？**
@@ -401,13 +413,14 @@ router.beforeEach((to, from, next) => {
 Store 结构:
   store/
     └── user (namespaced)
-        ├── state:       { currentUser, permissions }
-        ├── getters:     isAuthenticated → !!currentUser
-        ├── mutations:   SET_USER / SET_PERMISSIONS / CLEAR
+        ├── state:       { currentUser, roles, permissions }
+        ├── getters:     isAuthenticated, isAdmin (root或boss), roleCodes
+        ├── mutations:   SET_USER / SET_ROLES / SET_PERMISSIONS / CLEAR
         └── actions:
             ├── login({username, password})
             │     → POST /api/auth/login/
             │     → commit('SET_USER', res.data)
+            │     → commit('SET_ROLES', res.data.roles)
             │
             ├── fetchUserInfo()
             │     → GET /api/auth/user-info/
@@ -417,9 +430,10 @@ Store 结构:
                   → POST /api/auth/logout/
                   → commit('CLEAR')
 
-登录流程修正 (之前 403 的根因):
-  login action 直接用登录响应的 res.data 设置用户状态
-  不再在 login 后调用 fetchUserInfo() ← 这会导致 Cookie 时序问题
+权限前端控制:
+  isAdmin getter → 检测 roles 中是否包含 root 或 boss
+  → UserListView / RoleListView 中 v-if="isAdmin" 控制写按钮显隐
+  → 非管理员看到 "—" 占位符，表单提交由后端 IsAdminOrReadOnly 二次拦截
 ```
 
 ### 5.4 API 客户端 (Axios)
@@ -539,6 +553,8 @@ Django 处理:
 | 事务保护 | @transaction.atomic | 防止数据不一致 |
 | 输入校验 | Serializer 字段级校验 | 防止非法数据入 |
 | 输出过滤 | Serializer 只暴露必要字段 | 防止敏感信息泄露 |
+| 访问控制 | `IsAdminOrReadOnly` 权限类 — 普通用户只读，管理员可写 |
+| BOSS 唯一 | Service `enforce_unique_role` + DB `is_unique` 双重保障 |
 
 ---
 
@@ -547,17 +563,17 @@ Django 处理:
 ```
 当前已建表:
 
-rbac_users          rbac_roles          rbac_user_roles
-┌──────────────┐    ┌──────────────┐    ┌──────────────┐
-│ id (PK)      │    │ id (PK)      │    │ id (PK)      │
-│ username     │    │ name         │    │ user_id (FK) ├──→ rbac_users.id
-│ email        │    │ code         │    │ role_id (FK) ├──→ rbac_roles.id
-│ password_hash│    │ description  │    │ created_at   │
-│ is_active    │    │ is_deleted   │    │ updated_at   │
-│ is_superuser │    │ created_at   │    │ is_deleted   │
-│ last_login_at│    │ updated_at   │    └──────────────┘
-│ is_deleted   │    └──────────────┘
-│ created_at   │
+rbac_users          rbac_roles              rbac_user_roles       rbac_role_permissions
+┌──────────────┐    ┌──────────────┐        ┌──────────────┐       ┌──────────────────┐
+│ id (PK)      │    │ id (PK)      │        │ id (PK)      │       │ id (PK)          │
+│ username     │    │ name         │        │ user_id (FK) ├──→   │ role_id (FK)     │
+│ email        │    │ code         │        │ role_id (FK) ├──→   │ permission_key   │
+│ password_hash│    │ description  │        │ created_at   │       │ description      │
+│ is_active    │    │ is_unique    │ (NEW) │ updated_at   │       │ created_at       │
+│ is_superuser │    │ is_deleted   │        │ is_deleted   │       │ updated_at       │
+│ last_login   │    │ created_at   │        └──────────────┘       │ is_deleted       │
+│ is_deleted   │    │ updated_at   │                               └──────────────────┘
+│ created_at   │    └──────────────┘                               (预留扩展)
 │ updated_at   │
 └──────────────┘
 
@@ -567,6 +583,11 @@ django_session (Django 内置)
 │ session_data │  ← 加密存储的 user_id 等
 │ expire_date  │
 └──────────────┘
+
+角色设计:
+  root  — 超级管理员，全权管理，不可删除
+  boss  — 全局唯一决策账号（is_unique=True），Service 层 + DB 层双重保障
+  user  — 普通用户，前端只读，后端 `IsAdminOrReadOnly` 权限控制
 ```
 
 ---
@@ -591,17 +612,23 @@ ram-adminx/
 │       │   ├── managers.py      # BaseManager (自动过滤已删除)
 │       │   └── exceptions.py    # BusinessError + DRF 错误处理器
 │       ├── rbac/                # 权限管理模块
-│       │   ├── models.py        # User, Role, UserRole 模型
-│       │   ├── backends.py      # 自定义认证后端
+│       │   ├── models.py        # User, Role (is_unique), UserRole, RolePermission
+│       │   ├── backends.py      # 自定义认证后端（过滤软删除）
 │       │   ├── services/        # 业务逻辑层
-│       │   │   └── user_service.py
+│       │   │   ├── user_service.py     # 用户 CRUD + 角色分配
+│       │   │   └── role_service.py     # 角色 CRUD + BOSS 唯一性校验
 │       │   ├── serializers/     # 数据序列化
-│       │   │   └── user_serializers.py
+│       │   │   ├── user_serializers.py
+│       │   │   └── role_serializers.py
 │       │   ├── views/           # HTTP 接口
-│       │   │   ├── auth_views.py
-│       │   │   └── user_views.py
+│       │   │   ├── auth_views.py        # 登录/登出（返回角色列表）
+│       │   │   ├── user_views.py        # 用户 CRUD（IsAdminOrReadOnly）
+│       │   │   ├── role_views.py        # 角色 CRUD（IsAdminOrReadOnly）
+│       │   │   └── dashboard_views.py   # Dashboard 实时统计
 │       │   ├── urls_auth.py     # 认证路由
-│       │   └── urls_user.py     # 用户管理路由
+│       │   ├── urls_user.py     # 用户管理路由
+│       │   ├── urls_role.py     # 角色管理路由
+│       │   └── urls_dashboard.py # 仪表盘路由
 │       └── audit/               # 审计模块 (预留)
 │
 ├── frontend/                    # Vue 3 前端
@@ -619,20 +646,32 @@ ram-adminx/
 │       │   ├── client.ts        # Axios 实例 + 拦截器
 │       │   └── modules/
 │       │       ├── auth.ts      # 认证 API
-│       │       └── user.ts      # 用户管理 API
+│       │       ├── user.ts      # 用户管理 API
+│       │       ├── role.ts      # 角色管理 API
+│       │       └── dashboard.ts # 仪表盘 API
 │       ├── types/
-│       │   └── user.ts          # TypeScript 类型定义
+│       │   ├── user.ts          # 用户类型契约
+│       │   └── role.ts          # 角色类型契约
 │       ├── layouts/
-│       │   └── MainLayout.vue   # 主布局 (侧边栏+头部+内容区)
+│       │   └── MainLayout.vue   # 主布局（含角色管理导航）
 │       └── views/
 │           ├── login/           # 登录页
-│           ├── dashboard/       # 仪表盘
+│           ├── dashboard/
+│           │   └── DashboardView.vue  # 实时数据仪表盘
 │           ├── error/           # 403/404 错误页
-│           └── system/user/     # 用户管理
-│               ├── UserListView.vue
-│               └── UserFormDialog.vue
+│           ├── system/
+│           │   ├── user/        # 用户管理（含角色选择器）
+│           │   │   ├── UserListView.vue
+│           │   │   └── UserFormDialog.vue
+│           │   └── role/        # 角色管理
+│           │       ├── RoleListView.vue
+│           │       └── RoleFormDialog.vue
 │
-└── ARCHITECTURE.md              # ← 本文件
+├── docs/                         # 设计文档
+├── changelog/                    # 更新日志
+│   ├── CHANGELOG.md
+│   └── 2026-06-09_*.md
+└── ARCHITECTURE.md               # ← 本文件
 ```
 
 ---

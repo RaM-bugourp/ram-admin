@@ -4,6 +4,7 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
+from apps.rbac.permissions import IsAdminOrReadOnly
 from apps.rbac.serializers.user_serializers import (
     UserCreateSerializer,
     UserUpdateSerializer,
@@ -16,7 +17,7 @@ from apps.rbac.services.user_service import UserService
 class UserViewSet(viewsets.GenericViewSet):
     """用户管理 CRUD 接口."""
 
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
     serializer_class = UserOutputSerializer
     service = UserService()
 

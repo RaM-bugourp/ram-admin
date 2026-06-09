@@ -1,7 +1,6 @@
 """Auth views — login, logout, user-info."""
 import logging
 from django.contrib.auth import authenticate, login, logout
-from django.utils import timezone
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -37,10 +36,15 @@ class AuthViewSet(viewsets.GenericViewSet):
         if not user.is_active:
             raise BusinessError(message='用户已被禁用', code='USER_INACTIVE', status=403)
         login(request, user)
-        user.last_login_at = timezone.now()
-        user.save(update_fields=['last_login_at'])
         logger.info('User logged in', extra={'user_id': user.id, 'username': user.username})
-        return Response({'data': {'id': user.id, 'username': user.username, 'email': user.email, 'is_superuser': user.is_superuser}})
+        from apps.rbac.models import UserRole
+        user_roles = UserRole.objects.select_related('role').filter(user=user)
+        roles = [{'id': ur.role_id, 'name': ur.role.name, 'code': ur.role.code} for ur in user_roles]
+        return Response({'data': {
+            'id': user.id, 'username': user.username, 'email': user.email,
+            'is_superuser': user.is_superuser,
+            'roles': roles,
+        }})
 
     @action(detail=False, methods=['post'])
     def logout(self, request):
@@ -50,4 +54,14 @@ class AuthViewSet(viewsets.GenericViewSet):
     @action(detail=False, methods=['get'], url_path='user-info')
     def user_info(self, request):
         user = request.user
-        return Response({'data': {'id': user.id, 'username': user.username, 'email': user.email, 'is_superuser': user.is_superuser, 'permissions': []}})
+        from apps.rbac.models import UserRole
+        user_roles = UserRole.objects.select_related('role').filter(user=user)
+        roles = [{'id': ur.role_id, 'name': ur.role.name, 'code': ur.role.code} for ur in user_roles]
+        return Response({'data': {
+            'id': user.id,
+            'username': user.username,
+            'email': user.email,
+            'is_superuser': user.is_superuser,
+            'roles': roles,
+            'permissions': [],
+        }})
