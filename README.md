@@ -112,6 +112,7 @@ ram-adminx/
 ├── docs/                         # 设计文档
 ├── changelog/                    # 更新日志
 │   ├── CHANGELOG.md              # 更新索引
+│   ├── CONFIG.md                 # 配置清单（端口/环境变量/生产部署）
 │   └── 2026-06-09_*.md           # 各版本详细记录
 ├── ARCHITECTURE.md               # 架构详解（给新人）
 └── README.md
