@@ -30,7 +30,18 @@
 
 ---
 
-## 2026-06-04 ~ 2026-06-08 — v0.2.0
+## 2026-06-09 — v0.4.0 规划中
+
+### AI 集成设计（docs/ai-integration-design.md）
+
+核心设计决策：
+- **N+1 故障转移**：OpenAI(主) → DeepSeek(备) → QClaw(兜底)，熔断器自动切换
+- **Root 权限守卫**：`RootOnlyAI` 权限类，只有 root 可调用 AI
+- **Agent 两阶段审批**：Agent 写操作必须 root 审批后才执行
+- **完整审计链**：谁调用 / 调了哪个 Provider / 是否故障转移 / Agent 操作谁审批
+- **Root 告警**：Provider 故障时自动通知所有 root 账户
+
+详细设计：参见 [docs/ai-integration-design.md](../docs/ai-integration-design.md)
 
 ### 已实现
 - Django 5.2 + Vue 3 + Arco Design 项目架构搭建

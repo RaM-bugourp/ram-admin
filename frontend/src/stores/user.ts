@@ -30,6 +30,10 @@ const user: Module<UserState, any> = {
         isAdmin(state: UserState): boolean {
             return state.roles.some((r: RoleInfo) => ADMIN_ROLES.includes(r.code))
         },
+        /** 是否为 root 角色（用于 AI 功能鉴权） */
+        isRoot(state: UserState): boolean {
+            return state.roles.some((r: RoleInfo) => r.code === 'root')
+        },
         /** 角色编码列表 */
         roleCodes(state: UserState): string[] {
             return state.roles.map((r: RoleInfo) => r.code)
