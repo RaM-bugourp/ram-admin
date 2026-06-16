@@ -6,6 +6,7 @@ from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from apps.common.exceptions import BusinessError
+from apps.audit.utils import log_audit
 
 logger = logging.getLogger(__name__)
 
@@ -32,11 +33,21 @@ class AuthViewSet(viewsets.GenericViewSet):
             raise BusinessError(message='用户名和密码不能为空', code='INVALID_CREDENTIALS', status=400)
         user = authenticate(request, username=username, password=password)
         if user is None:
+            log_audit(
+                user=None, action='LOGIN_FAIL', resource='auth',
+                detail=f'尝试登录用户: {username}',
+                request=request,
+            )
             raise BusinessError(message='用户名或密码错误', code='INVALID_CREDENTIALS', status=401)
         if not user.is_active:
             raise BusinessError(message='用户已被禁用', code='USER_INACTIVE', status=403)
         login(request, user)
         logger.info('User logged in', extra={'user_id': user.id, 'username': user.username})
+        log_audit(
+            user=user, action='LOGIN', resource='auth',
+            detail=f'用户 {user.username} 登录成功',
+            request=request,
+        )
         from apps.rbac.models import UserRole
         user_roles = UserRole.objects.select_related('role').filter(user=user)
         roles = [{'id': ur.role_id, 'name': ur.role.name, 'code': ur.role.code} for ur in user_roles]
@@ -48,6 +59,12 @@ class AuthViewSet(viewsets.GenericViewSet):
 
     @action(detail=False, methods=['post'])
     def logout(self, request):
+        log_audit(
+            user=request.user if request.user.is_authenticated else None,
+            action='LOGOUT', resource='auth',
+            detail='用户登出',
+            request=request,
+        )
         logout(request)
         return Response({'data': {}})
 

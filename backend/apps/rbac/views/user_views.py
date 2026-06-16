@@ -12,6 +12,7 @@ from apps.rbac.serializers.user_serializers import (
     UserOutputSerializer,
 )
 from apps.rbac.services.user_service import UserService
+from apps.audit.utils import log_audit
 
 
 class UserViewSet(viewsets.GenericViewSet):
@@ -57,6 +58,12 @@ class UserViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
         user = self.service.create_user(serializer.validated_data)
         out = UserOutputSerializer(user)
+        log_audit(
+            user=request.user, action='CREATE', resource='user',
+            resource_id=user.id,
+            detail=f'创建用户: {user.username} (email={user.email})',
+            request=request,
+        )
         return Response({'data': out.data}, status=status.HTTP_201_CREATED)
 
     # ── GET /api/rbac/users/{id}/ ────────────────────────
@@ -80,13 +87,27 @@ class UserViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
         user = self.service.update_user(int(pk), serializer.validated_data)
         out = UserOutputSerializer(user)
+        log_audit(
+            user=request.user, action='UPDATE', resource='user',
+            resource_id=user.id,
+            detail=f'更新用户: {user.username}',
+            request=request,
+        )
         return Response({'data': out.data})
 
     # ── DELETE /api/rbac/users/{id}/ ─────────────────────
 
     def destroy(self, request, pk=None):
         """软删除用户."""
+        target = self.service.get_user_detail(int(pk))
+        username = target.username if target else pk
         self.service.delete_user(int(pk))
+        log_audit(
+            user=request.user, action='DELETE', resource='user',
+            resource_id=pk,
+            detail=f'删除用户: {username}',
+            request=request,
+        )
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     # ── POST /api/rbac/users/{id}/reset-password/ ────────
@@ -97,4 +118,10 @@ class UserViewSet(viewsets.GenericViewSet):
         serializer = UserResetPasswordSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.service.reset_password(int(pk), serializer.validated_data['password'])
+        log_audit(
+            user=request.user, action='PASSWORD_RESET', resource='user',
+            resource_id=pk,
+            detail=f'重置用户 {pk} 的密码',
+            request=request,
+        )
         return Response({'data': {'message': '密码重置成功'}})

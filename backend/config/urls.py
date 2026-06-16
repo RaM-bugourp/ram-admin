@@ -9,4 +9,5 @@ urlpatterns = [
     path('api/rbac/roles/', include('apps.rbac.urls_role')),
     path('api/dashboard/', include('apps.rbac.urls_dashboard')),
     path('api/ai/', include('apps.ai.urls')),
+    path('api/audit/', include('apps.audit.urls')),
 ]

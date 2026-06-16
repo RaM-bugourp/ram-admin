@@ -1,0 +1,75 @@
+version: "3.9"
+
+services:
+  # ── PostgreSQL ──────────────────────────────────────────
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-ramadminx}
+      POSTGRES_USER: ${POSTGRES_USER:-ramadminx}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── Redis（Session + 缓存）──────────────────────────────
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-}
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── Django 后端 ────────────────────────────────────────
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: backend-base
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.prod
+      DATABASE_URL: postgres://${POSTGRES_USER:-ramadminx}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-ramadminx}
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - staticfiles:/app/staticfiles
+      - media:/app/media
+    ports:
+      - "8000:8000"
+
+  # ── 前端 + Nginx ──────────────────────────────────────
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - staticfiles:/usr/share/nginx/static:ro
+      - media:/usr/share/nginx/media:ro
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
+  redisdata:
+  staticfiles:
+  media:

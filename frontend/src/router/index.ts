@@ -32,6 +32,12 @@ const routes: RouteRecordRaw[] = [
                 component: () => import('@/views/system/role/RoleListView.vue'),
                 meta: { title: '角色管理' },
             },
+            {
+                path: 'system/audit',
+                name: 'AuditLog',
+                component: () => import('@/views/system/audit/AuditLogView.vue'),
+                meta: { title: '审计日志' },
+            },
             // ── AI 模块（仅 root）───────────────────────────
             {
                 path: 'ai/chat',

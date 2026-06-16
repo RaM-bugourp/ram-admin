@@ -58,15 +58,19 @@ const user: Module<UserState, any> = {
     actions: {
         async login({ commit }: any, { username, password }: { username: string; password: string }) {
             const res: any = await client.post('/auth/login/', { username, password })
-            commit('SET_USER', res.data)
-            commit('SET_ROLES', res.data?.roles || [])
+            // axios 拦截器已解包 response.data，res 就是 { data: { ... } }
+            const userData = res.data || res
+            commit('SET_USER', userData)
+            commit('SET_ROLES', userData?.roles || [])
             commit('SET_PERMISSIONS', [])
         },
         async fetchUserInfo({ commit }: any) {
             const res: any = await client.get('/auth/user-info/')
-            commit('SET_USER', res.data)
-            commit('SET_ROLES', res.data?.roles || [])
-            commit('SET_PERMISSIONS', res.data?.permissions || [])
+            // axios 拦截器已解包 response.data，res 就是 { data: { ... } }
+            const userData = res.data || res
+            commit('SET_USER', userData)
+            commit('SET_ROLES', userData?.roles || [])
+            commit('SET_PERMISSIONS', userData?.permissions || [])
         },
         async logout({ commit }: any) {
             try {

@@ -11,13 +11,23 @@ const client = axios.create({
     xsrfHeaderName: 'X-CSRFToken',
 })
 
+// 防止 401 递归：logout 本身也要发请求，若也返回 401 会死循环
+let isLoggingOut = false
+
 client.interceptors.response.use(
     (response) => response.data,
     (error: AxiosError<{ error?: { code: string; message: string } }>) => {
         const status = error.response?.status
         if (status === 401) {
-            store.dispatch('user/logout')
-            router.push('/login')
+            // 已登录用户才需要清理状态并跳转登录页
+            if (store.getters['user/isAuthenticated'] && !isLoggingOut) {
+                isLoggingOut = true
+                store.dispatch('user/logout').finally(() => { isLoggingOut = false })
+                router.push('/login')
+            } else if (!store.getters['user/isAuthenticated']) {
+                // 未登录用户的 401（如登录接口返回 401）只跳登录页，不 dispatch logout
+                router.push('/login')
+            }
         }
         if (status === 403) {
             // CSRF failure 也返回 403，但不应跳走——让调用方自行处理

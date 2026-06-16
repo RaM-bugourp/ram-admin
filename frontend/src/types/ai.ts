@@ -53,7 +53,11 @@ export interface AIInsightsResponse {
 }
 
 /** 分析 */
-export interface AIAnalyzeResponse extends AIChatResponse {
+export interface AIAnalyzeResponse {
+    reply: string
+    provider_used: string
+    failover_triggered: boolean
+    call_id: string
     data?: Record<string, any>
 }
 

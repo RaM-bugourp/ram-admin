@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 import { reactive, ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, isNavigationFailure } from 'vue-router'
 import { useStore } from 'vuex'
 import { Message } from '@arco-design/web-vue'
 import client from '@/api/client'
@@ -39,7 +39,10 @@ onMounted(() => {
     client.get('/auth/csrf/').catch(() => {})
 })
 
-async function handleLogin() {
+// Arco 的 @submit 传递 (values, ev)，显式 preventDefault 防止原生表单提
+// 交导致页面刷新回 /login，从而丢失 SPA 中的登录态
+async function handleLogin(_values: any, ev?: Event) {
+    ev?.preventDefault()
     if (!form.username || !form.password) return
     loading.value = true
     errorMsg.value = ''
@@ -49,7 +52,12 @@ async function handleLogin() {
             password: form.password,
         })
         Message.success('登录成功')
-        router.push('/dashboard')
+        // 用 replace 避免用户在仪表盘按回退回到登录页
+        const failure = await router.replace('/')
+        // 导航被拦截（如 guard 返回 false / 重定向）则提示
+        if (isNavigationFailure(failure)) {
+            errorMsg.value = '无法跳转，请检查账户权限'
+        }
     } catch (e: any) {
         errorMsg.value = e.message || '登录失败'
     } finally {

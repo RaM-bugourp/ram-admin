@@ -29,7 +29,7 @@
                     </template>
                     <template #avatar>
                         <a-avatar :style="{ backgroundColor: avatarColor(n.level) }">
-                            <icon-bell />
+                            <icon-notification />
                         </a-avatar>
                     </template>
                 </a-list-item-meta>
@@ -47,7 +47,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { Message } from '@arco-design/web-vue'
-import { IconCheck, IconBell } from '@arco-design/web-vue/es/icon'
+import { IconCheck, IconNotification } from '@arco-design/web-vue/es/icon'
 import { useStore } from 'vuex'
 import { aiApi } from '@/api/modules/ai'
 import type { AINotification, NotificationLevel } from '@/types/ai'

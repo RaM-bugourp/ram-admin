@@ -10,6 +10,7 @@ from apps.rbac.serializers.role_serializers import (
     RoleOutputSerializer,
 )
 from apps.rbac.services.role_service import RoleService
+from apps.audit.utils import log_audit
 
 
 class RoleViewSet(viewsets.GenericViewSet):
@@ -41,6 +42,12 @@ class RoleViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
         role = self.service.create_role(serializer.validated_data)
         out = RoleOutputSerializer(role)
+        log_audit(
+            user=request.user, action='CREATE', resource='role',
+            resource_id=role.id,
+            detail=f'创建角色: {role.name} (code={role.code})',
+            request=request,
+        )
         # 新角色无用户
         out_data = dict(out.data)
         out_data['user_count'] = 0
@@ -67,11 +74,25 @@ class RoleViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
         role = self.service.update_role(int(pk), serializer.validated_data)
         out = RoleOutputSerializer(role)
+        log_audit(
+            user=request.user, action='UPDATE', resource='role',
+            resource_id=role.id,
+            detail=f'更新角色: {role.name}',
+            request=request,
+        )
         return Response({'data': out.data})
 
     # ── DELETE /api/rbac/roles/{id}/ ──────────────────
 
     def destroy(self, request, pk=None):
         """删除角色."""
+        target = self.service.get_role_detail(int(pk))
+        role_name = target.name if target else pk
         self.service.delete_role(int(pk))
+        log_audit(
+            user=request.user, action='DELETE', resource='role',
+            resource_id=pk,
+            detail=f'删除角色: {role_name}',
+            request=request,
+        )
         return Response(status=status.HTTP_204_NO_CONTENT)

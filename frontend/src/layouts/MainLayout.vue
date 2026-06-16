@@ -18,6 +18,10 @@
                     <template #icon><icon-safe /></template>
                     角色管理
                 </a-menu-item>
+                <a-menu-item key="/system/audit">
+                    <template #icon><icon-history /></template>
+                    审计日志
+                </a-menu-item>
                 <template v-if="isRoot">
                     <a-menu-item-group title="AI 智能">
                         <a-menu-item key="/ai/chat">
@@ -34,7 +38,7 @@
                             AI 审计
                         </a-menu-item>
                         <a-menu-item key="/ai/notifications">
-                            <template #icon><icon-bell /></template>
+                            <template #icon><icon-notification /></template>
                             AI 通知
                             <a-badge v-if="unreadCount" :count="unreadCount" :offset="[6, -4]" />
                         </a-menu-item>
@@ -72,7 +76,7 @@ import { useRouter, useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import {
     IconApps, IconUserGroup, IconSafe,
-    IconRobot, IconCheckSquare, IconHistory, IconBell, IconLock,
+    IconRobot, IconCheckSquare, IconHistory, IconNotification, IconLock,
 } from '@arco-design/web-vue/es/icon'
 import AIProviderAlert from '@/components/AIProviderAlert.vue'
 import { aiApi } from '@/api/modules/ai'
