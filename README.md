@@ -12,9 +12,19 @@
 
 ## 当前版本
 
-**v0.4.0** — AI 智能模块集成 + N+1 故障转移 + Agent 审批流 + 全链路审计
+**v1.0.2** — 操作审计日志 + 登录流程 Bug 修复 + 前端构建稳定性
 
-### v0.4.0 新增（AI 模块）
+### v1.0.2 新增
+
+- **审计日志模块** — 记录登录登出、用户管理、角色管理的全部操作，含 IP / UA / 详情 / 扩展数据
+- **审计统计** — 总日志数 / 今日操作 / 今日登录 / 按操作类型和资源类型聚合
+- **审计前端页面** — 统计卡片 + 多维过滤（日志类型/资源类型/用户名/日期范围）+ 分页表格 + 清理弹窗
+- **登录流程修复** — 修复 `await` 缺失导致 store 状态未就绪时路由守卫拦截跳转的问题
+- **表单提交修复** — `ev.preventDefault()` 防止浏览器原生提交刷新页面
+- **401 递归防护** — Axios 拦截器加互斥锁，防止 `isLoggingOut` 状态下的无限重定向
+- **TypeScript 构建修复** — 修复 4 个类型错误（Icon 改名 / 缺少 `:model` / 接口名冲突），生产构建零错误通过
+
+### v0.4.0 功能（AI 模块）
 
 - **AI 对话** — 自然语言交互，多 Provider 自动故障转移（OpenAI → DeepSeek → QClaw）
 - **数据分析** — 自然语言查询数据、智能洞察生成、自动报告生成
@@ -38,7 +48,7 @@
 
 - 菜单管理 & 动态路由
 - 权限粒度分配（按钮级）
-- 操作日志
+- 操作日志  ✅ **（v1.0.2 已完成）**
 - 代码生成器
 - 流式响应（AI 对话 SSE）
 - Token 计数 & 费用统计
@@ -85,7 +95,12 @@ ram-adminx/
 │   │   │   ├── views/            # HTTP 接口层（auth / user / role / dashboard）
 │   │   │   ├── urls_*.py         # 路由拆分
 │   │   │   └── management/commands/init_rbac.py  # 初始化角色 + admin
-│   │   ├── audit/                # 审计（预留）
+│   │   ├── audit/                # 操作审计
+│   │   │   ├── models.py         # AuditLog（登录/登出/CRUD 全链路追踪）
+│   │   │   ├── utils.py          # log_audit() 埋点工具
+│   │   │   ├── serializers.py    # AuditLogSerializer / 统计序列化器
+│   │   │   ├── views.py          # AuditLogViewSet（列表/统计/清理/枚举）
+│   │   │   └── urls.py           # Router 注册
 │   │   └── ai/                   # AI 智能模块
 │   │       ├── models.py         # AICallLog / AIApproval / AIApprovalLog / Notification
 │   │       ├── permissions.py    # RootOnlyAI / RootOrAgentAuth / AgentTokenService
@@ -136,7 +151,7 @@ ram-adminx/
 ├── changelog/                    # 更新日志
 │   ├── CHANGELOG.md              # 更新索引
 │   ├── CONFIG.md                 # 配置清单（端口/环境变量/生产部署）
-│   └── 2026-06-09_*.md           # 各版本详细记录
+│   └── 2026-06-*.md              # 各版本详细记录
 ├── ARCHITECTURE.md               # 架构详解（给新人）
 └── README.md
 ```
@@ -279,6 +294,16 @@ export AI_MOCK_WHEN_NO_KEY=false           # 关闭 Mock 模式（未配 Key 时
 |------|------|------|
 | GET | `/api/dashboard/stats/` | 实时统计数据 |
 
+### 审计日志（需管理员登录）
+
+| 方法 | 端点 | 说明 |
+|------|------|------|
+| GET | `/api/audit/logs/` | 审计日志列表（支持 action/resource/username/日期范围过滤） |
+| GET | `/api/audit/logs/stats/` | 审计统计（总量/按操作/按资源/今日数据） |
+| GET | `/api/audit/logs/actions/` | 操作类型枚举选项 |
+| GET | `/api/audit/logs/resources/` | 资源类型枚举选项 |
+| DELETE | `/api/audit/logs/cleanup/?days=90` | 清理过期日志 |
+
 ### AI 模块（仅 root）
 
 | 方法 | 端点 | 说明 |
@@ -360,6 +385,7 @@ Serializer (数据转换 / 输入校检)
 | Agent Token | HMAC-SHA256 签名 + 过期检查，无状态验证 |
 | 数据脱敏 | AI Prompt 发送前递归清除敏感字段（密码/邮箱/手机号等 14 项） |
 | 频次限制 | Root 用户 100 次/小时，Agent 20 次/小时 |
+| 操作审计 | 全链路审计日志 — 登录/CRUD/权限变更全记录，IP + UA 可追溯 |
 
 ---
 

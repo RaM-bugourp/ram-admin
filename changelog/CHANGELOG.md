@@ -4,6 +4,27 @@
 
 ---
 
+## 2026-06-16 — v1.0.2
+
+### 新增功能 — 操作审计日志模块
+
+- **AuditLog 模型** — 12 种操作类型（LOGIN/LOGOUT/LOGIN_FAIL/CREATE/UPDATE/DELETE/EXPORT/APPROVE/REJECT/PASSWORD_RESET/ASSIGN_ROLE/OTHER），8 种资源类型（auth/user/role/dashboard/ai_chat/ai_approval/ai_audit/other），记录 IP / UA / 详情 / 扩展 JSON
+- **审计埋点** — 集成到登录/登出（`auth_views.py`）、用户 CRUD + 密码重置（`user_views.py`）、角色 CRUD（`role_views.py`），使用统一的 `log_audit()` 工具函数
+- **审计 API** — `GET /api/audit/logs/` 分页列表 + 多维过滤，`GET /api/audit/logs/stats/` 统计聚合，`DELETE /api/audit/logs/cleanup/` 清理过期日志，`GET /api/audit/logs/actions/` / `resources/` 枚举选项
+- **审计前端页面** — 4 张统计卡片（总日志/今日操作/今日登录/操作类型数），过滤栏（操作类型/资源类型/用户名搜索/日期范围选择器），分页表格（时间/用户/操作/资源/详情/IP/UA），清理弹窗（仅 root 可见，7-365 天可配）
+
+### 问题修复
+
+- **登录跳转 Bug** — 修复 `LoginView.vue` 和 `store/user.ts` 中 `await` 缺失导致的竞态问题：`router.push()` 在 store 状态更新前执行，路由守卫检查 `isAuthenticated` 返回 false 拦截跳转
+- **表单提交 Bug** — Arco Design `<a-form @submit>` 的 async handler 未调用 `ev.preventDefault()`，浏览器原生表单提交导致页面硬刷新回 `/login`
+- **401 拦截器递归** — `client.ts` 的 401 拦截器在 `logout()` 后又触发了自身 → 添加 `isLoggingOut` 互斥锁
+- **TypeScript 构建错误** — 修复 `MainLayout.vue` 中 `IconBell`→`IconNotification`、`AINotificationView.vue` 同样、`types/ai.ts` 中 `AIAnalyzeResponse` 接口分离、`AIApprovalView.vue` 中缺少 `:model` 的错误
+
+### 详细记录
+- [v1.0.2 审计日志实现](./2026-06-16_v1.0.2_审计日志.md)
+
+---
+
 ## 2026-06-09 — v0.3.0
 
 ### 新增功能
