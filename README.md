@@ -1,442 +1,173 @@
-# 当前本地fork：0.3.0-dev.1（未发布）
-
-沿fork版本线从受保护0.2.0-harness.2净化复制，不是上游发布。新增账户安全中心（有限窗口登录保护、UUID会话管理/root全撤）、审计主体时间筛选与安全CSV、本地私有SQLite在线备份+隔离恢复验证；不含订单/ERP/多租户/支付，AI保持默认可选。以[当前任务卡](docs/harness/TASK-CORE-003.md)与[开发/复跑说明](DEVELOPMENT.md)为准，下面历史版本/统计/上游声明不作为当前通过承诺。最终冻结结果在docs/harness/evidence/CORE-003-DELIVERY.md；完整本地通过仍待lead独立验收，非生产安全批准。无remote/commit/push/部署。
-
----
 # Ram-AdminX
 
-## 本地开发分支：0.2.0-harness.2（未发布）
+基于 Django、Vue 3 与 Arco Design Vue 的通用管理后台，提供用户与角色管理、会话安全、操作审计，以及可选的 AI 辅助功能。
 
-当前有限范围：session/个人密码、用户/角色/闭集权限菜单、真实操作审计、工作台与个人设置；AI默认非核心可选，不依赖Provider运行。具体实现/未验以[完整性矩阵](docs/harness/COMPLETENESS.md)、[CORE任务](docs/harness/TASK-CORE-002.md)、[当前交接](docs/harness/CORE-REPORT.md)为准。下方v1.0.2统计/清理/IP-UA等属于上游历史声称，不自动作为本分支新增承诺。
+**当前版本：0.3.0-dev.1（开发预发行）**。本版本重点补充账户安全中心、审计 CSV 导出和本机 SQLite 备份/隔离恢复工具。尚未完成生产部署与安全总审，不应将开发验证视为生产就绪承诺。
 
-这是独立本地 fork 开发版本，编号沿 frontend package 的 0.1.0 递进，不是上游发布序列的升级承诺。上游本 README 另自称 v1.0.2，且若干审计功能与真实源码不符；其历史正文保留在下方，不作为本分支已实现/生产安全证明。统一版本以 [VERSION](VERSION) 与 [release-manifest](release-manifest.json) 为准。
+## 功能
 
-开发从 [AGENTS](AGENTS.md)、[完整规划](docs/harness/PLAN.md)、[开发/验证](DEVELOPMENT.md) 进入；本轮交付见 [CORE报告](docs/harness/CORE-REPORT.md)，旧 [Token报告](docs/harness/REPORT.md)仅属历史。Agent Token v2 必须显式专用密钥，旧 Token 全部失效需重发；先读迁移/停用边界。未获生产或远端发布授权。
+- **用户与 RBAC**：用户分页查询、创建、编辑、软删除、密码重置与多角色分配；支持 root、BOSS、普通用户及自定义角色。核心权限为 `dashboard.read`、`users.read`、`users.write`、`roles.read`、`roles.write`、`audit.read`；后端逐请求检查有效身份与当前权限，并限制越权分配和管理员接管。
+- **账户安全中心**：Session 认证与 CSRF 校验；持久登录限速按账号和来源分别计数，300 秒窗口内限额分别为 8 和 40 次，返回 429 与 `Retry-After`，容量不足时拒绝服务。来源仅取 `REMOTE_ADDR`，不信任 `X-Forwarded-For`。本人可查看会话、撤销单个会话、退出其他会话；root 可撤销目标用户全部会话。会话句柄为独立 UUID，不暴露 Session Key。
+- **操作审计**：核心操作与安全事件记录、分页列表和严格筛选；CSV 与列表共用筛选逻辑，UTF-8 BOM、固定字段、控制字符清洗与公式前缀中和。导出超过 5000 行时拒绝并要求收窄条件，不静默截断。
+- **工作台与个人设置**：用户/角色等统计、个人信息、修改密码与会话管理。
+- **可选 AI**：对话、分析、报告、Agent 审批、Token 签发与撤销；支持 OpenAI 兼容 Provider、故障转移与熔断。默认隐藏 AI 界面，核心管理功能不依赖外部模型服务。
+- **本机 SQLite 运维**：健康检查、SQLite 在线一致性备份、独立目录恢复及完整性校验，不覆盖正在使用的数据库。
 
-> Django 5.2 + Vue 3 + Arco Design 现代化后台管理系统（含 AI 智能模块）
+## 技术栈与环境
 
-[![Python](https://img.shields.io/badge/Python-3.13-blue)](https://python.org)
-[![Django](https://img.shields.io/badge/Django-5.2-green)](https://djangoproject.com)
-[![Vue](https://img.shields.io/badge/Vue-3.5-brightgreen)](https://vuejs.org)
-[![Arco Design](https://img.shields.io/badge/Arco_Design-2.56-165dff)](https://arco.design/vue)
-[![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
+| 部分 | 当前依赖/配置 |
+| --- | --- |
+| 后端 | Django `>=5.2,<5.3`、Django REST Framework `>=3.15`、django-cors-headers `>=4.6`、django-filter `>=24.1` |
+| 数据库 | SQLite；当前开发配置和 production 配置均使用 SQLite |
+| 前端 | Vue 3.5、TypeScript、Arco Design Vue 2.x、Vue Router 4、Vuex 4、Axios |
+| 构建 | Vite 6、vue-tsc；使用 npm 锁文件安装 |
 
----
-
-## 当前版本
-
-**v1.0.2** — 操作审计日志 + 登录流程 Bug 修复 + 前端构建稳定性
-
-### v1.0.2 新增
-
-- **审计日志模块** — 记录登录登出、用户管理、角色管理的全部操作，含 IP / UA / 详情 / 扩展数据
-- **审计统计** — 总日志数 / 今日操作 / 今日登录 / 按操作类型和资源类型聚合
-- **审计前端页面** — 统计卡片 + 多维过滤（日志类型/资源类型/用户名/日期范围）+ 分页表格 + 清理弹窗
-- **登录流程修复** — 修复 `await` 缺失导致 store 状态未就绪时路由守卫拦截跳转的问题
-- **表单提交修复** — `ev.preventDefault()` 防止浏览器原生提交刷新页面
-- **401 递归防护** — Axios 拦截器加互斥锁，防止 `isLoggingOut` 状态下的无限重定向
-- **TypeScript 构建修复** — 修复 4 个类型错误（Icon 改名 / 缺少 `:model` / 接口名冲突），生产构建零错误通过
-
-### v0.4.0 功能（AI 模块）
-
-- **AI 对话** — 自然语言交互，多 Provider 自动故障转移（OpenAI → DeepSeek → QClaw）
-- **数据分析** — 自然语言查询数据、智能洞察生成、自动报告生成
-- **Agent 审批** — 两阶段审批工作流，Agent 写操作必须 root 审批后执行
-- **全链路审计** — 谁调用 / 调了哪个 Provider / 是否故障转移 / Agent 操作谁审批
-- **Root 告警** — Provider 故障时自动通知所有 root 账户（站内通知 + 可选 Webhook）
-- **Agent Token** — HMAC-SHA256 无状态 Token 签发与验证，支持 Agent 授权调用
-- **数据脱敏** — 递归清除敏感字段，防止 AI Prompt 泄露用户隐私
-- **Mock 模式** — 未配置 API Key 时自动启用本地占位回复，方便开发调试
-
-### v0.3.0 功能（RBAC 核心）
-
-- **认证系统** — 自定义 User 模型（`AbstractBaseUser`）、Session + CSRF 双重保护
-- **用户管理** — 列表分页搜索、创建/编辑/删除（软删除）、密码重置、多角色分配
-- **角色管理** — 三级角色体系 (root/BOSS/user)，CRUD 完整支持，BOSS 全局唯一校验
-- **权限控制** — `IsAdminOrReadOnly` 后端权限类 + 前端按钮按角色显隐（`isAdmin` getter）
-- **仪表盘** — 实时统计（用户数/活跃用户/角色数/角色分配数）
-- **分层架构** — ViewSet → Service → Manager → Model 四层解耦
-
-### 规划中
-
-- 菜单管理 & 动态路由
-- 权限粒度分配（按钮级）
-- 操作日志  ✅ **（v1.0.2 已完成）**
-- 代码生成器
-- 流式响应（AI 对话 SSE）
-- Token 计数 & 费用统计
-
----
-
-## 技术栈
-
-| 层级 | 技术 |
-|------|------|
-| 后端框架 | Django 5.2 + Django REST Framework 3.15 |
-| 数据库 | SQLite（开发）→ PostgreSQL（生产） |
-| 前端框架 | Vue 3.5 (Composition API) + TypeScript 5.5 |
-| UI 组件库 | Arco Design Vue 2.56 |
-| 状态管理 | Vuex 4 |
-| 路由 | Vue Router 4 |
-| HTTP 客户端 | Axios（withCredentials + CSRF） |
-| 构建工具 | Vite 6 |
-| AI 集成 | 多 Provider（OpenAI / DeepSeek / QClaw），故障转移 + 熔断器 |
-
----
-
-## 项目结构
-
-```
-ram-adminx/
-├── backend/
-│   ├── config/
-│   │   ├── settings/
-│   │   │   ├── base.py           # 公共配置（中间件、DRF、认证模型、AI Provider 配置）
-│   │   │   └── dev.py            # 开发环境覆盖
-│   │   └── urls.py               # 根路由（auth / rbac / dashboard / ai）
-│   ├── apps/
-│   │   ├── common/               # 基础设施
-│   │   │   ├── base_model.py     # 抽象基类（时间戳 + 软删除）
-│   │   │   ├── managers.py       # BaseManager（自动过滤已删除记录）
-│   │   │   └── exceptions.py     # BusinessError + DRF 统一错误处理器
-│   │   ├── rbac/                 # 用户与权限
-│   │   │   ├── models.py         # User / Role / UserRole / RolePermission
-│   │   │   ├── backends.py       # 自定义认证后端（过滤软删除）
-│   │   │   ├── permissions.py    # IsAdminOrReadOnly 权限类
-│   │   │   ├── services/         # 业务逻辑层（user_service / role_service）
-│   │   │   ├── serializers/      # 输入输出序列化器
-│   │   │   ├── views/            # HTTP 接口层（auth / user / role / dashboard）
-│   │   │   ├── urls_*.py         # 路由拆分
-│   │   │   └── management/commands/init_rbac.py  # 初始化角色 + admin
-│   │   ├── audit/                # 操作审计
-│   │   │   ├── models.py         # AuditLog（登录/登出/CRUD 全链路追踪）
-│   │   │   ├── utils.py          # log_audit() 埋点工具
-│   │   │   ├── serializers.py    # AuditLogSerializer / 统计序列化器
-│   │   │   ├── views.py          # AuditLogViewSet（列表/统计/清理/枚举）
-│   │   │   └── urls.py           # Router 注册
-│   │   └── ai/                   # AI 智能模块
-│   │       ├── models.py         # AICallLog / AIApproval / AIApprovalLog / Notification
-│   │       ├── permissions.py    # RootOnlyAI / RootOrAgentAuth / AgentTokenService
-│   │       ├── services/
-│   │       │   ├── ai_service.py       # 核心 AI 服务（故障转移 + 频次限制）
-│   │       │   ├── ai_client.py       # HTTP 客户端（OpenAI 兼容协议）
-│   │       │   ├── ai_failover.py      # 熔断器 + Provider 状态机
-│   │       │   ├── ai_approval.py      # 两阶段审批工作流
-│   │       │   ├── ai_audit.py         # 审计日志记录
-│   │       │   ├── ai_errors.py        # AI 异常体系
-│   │       │   ├── prompt_builder.py   # Prompt 工程
-│   │       │   ├── data_formatter.py   # 数据脱敏
-│   │       │   ├── notification_service.py # 站内通知 + Webhook 告警
-│   │       │   └── stats_service.py    # 统计数据采集
-│   │       ├── views/            # chat / analyze / report / approval / audit / notification / agent-token
-│   │       ├── serializers/      # 14 个 Serializer 覆盖全部输入输出
-│   │       ├── urls.py           # DefaultRouter 注册全部 ViewSet
-│   │       └── management/commands/  # ai_status / cleanup_ai_audit
-│   ├── manage.py
-│   └── requirements.txt
-│
-├── frontend/
-│   ├── vite.config.ts            # Vite 配置（代理 /api → 后端）
-│   └── src/
-│       ├── main.ts               # 入口
-│       ├── App.vue               # 根组件
-│       ├── router/index.ts       # 路由表 + 导航守卫（含 root 权限检查）
-│       ├── stores/
-│       │   ├── user.ts           # 用户/认证状态
-│       │   └── ai.ts             # AI 模块状态（Provider 状态、通知未读）
-│       ├── api/
-│       │   ├── client.ts         # Axios 实例（拦截器统一错误处理）
-│       │   └── modules/          # 按模块拆分 API（auth / user / role / dashboard / ai）
-│       ├── types/                # TypeScript 类型定义（user / role / ai）
-│       ├── utils/
-│       │   └── markdown.ts       # 极简 Markdown 渲染器（XSS 安全）
-│       ├── components/
-│       │   └── AIProviderAlert.vue  # AI Provider 状态告警横幅
-│       ├── layouts/MainLayout.vue   # 主布局（侧边栏 AI 菜单组、待审批/未读角标）
-│       └── views/
-│           ├── login/            # 登录页
-│           ├── dashboard/        # 仪表盘
-│           ├── error/            # 403 / 404
-│           ├── system/            # 用户管理 / 角色管理
-│           └── ai/               # AI 对话 / Agent 审批 / AI 审计 / AI 通知 / Agent Token
-│
-├── docs/                         # 设计文档（后端 15 篇 + 前端 5 篇 + DevOps 2 篇）
-├── changelog/                    # 更新日志
-│   ├── CHANGELOG.md              # 更新索引
-│   ├── CONFIG.md                 # 配置清单（端口/环境变量/生产部署）
-│   └── 2026-06-*.md              # 各版本详细记录
-├── ARCHITECTURE.md               # 架构详解（给新人）
-└── README.md
-```
-
----
+后端依赖见 [requirements.txt](backend/requirements.txt)，其中没有独立声明 Python 最低版本；Django 5.2 要求 Python 3.10 及以上，其他未锁定上限的依赖还可能提高要求，安装时需核对解析结果。建议为本项目使用独立 Python 3.11 或更新的兼容环境。前端建议使用 Node.js 22 LTS 与随附 npm；锁文件中的 Vite 6 声明支持 Node.js 18、20 或 22 及以上兼容版本，不应将旧徽章当作环境要求。精确依赖以 [package.json](frontend/package.json) 与 [package-lock.json](frontend/package-lock.json) 为准。
 
 ## 快速开始
 
-### 环境要求
-
-- **Python** 3.13+
-- **Node.js** 22+
-
-### 1. 克隆项目
+以下命令用于全新本地开发副本。不要复制旧版本的数据库、环境文件或演示账号；已有部署升级前应另做备份与迁移评估。命令默认使用 `config.settings.dev`，只在本机运行。
 
 ```bash
-git clone <repo-url>
-cd ram-adminx
+git clone https://github.com/RaM-bugourp/ram-admin.git
+cd ram-admin
+python -m venv .venv
 ```
 
-### 2. 启动后端
+激活虚拟环境：
 
 ```bash
+# macOS / Linux
+source .venv/bin/activate
+```
+
+```powershell
+# Windows PowerShell
+.\.venv\Scripts\Activate.ps1
+```
+
+**终端一：后端**（从仓库根目录、虚拟环境已激活）：
+
+```bash
+python -m pip install -r backend/requirements.txt
 cd backend
-
-# 创建虚拟环境
-python -m venv venv
-
-# 激活（Windows）
-venv\Scripts\activate
-
-# 激活（macOS / Linux）
-source venv/bin/activate
-
-# 安装依赖
-pip install -r requirements.txt
-
-# 数据库迁移
-python manage.py migrate
-
-# 初始化管理员
-python manage.py init_rbac
-
-# 启动服务
-python manage.py runserver
+python manage.py migrate --settings=config.settings.dev
+python manage.py createsuperuser --settings=config.settings.dev
+python manage.py runserver 127.0.0.1:8000 --settings=config.settings.dev
 ```
 
-后端运行在 `http://127.0.0.1:8000`
+`createsuperuser` 会交互询问用户名、邮箱和密码；登录字段为 `username`，创建的 `is_superuser` 用户具有核心管理权限，无需预先绑定 root 角色。自行设置强密码。仓库另有 `init_rbac` 命令，会初始化角色并使用硬编码的 `admin / admin123` 创建演示管理员；它仅适合隔离的本地演示，不属于上述推荐启动步骤。
 
-### 3. 启动前端
+**终端二：前端**（从仓库根目录）：
 
 ```bash
 cd frontend
-
-# 安装依赖
-npm install
-
-# 启动开发服务器
-npm run dev
+npm ci
+npm run dev -- --host localhost --port 5173 --strictPort
 ```
 
-前端运行在 `http://localhost:5173`
+浏览器打开 **http://localhost:5173**，使用刚创建的用户登录。Vite 将 `/api` 代理到 `http://127.0.0.1:8000`，并启用 `changeOrigin`；开发配置已将 `http://localhost:5173` 列入 `CSRF_TRUSTED_ORIGINS`。请保持这个浏览器入口，不混用 `localhost` 与 `127.0.0.1` 的页面/Cookie，也不要绕过前端代理调用登录。更换域名或端口时需同步核对 Host、Origin 与 CSRF 配置。
 
-### 4. 登录
+开发环境未设置 `DJANGO_SECRET_KEY` 时会生成进程随机密钥，后端重启可能使原有会话失效。项目通过 Django 密码哈希接口存储密码；普通配置未指定 bcrypt，测试配置使用的快速哈希仅用于测试。
 
-打开浏览器访问 `http://localhost:5173/login`
+## 主要 API
 
-| 用户名 | 密码 | 角色 |
-|--------|------|------|
-| `admin` | `admin123` | root（超级管理员） |
-| `boss001` | `boss123` | BOSS（全局唯一管理员） |
-| `user001` | `user123` | user（普通用户） |
+除 CSRF 获取与登录入口外，以下接口均需有效登录；写请求需满足 CSRF 校验。资源读写还需相应权限，具备 `users.write` 也不意味着可以管理任意高权限目标。
 
-> AI 功能仅对 `root` 角色可见，使用 `admin` 账号登录即可体验全部功能。
-
----
-
-## AI 模块配置
-
-AI 模块支持多 Provider 故障转移。通过环境变量配置：
-
-```bash
-# Provider 1 — OpenAI（主力）
-export OPENAI_API_KEY="sk-..."
-export OPENAI_MODEL="gpt-4o-mini"
-
-# Provider 2 — DeepSeek（备用）
-export DEEPSEEK_API_KEY="sk-..."
-export DEEPSEEK_MODEL="deepseek-chat"
-
-# Provider 3 — QClaw（兜底）
-export QCLAW_API_KEY="sk-..."
-export QCLAW_MODEL="pool-deepseek-v4-pro"
-
-# 故障转移参数（可选，有默认值）
-export AI_FAILOVER_FAILURE_THRESHOLD=3    # 连续失败次数触发熔断
-export AI_FAILOVER_RECOVERY_TIMEOUT=60     # 熔断恢复超时（秒）
-export AI_MOCK_WHEN_NO_KEY=false           # 关闭 Mock 模式（未配 Key 时报错）
-```
-
-> 未配置任何 API Key 时，默认启用 Mock 模式返回本地占位回复，方便开发调试。
-
----
-
-## API 文档
-
-### 认证
-
-| 方法 | 端点 | 说明 |
-|------|------|------|
+| 方法 | 路径 | 用途 |
+| --- | --- | --- |
 | GET | `/api/auth/csrf/` | 获取 CSRF Token |
-| POST | `/api/auth/login/` | 登录 |
-| POST | `/api/auth/logout/` | 登出 |
-| GET | `/api/auth/user-info/` | 当前用户信息 |
+| POST | `/api/auth/login/` | 登录，提交 `username`、`password` |
+| POST | `/api/auth/logout/` | 退出登录 |
+| GET | `/api/auth/user-info/` | 当前身份、角色与权限 |
+| GET | `/api/auth/settings/` | 个人设置与 AI 界面开关状态 |
+| POST | `/api/auth/change-password/` | 提交 `old_password`、`new_password` |
+| GET | `/api/auth/sessions/` | 本人会话清单 |
+| POST | `/api/auth/revoke-session/` | 提交 `{"id":"会话 UUID"}`，撤销本人单个会话 |
+| POST | `/api/auth/revoke-other-sessions/` | 空请求体，退出本人其他会话 |
+| POST | `/api/auth/revoke-user-sessions/` | 提交 `{"user_id":123}`，仅 root 可全撤目标用户会话 |
+| GET / POST | `/api/rbac/users/` | 用户列表/创建 |
+| GET / PUT / DELETE | `/api/rbac/users/{id}/` | 用户详情/更新/软删除 |
+| POST | `/api/rbac/users/{id}/reset-password/` | 管理员重置密码，仍受目标权限边界约束 |
+| GET / POST | `/api/rbac/roles/` | 角色列表/创建 |
+| GET / PUT / DELETE | `/api/rbac/roles/{id}/` | 角色详情/更新/删除 |
+| GET | `/api/rbac/permissions/` | 权限目录，需 `roles.read` |
+| GET | `/api/dashboard/stats/` | 工作台统计，需 `dashboard.read` |
+| GET | `/api/audit/logs/` | 审计列表，需 `audit.read` |
+| GET | `/api/audit/export/` | CSV 导出，需 `audit.read` |
 
-### 用户管理（需登录）
+审计筛选字段为 `action`、`resource`、`outcome`、`actor_id`、`start`、`end`。列表另支持 `page`、`page_size`；导出不接受分页字段。时间须为带时区的 ISO 日期时间，非法日期、倒置范围、未知或重复字段会被拒绝。核心审计没有对外的统计或清理端点。
 
-| 方法 | 端点 | 说明 |
-|------|------|------|
-| GET | `/api/rbac/users/` | 列表（`?search=&page=&page_size=`） |
-| POST | `/api/rbac/users/` | 创建用户 |
-| GET | `/api/rbac/users/{id}/` | 详情 |
-| PUT | `/api/rbac/users/{id}/` | 更新 |
-| DELETE | `/api/rbac/users/{id}/` | 软删除 |
-| POST | `/api/rbac/users/{id}/reset-password/` | 重置密码 |
+## 可选 AI 配置
 
-### 角色管理（需管理员登录）
-
-| 方法 | 端点 | 说明 |
-|------|------|------|
-| GET | `/api/rbac/roles/` | 角色列表 |
-| POST | `/api/rbac/roles/` | 创建角色（BOSS 全局唯一） |
-| GET | `/api/rbac/roles/{id}/` | 角色详情 |
-| PUT | `/api/rbac/roles/{id}/` | 更新角色 |
-| DELETE | `/api/rbac/roles/{id}/` | 删除角色（系统角色不可删） |
-
-### 仪表盘（需登录）
-
-| 方法 | 端点 | 说明 |
-|------|------|------|
-| GET | `/api/dashboard/stats/` | 实时统计数据 |
-
-### 审计日志（需管理员登录）
-
-| 方法 | 端点 | 说明 |
-|------|------|------|
-| GET | `/api/audit/logs/` | 审计日志列表（支持 action/resource/username/日期范围过滤） |
-| GET | `/api/audit/logs/stats/` | 审计统计（总量/按操作/按资源/今日数据） |
-| GET | `/api/audit/logs/actions/` | 操作类型枚举选项 |
-| GET | `/api/audit/logs/resources/` | 资源类型枚举选项 |
-| DELETE | `/api/audit/logs/cleanup/?days=90` | 清理过期日志 |
-
-### AI 模块（仅 root）
-
-| 方法 | 端点 | 说明 |
-|------|------|------|
-| POST | `/api/ai/chat/chat/` | AI 对话 |
-| GET | `/api/ai/chat/provider-status/` | Provider 池状态 |
-| POST | `/api/ai/analyze/analyze/` | 自然语言数据分析 |
-| GET | `/api/ai/analyze/insights/` | 仪表盘智能洞察 |
-| POST | `/api/ai/report/report/` | 自动报告生成 |
-| POST | `/api/ai/approval/submit/` | 提交审批 |
-| GET | `/api/ai/approval/` | 审批列表 |
-| GET | `/api/ai/approval/{id}/` | 审批详情 |
-| POST | `/api/ai/approval/{id}/review/` | 审批（approve/reject） |
-| GET | `/api/ai/audit/` | 审计日志列表 |
-| GET | `/api/ai/audit/summary/` | 审计统计摘要 |
-| GET | `/api/ai/notifications/` | 通知列表 |
-| POST | `/api/ai/notifications/{id}/read/` | 标记已读 |
-| POST | `/api/ai/notifications/read-all/` | 全部标记已读 |
-| POST | `/api/ai/agent-token/issue/` | 签发 Agent Token |
-
-### 响应格式
-
-**成功**:
-```json
-{
-  "data": { ... },
-  "pagination": { "page": 1, "page_size": 20, "total": 42, "total_pages": 3 }
-}
-```
-
-**错误**:
-```json
-{
-  "error": {
-    "code": "DUPLICATE_USERNAME",
-    "message": "用户名已存在"
-  }
-}
-```
-
----
-
-## 架构说明
-
-项目采用严格分层架构：
-
-```
-ViewSet (HTTP 接口) → Service (业务逻辑) → Manager (查询封装) → Model (表结构)
-   ↕
-Serializer (数据转换 / 输入校检)
-```
-
-- **ViewSet** — 只处理 HTTP 相关（参数解析、响应包装），不写业务逻辑
-- **Service** — 纯业务代码，使用 `@transaction.atomic` 保证事务，`BusinessError` 抛异常
-- **Manager** — `BaseManager` 自动过滤 `is_deleted=True` 的记录（软删除透明化）
-- **Serializer** — Create / Update / Output 三类严格分离，防止字段泄露
-- **前端** — 路由守卫做登录拦截 + root 权限检查，Axios 拦截器统一处理 401/403
-- **权限** — 后端 `IsAdminOrReadOnly` 权限类；AI 模块使用 `RootOnlyAI` / `RootOrAgentAuth`
-- **AI 架构** — 多 Provider N+1 故障转移，CircuitBreaker 熔断器（HEALTHY → FAILED → DEGRADED）
-
-详见 [`ARCHITECTURE.md`](ARCHITECTURE.md)
-
----
-
-## 安全设计
-
-| 机制 | 说明 |
-|------|------|
-| 密码存储 | bcrypt 哈希（`make_password`） |
-| 认证 | Session Cookie（HttpOnly + SameSite=Lax） |
-| 防跨站 | CSRF Token（Cookie + Header 双重校验） |
-| 软删除 | `is_deleted` 字段 + `BaseManager` 自动过滤 |
-| 事务 | `@transaction.atomic` 保证写操作原子性 |
-| 输入校验 | Serializer 字段级规则 |
-| 输出过滤 | 只暴露声明的字段，密码字段不可见 |
-| 访问控制 | `IsAdminOrReadOnly` — 普通用户只读，管理员可写 |
-| BOSS 唯一 | 数据库 + Service 双层校验，全局唯一管理员账号 |
-| AI 权限 | `RootOnlyAI` — AI 功能仅 root 可用 |
-| Agent Token | HMAC-SHA256 签名 + 过期检查，无状态验证 |
-| 数据脱敏 | AI Prompt 发送前递归清除敏感字段（密码/邮箱/手机号等 14 项） |
-| 频次限制 | Root 用户 100 次/小时，Agent 20 次/小时 |
-| 操作审计 | 全链路审计日志 — 登录/CRUD/权限变更全记录，IP + UA 可追溯 |
-
----
-
-## 开发命令
+在启动后端前设置进程环境变量。例如 macOS / Linux：
 
 ```bash
-# ── 后端 ─────────────────────────────────
-python manage.py runserver           # 启动 Django
-python manage.py makemigrations      # 生成迁移
-python manage.py migrate             # 执行迁移
-python manage.py init_rbac           # 初始化 RBAC 数据
-
-# AI 管理命令
-python manage.py ai_status            # 查看 AI Provider 状态
-python manage.py cleanup_ai_audit    # 清理过期审计日志
-
-# ── 前端 ─────────────────────────────────
-npm run dev                          # 启动 Vite
-npm run build                        # 生产构建（vue-tsc + vite）
-npm run lint                         # ESLint 检查
+export AI_UI_ENABLED=true
+export OPENAI_API_KEY="你的 Provider Key"
+export OPENAI_BASE_URL="https://api.openai.com/v1"
+export OPENAI_MODEL="你的可用模型名"
+export AI_MOCK_WHEN_NO_KEY=false
 ```
 
----
+PowerShell 使用 `$env:变量名="值"` 的形式。Provider 列表与其他选项见 [base.py](backend/config/settings/base.py)。
 
-## 文档索引
+`AI_UI_ENABLED=false` 仅默认隐藏前端 AI 入口，**不关闭 AI API**。API 按独立权限规则检查当前 root/superuser 身份；接受 Agent Token 的入口还会单独验证凭证。启用 UI、配置 Provider 与配置 Agent Token 密钥是三件独立的事。
 
-| 文档 | 说明 |
-|------|------|
-| [ARCHITECTURE.md](ARCHITECTURE.md) | 项目架构详解（新人必读） |
-| [docs/ai-integration-design.md](docs/ai-integration-design.md) | AI 集成设计文档 |
-| [changelog/CHANGELOG.md](changelog/CHANGELOG.md) | 版本更新日志 |
-| [changelog/CONFIG.md](changelog/CONFIG.md) | 环境配置清单 |
-| [docs/backend/](docs/backend/) | 后端开发文档（15 篇） |
-| [docs/frontend/](docs/frontend/) | 前端开发文档（5 篇） |
-| [docs/devops/](docs/devops/) | DevOps 文档（部署/监控） |
+开发默认在没有可用 Provider 时允许 Mock 回复；Mock 不是实际模型调用。`AI_MOCK_WHEN_NO_KEY=false` 可禁止该回退，production 配置固定禁用 Mock。外部 Provider 的连通性与实际模型效果需自行验证。
 
----
+如需 Agent Token，必须另设随机的专用 `AI_AGENT_TOKEN_SECRET`，至少 32 字符，并独立于 Django 密钥保管。缺少或过短时签发/验证会拒绝，不会回退使用 Django 密钥。Token v2 使用随机凭证、HMAC-SHA256 与完整摘要凭证账本，并逐次核对签发人的当前有效权限。root 可通过 `POST /api/ai/agent-token/issue/` 签发、`POST /api/ai/agent-token/revoke/` 撤销。
 
-## License
+旧格式 Token 已失效，需要重新签发。`ai.0002_agent_credentials` 的逆迁移会删除凭证账本，`ai.0003_aiapproval_submitted_by` 包含无法还原原文的数据清理；不要直接回退旧二进制或在生产环境随意逆迁移。这些具体风险不等于“所有迁移都不可逆”。
 
-MIT
+## 本机 SQLite 运维
+
+仅供拥有目标数据库 OS 访问权限的本机操作者使用。先确认所选 settings 已正确配置并指向获准操作的 SQLite 数据库。以下以**已经按快速开始初始化的开发数据库**为例，在 `backend` 目录执行：
+
+```bash
+python manage.py local_ops health --settings=config.settings.dev
+python manage.py local_ops backup --settings=config.settings.dev
+python manage.py local_ops restore --backup-id <backup返回的32位十六进制ID> --settings=config.settings.dev
+```
+
+备份保存在仓库固定的 `.private-ops/backups/` 私有目录，使用 SQLite 在线备份接口；恢复写入新的 `.private-ops/restores/` 目录，目标已存在会拒绝，**不会覆盖 live 数据库，也不执行自动切库**。恢复会核对 schema、完整性、外键、全表全列与迁移账本。
+
+备份含密码哈希、会话与 Token 摘要等敏感数据，不能公开或提交到 Git；Django/Token 密钥不在备份内，应独立保护。同配置密钥下恢复的会话或凭证可能仍有效，恢复副本不要暴露到公网。
+
+如选择 `config.settings.production`，必须事先提供符合校验的 `DJANGO_SECRET_KEY`、明确的 `DJANGO_ALLOWED_HOSTS` 和绝对路径 `DJANGO_DB_PATH`，并配置 HTTPS/代理等部署事项。当前 production 配置仍为 SQLite；其配置存在不代表生产部署、恢复演练或 PostgreSQL 支持已经验收。
+
+## 开发与目录
+
+```text
+backend/
+  config/          settings 与根路由
+  apps/common/    公共模型、异常与 SQLite 运维实现
+  apps/rbac/      用户、角色、权限、认证与会话安全
+  apps/audit/     核心操作审计列表与 CSV
+  apps/ai/        可选 AI、审批与 Agent 凭证
+frontend/
+  src/            Vue 页面、路由、状态与 API 客户端
+docs/             设计文档
+changelog/        历史变更记录
+```
+
+开发检查命令（各自在对应目录执行）：
+
+```bash
+# backend，已激活独立虚拟环境
+python manage.py check --settings=config.settings.test
+python manage.py test apps.rbac apps.ai --settings=config.settings.test
+
+# frontend
+npm ci
+npm run typecheck
+npm run build
+```
+
+后端测试显式使用隔离测试配置，不指向已有业务库。前端 `build` 包含 TypeScript 检查与 Vite 构建；仓库虽有 lint 脚本，但当前依赖未包含 ESLint，不能将其视为已通过的检查。
+
+可继续阅读 [开发运行说明](DEVELOPMENT.md)、[架构说明](ARCHITECTURE.md) 与 [AI 集成设计](docs/ai-integration-design.md)。这些文档含历史设计或开发记录；当前端点与配置以源码为准。生产部署、外部 AI、容量/多 worker、真实设备与安全总审仍需专门验收。
+
+## 授权
+
+当前仓库根目录没有项目级 LICENSE 文件，项目整体授权条款仍待确认。使用或分发前请向权利人核实；第三方依赖的许可证不等同于本项目整体授权。
