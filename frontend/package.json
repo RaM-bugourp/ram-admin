@@ -1,11 +1,12 @@
 {
     "name": "django-vue-adminx",
-    "version": "0.1.0",
+    "version": "0.3.0-dev.1",
     "private": true,
     "type": "module",
     "scripts": {
         "dev": "vite",
         "build": "vue-tsc --noEmit && vite build",
+        "typecheck": "vue-tsc --noEmit",
         "preview": "vite preview",
         "lint": "eslint src --ext .ts,.vue"
     },

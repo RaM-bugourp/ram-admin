@@ -1,0 +1,25 @@
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+def patch(path,old,new):
+ p=ROOT/path;s=p.read_text(encoding='utf-8');assert old in s,(path,old);p.write_text(s.replace(old,new),encoding='utf-8')
+for path in ['VERSION','frontend/package.json','frontend/package-lock.json']:patch(path,'0.2.0-harness.1','0.2.0-harness.2')
+patch('harness.json','ram-admin-0.2.0-harness.1','ram-admin-0.2.0-harness.2')
+patch('harness.json','session:ram-harness-dev','session:ram-admin-core')
+v='tools/verify.py'
+patch(v,"p.add_argument('--run-id');a=p.parse_args()","p.add_argument('--run-id');p.add_argument('--browser-python',help='Run real HTTP+Edge using this Python with Playwright');a=p.parse_args()")
+patch(v,"    protection['consistent_version']=version","    inherited=json.loads((ROOT/'docs/harness/baseline/harness.1-protection.json').read_text(encoding='utf-8-sig'))\n    oldroot=Path(inherited['source'])\n    assert oldroot.is_dir(),'Protected .1 source unavailable'\n    for row in inherited['files']:assert sha((oldroot/row['path']).read_bytes())==row['sha256'],row['path']\n    protection['harness_1_original_files_verified']=len(inherited['files'])\n    assert sha((ROOT/'backend/apps/ai/tests.py').read_bytes())==sha((oldroot/'backend/apps/ai/tests.py').read_bytes()),'Token baseline tests changed'\n    protection['token_25_tests_unchanged']=True\n    protection['consistent_version']=version")
+patch(v,"=='0.2.0-harness.1'","=='0.2.0-harness.2'")
+patch(v,"    run('boss-regression',[py,'tools/verify_boss.py','--output',str(out/'boss.json')])","    run('boss-regression',[py,'tools/verify_boss.py','--output',str(out/'boss.json')])\n    run('core-boundaries',[py,'tools/verify_core_boundaries.py','--output',str(out/'core-boundaries.json')])")
+patch(v,"    cli=ROOT/'docs/harness/vendor/1.0.0/tools/harness.py'","    live=None\n    if a.browser_python:\n        lived=run('browser-e2e',[py,'tools/verify_live.py','--python',py,'--browser-python',a.browser_python])\n        live_ref=json.loads(lived.stdout.strip().splitlines()[-1])\n        live=json.loads((Path(live_ref['run'])/'live-summary.json').read_text(encoding='utf-8'))\n        assert live['status']=='pass' and live['backend_stopped'] and live['isolated_data_removed']\n        dump(out/'live-binding.json',{'run':live_ref['run'],'http_checks':len(live['checks'])-1,'browser_checks':live['browser']['check_count'],'summary_sha256':sha((Path(live_ref['run'])/'live-summary.json').read_bytes())})\n    cli=ROOT/'docs/harness/vendor/1.0.0/tools/harness.py'")
+patch(v,"    # All pass records bind exact source/env/artifacts and concrete local component target.","    counts['core_and_production_boundary_checks']=json.loads((out/'core-boundaries.json').read_text())['check_count']\n    if live:counts.update(real_http_checks=len(live['checks'])-1,real_browser_checks=live['browser']['check_count'])\n    # All pass records bind exact source/env/artifacts and concrete local component target.")
+patch(v,"'source-inventory.json','migration.json','boss.json','routing.json','frontend-artifacts.json'","'source-inventory.json','migration.json','boss.json','routing.json','frontend-artifacts.json','core-boundaries.json'")
+patch(v,"    artifacts=[{'path':(out/n).relative_to(ROOT).as_posix()","    if live:artifact_names.append('live-binding.json')\n    artifacts=[{'path':(out/n).relative_to(ROOT).as_posix()")
+patch(v,"'change_id':'TOKEN-001-0.2.0-harness.1'","'change_id':'CORE-002-0.2.0-harness.2'")
+patch(v,"'id':'ram-admin-0.2.0-harness.1-Windows-SQLite-isolated'","'id':'ram-admin-0.2.0-harness.2-Windows-SQLite-isolated'")
+patch(v,"'product-tests':'token-focused'","'product-tests':'django-all'")
+patch(v,"'harness-routing':'harness-routing'}","'harness-routing':'harness-routing','browser-e2e':'browser-e2e'}")
+patch(v,"assert e.returncode==2,(e.returncode,e.stdout,e.stderr)","assert e.returncode==(0 if live else 2),(e.returncode,e.stdout,e.stderr)")
+patch(v,"assert evaluation['status']=='not-run',evaluation","assert evaluation['status']==('pass' if live else 'not-run'),evaluation")
+patch(v,"'New-version real HTTP server/browser E2E and human visual acceptance'","'Human visual acceptance and physical devices' if live else 'New-version real HTTP server/browser E2E and human visual acceptance'")
+patch(v,"    dump(out/'summary.json',summary);","    summary['core_local_status']='pass' if live else 'not-run'\n    summary['live_run']=str(Path(live_ref['run']).relative_to(ROOT)) if live else None\n    dump(out/'summary.json',summary);")
+print('version, protection, verification and optional real-browser integration patched')

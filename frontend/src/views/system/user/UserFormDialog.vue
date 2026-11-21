@@ -6,7 +6,10 @@
         @ok="handleSubmit"
         @cancel="handleClose"
         :mask-closable="false"
+        :ok-loading="submitting"
+        :ok-button-props="{ disabled: rolesLoading || !!rolesError }"
     >
+        <a-alert v-if="rolesError" type="error">{{rolesError}} <a-button @click="fetchRoles">重试</a-button></a-alert>
         <a-form ref="formRef" :model="form" :rules="rules" layout="vertical">
             <a-form-item field="username" label="用户名">
                 <a-input v-model="form.username" placeholder="至少3位" :max-length="150" />
@@ -49,6 +52,7 @@
 
 <script setup lang="ts">
 import { ref, reactive, watch, computed } from 'vue'
+import { useStore } from 'vuex'
 import { Message } from '@arco-design/web-vue'
 import { userApi } from '@/api/modules/user'
 import { roleApi } from '@/api/modules/role'
@@ -69,6 +73,9 @@ const isEdit = computed(() => !!props.user)
 
 const formRef = ref()
 const rolesLoading = ref(false)
+const submitting = ref(false)
+const rolesError = ref('')
+const store = useStore()
 const allRoles = ref<RoleOutput[]>([])
 
 const form = reactive({
@@ -96,11 +103,12 @@ const rules = {
 
 async function fetchRoles() {
     rolesLoading.value = true
+    rolesError.value = ''
     try {
         const res = await roleApi.list()
-        allRoles.value = res.data
-    } catch {
-        // ignore
+        allRoles.value = res.data.filter((role) => store.getters['user/isRoot'] || (!['root','boss'].includes(role.code) && (role.permissions || []).every((code) => store.getters['user/can'](code))))
+    } catch (e: any) {
+        rolesError.value = e.message || '角色加载失败'
     } finally {
         rolesLoading.value = false
     }
@@ -131,9 +139,11 @@ watch(
 )
 
 async function handleSubmit() {
+    if (submitting.value || rolesLoading.value || rolesError.value) return
     const valid = await formRef.value?.validate()
     if (valid !== undefined) return
 
+    submitting.value = true
     try {
         if (isEdit.value) {
             await userApi.update(props.user!.id, {
@@ -157,7 +167,7 @@ async function handleSubmit() {
         handleClose()
     } catch (e: any) {
         Message.error(e.message || '操作失败')
-    }
+    } finally { submitting.value = false }
 }
 
 function handleClose() {

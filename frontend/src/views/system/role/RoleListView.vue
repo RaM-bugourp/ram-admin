@@ -1,5 +1,6 @@
 <template>
     <div class="role-page">
+        <a-alert v-if="error" type="error">{{error}} <a-button @click="fetchRoles">重试</a-button></a-alert>
         <!-- 工具栏 -->
         <div class="toolbar">
             <a-button v-if="isAdmin" type="primary" @click="handleCreate">
@@ -41,7 +42,7 @@
                 <a-space v-if="isAdmin">
                     <a-button size="small" @click="handleEdit(record)">编辑</a-button>
                     <a-popconfirm
-                        content="确定删除该角色？持有该角色的用户将被自动解绑。"
+                        content="确定删除该角色？已分配角色需先解绑用户。"
                         @ok="handleDelete(record.id)"
                         :disabled="isSystemRole(record.code)"
                     >
@@ -77,11 +78,12 @@ import type { RoleOutput } from '@/types/role'
 import RoleFormDialog from './RoleFormDialog.vue'
 
 const store = useStore()
-const isAdmin = computed(() => store.getters['user/isAdmin'])
+const isAdmin = computed(() => store.getters['user/can']('roles.write'))
 
 const SYSTEM_ROLES = ['root', 'user', 'boss']
 
 const loading = ref(false)
+const error = ref('')
 const tableData = ref<RoleOutput[]>([])
 const showDialog = ref(false)
 const editingRole = ref<RoleOutput | null>(null)
@@ -100,11 +102,12 @@ function isSystemRole(code: string): boolean {
 
 async function fetchRoles() {
     loading.value = true
+    error.value = ''
     try {
         const res = await roleApi.list()
         tableData.value = res.data
     } catch (e: any) {
-        Message.error(e.message || '加载角色列表失败')
+        error.value = e.message || '加载角色列表失败'
     } finally {
         loading.value = false
     }

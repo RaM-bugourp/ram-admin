@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "change_id": "demo-change-001",
+  "tasks": [
+    "feature"
+  ],
+  "paths": [
+    "src/plugin/feature.txt"
+  ],
+  "platforms": [
+    "plugin"
+  ],
+  "domains": [
+    "ui"
+  ],
+  "effects": [],
+  "actions": [
+    "edit"
+  ],
+  "lifecycle": "development",
+  "facts": {
+    "changes_persistence": true
+  },
+  "approved_paths": [
+    "src/**"
+  ],
+  "source": {
+    "base_commit": "synthetic-base-001",
+    "commit": "synthetic-source-002",
+    "dirty_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "environment": {
+    "os": "fixture-os",
+    "arch": "fixture-arch",
+    "shell": "fixture-shell",
+    "toolchain_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+    "config_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+    "permissions_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+    "dependencies_digest": "1111111111111111111111111111111111111111111111111111111111111111"
+  },
+  "target": {
+    "kind": "fixture",
+    "id": "synthetic-demo-instance-001",
+    "version": "1",
+    "simulated": true
+  },
+  "artifacts": [
+    {
+      "path": "artifacts/fixture.txt",
+      "sha256": "9087324c5d173bc760fadf0913dfc92fa500d91bbd026c20e77818c921c45208"
+    }
+  ]
+}

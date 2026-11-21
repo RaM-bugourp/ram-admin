@@ -1,4 +1,17 @@
+# 当前本地fork：0.3.0-dev.1（未发布）
+
+沿fork版本线从受保护0.2.0-harness.2净化复制，不是上游发布。新增账户安全中心（有限窗口登录保护、UUID会话管理/root全撤）、审计主体时间筛选与安全CSV、本地私有SQLite在线备份+隔离恢复验证；不含订单/ERP/多租户/支付，AI保持默认可选。以[当前任务卡](docs/harness/TASK-CORE-003.md)与[开发/复跑说明](DEVELOPMENT.md)为准，下面历史版本/统计/上游声明不作为当前通过承诺。最终冻结结果在docs/harness/evidence/CORE-003-DELIVERY.md；完整本地通过仍待lead独立验收，非生产安全批准。无remote/commit/push/部署。
+
+---
 # Ram-AdminX
+
+## 本地开发分支：0.2.0-harness.2（未发布）
+
+当前有限范围：session/个人密码、用户/角色/闭集权限菜单、真实操作审计、工作台与个人设置；AI默认非核心可选，不依赖Provider运行。具体实现/未验以[完整性矩阵](docs/harness/COMPLETENESS.md)、[CORE任务](docs/harness/TASK-CORE-002.md)、[当前交接](docs/harness/CORE-REPORT.md)为准。下方v1.0.2统计/清理/IP-UA等属于上游历史声称，不自动作为本分支新增承诺。
+
+这是独立本地 fork 开发版本，编号沿 frontend package 的 0.1.0 递进，不是上游发布序列的升级承诺。上游本 README 另自称 v1.0.2，且若干审计功能与真实源码不符；其历史正文保留在下方，不作为本分支已实现/生产安全证明。统一版本以 [VERSION](VERSION) 与 [release-manifest](release-manifest.json) 为准。
+
+开发从 [AGENTS](AGENTS.md)、[完整规划](docs/harness/PLAN.md)、[开发/验证](DEVELOPMENT.md) 进入；本轮交付见 [CORE报告](docs/harness/CORE-REPORT.md)，旧 [Token报告](docs/harness/REPORT.md)仅属历史。Agent Token v2 必须显式专用密钥，旧 Token 全部失效需重发；先读迁移/停用边界。未获生产或远端发布授权。
 
 > Django 5.2 + Vue 3 + Arco Design 现代化后台管理系统（含 AI 智能模块）
 

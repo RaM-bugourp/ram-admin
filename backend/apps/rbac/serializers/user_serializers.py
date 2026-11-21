@@ -1,8 +1,9 @@
 """User serializers — create, update, output."""
 from rest_framework import serializers
+from apps.common.serializers import StrictSerializer
 
 
-class UserCreateSerializer(serializers.Serializer):
+class UserCreateSerializer(StrictSerializer):
     """创建用户 — 输入契约 v1.0"""
 
     username = serializers.CharField(max_length=150, min_length=3)
@@ -17,7 +18,7 @@ class UserCreateSerializer(serializers.Serializer):
         version = 'v1.0'
 
 
-class UserUpdateSerializer(serializers.Serializer):
+class UserUpdateSerializer(StrictSerializer):
     """更新用户 — 输入契约 v1.0（所有字段可选）"""
 
     username = serializers.CharField(max_length=150, min_length=3, required=False)
@@ -31,7 +32,7 @@ class UserUpdateSerializer(serializers.Serializer):
         version = 'v1.0'
 
 
-class UserResetPasswordSerializer(serializers.Serializer):
+class UserResetPasswordSerializer(StrictSerializer):
     """重置密码 — 输入契约 v1.0"""
 
     password = serializers.CharField(min_length=6, write_only=True)
@@ -40,7 +41,7 @@ class UserResetPasswordSerializer(serializers.Serializer):
         version = 'v1.0'
 
 
-class UserOutputSerializer(serializers.Serializer):
+class UserOutputSerializer(StrictSerializer):
     """用户信息 — 输出契约 v1.0"""
 
     id = serializers.IntegerField(read_only=True)
@@ -58,7 +59,7 @@ class UserOutputSerializer(serializers.Serializer):
     def get_roles(self, obj) -> list:
         """查询用户角色列表."""
         from apps.rbac.models import UserRole
-        user_roles = UserRole.objects.select_related('role').filter(user_id=obj.id)
+        user_roles = UserRole.objects.select_related('role').filter(user_id=obj.id, role__is_deleted=False)
         return [
             {'id': ur.role_id, 'name': ur.role.name, 'code': ur.role.code}
             for ur in user_roles

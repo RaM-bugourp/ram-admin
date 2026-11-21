@@ -1,0 +1,46 @@
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+def patch(path,old,new):
+ p=ROOT/path;s=p.read_text(encoding='utf-8');assert old in s,(path,old);p.write_text(s.replace(old,new),encoding='utf-8')
+u='frontend/src/views/system/user/UserListView.vue'
+patch(u,"store.getters['user/isAdmin']","store.getters['user/can']('users.write')")
+patch(u,'    <div class="user-page">','    <div class="user-page">\n        <a-alert v-if="error" type="error">{{ error }} <a-button @click="fetchList">重试</a-button></a-alert>')
+patch(u,'style="width: 320px"','style="width: min(320px, 100%)"')
+patch(u,'const loading = ref(false)',"const loading = ref(false)\nconst error = ref('')\nlet generation = 0")
+patch(u,'async function fetchList() {\n    loading.value = true',"async function fetchList() {\n    const requestId = ++generation\n    loading.value = true\n    error.value = ''")
+patch(u,'        tableData.value = res.data','        if (requestId !== generation) return\n        tableData.value = res.data\n        currentPage.value = res.pagination.page')
+patch(u,"        Message.error(e.message || '加载失败')","        if (requestId === generation) error.value = e.message || '加载失败'")
+patch(u,'        loading.value = false','        if (requestId === generation) loading.value = false')
+patch(u,'            :columns="columns"','            :scroll="{ x: 950 }"\n            :columns="columns"')
+f='frontend/src/views/system/user/UserFormDialog.vue'
+patch(f,'        :mask-closable="false"','        :mask-closable="false"\n        :ok-loading="submitting"\n        :ok-button-props="{ disabled: rolesLoading || !!rolesError }"')
+patch(f,'        <a-form ref="formRef"','        <a-alert v-if="rolesError" type="error">{{rolesError}} <a-button @click="fetchRoles">重试</a-button></a-alert>\n        <a-form ref="formRef"')
+patch(f,"import { ref, reactive, watch, computed } from 'vue'","import { ref, reactive, watch, computed } from 'vue'\nimport { useStore } from 'vuex'")
+patch(f,'const rolesLoading = ref(false)',"const rolesLoading = ref(false)\nconst submitting = ref(false)\nconst rolesError = ref('')\nconst store = useStore()")
+patch(f,'    rolesLoading.value = true',"    rolesLoading.value = true\n    rolesError.value = ''")
+patch(f,'        allRoles.value = res.data',"        allRoles.value = res.data.filter((role) => store.getters['user/isRoot'] || (!['root','boss'].includes(role.code) && (role.permissions || []).every((code) => store.getters['user/can'](code))))")
+patch(f,'    } catch {\n        // ignore',"    } catch (e: any) {\n        rolesError.value = e.message || '角色加载失败'")
+patch(f,'async function handleSubmit() {','async function handleSubmit() {\n    if (submitting.value || rolesLoading.value || rolesError.value) return')
+patch(f,'    try {\n        if (isEdit.value)', '    submitting.value = true\n    try {\n        if (isEdit.value)')
+patch(f,"        Message.error(e.message || '操作失败')\n    }","        Message.error(e.message || '操作失败')\n    } finally { submitting.value = false }")
+r='frontend/src/views/system/role/RoleListView.vue'
+patch(r,"store.getters['user/isAdmin']","store.getters['user/can']('roles.write')")
+patch(r,'确定删除该角色？持有该角色的用户将被自动解绑。','确定删除该角色？已分配角色需先解绑用户。')
+patch(r,'    <div class="role-page">','    <div class="role-page">\n        <a-alert v-if="error" type="error">{{error}} <a-button @click="fetchRoles">重试</a-button></a-alert>')
+patch(r,'const loading = ref(false)',"const loading = ref(false)\nconst error = ref('')")
+patch(r,'    loading.value = true',"    loading.value = true\n    error.value = ''")
+patch(r,"        Message.error(e.message || '加载角色列表失败')","        error.value = e.message || '加载角色列表失败'")
+t='frontend/src/types/role.ts'
+patch(t,'    user_count: number','    permissions: string[]\n    user_count: number')
+patch(t,'    is_unique?: boolean','    is_unique?: boolean\n    permissions?: string[]')
+f='frontend/src/views/system/role/RoleFormDialog.vue'
+patch(f,'        </a-form>','            <a-form-item label="后台权限"><a-select v-model="form.permissions" multiple :disabled="isEdit && isSystemRole" placeholder="选择闭集后台权限"><a-option v-for="p in catalog" :key="p.code" :value="p.code" :disabled="!p.grantable">{{p.name}} ({{p.code}})</a-option></a-select></a-form-item>\n        </a-form>')
+patch(f,"import { ref, reactive, watch, computed } from 'vue'","import { ref, reactive, watch, computed } from 'vue'\nimport client from '@/api/client'")
+patch(f,'const submitting = ref(false)',"const submitting = ref(false)\nconst catalog = ref<any[]>([])\nwatch(() => props.visible, async (visible) => { if (visible) { try { const r: any = await client.get('/rbac/permissions/'); catalog.value = r.data } catch(e: any) { Message.error(e.message) } } })")
+patch(f,'    is_unique: false as boolean,','    is_unique: false as boolean,\n    permissions: [] as string[],')
+patch(f,'            form.is_unique = role.is_unique','            form.is_unique = role.is_unique\n            form.permissions = role.permissions || []')
+patch(f,'            form.is_unique = false','            form.is_unique = false\n            form.permissions = []')
+patch(f,'async function handleSubmit() {','async function handleSubmit() {\n    if (submitting.value) return')
+patch(f,'                payload.is_unique = form.is_unique','                payload.is_unique = form.is_unique\n                payload.permissions = form.permissions')
+patch(f,'                is_unique: form.is_unique,','                is_unique: form.is_unique,\n                permissions: form.permissions,')
+print('core UI patches applied')

@@ -1,3 +1,4 @@
+from apps.common.inputs import positive_int
 """AI approval ViewSet — submit / list / review / detail."""
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
@@ -43,7 +44,8 @@ class AIApprovalViewSet(viewsets.GenericViewSet):
         agent_payload = getattr(request, '_agent_payload', None)
         if agent_payload:
             agent_id = agent_payload.get('agent_id') or data['agent_id']
-            root_user = None  # Agent 提交，root_user 置空
+            from apps.rbac.models import User
+            root_user = User.objects.filter(pk=agent_payload['root_user_id']).first()
         else:
             agent_id = data['agent_id']
             root_user = request.user
@@ -56,14 +58,6 @@ class AIApprovalViewSet(viewsets.GenericViewSet):
             root_user=root_user,
         )
 
-        # 审计：Agent 代发日志
-        AIAuditService.log_agent_submission(
-            agent_id=agent_id,
-            operation=data['operation'],
-            params=data.get('params') or {},
-            approval_id=approval.id,
-        )
-
         out = AIApprovalOutputSerializer(approval)
         return Response({'data': out.data}, status=status.HTTP_201_CREATED)
 
@@ -72,8 +66,8 @@ class AIApprovalViewSet(viewsets.GenericViewSet):
     def list(self, request):
         status_filter = request.query_params.get('status', '')
         agent_id = request.query_params.get('agent_id', '')
-        page = int(request.query_params.get('page', 1))
-        page_size = int(request.query_params.get('page_size', 20))
+        from apps.common.inputs import pagination
+        page, page_size = pagination(request)
 
         result = self.service.list_approvals(
             status_filter=status_filter, agent_id=agent_id,
@@ -93,7 +87,7 @@ class AIApprovalViewSet(viewsets.GenericViewSet):
     # ── GET /api/ai/approval/{id}/ ─────────────────────────
 
     def retrieve(self, request, pk=None):
-        approval = self.service.get_detail(int(pk))
+        approval = self.service.get_detail(positive_int(pk, 'id'))
         out = AIApprovalOutputSerializer(approval)
         return Response({'data': out.data})
 
@@ -106,7 +100,7 @@ class AIApprovalViewSet(viewsets.GenericViewSet):
         data = serializer.validated_data
 
         approval = self.service.review(
-            approval_id=int(pk),
+            approval_id=positive_int(pk, 'id'),
             root_user=request.user,
             action=data['action'],
             comment=data.get('comment', ''),

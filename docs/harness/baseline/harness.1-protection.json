@@ -1,0 +1,2748 @@
+﻿{
+    "source":  "C:\\c\\Users\\Rick\\ram-admin-0.2.0-harness.1",
+    "destination":  "C:\\c\\Users\\Rick\\ram-admin-0.2.0-harness.2",
+    "verified_baseline_digest":  "8f29f49f1ea6c39e72291a874fd5b7a82036cb0372276a88fe02994ae2e94fe1",
+    "copied_count":  546,
+    "excluded":  [
+                     ".git",
+                     "node_modules",
+                     "dist",
+                     "venv",
+                     ".venv",
+                     "__pycache__",
+                     ".npm-cache",
+                     ".tmp"
+                 ],
+    "files":  [
+                  {
+                      "path":  "backend/apps/ai/management/commands/ai_status.py",
+                      "sha256":  "6c83153494c2f7f05e8b61a58892e9f6943739280e0c7e34a29b39cd46817b6d",
+                      "size":  1496
+                  },
+                  {
+                      "path":  "backend/apps/ai/management/commands/cleanup_ai_audit.py",
+                      "sha256":  "c09f7fa276ed0f88c5f9d806650188f1edf0eab6d298dece95fd26c0ee74ac0b",
+                      "size":  1664
+                  },
+                  {
+                      "path":  "backend/apps/ai/management/commands/__init__.py",
+                      "sha256":  "28a1300d60697a5e8e0b40fcf8cb26589581ba36f681f7b48fa40caef888f5de",
+                      "size":  30
+                  },
+                  {
+                      "path":  "backend/apps/ai/management/__init__.py",
+                      "sha256":  "cb770cc9681fd717f4a9e34c4e1fc63728e26a15a6c1c3597c158ad308bb5fe9",
+                      "size":  38
+                  },
+                  {
+                      "path":  "backend/apps/ai/migrations/0001_initial.py",
+                      "sha256":  "0d5fe213368fd65693a50b2b23094d4335e5472d44f6bd81b928533e118857a4",
+                      "size":  8270
+                  },
+                  {
+                      "path":  "backend/apps/ai/migrations/0002_agent_credentials.py",
+                      "sha256":  "cf66886c83204b96994737ca7ce945bb88ff42ffd3982cc8fd3ec63783b2a039",
+                      "size":  1233
+                  },
+                  {
+                      "path":  "backend/apps/ai/migrations/__init__.py",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "backend/apps/ai/serializers/ai_serializers.py",
+                      "sha256":  "55c66ef6b059d613056642b616997a8b1b3a508b39b09ed8a06a272c3d591402",
+                      "size":  5548
+                  },
+                  {
+                      "path":  "backend/apps/ai/serializers/__init__.py",
+                      "sha256":  "596d0f7680592afcdf7453c9fcb142d8c7a231ca593b7d63232e2b43aa848dc9",
+                      "size":  30
+                  },
+                  {
+                      "path":  "backend/apps/ai/services/ai_approval.py",
+                      "sha256":  "49731fe9fbdd9c0371ad953669a4eb61ca00c04b7dae7d645c1217e7d84b62ca",
+                      "size":  8970
+                  },
+                  {
+                      "path":  "backend/apps/ai/services/ai_audit.py",
+                      "sha256":  "d23059032a88cca55193dcb34aac3f694ec6689891a9a2e1159d4a6abd53bfde",
+                      "size":  3991
+                  },
+                  {
+                      "path":  "backend/apps/ai/services/ai_client.py",
+                      "sha256":  "1b774e5ce2a781a05fa0fd0b11cf43df27673636f122caec0ed98da4843dd63d",
+                      "size":  3384
+                  },
+                  {
+                      "path":  "backend/apps/ai/services/ai_errors.py",
+                      "sha256":  "25215fa11133ad37e179cb9aabc49fb8297452a9450e3767164abd478e0c10df",
+                      "size":  1263
+                  },
+                  {
+                      "path":  "backend/apps/ai/services/ai_failover.py",
+                      "sha256":  "bf9c3f3f0d8e30569e58c323c844c144016edfdfbc18b492c896e8d385c6512c",
+                      "size":  5461
+                  },
+                  {
+                      "path":  "backend/apps/ai/services/ai_service.py",
+                      "sha256":  "74ba7effe66a04a7c89fa544162f17b282aa926592200e2b34c364a4dc17503f",
+                      "size":  7969
+                  },
+                  {
+                      "path":  "backend/apps/ai/services/data_formatter.py",
+                      "sha256":  "1116a653caeb6e9b3c3a200f650718db39c4d88eb4a524ed38cb3984e3f1f1d8",
+                      "size":  1704
+                  },
+                  {
+                      "path":  "backend/apps/ai/services/notification_service.py",
+                      "sha256":  "5c641c37825da77102805d55a690b4fda3a9b079926f11eb8fad15b1ac2948b6",
+                      "size":  3052
+                  },
+                  {
+                      "path":  "backend/apps/ai/services/prompt_builder.py",
+                      "sha256":  "38d6a494b36b6a083b7745a8135ccb37e527b6e0d39bc33c61fad01c5a496629",
+                      "size":  3258
+                  },
+                  {
+                      "path":  "backend/apps/ai/services/stats_service.py",
+                      "sha256":  "f2279d8b4288bc08c1cd8e8025174c3754fccc7312d7fd1384d7cee174ae33ff",
+                      "size":  2550
+                  },
+                  {
+                      "path":  "backend/apps/ai/services/__init__.py",
+                      "sha256":  "7a18ee9efba1f13ac722b60ce91bb45f3fa7664165bf24e8612be99540a02bdb",
+                      "size":  27
+                  },
+                  {
+                      "path":  "backend/apps/ai/views/agent_views.py",
+                      "sha256":  "b1deca9b0368d8e399c1e545a058305c5307288639299697b6784faa98b79ddb",
+                      "size":  2142
+                  },
+                  {
+                      "path":  "backend/apps/ai/views/analyze_views.py",
+                      "sha256":  "79d39bf386dd6fd74292cc9ab300df9355c611473de8fcd0e7f241238a28909a",
+                      "size":  5307
+                  },
+                  {
+                      "path":  "backend/apps/ai/views/approval_views.py",
+                      "sha256":  "a822215f216fe4c43b51e9b39287821e1827c47790c1a2ead22f350df2496205",
+                      "size":  4275
+                  },
+                  {
+                      "path":  "backend/apps/ai/views/audit_views.py",
+                      "sha256":  "326fe3b49212a6b0bb33e63a7c797bf2ddd6a6d3e02ea140ea4fbe2c21e55f96",
+                      "size":  2985
+                  },
+                  {
+                      "path":  "backend/apps/ai/views/chat_views.py",
+                      "sha256":  "39e8c66bbd5a849f127753b2982afb2eac8345336b4bd3b4f72fc9c58bdf42b4",
+                      "size":  2675
+                  },
+                  {
+                      "path":  "backend/apps/ai/views/notification_views.py",
+                      "sha256":  "80d76a9d9af29226e3f48ce0dbe127d5695f91e630a39a3f1319acd42918fdc5",
+                      "size":  2580
+                  },
+                  {
+                      "path":  "backend/apps/ai/views/__init__.py",
+                      "sha256":  "bf2946110fbb17ec7a14c110176cb77b87a33f5adadebdedbfdbef4dbcd5aad4",
+                      "size":  544
+                  },
+                  {
+                      "path":  "backend/apps/ai/apps.py",
+                      "sha256":  "de6d7ba5761f17449262a13d007563768a30e2381ea09a55013085351a30bffa",
+                      "size":  172
+                  },
+                  {
+                      "path":  "backend/apps/ai/models.py",
+                      "sha256":  "93db0137fd06c1e17d1cddc533045504afff832cb72b0fba80ca04e9bdada94f",
+                      "size":  7798
+                  },
+                  {
+                      "path":  "backend/apps/ai/permissions.py",
+                      "sha256":  "1164fde7c70138163bf6aa0695cdf31f52af642e52521ca61ba03a1dde6ba46a",
+                      "size":  5831
+                  },
+                  {
+                      "path":  "backend/apps/ai/tests.py",
+                      "sha256":  "f5b6fbc07fee81538747c5224eafb0a3bbe42041ff14d1b815c0ef3e90588e5b",
+                      "size":  14982
+                  },
+                  {
+                      "path":  "backend/apps/ai/urls.py",
+                      "sha256":  "b4d5d66626cb10164ad97621520f859dce3d21031c3be655e3593c7e325fce6c",
+                      "size":  1368
+                  },
+                  {
+                      "path":  "backend/apps/ai/__init__.py",
+                      "sha256":  "8033120e01f521b92a25046da569050e706777efdde36800af6a49a26a85de86",
+                      "size":  74
+                  },
+                  {
+                      "path":  "backend/apps/audit/apps.py",
+                      "sha256":  "23d337eb41bdee77384b6424643fb688d6f31f975e2497d7e6382deb4c006614",
+                      "size":  147
+                  },
+                  {
+                      "path":  "backend/apps/audit/__init__.py",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "backend/apps/common/apps.py",
+                      "sha256":  "4a7757c07f3c8dafefa9e52f03fe843f9e23715102df13a37deb0b9d58475718",
+                      "size":  149
+                  },
+                  {
+                      "path":  "backend/apps/common/base_model.py",
+                      "sha256":  "a7571b75ff7f1a66fbe569e406d1ed5444a5f8bdd30e5661d2a3369782b863fb",
+                      "size":  669
+                  },
+                  {
+                      "path":  "backend/apps/common/exceptions.py",
+                      "sha256":  "0078ed5ed30e345ded4769df1d55b052dc1225ed4d1590f5c24ee03d25995808",
+                      "size":  1060
+                  },
+                  {
+                      "path":  "backend/apps/common/managers.py",
+                      "sha256":  "7fc7bb45e93d28d6293576c4b1e89a1882b4e93a027259eb59d69714bae4da34",
+                      "size":  406
+                  },
+                  {
+                      "path":  "backend/apps/common/__init__.py",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "backend/apps/rbac/management/commands/init_rbac.py",
+                      "sha256":  "590448b354277aa332801516351a425aefccdcaa69910a7f8d03f9059ceebaf6",
+                      "size":  2183
+                  },
+                  {
+                      "path":  "backend/apps/rbac/management/commands/__init__.py",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "backend/apps/rbac/management/__init__.py",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "backend/apps/rbac/migrations/0001_initial.py",
+                      "sha256":  "b73c691e4c5ab2cebd6407d28824de76caa484b46be8bdd4a9d2e1ef91a0d628",
+                      "size":  2299
+                  },
+                  {
+                      "path":  "backend/apps/rbac/migrations/0002_add_role_userrole.py",
+                      "sha256":  "91231e34eba3b941729ac065e7bbf9bf02bb54250de17992a0c9ac196ca33498",
+                      "size":  2303
+                  },
+                  {
+                      "path":  "backend/apps/rbac/migrations/0003_add_role_is_unique_and_permission.py",
+                      "sha256":  "b9ed156f7d42d496cd9c5bac801420c7a569ed26c59cfc86dfd6d76d5b70ec93",
+                      "size":  1540
+                  },
+                  {
+                      "path":  "backend/apps/rbac/migrations/__init__.py",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "backend/apps/rbac/serializers/role_serializers.py",
+                      "sha256":  "79f92d2b6636deb72f7f6c94b5d7f03b624e02b5fa1f9688ee5126dbb31c8a71",
+                      "size":  1776
+                  },
+                  {
+                      "path":  "backend/apps/rbac/serializers/user_serializers.py",
+                      "sha256":  "02cd8a55a894aa53c18446a8d54da37a192f03f3fb395bbc2aa5b64d742a0cb5",
+                      "size":  2185
+                  },
+                  {
+                      "path":  "backend/apps/rbac/serializers/__init__.py",
+                      "sha256":  "98568b678b47368f004f6340439cb83df357e4e97953ee3caa03f608344184a8",
+                      "size":  22
+                  },
+                  {
+                      "path":  "backend/apps/rbac/services/role_service.py",
+                      "sha256":  "69b9dbe1d1c4b8d0223347cf28f05d8b5549940eaca1bf3dfcd6ce1eba5a3f55",
+                      "size":  5383
+                  },
+                  {
+                      "path":  "backend/apps/rbac/services/user_service.py",
+                      "sha256":  "cca66203e5d3c355f52c60eb11d27b586debfa2300481cd3fcce66c92649515d",
+                      "size":  6756
+                  },
+                  {
+                      "path":  "backend/apps/rbac/views/auth_views.py",
+                      "sha256":  "a272cc7917ed07b63678798913c64cc54990a8f2773a07b23d2b9a3f2351beb3",
+                      "size":  2814
+                  },
+                  {
+                      "path":  "backend/apps/rbac/views/dashboard_views.py",
+                      "sha256":  "5e6fc3e9cb3dac448f9a06a26c112158b35db7079bd3194f827048b7370360db",
+                      "size":  1003
+                  },
+                  {
+                      "path":  "backend/apps/rbac/views/role_views.py",
+                      "sha256":  "6f4a28696c46ec589b744309a37099430cac9e08e1501068ba3d521866e83669",
+                      "size":  3412
+                  },
+                  {
+                      "path":  "backend/apps/rbac/views/user_views.py",
+                      "sha256":  "8f07812526f42eabc0f166e00efa61b025ef8864df2e1e49c99b22c59d946e71",
+                      "size":  4230
+                  },
+                  {
+                      "path":  "backend/apps/rbac/views/__init__.py",
+                      "sha256":  "015d95f8c1d438a04404b1aa892cb89347d4b242d08a0c434c847e3ddb80dc65",
+                      "size":  144
+                  },
+                  {
+                      "path":  "backend/apps/rbac/apps.py",
+                      "sha256":  "9875507494939f733ce5739b29d846f0873cc8d169b064e08bf51509965c7056",
+                      "size":  145
+                  },
+                  {
+                      "path":  "backend/apps/rbac/backends.py",
+                      "sha256":  "f0f2c1717f88694436a39461fec403754c0aadba8586ec6368daeb1f1b9c024c",
+                      "size":  712
+                  },
+                  {
+                      "path":  "backend/apps/rbac/models.py",
+                      "sha256":  "1f6f7e9bee08d9ae2e37d7d99743a08b201fd23730006e49e6238bb7cf954167",
+                      "size":  4884
+                  },
+                  {
+                      "path":  "backend/apps/rbac/permissions.py",
+                      "sha256":  "4be4a40091012ad286c3883582439cc27a68bf86064096aafc7e9d68509b8574",
+                      "size":  2370
+                  },
+                  {
+                      "path":  "backend/apps/rbac/urls_auth.py",
+                      "sha256":  "51c9287519052e4f0709f427f1792d49f9a3b127f63a28f2c26b844142282d69",
+                      "size":  283
+                  },
+                  {
+                      "path":  "backend/apps/rbac/urls_dashboard.py",
+                      "sha256":  "a9e908ff00cbc69283c660d8598a1e12cf04f8832df5b95b9cf9330a2762066f",
+                      "size":  279
+                  },
+                  {
+                      "path":  "backend/apps/rbac/urls_role.py",
+                      "sha256":  "00fbcc52cf141eb839e90c143b13840406a640c6561e2e2220f1fd786b468e84",
+                      "size":  305
+                  },
+                  {
+                      "path":  "backend/apps/rbac/urls_user.py",
+                      "sha256":  "7dc45bd8d601f86468260f75f120469e6cc2a92e2b16f57b7754b4e199c417b7",
+                      "size":  294
+                  },
+                  {
+                      "path":  "backend/apps/rbac/__init__.py",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "backend/apps/__init__.py",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "backend/config/settings/base.py",
+                      "sha256":  "dedeef392d624424973b7709839b18c6e4b706112b6f85ce4ad40b7be5f2c7c5",
+                      "size":  5592
+                  },
+                  {
+                      "path":  "backend/config/settings/dev.py",
+                      "sha256":  "62d4e6d8ff78c85952110f7d1d77b49dbd0a46b983da258a3d1d1dc8fe7a5d6f",
+                      "size":  314
+                  },
+                  {
+                      "path":  "backend/config/settings/test.py",
+                      "sha256":  "6f96e12f7569b80703a1c6c00652988a2f74d8690f46aff92a0d4684fb506dae",
+                      "size":  503
+                  },
+                  {
+                      "path":  "backend/config/settings/__init__.py",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "backend/config/urls.py",
+                      "sha256":  "31f7b3aa1db113dcd0a5fd24be6ffc26bd670086ca8e2d1dc9d57b81c1684467",
+                      "size":  445
+                  },
+                  {
+                      "path":  "backend/config/wsgi.py",
+                      "sha256":  "baede32ecc662af986b53f62c6c0d9f2f3c6fae213e53fdabdf510de1dfc9e57",
+                      "size":  188
+                  },
+                  {
+                      "path":  "backend/config/__init__.py",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "backend/manage.py",
+                      "sha256":  "4a41d18002c6294061031c74fb0ac25d6541a0ef61827c9ab37a46c2088a12be",
+                      "size":  666
+                  },
+                  {
+                      "path":  "backend/requirements.txt",
+                      "sha256":  "9f4cda0727d4f8a21bf176aa1aebbe0d83411127640caa7fe2d9c53dcbafb3df",
+                      "size":  88
+                  },
+                  {
+                      "path":  "changelog/2026-06-09_P0权限修复.md",
+                      "sha256":  "cb289901771272b048e44efe3d1e9240c01e2cfa05de46267b1a46464e86c468",
+                      "size":  1126
+                  },
+                  {
+                      "path":  "changelog/2026-06-09_P1P2修复.md",
+                      "sha256":  "ec6b233d57954287f528cb1514f1f33ee028da1b18c562fd3a169fb346219d84",
+                      "size":  2312
+                  },
+                  {
+                      "path":  "changelog/2026-06-09_v0.3.0_更新总结.md",
+                      "sha256":  "fb91310ea39ef6eb5b53bd7f67961e0e9819d0d803eee279c2bda371d4a370dd",
+                      "size":  2742
+                  },
+                  {
+                      "path":  "changelog/2026-06-09_权限管理_v0.3.0.md",
+                      "sha256":  "f0c7645bddd4786bcb47e14d329280f80bb01a5dae44bf0bb490a2f315428dd5",
+                      "size":  2626
+                  },
+                  {
+                      "path":  "changelog/2026-06-16_v1.0.2_审计日志.md",
+                      "sha256":  "255e36749f8f4e562b7bb19249be099bfebcd46d5e0ef1897fbd5af3b85a9d55",
+                      "size":  4666
+                  },
+                  {
+                      "path":  "changelog/CHANGELOG.md",
+                      "sha256":  "089908fbb8e97622a3cbaef0b1e06a694e7cd69ea8923aeea55d34d31279bb02",
+                      "size":  4117
+                  },
+                  {
+                      "path":  "changelog/CONFIG.md",
+                      "sha256":  "353e3653828e0bbaaf459e60b28866ba07e1271907150010de365cf466f45745",
+                      "size":  6401
+                  },
+                  {
+                      "path":  "docs/backend/01-项目初始化与配置.md",
+                      "sha256":  "a7f67cd7c4e91ff32abc31875875706ba43f2a0f7b41e7818b2fd0a752534d74",
+                      "size":  8736
+                  },
+                  {
+                      "path":  "docs/backend/02-Model层开发.md",
+                      "sha256":  "c6a1b45f283a975e52b43fa795138653d9a959464f624b457ecdb870b3220e89",
+                      "size":  4589
+                  },
+                  {
+                      "path":  "docs/backend/03-Repository层开发.md",
+                      "sha256":  "30717c35b2cac246683a51b93295801df90a9531c6bed3ffc081662838b14468",
+                      "size":  6978
+                  },
+                  {
+                      "path":  "docs/backend/04-Service层开发.md",
+                      "sha256":  "80cca094f76f3f3ca3a7aa9d83c2ee8b702d1a788c3fb8e71ffec6c4f568529f",
+                      "size":  7304
+                  },
+                  {
+                      "path":  "docs/backend/05-Serializer契约层开发.md",
+                      "sha256":  "738144c8c6c27c4873e9fb4cd7686d5583c813ac29e00d5c479904b01bbd2dbe",
+                      "size":  4541
+                  },
+                  {
+                      "path":  "docs/backend/06-ViewSet接口层开发.md",
+                      "sha256":  "4a28fc45ebbc894301bb37cd25f549ce59c66952b613b80e39f82d471265f242",
+                      "size":  5174
+                  },
+                  {
+                      "path":  "docs/backend/07-权限与安全开发.md",
+                      "sha256":  "fe18daee11d00eeef1c78cd46bc3f752af5cad74637ab0d9999f9c1aae80415e",
+                      "size":  4161
+                  },
+                  {
+                      "path":  "docs/backend/08-中间件开发.md",
+                      "sha256":  "099a429dc41dba6503702619a56e2300252ea414ca985eb2e94acd17954d12af",
+                      "size":  4539
+                  },
+                  {
+                      "path":  "docs/backend/09-审计与日志开发.md",
+                      "sha256":  "b198aca447ee718cceecfec27b9e6d1f2e9384de90e89edc9a28a0f137e71ca5",
+                      "size":  4947
+                  },
+                  {
+                      "path":  "docs/backend/10-测试开发.md",
+                      "sha256":  "da46076e87ac546d022416a8f5174fa16a25e28c1da3ae4d69b8e19a9df91a43",
+                      "size":  6173
+                  },
+                  {
+                      "path":  "docs/backend/11-代码生成器开发.md",
+                      "sha256":  "c34924d65358e2033bb9b78c4752942fa4302515ea9f1cb6b09ff2f67e329d86",
+                      "size":  6142
+                  },
+                  {
+                      "path":  "docs/backend/17-文件管理与存储.md",
+                      "sha256":  "bf489fc257ad120677182db5c83fa9bfe06c42fb96b488fb927ff5569caf668e",
+                      "size":  7456
+                  },
+                  {
+                      "path":  "docs/backend/19-数据导出与报表.md",
+                      "sha256":  "13991d5c431eade94eaa6fa93a0db38634da1f860357bd11e2885b6a2c426d9a",
+                      "size":  6633
+                  },
+                  {
+                      "path":  "docs/backend/20-错误码体系.md",
+                      "sha256":  "6fbfad18845fdd6ab144dfb0f8d40d151f9df98a4a6bf2d7c846f6e523b4056f",
+                      "size":  6667
+                  },
+                  {
+                      "path":  "docs/backend/21-数据权限设计.md",
+                      "sha256":  "f2a9ef51fc7a8e642e5fda0899e28e6fd50e711fcd760bcb220da2b034d1f6b8",
+                      "size":  6578
+                  },
+                  {
+                      "path":  "docs/backend/22-国际化方案.md",
+                      "sha256":  "9fa05b72fe0ee98c95bb8a1ece8f6eccbf3d63b6fe0ce6dae866cc6e9ec4e094",
+                      "size":  4236
+                  },
+                  {
+                      "path":  "docs/devops/16-部署与CI-CD.md",
+                      "sha256":  "17df8ff9c38c56c6a033cca6a108c0a73b8d39e058e59512f2eb86cb97a799f7",
+                      "size":  9137
+                  },
+                  {
+                      "path":  "docs/devops/23-可观测性与监控.md",
+                      "sha256":  "a1e70cdb314cbee508499b8d6151487d07d68ebc7e0b891e6719472347de2d15",
+                      "size":  4680
+                  },
+                  {
+                      "path":  "docs/frontend/12-前端基础架构.md",
+                      "sha256":  "eeabaa45e1d628980e05a8f512df4c3fa6f4e0c7685f96c5f2b6754c59131fa9",
+                      "size":  8877
+                  },
+                  {
+                      "path":  "docs/frontend/13-前端API层与类型.md",
+                      "sha256":  "0af304ed9456d1f12982391bb623ec2278f2650ceb10ca6a95cd5846228759e7",
+                      "size":  5840
+                  },
+                  {
+                      "path":  "docs/frontend/14-前端页面组件开发.md",
+                      "sha256":  "ca9ae4c56b090d6b0dbe84a2c533c8d944cd18496af441af75a5fea22fc5a5f2",
+                      "size":  7852
+                  },
+                  {
+                      "path":  "docs/frontend/15-前端安全与优化.md",
+                      "sha256":  "5d800649e7d683a16c61d34093254afe30779081323b98e963dbf405ed32667d",
+                      "size":  4880
+                  },
+                  {
+                      "path":  "docs/frontend/18-动态路由与菜单管理.md",
+                      "sha256":  "5edcffd48aed311513e2036742603aa438dba0108bc63af09de342e155c10a03",
+                      "size":  10578
+                  },
+                  {
+                      "path":  "docs/harness/baseline/PATCH.diff",
+                      "sha256":  "f3798950788c9295f21b3c378b1f661f60388722ab52e03215959ecbb7063a27",
+                      "size":  11378
+                  },
+                  {
+                      "path":  "docs/harness/baseline/PATCH.json",
+                      "sha256":  "619600ed73b0e4f234c56f15c5d6f15ed0f3b54f3a0d846e1cd462ecd5d4e027",
+                      "size":  2575
+                  },
+                  {
+                      "path":  "docs/harness/baseline/PLAN-20261117.md",
+                      "sha256":  "ea426fc43da770f9d24f9acde8c466994112dd8fab6aca401776d0a120655809",
+                      "size":  1681
+                  },
+                  {
+                      "path":  "docs/harness/baseline/QA.json",
+                      "sha256":  "f4581d11c2e2d6c91ee9a89fd8114c19a3b23c77ae172dccbcb243a164e65f4b",
+                      "size":  6910
+                  },
+                  {
+                      "path":  "docs/harness/baseline/REVIEW.md",
+                      "sha256":  "d3d20699fd5c6b2f821fb55fde8b8b7ad3c3f85a4df632d5bbcd74a3e66ad1b4",
+                      "size":  5182
+                  },
+                  {
+                      "path":  "docs/harness/baseline/RUNBOOK.md",
+                      "sha256":  "7dfd40dec0341e8f7447fc40a806d371f6c7aa993b36fd201d4a506ff2e969ca",
+                      "size":  3619
+                  },
+                  {
+                      "path":  "docs/harness/baseline/security-patched.json",
+                      "sha256":  "e8a20a65c8c51d538b56920f97b24939f834fb8f808d8c8bb9af88c62c985eb2",
+                      "size":  3304
+                  },
+                  {
+                      "path":  "docs/harness/baseline/source-files.json",
+                      "sha256":  "5052ea0b811a994684c2dab2936100d8cb5d36906079614d5749426d137f4bbe",
+                      "size":  26630
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/boss-regression.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/boss-regression.stdout.txt",
+                      "sha256":  "95da520a0489ddc1b2c404162eeea5b5d83062468eaa2f350bd6cf99e63cc4f1",
+                      "size":  3276
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/boss.json",
+                      "sha256":  "95da520a0489ddc1b2c404162eeea5b5d83062468eaa2f350bd6cf99e63cc4f1",
+                      "size":  3276
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/commands.json",
+                      "sha256":  "3ec3f0c08f5b16fa04ec0d4c15ef54a3d74a1d59a50ed73c1b69c03f71f6e31b",
+                      "size":  6049
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/django-all.stderr.txt",
+                      "sha256":  "ccc221302303a85f13abbcaf1fe76d354aaa4da91663d85440914c9b39217933",
+                      "size":  3369
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/django-all.stdout.txt",
+                      "sha256":  "935c26e4fb23cf97d7558d00b30cd7bba3e96c7b3a446898a8db40f94c3158eb",
+                      "size":  1577
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/django-check.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/django-check.stdout.txt",
+                      "sha256":  "f87ceb15410bde28ff826ce26228e0576558258fa64d145847921a593a61ee63",
+                      "size":  49
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/failed.json",
+                      "sha256":  "9531b9ffa3b4cbe20fc31a0a0f4ac5daee5cbee07631cd6eac56f874a12a265d",
+                      "size":  322
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/frontend-build.stderr.txt",
+                      "sha256":  "f7d5347f0fa48eb959d2cac56338f068ef3e39c9570d98521ad07f32481d5ca7",
+                      "size":  983
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/frontend-build.stdout.txt",
+                      "sha256":  "54a28245fc752a61122e4ad078f1bfe1c38bd28d5fe68872245e2140671181d5",
+                      "size":  190
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/frontend-typecheck.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/frontend-typecheck.stdout.txt",
+                      "sha256":  "e7c8c8bd36016de80a60ce5038a7961d19cebd0dca7126e6ab6da33e18927db1",
+                      "size":  71
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/git-boundary.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/git-boundary.stdout.txt",
+                      "sha256":  "69421bce299b03024839fe33e974d49886fb451ff7bba14c9c14249b8e8fdd04",
+                      "size":  43
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/git-remotes.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/git-remotes.stdout.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/migration-drift.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/migration-drift.stdout.txt",
+                      "sha256":  "93e6e2d5be3c054add80c0f19101608803f7ca8a7df1fa41f76bbb9a1f570f4a",
+                      "size":  21
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/migration-lifecycle.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/migration-lifecycle.stdout.txt",
+                      "sha256":  "b4e32c34971a8aab3d7f62e4dd1ebed516de81d00ffac28e68e7f7ccd5daf257",
+                      "size":  2133
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/migration.json",
+                      "sha256":  "b4e32c34971a8aab3d7f62e4dd1ebed516de81d00ffac28e68e7f7ccd5daf257",
+                      "size":  2133
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/node-version.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/node-version.stdout.txt",
+                      "sha256":  "bc697de995dc791df53d688ef69c08994cdffc8ce30c906b1ffc65b131ccd0eb",
+                      "size":  10
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/npm-ci.stderr.txt",
+                      "sha256":  "52191f761dfbda7303abdd129836e963ec8082624d2642675f2c33e59fea9a16",
+                      "size":  214
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/npm-ci.stdout.txt",
+                      "sha256":  "702ee42bf2ec98356a7d84952a2b1198e6cbdf4554655e720eb863729f7eaee7",
+                      "size":  28
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/npm-version.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/npm-version.stdout.txt",
+                      "sha256":  "bb4f1b238b67d8e7ccebe7bf50ff6793e73a86e9455cfd1026a9182f119bae48",
+                      "size":  9
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/python-freeze.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/python-freeze.stdout.txt",
+                      "sha256":  "4ff2fbdfa8805f2df529573ded3d4221c5ac2f1582e96eacbee27aa7ca4da32a",
+                      "size":  157
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/source-protection.json",
+                      "sha256":  "19c1de6298a58b9b84ca08251bf0125607bb36fa1120950f3d2b2258e54bcf64",
+                      "size":  184
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/token-focused.stderr.txt",
+                      "sha256":  "dbc22115c08defc719b104d89182471c884b2e293ecae90f13ece5196fc764cb",
+                      "size":  3369
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/token-focused.stdout.txt",
+                      "sha256":  "935c26e4fb23cf97d7558d00b30cd7bba3e96c7b3a446898a8db40f94c3158eb",
+                      "size":  1577
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/toolchain.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233453+0800-445abb/toolchain.stdout.txt",
+                      "sha256":  "306ec5237c20301fbe552a21d96462210770947ef878d73c30f3a5ae0e9292bb",
+                      "size":  138
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/boss-regression.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/boss-regression.stdout.txt",
+                      "sha256":  "95da520a0489ddc1b2c404162eeea5b5d83062468eaa2f350bd6cf99e63cc4f1",
+                      "size":  3276
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/boss.json",
+                      "sha256":  "95da520a0489ddc1b2c404162eeea5b5d83062468eaa2f350bd6cf99e63cc4f1",
+                      "size":  3276
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/changes.json",
+                      "sha256":  "0a551b4ac2f3b032021a62da56b795a31a00fdd9e58a9f2b3c7d4492a47f7973",
+                      "size":  9431
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/commands.json",
+                      "sha256":  "02ee376792576d0a64b9ef3cab38dd5a119b6877b448dc4c7d594a2a7b297873",
+                      "size":  7697
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/django-all.stderr.txt",
+                      "sha256":  "ef74b36b64501614cf9b8b5f535cd5034949e7273a0d823badb579fb3e22066f",
+                      "size":  3699
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/django-all.stdout.txt",
+                      "sha256":  "00c58578354f236d43c536d88f8e9a1aa70f09438ac34060901d6d8411d8fd3f",
+                      "size":  1577
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/django-check.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/django-check.stdout.txt",
+                      "sha256":  "f87ceb15410bde28ff826ce26228e0576558258fa64d145847921a593a61ee63",
+                      "size":  49
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/evidence-evaluation.json",
+                      "sha256":  "fb6b324a7a656b8ae82be99c31d8c48f3b3a2413a3b35d88b541f696249c9551",
+                      "size":  222
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/evidence-evaluation.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/frontend-artifacts.json",
+                      "sha256":  "06c9d06bf34d07eecbbf539f0b137f18c871c0383f91295660a5ea8a827c6dfe",
+                      "size":  5693
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/frontend-build.stderr.txt",
+                      "sha256":  "62ade33055e7dc869f080097f2fa3bae7ff29b46cc203fcdd0bcaebab3e2cba0",
+                      "size":  337
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/frontend-build.stdout.txt",
+                      "sha256":  "eae426a071fcfa616f66ebdae1b2854ed164e538ab4dcf2f8c66f5dfaa13e251",
+                      "size":  2743
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/frontend-typecheck.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/frontend-typecheck.stdout.txt",
+                      "sha256":  "e7c8c8bd36016de80a60ce5038a7961d19cebd0dca7126e6ab6da33e18927db1",
+                      "size":  71
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/git-boundary.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/git-boundary.stdout.txt",
+                      "sha256":  "69421bce299b03024839fe33e974d49886fb451ff7bba14c9c14249b8e8fdd04",
+                      "size":  43
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/git-remotes.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/git-remotes.stdout.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/harness-lint.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/harness-lint.stdout.txt",
+                      "sha256":  "034e00e10b833943cfc449b0bcae22e0cdee19e7ab69108d0ec37676eb3d06cd",
+                      "size":  271
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/harness-resolve.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/harness-resolve.stdout.txt",
+                      "sha256":  "efb299160882e4445ca68ec84cac296240d919e0a4fdd13cfd6941deaa103fcc",
+                      "size":  1698
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/harness-routing.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/harness-routing.stdout.txt",
+                      "sha256":  "ab04cc00b0aca68426fbdcad4715255c37a89f76737c4d58a03418cd7b3fd59a",
+                      "size":  3732
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/migration-drift.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/migration-drift.stdout.txt",
+                      "sha256":  "93e6e2d5be3c054add80c0f19101608803f7ca8a7df1fa41f76bbb9a1f570f4a",
+                      "size":  21
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/migration-lifecycle.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/migration-lifecycle.stdout.txt",
+                      "sha256":  "e3a2fcec3b1edfc9391091ec0acc12c5eae3d835d1ebf43e0cc09ecb8f2c2e03",
+                      "size":  2361
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/migration.json",
+                      "sha256":  "e3a2fcec3b1edfc9391091ec0acc12c5eae3d835d1ebf43e0cc09ecb8f2c2e03",
+                      "size":  2361
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/node-version.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/node-version.stdout.txt",
+                      "sha256":  "bc697de995dc791df53d688ef69c08994cdffc8ce30c906b1ffc65b131ccd0eb",
+                      "size":  10
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/npm-ci.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/npm-ci.stdout.txt",
+                      "sha256":  "36d3764cc470ac14cebc57979d2b8d4167ac3129fb7c91307a45dd934586216c",
+                      "size":  28
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/npm-version.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/npm-version.stdout.txt",
+                      "sha256":  "bb4f1b238b67d8e7ccebe7bf50ff6793e73a86e9455cfd1026a9182f119bae48",
+                      "size":  9
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/python-freeze.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/python-freeze.stdout.txt",
+                      "sha256":  "4ff2fbdfa8805f2df529573ded3d4221c5ac2f1582e96eacbee27aa7ca4da32a",
+                      "size":  157
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/records.json",
+                      "sha256":  "50e7cca33df98fff3d2aa2aa178e9efd094de331c826767aa8e559e612a5276d",
+                      "size":  26293
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/resolution.json",
+                      "sha256":  "efb299160882e4445ca68ec84cac296240d919e0a4fdd13cfd6941deaa103fcc",
+                      "size":  1698
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/routing.json",
+                      "sha256":  "ab04cc00b0aca68426fbdcad4715255c37a89f76737c4d58a03418cd7b3fd59a",
+                      "size":  3732
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/source-inventory.json",
+                      "sha256":  "57df2ea30bd85cec2d40c9cd6ee4b91c2647ee419f1fcdc6dc1b4649e23c07fd",
+                      "size":  54701
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/source-protection.json",
+                      "sha256":  "19c1de6298a58b9b84ca08251bf0125607bb36fa1120950f3d2b2258e54bcf64",
+                      "size":  184
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/task.json",
+                      "sha256":  "69101bbfc8c9dd5ac2120a5f5681089b64edda609c1ef5799c99579e2ed72f54",
+                      "size":  3821
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/token-focused.stderr.txt",
+                      "sha256":  "0c64a8325ace943eee83cf77495698b12ca3a95eceb83f045cb5e48713eb1acd",
+                      "size":  3699
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/token-focused.stdout.txt",
+                      "sha256":  "00c58578354f236d43c536d88f8e9a1aa70f09438ac34060901d6d8411d8fd3f",
+                      "size":  1577
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/toolchain.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T233831+0800-d9b135/toolchain.stdout.txt",
+                      "sha256":  "306ec5237c20301fbe552a21d96462210770947ef878d73c30f3a5ae0e9292bb",
+                      "size":  138
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/boss-regression.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/boss-regression.stdout.txt",
+                      "sha256":  "95da520a0489ddc1b2c404162eeea5b5d83062468eaa2f350bd6cf99e63cc4f1",
+                      "size":  3276
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/boss.json",
+                      "sha256":  "95da520a0489ddc1b2c404162eeea5b5d83062468eaa2f350bd6cf99e63cc4f1",
+                      "size":  3276
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/changes.json",
+                      "sha256":  "c5c56cbcb2eb77044c0d7ec412c76ece02eafd8e56f71166a29d87af5f2d302a",
+                      "size":  9491
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/cleanup.json",
+                      "sha256":  "4797f8c22fed41e67b47af37856be32f7acb404acf9ff42135c1b800ac4822bd",
+                      "size":  169
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/commands.json",
+                      "sha256":  "7082b3a5d5469349d29d42d05014e5e8ea262dbd5ae2ebd866823fccd9cff3c7",
+                      "size":  7697
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/django-all.stderr.txt",
+                      "sha256":  "2ad4fed67cdcf9c90874da5fa1df23fcba1ff61f27a79fe61837db38a3fea403",
+                      "size":  3699
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/django-all.stdout.txt",
+                      "sha256":  "00c58578354f236d43c536d88f8e9a1aa70f09438ac34060901d6d8411d8fd3f",
+                      "size":  1577
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/django-check.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/django-check.stdout.txt",
+                      "sha256":  "f87ceb15410bde28ff826ce26228e0576558258fa64d145847921a593a61ee63",
+                      "size":  49
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/evidence-evaluation.json",
+                      "sha256":  "ad534dc54b0137ff44f97449c955612f274c673b16d9fb345850869dc05ed464",
+                      "size":  2981
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/evidence-evaluation.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/frontend-artifacts.json",
+                      "sha256":  "06c9d06bf34d07eecbbf539f0b137f18c871c0383f91295660a5ea8a827c6dfe",
+                      "size":  5693
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/frontend-build.stderr.txt",
+                      "sha256":  "62ade33055e7dc869f080097f2fa3bae7ff29b46cc203fcdd0bcaebab3e2cba0",
+                      "size":  337
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/frontend-build.stdout.txt",
+                      "sha256":  "8cc13d6761baee222b173b57bf18e517b0e6b69e2f9caf111e825b1b7b0d1833",
+                      "size":  2743
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/frontend-typecheck.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/frontend-typecheck.stdout.txt",
+                      "sha256":  "e7c8c8bd36016de80a60ce5038a7961d19cebd0dca7126e6ab6da33e18927db1",
+                      "size":  71
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/git-boundary.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/git-boundary.stdout.txt",
+                      "sha256":  "69421bce299b03024839fe33e974d49886fb451ff7bba14c9c14249b8e8fdd04",
+                      "size":  43
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/git-remotes.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/git-remotes.stdout.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/harness-lint.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/harness-lint.stdout.txt",
+                      "sha256":  "034e00e10b833943cfc449b0bcae22e0cdee19e7ab69108d0ec37676eb3d06cd",
+                      "size":  271
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/harness-resolve.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/harness-resolve.stdout.txt",
+                      "sha256":  "c3ac0a50a97fcc2ac8fcfbe8a15ae7850d4a10348b04803e8f2c6a93396afe5f",
+                      "size":  1698
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/harness-routing.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/harness-routing.stdout.txt",
+                      "sha256":  "3429cac12be1634ceafb41ec089f926478176f8411c028646f18dd2f00c11b58",
+                      "size":  7989
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/migration-drift.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/migration-drift.stdout.txt",
+                      "sha256":  "93e6e2d5be3c054add80c0f19101608803f7ca8a7df1fa41f76bbb9a1f570f4a",
+                      "size":  21
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/migration-lifecycle.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/migration-lifecycle.stdout.txt",
+                      "sha256":  "e3a2fcec3b1edfc9391091ec0acc12c5eae3d835d1ebf43e0cc09ecb8f2c2e03",
+                      "size":  2361
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/migration.json",
+                      "sha256":  "e3a2fcec3b1edfc9391091ec0acc12c5eae3d835d1ebf43e0cc09ecb8f2c2e03",
+                      "size":  2361
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/node-version.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/node-version.stdout.txt",
+                      "sha256":  "bc697de995dc791df53d688ef69c08994cdffc8ce30c906b1ffc65b131ccd0eb",
+                      "size":  10
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/npm-ci.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/npm-ci.stdout.txt",
+                      "sha256":  "4d8d7e1b8a2499afa0b839a897310119189ff2fce6fbf253b9d3e43301c39aea",
+                      "size":  28
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/npm-version.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/npm-version.stdout.txt",
+                      "sha256":  "bb4f1b238b67d8e7ccebe7bf50ff6793e73a86e9455cfd1026a9182f119bae48",
+                      "size":  9
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/python-freeze.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/python-freeze.stdout.txt",
+                      "sha256":  "4ff2fbdfa8805f2df529573ded3d4221c5ac2f1582e96eacbee27aa7ca4da32a",
+                      "size":  157
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/records.json",
+                      "sha256":  "44bca9dda2f80e9f19be77d44015956d5622a802911a8947d56f42d8098e5156",
+                      "size":  25979
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/resolution.json",
+                      "sha256":  "c3ac0a50a97fcc2ac8fcfbe8a15ae7850d4a10348b04803e8f2c6a93396afe5f",
+                      "size":  1698
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/routing.json",
+                      "sha256":  "3429cac12be1634ceafb41ec089f926478176f8411c028646f18dd2f00c11b58",
+                      "size":  7989
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/source-inventory.json",
+                      "sha256":  "bef5aec510ad2d5744cd6c542122b278afe314108f50d05d4ca04bba2faee993",
+                      "size":  54854
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/source-protection.json",
+                      "sha256":  "19c1de6298a58b9b84ca08251bf0125607bb36fa1120950f3d2b2258e54bcf64",
+                      "size":  184
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/summary.json",
+                      "sha256":  "c7721e26051ae3a14047e5aee9a5c6dcab9a4763cf33e772b6ce026740a14915",
+                      "size":  1313
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/task.json",
+                      "sha256":  "13c54ca4598ce0de3cedcc212bd3df0af878d9c12caea19a491351e39f3c55a0",
+                      "size":  3881
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/token-focused.stderr.txt",
+                      "sha256":  "197ca67654d470c97a6f5a5790c650e5bf4b266f3b0e19eb74b193d86ba46e11",
+                      "size":  3699
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/token-focused.stdout.txt",
+                      "sha256":  "00c58578354f236d43c536d88f8e9a1aa70f09438ac34060901d6d8411d8fd3f",
+                      "size":  1577
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/toolchain.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234315+0800-e1129f/toolchain.stdout.txt",
+                      "sha256":  "306ec5237c20301fbe552a21d96462210770947ef878d73c30f3a5ae0e9292bb",
+                      "size":  138
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/boss-regression.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/boss-regression.stdout.txt",
+                      "sha256":  "95da520a0489ddc1b2c404162eeea5b5d83062468eaa2f350bd6cf99e63cc4f1",
+                      "size":  3276
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/boss.json",
+                      "sha256":  "95da520a0489ddc1b2c404162eeea5b5d83062468eaa2f350bd6cf99e63cc4f1",
+                      "size":  3276
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/changes.json",
+                      "sha256":  "f952de35e5c11beeb087b91f649de5b4c8232ca379dd10d2682c6e3f8c0e1afb",
+                      "size":  9522
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/cleanup.json",
+                      "sha256":  "64f8372ae29fa502f525166aeade225a9412b8a7ab2c5dd6a16cb1ff5a5af6bf",
+                      "size":  169
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/commands.json",
+                      "sha256":  "424703da1790a9957e4bbc01ad3af5f25135ce9ee8874b4ccbc39273b8a3c276",
+                      "size":  7696
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/django-all.stderr.txt",
+                      "sha256":  "379a2a41c83ae77d2ca3c44380268ab4aa8bfe92de7c16d8f269075a210b92dd",
+                      "size":  3699
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/django-all.stdout.txt",
+                      "sha256":  "00c58578354f236d43c536d88f8e9a1aa70f09438ac34060901d6d8411d8fd3f",
+                      "size":  1577
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/django-check.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/django-check.stdout.txt",
+                      "sha256":  "f87ceb15410bde28ff826ce26228e0576558258fa64d145847921a593a61ee63",
+                      "size":  49
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/evidence-evaluation.json",
+                      "sha256":  "26328dd8c3500cc740bac79a40f1e1b6ad5bfa58695ace8240b2c7d8746a7bfa",
+                      "size":  2981
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/evidence-evaluation.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/frontend-artifacts.json",
+                      "sha256":  "06c9d06bf34d07eecbbf539f0b137f18c871c0383f91295660a5ea8a827c6dfe",
+                      "size":  5693
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/frontend-build.stderr.txt",
+                      "sha256":  "62ade33055e7dc869f080097f2fa3bae7ff29b46cc203fcdd0bcaebab3e2cba0",
+                      "size":  337
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/frontend-build.stdout.txt",
+                      "sha256":  "f37ad837930f5f1cb9b9f348373f2221ba9d88bdc8ea61383dd800ff19e4ab27",
+                      "size":  2743
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/frontend-typecheck.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/frontend-typecheck.stdout.txt",
+                      "sha256":  "e7c8c8bd36016de80a60ce5038a7961d19cebd0dca7126e6ab6da33e18927db1",
+                      "size":  71
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/git-boundary.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/git-boundary.stdout.txt",
+                      "sha256":  "69421bce299b03024839fe33e974d49886fb451ff7bba14c9c14249b8e8fdd04",
+                      "size":  43
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/git-remotes.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/git-remotes.stdout.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/harness-lint.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/harness-lint.stdout.txt",
+                      "sha256":  "034e00e10b833943cfc449b0bcae22e0cdee19e7ab69108d0ec37676eb3d06cd",
+                      "size":  271
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/harness-resolve.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/harness-resolve.stdout.txt",
+                      "sha256":  "d060eee156542b09858292044d5dadb9d53536f53f4c6a5b55bdc4dc37cc024a",
+                      "size":  2481
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/harness-routing.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/harness-routing.stdout.txt",
+                      "sha256":  "9eb306baf9c68b0cdd650823a082e111dd12c2b1b0d0fa8316f43bc3f5b323bf",
+                      "size":  19692
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/migration-drift.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/migration-drift.stdout.txt",
+                      "sha256":  "93e6e2d5be3c054add80c0f19101608803f7ca8a7df1fa41f76bbb9a1f570f4a",
+                      "size":  21
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/migration-lifecycle.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/migration-lifecycle.stdout.txt",
+                      "sha256":  "e3a2fcec3b1edfc9391091ec0acc12c5eae3d835d1ebf43e0cc09ecb8f2c2e03",
+                      "size":  2361
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/migration.json",
+                      "sha256":  "e3a2fcec3b1edfc9391091ec0acc12c5eae3d835d1ebf43e0cc09ecb8f2c2e03",
+                      "size":  2361
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/node-version.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/node-version.stdout.txt",
+                      "sha256":  "bc697de995dc791df53d688ef69c08994cdffc8ce30c906b1ffc65b131ccd0eb",
+                      "size":  10
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/npm-ci.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/npm-ci.stdout.txt",
+                      "sha256":  "e926857c9d98172272638eef1da42696e110cf73caa60bd26df9dbf2e473f1f1",
+                      "size":  28
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/npm-version.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/npm-version.stdout.txt",
+                      "sha256":  "bb4f1b238b67d8e7ccebe7bf50ff6793e73a86e9455cfd1026a9182f119bae48",
+                      "size":  9
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/python-freeze.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/python-freeze.stdout.txt",
+                      "sha256":  "4ff2fbdfa8805f2df529573ded3d4221c5ac2f1582e96eacbee27aa7ca4da32a",
+                      "size":  157
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/records.json",
+                      "sha256":  "22412d254c8a1574505d91348a3c9547b440c414e69689684ef7854365846fe8",
+                      "size":  25979
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/resolution.json",
+                      "sha256":  "d060eee156542b09858292044d5dadb9d53536f53f4c6a5b55bdc4dc37cc024a",
+                      "size":  2481
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/routing.json",
+                      "sha256":  "9eb306baf9c68b0cdd650823a082e111dd12c2b1b0d0fa8316f43bc3f5b323bf",
+                      "size":  19692
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/source-inventory.json",
+                      "sha256":  "b724a1ced745f78ca9bf2c8e1b06d5139d9256653de58b6a810c13522f1f118e",
+                      "size":  55015
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/source-protection.json",
+                      "sha256":  "19c1de6298a58b9b84ca08251bf0125607bb36fa1120950f3d2b2258e54bcf64",
+                      "size":  184
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/summary.json",
+                      "sha256":  "3141d89ef3d77ff5f049e281da532d1fc0709d5fabca65082bfbfc50e3cd3e97",
+                      "size":  1313
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/task.json",
+                      "sha256":  "b7804ce6fea9ca10dca1debadb09ba2354a9d02859c54a057138e34985727b94",
+                      "size":  3939
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/token-focused.stderr.txt",
+                      "sha256":  "bd32d3b95f8570630a3fc1bd16161cc45406b7de90325b82487551ea10336233",
+                      "size":  3699
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/token-focused.stdout.txt",
+                      "sha256":  "00c58578354f236d43c536d88f8e9a1aa70f09438ac34060901d6d8411d8fd3f",
+                      "size":  1577
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/toolchain.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T234812+0800-6f807c/toolchain.stdout.txt",
+                      "sha256":  "306ec5237c20301fbe552a21d96462210770947ef878d73c30f3a5ae0e9292bb",
+                      "size":  138
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/boss-regression.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/boss-regression.stdout.txt",
+                      "sha256":  "95da520a0489ddc1b2c404162eeea5b5d83062468eaa2f350bd6cf99e63cc4f1",
+                      "size":  3276
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/boss.json",
+                      "sha256":  "95da520a0489ddc1b2c404162eeea5b5d83062468eaa2f350bd6cf99e63cc4f1",
+                      "size":  3276
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/changes.json",
+                      "sha256":  "f952de35e5c11beeb087b91f649de5b4c8232ca379dd10d2682c6e3f8c0e1afb",
+                      "size":  9522
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/cleanup.json",
+                      "sha256":  "4dbc68e60b646a330cd7d61174741c41822a0f80291d6ed44db9d9b284f49043",
+                      "size":  169
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/commands.json",
+                      "sha256":  "90c4a443c82040cc4627f26d2eb7a1d710306fd9572798b6278cddd969c2f73e",
+                      "size":  7697
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/django-all.stderr.txt",
+                      "sha256":  "e05ab6bdd016c25d806e26402413edb1a74be952b7034db216a5cdda4cfdc215",
+                      "size":  3699
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/django-all.stdout.txt",
+                      "sha256":  "00c58578354f236d43c536d88f8e9a1aa70f09438ac34060901d6d8411d8fd3f",
+                      "size":  1577
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/django-check.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/django-check.stdout.txt",
+                      "sha256":  "f87ceb15410bde28ff826ce26228e0576558258fa64d145847921a593a61ee63",
+                      "size":  49
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/evidence-evaluation.json",
+                      "sha256":  "1e8ef6b2a839fba219230a6692a620a4ff43a1f403583bc189d5d7aa2b2e4271",
+                      "size":  2981
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/evidence-evaluation.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/frontend-artifacts.json",
+                      "sha256":  "06c9d06bf34d07eecbbf539f0b137f18c871c0383f91295660a5ea8a827c6dfe",
+                      "size":  5693
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/frontend-build.stderr.txt",
+                      "sha256":  "62ade33055e7dc869f080097f2fa3bae7ff29b46cc203fcdd0bcaebab3e2cba0",
+                      "size":  337
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/frontend-build.stdout.txt",
+                      "sha256":  "5d262d9f88b656f912b4bc857675920821ea098be1e13c6497978556f2596c8f",
+                      "size":  2743
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/frontend-typecheck.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/frontend-typecheck.stdout.txt",
+                      "sha256":  "e7c8c8bd36016de80a60ce5038a7961d19cebd0dca7126e6ab6da33e18927db1",
+                      "size":  71
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/git-boundary.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/git-boundary.stdout.txt",
+                      "sha256":  "69421bce299b03024839fe33e974d49886fb451ff7bba14c9c14249b8e8fdd04",
+                      "size":  43
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/git-remotes.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/git-remotes.stdout.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/harness-lint.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/harness-lint.stdout.txt",
+                      "sha256":  "034e00e10b833943cfc449b0bcae22e0cdee19e7ab69108d0ec37676eb3d06cd",
+                      "size":  271
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/harness-resolve.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/harness-resolve.stdout.txt",
+                      "sha256":  "7a8e47ac60b358bec0db3108c4e287f84b431dc6f77d93ff692eb66d049f708f",
+                      "size":  2481
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/harness-routing.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/harness-routing.stdout.txt",
+                      "sha256":  "9eb306baf9c68b0cdd650823a082e111dd12c2b1b0d0fa8316f43bc3f5b323bf",
+                      "size":  19692
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/migration-drift.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/migration-drift.stdout.txt",
+                      "sha256":  "93e6e2d5be3c054add80c0f19101608803f7ca8a7df1fa41f76bbb9a1f570f4a",
+                      "size":  21
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/migration-lifecycle.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/migration-lifecycle.stdout.txt",
+                      "sha256":  "e3a2fcec3b1edfc9391091ec0acc12c5eae3d835d1ebf43e0cc09ecb8f2c2e03",
+                      "size":  2361
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/migration.json",
+                      "sha256":  "e3a2fcec3b1edfc9391091ec0acc12c5eae3d835d1ebf43e0cc09ecb8f2c2e03",
+                      "size":  2361
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/node-version.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/node-version.stdout.txt",
+                      "sha256":  "bc697de995dc791df53d688ef69c08994cdffc8ce30c906b1ffc65b131ccd0eb",
+                      "size":  10
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/npm-ci.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/npm-ci.stdout.txt",
+                      "sha256":  "4d8d7e1b8a2499afa0b839a897310119189ff2fce6fbf253b9d3e43301c39aea",
+                      "size":  28
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/npm-version.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/npm-version.stdout.txt",
+                      "sha256":  "bb4f1b238b67d8e7ccebe7bf50ff6793e73a86e9455cfd1026a9182f119bae48",
+                      "size":  9
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/python-freeze.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/python-freeze.stdout.txt",
+                      "sha256":  "4ff2fbdfa8805f2df529573ded3d4221c5ac2f1582e96eacbee27aa7ca4da32a",
+                      "size":  157
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/records.json",
+                      "sha256":  "f580d74d7f4cef8adaa7cdcbe43e14e180ba12caeb99e7c2220da04a676a370d",
+                      "size":  25979
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/resolution.json",
+                      "sha256":  "7a8e47ac60b358bec0db3108c4e287f84b431dc6f77d93ff692eb66d049f708f",
+                      "size":  2481
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/routing.json",
+                      "sha256":  "9eb306baf9c68b0cdd650823a082e111dd12c2b1b0d0fa8316f43bc3f5b323bf",
+                      "size":  19692
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/source-inventory.json",
+                      "sha256":  "b724a1ced745f78ca9bf2c8e1b06d5139d9256653de58b6a810c13522f1f118e",
+                      "size":  55015
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/source-protection.json",
+                      "sha256":  "19c1de6298a58b9b84ca08251bf0125607bb36fa1120950f3d2b2258e54bcf64",
+                      "size":  184
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/summary.json",
+                      "sha256":  "3faf51a61a63c417f593f6a4e38e92868527ff281a2d0c10232c948939ff4e87",
+                      "size":  1313
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/task.json",
+                      "sha256":  "766592ccad244eb4e6fd014140dc1bb257a5240e678c57649728a9651a8fb4b1",
+                      "size":  3939
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/token-focused.stderr.txt",
+                      "sha256":  "7b09b4fb8eb8339c0dd53be3032800d5f48db7ed8eae6eef99cd1d20c1a98ff0",
+                      "size":  3699
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/token-focused.stdout.txt",
+                      "sha256":  "00c58578354f236d43c536d88f8e9a1aa70f09438ac34060901d6d8411d8fd3f",
+                      "size":  1577
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/toolchain.stderr.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0
+                  },
+                  {
+                      "path":  "docs/harness/evidence/20261118T235157+0800-0920dc/toolchain.stdout.txt",
+                      "sha256":  "306ec5237c20301fbe552a21d96462210770947ef878d73c30f3a5ae0e9292bb",
+                      "size":  138
+                  },
+                  {
+                      "path":  "docs/harness/evidence/latest.json",
+                      "sha256":  "b5b812b2c2d5f1ddd756e0ddfdd566af77bea85ab0c4af165dfbb2942fcb86c0",
+                      "size":  148
+                  },
+                  {
+                      "path":  "docs/harness/evidence/legacy-reproduction.json",
+                      "sha256":  "2894593f38ee59e03c91be5abda7abf044d3af6ee5bae9ca3812a1ccffdd6324",
+                      "size":  369
+                  },
+                  {
+                      "path":  "docs/harness/evidence/migration-initial.json",
+                      "sha256":  "b4e32c34971a8aab3d7f62e4dd1ebed516de81d00ffac28e68e7f7ccd5daf257",
+                      "size":  2133
+                  },
+                  {
+                      "path":  "docs/harness/evidence/routing-initial.json",
+                      "sha256":  "9fda5f02e145a7c02e276de2153db07ca0919f156eefb9d72fa0bb71197bc46f",
+                      "size":  3732
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/app/backend-contract.md",
+                      "sha256":  "c7325a34a241605ab39681845ffb5317398b7109c892642448433bb33f791755",
+                      "size":  1195
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/app/build-signing.md",
+                      "sha256":  "513c7bc7efa92d05ca31d77b9b2cd16c4376e8238d2d890628b2fda43236de63",
+                      "size":  1275
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/app/device-verify.md",
+                      "sha256":  "245bb4a784481786432c441f27dc1d54b638ec63e446384ca533fc4702da158c",
+                      "size":  1186
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/app/interaction.md",
+                      "sha256":  "8f86958f887a25ab69d213ed98220a059338508e83534c02a303ed2229832f52",
+                      "size":  1200
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/app/local-data.md",
+                      "sha256":  "366319e98a2a88fd3fd72d89525ca5251fea54b6cd2b3f9254dab5eb67ae300c",
+                      "size":  1249
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/app/README.md",
+                      "sha256":  "37d3e555416f7aa5502f5c6d3589e1ffaf0b944c913c894e50eb151e47469ecf",
+                      "size":  3321
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/app/release-rollout.md",
+                      "sha256":  "c9fb7211b8a2851953d9cb4e66dad5a75443438f2feb5a3372ec1e69233f4748",
+                      "size":  1327
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/app/sdk-privacy.md",
+                      "sha256":  "076534ab01aadc2ee9628187bf2173c2c2fd76f849bc17e21ae1784f48eecc92",
+                      "size":  1373
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/plugin/build-release.md",
+                      "sha256":  "1dcf858d34b2155c4849b54d02c9eee49a439700d468df869d5a9d135b8b5f6d",
+                      "size":  1271
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/plugin/host-compat.md",
+                      "sha256":  "41b1e7f1f51bf8f4231bb34bbbe1b13cf52321a9db1cf964865a76859d82b906",
+                      "size":  1194
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/plugin/lifecycle.md",
+                      "sha256":  "514d4b5ca59bff3543d62a0bcd009b475ca07609673db48c8e30c3de87b92a11",
+                      "size":  1473
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/plugin/README.md",
+                      "sha256":  "49b231f1e08da80bff344c8bd63a7048a842a7f11b6108f80690dc7a48706063",
+                      "size":  3032
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/plugin/security-protocol.md",
+                      "sha256":  "4fe0fdbf5d74d63ddafe5c6e3977be15c4e56b13c28f49bd5010de62d85a9054",
+                      "size":  1261
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/plugin/ui-isolation.md",
+                      "sha256":  "c8d47cfb829a9b81beaa3f7392339ff3fa65e81293723136b53744f1d47565c5",
+                      "size":  1265
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/plugin/verify.md",
+                      "sha256":  "1cb88fe77a423ca6be2cc639c19b9883091297af513a32e946014ad75557d2d7",
+                      "size":  1126
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/web/api-config.md",
+                      "sha256":  "430336b335dc7b2b56a21916b2731779a179d40e2e100ccdd6e1f9ba391573e8",
+                      "size":  1494
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/web/data.md",
+                      "sha256":  "54e7ba92afb48c132f8d40807a078e30e758140591bb58f97c5658145acef096",
+                      "size":  2012
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/web/frontend.md",
+                      "sha256":  "b02680e3d399db998396dcad4182e84b7be07eaec90d2d65d0b5ec50a1264eef",
+                      "size":  1164
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/web/operations.md",
+                      "sha256":  "3539de2d9593a5d69fd64cf7d7cfe937e6e20ece2dc62a1e394f8f1b3923e1f1",
+                      "size":  1422
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/web/README.md",
+                      "sha256":  "68d04d8124b326a88b1e204da3509c0bf27189c87c82a5db33e3d1d9160d19ab",
+                      "size":  2847
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/web/verify.md",
+                      "sha256":  "4598c0c2b9f64e437999b31813cb998ed8caeb6a10d6a8fb9d6df4fe93d62bd8",
+                      "size":  1192
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/evidence.md",
+                      "sha256":  "87d80838e3fdc717a7ebb7f0c427ebe3eed9ed41078253ec0ab8e1b61c01e953",
+                      "size":  2820
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/extensions.md",
+                      "sha256":  "e51b38e734b381749a4308e6dc15e6e86aafb2a71c3dbd6176943f173d46588b",
+                      "size":  2753
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/README.md",
+                      "sha256":  "c8ce7d40662a8393ce7a53d3823171b33830683e510859a4f9c545f09aadd54a",
+                      "size":  3088
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/platforms/selection.md",
+                      "sha256":  "e5b3ba78e90c77e67a3541c6e22a95d1f6567de96df9d1e2f69b918b59cc8b76",
+                      "size":  2697
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/adoption.md",
+                      "sha256":  "a1c0bf454f03c5e54f4325564fc141f5b8055d915b8f25783041117ccf430d9f",
+                      "size":  3031
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/capabilities.md",
+                      "sha256":  "4261d77290c0e134608fd993c39f716f48c10f69d9b73e8d0b416f1f91c38a9b",
+                      "size":  2250
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/evidence.md",
+                      "sha256":  "b61728978ec4816cc2255532cf237020254a5dc9185fbb3917e08fa26b26b9e1",
+                      "size":  4280
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/maintenance.md",
+                      "sha256":  "dca306cd3341f8223de8398cd91d48b4aea8a4284989d436c154f90ab92308ee",
+                      "size":  2068
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/overview.md",
+                      "sha256":  "6b4a14f6f3facd9064b597b93cfdc1ee46183070ebaed5409632ccc3055b7be0",
+                      "size":  2721
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/ownership.md",
+                      "sha256":  "d1b62257faea289052e1e9c66f81a437b4e1023c3da5d53b95e66fface30e68b",
+                      "size":  3012
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/pr-boundaries.md",
+                      "sha256":  "4885070b754c6fd6f34d18447a56a2319ef3f22f4b9ad340bac1cbb997ae004b",
+                      "size":  2296
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/routing.md",
+                      "sha256":  "6cc0e9dc681cd96aaa9ce890757ec6016a9df6165d0b50516d2b249fee863201",
+                      "size":  4046
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/START-HERE.md",
+                      "sha256":  "4623a033af2d2b7e5a6b30253f08b6a233d8dacd714e66afde6288fafdabd5a7",
+                      "size":  3208
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/task-lifecycle.md",
+                      "sha256":  "07bb542a2a4873b3322c10df0aff1bfc1ec98de6d354ef8f6627616e79b113cb",
+                      "size":  2977
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/docs/test-boundaries.md",
+                      "sha256":  "96b8c1b2c5a9a5156601976d5f276e20b9069e17e6498b9c4ada528a93601330",
+                      "size":  2562
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/drafts/00-core.md",
+                      "sha256":  "30e536d3918ae5481ec44ce1922bb01267e5c68e5fc47941901c3238d4d85008",
+                      "size":  13908
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/drafts/10-platforms.md",
+                      "sha256":  "58fe6cd4c7e521fb198e04b35d3dceee1dd9c4de49a2b4b4e00a7cae66639326",
+                      "size":  16948
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/drafts/90-redteam.md",
+                      "sha256":  "b633186387dc7ffa1874f77282721fbc270cf196747210e69ec7ecfd5aadb9e9",
+                      "size":  17773
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/examples/demo/artifacts/fixture.txt",
+                      "sha256":  "9087324c5d173bc760fadf0913dfc92fa500d91bbd026c20e77818c921c45208",
+                      "size":  48
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/examples/demo/evidence/records.json",
+                      "sha256":  "4a6240c6d4ae1e547adeb883ba6d048252ecf50fb0572da553575e3a29cbb1f9",
+                      "size":  7661
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/examples/demo/pages/app.md",
+                      "sha256":  "66c4c627b1feb2965938c1a4d33a01fdff55c8ce34e46d4b7a34a1f127870ad2",
+                      "size":  102
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/examples/demo/pages/core.md",
+                      "sha256":  "d504ea4a53a684a4776cf0240909700bb7d7402b7d9a937025878f421763d98e",
+                      "size":  103
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/examples/demo/pages/data.md",
+                      "sha256":  "cd8aea473c27608e1d02e8eb65df17cc9a21f926f02c316afb60b3c13ad0fd17",
+                      "size":  103
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/examples/demo/pages/plugin.md",
+                      "sha256":  "111ac7ff3170dec153540f45e2ccaf4a8dc9be1924f6fc5f2c2a015a34337567",
+                      "size":  105
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/examples/demo/pages/web.md",
+                      "sha256":  "5741b459b804708aed83e1eec9e1c2ef80a5c97daa0e6a78ed93050999653619",
+                      "size":  102
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/examples/demo/tasks/app.json",
+                      "sha256":  "f2433143f4a57a2bd6045bd92f675e359b6536be7653dc536a627b2941e440d8",
+                      "size":  1359
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/examples/demo/tasks/hybrid.json",
+                      "sha256":  "2ae4ba0a2b6c81ca8c446ffc6abac7dc32e450ebdcfe27a823f5b3da0c948db0",
+                      "size":  1445
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/examples/demo/tasks/plugin.json",
+                      "sha256":  "8a7f0e98d8853e5e600d0fbf0c9d379c2ccd57f278070994ef1ba3d8e4daac0c",
+                      "size":  1365
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/examples/demo/tasks/web.json",
+                      "sha256":  "e445e0cbb03ac9841075055ab0eb6d4d7e30c1af44fbc803ed14b9425f4cb9f4",
+                      "size":  1359
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/examples/demo/harness.json",
+                      "sha256":  "8234bb666a705c2a17791cf08e38f05b9d282acdb7172af43ed809a29fa5cb2b",
+                      "size":  5848
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/evidence/records.json",
+                      "sha256":  "785d8805edded4c4ca6328b8248b1ea914b77869211a18d1e8e7fd1b26b14207",
+                      "size":  47
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/targets/app/sample.txt",
+                      "sha256":  "c530fafe0cb121bedb67407ff6de881fc990635c014463e7f93da879c1aa1afa",
+                      "size":  54
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/targets/plugin/sample.txt",
+                      "sha256":  "c530fafe0cb121bedb67407ff6de881fc990635c014463e7f93da879c1aa1afa",
+                      "size":  54
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/targets/web/sample.txt",
+                      "sha256":  "c530fafe0cb121bedb67407ff6de881fc990635c014463e7f93da879c1aa1afa",
+                      "size":  54
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A1.json",
+                      "sha256":  "53b71adb3d5f5da35673ef0f047a1134190efea91bcd119077c7c682c4c8a66e",
+                      "size":  1817
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A10.json",
+                      "sha256":  "e6ffc901db53da12e257b71471d77a691ffc18c31a259a071219d241695f688d",
+                      "size":  1819
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A11.json",
+                      "sha256":  "c40750fbb6914785a4431df0b3a2c9832cd1e29f0ebb761a3397b06922b25ba1",
+                      "size":  1819
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A2.json",
+                      "sha256":  "3c342efd00fbe68773647da2431768006cfbb0492384ab6f783e2fb7b9daeef2",
+                      "size":  1817
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A3.json",
+                      "sha256":  "42b28e27d731159661f1db6cb321b1bcfbcbac4b28fac4c6f114b132266186bf",
+                      "size":  1817
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A4.json",
+                      "sha256":  "ad78d1cd00a99f727324b2d82f781b59d025514c0722cd1d9fb886920ca04a78",
+                      "size":  1817
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A5.json",
+                      "sha256":  "6baac0f566a8b54fef9097c7b2299788c1c70f800c6a11484a3d0ebaa18af576",
+                      "size":  1817
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A6.json",
+                      "sha256":  "848642e589415486e9dc8e4113f913090072f1404c325dc1362c31dcd5dc5197",
+                      "size":  1817
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A7.json",
+                      "sha256":  "bfba49c5f786eee0b1c450d5ad8bdc356d8b2b3bba95e755c339e85bb4743e0d",
+                      "size":  1817
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A8.json",
+                      "sha256":  "432f6bb63884a92faff135f862ba5f26027add8e73e9138fb90f5fe7a5a5b0eb",
+                      "size":  1817
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A9.json",
+                      "sha256":  "a95d365d80a81c90b3516ec65f8992a84c21b3daa62598e8432957c30676dfbc",
+                      "size":  1817
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/hybrid.json",
+                      "sha256":  "fe287bf4bbd504d8b8a4e952edc49885678f1be6b198140f0fc16048606eafb3",
+                      "size":  1971
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P1.json",
+                      "sha256":  "645e3440eccc9b747b9348e94e440b21b73dc878857b18e6e18d9f13df4442c7",
+                      "size":  1823
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P10.json",
+                      "sha256":  "a66b730030078309546ca387bd83bfbf717f9fa4d22103a2c110a5dbf7f7fdb4",
+                      "size":  1825
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P2.json",
+                      "sha256":  "2d30159648e4a534c0d534600fc34c45b16265417000045e412c0719c55ee57b",
+                      "size":  1823
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P3.json",
+                      "sha256":  "89153a9fcfe6d6ef2b98fc53622041e8c7ca7e15b9ddfa49f94a6afdf44f7db4",
+                      "size":  1823
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P4.json",
+                      "sha256":  "dc533ec9784d74c7f829954f5530d6ec975cc226b958f859d67318f3d9adba7c",
+                      "size":  1823
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P5.json",
+                      "sha256":  "6d2ba4cc1fb328d5ad165f29b089457d48662776bcc92fd9d3aec75ca667eb09",
+                      "size":  1823
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P6.json",
+                      "sha256":  "5a50534b7be28ddd18994fdd024d879a1dd9cf560a1c5a582ac16fb4045b9c2e",
+                      "size":  1823
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P7.json",
+                      "sha256":  "8a1c9adaea26e4b783fd940dd9f430db5330868061ba1c48c7b861f027772887",
+                      "size":  1823
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P8.json",
+                      "sha256":  "927e51ef8fc64fd19c53c62d13901eba78464d31d78400f22fd5312ed14ef1da",
+                      "size":  1823
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P9.json",
+                      "sha256":  "f827cc626455d5b24927dee246f7632b0d893049f6b47c39e8a8fe696d4fc6d7",
+                      "size":  1823
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/static-web-release.json",
+                      "sha256":  "bd7b682582381c560e45a5fb5e94e97592fc2d43ced3e5463e3df8f3a783e6c6",
+                      "size":  1832
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/unknown-web-db.json",
+                      "sha256":  "8f2ec052181796c65da4c40765719080332f63b9a847edc8be1235ac9deb307c",
+                      "size":  1827
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W1.json",
+                      "sha256":  "fb9cbc336938a365c86d2cd3a71110e1765b783334251f70090072b6aa153baa",
+                      "size":  1817
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W10.json",
+                      "sha256":  "009771affe352d4b8cc4abfe5c4ded5914180d127b0490e87c0c96f0bba8f79c",
+                      "size":  1819
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W2.json",
+                      "sha256":  "0a3d60f982c040f4ff2f15ea34679c90fa2647615719097c36ac7bb6b538833f",
+                      "size":  1817
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W3.json",
+                      "sha256":  "005de680d61161d180e18c1a4ca804cc61bcdddf67c46d372bb0a065b4d3abc1",
+                      "size":  1817
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W4.json",
+                      "sha256":  "c3d547c22943ff70112131cfc563168ad6b4143a557b61803b8232ed299c3705",
+                      "size":  1817
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W5.json",
+                      "sha256":  "4887a0efcfb8c5d3efc6bba75306d893b90381476a15533b5cf44be34cff9ad7",
+                      "size":  1817
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W6.json",
+                      "sha256":  "d105ca737b138ea7e159ab8f554eb491a5fcb44506fb811cb662c811f25b9f3f",
+                      "size":  1817
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W7.json",
+                      "sha256":  "89cb1b6ecf4f840992cb0b558ce8c43623668f7b651c19098bcb9cb12481a229",
+                      "size":  1817
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W8.json",
+                      "sha256":  "c55199017bf436b8ad92d51d46aa2662fa13eb12add0c1ca3b92a36f6196010a",
+                      "size":  1817
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W9.json",
+                      "sha256":  "50baa1ea2d23d6d9f33d0ad19741f0dad2732f932a35beb5633f7aaa0d5672dd",
+                      "size":  1817
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/context.md",
+                      "sha256":  "9fc3eb9fb093a1838c87e08174d380f8e4f0d119ea74f5730c7cf743b78207bb",
+                      "size":  1233
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/fixture.txt",
+                      "sha256":  "00513b0232ccbb39f2c95e33fa54b9d20b9b4c745b98b2384e7dcca056bf46b2",
+                      "size":  72
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/platforms/harness.json",
+                      "sha256":  "44662b0ff68754dfff50234a8b5c7f1c7d04236981bb9205f30c6cdc3a3b562d",
+                      "size":  67692
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/check_platforms.py",
+                      "sha256":  "faf1f36ab34ab7ff10b6ccda7d48e8667cd1d5119c366763facdf9b339d71bb6",
+                      "size":  7887
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/README.md",
+                      "sha256":  "0d33d30822ff67de543d27b51912ae863d7e55695f9ab7793108d1cbf526f1e5",
+                      "size":  3708
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/profiles/VALIDATION.md",
+                      "sha256":  "93c4654404d65c4eee977d1b1fff67f698cc65950624ad146680ca132d207056",
+                      "size":  2670
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/qa/acceptance.py",
+                      "sha256":  "b61e552150cb05d2fb9141fa72431afe7d85d47475b7913cbaaeba9fcac8a22c",
+                      "size":  16728
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/qa/CASES.md",
+                      "sha256":  "2a5505f67101c0ec793fa0863fcc128be707b7fdefc22e4d0d4b7ed18e1dd324",
+                      "size":  2744
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/qa/check_links.py",
+                      "sha256":  "7ab0b8f3b0a60b906b78a76fac76c45566b7e34a4cc53c45b4372b228625112d",
+                      "size":  3308
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/qa/integration-results.json",
+                      "sha256":  "aec5898603aaf982987499c3f39228770d6b7739b60715eedfafb68fc88b0590",
+                      "size":  21616
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/qa/integration.py",
+                      "sha256":  "ecd25a71569bf6c2de48de4c0d51536c1632fbf68326479c5e7c7ba57c57613e",
+                      "size":  3379
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/qa/package.py",
+                      "sha256":  "f305f72ce1285b3107df0865d5df9db51bbbe6704f9d9f5c720f168340d7606d",
+                      "size":  2906
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/qa/RELEASE.md",
+                      "sha256":  "469785875d874236926933ba2ee691a559aa23f3723b98600aca4eccf5d2e15d",
+                      "size":  1240
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/qa/REPORT.md",
+                      "sha256":  "33d481f88a40c4df5b8c521f8f70085c3fa90fc5c04f2dc1834c440c1ac66ffb",
+                      "size":  5049
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/qa/results.json",
+                      "sha256":  "34983c72e8a6427d066a810171beb1eb82b21b5ea5a273c3d9ceb365fab0ce9f",
+                      "size":  12231
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/qa/SECURITY-REVIEW.md",
+                      "sha256":  "760eb0173560ebd4aaa8ae46db0d729894c52d2e496454cf44d890bbe32ba016",
+                      "size":  11418
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/qa/unit-output.txt",
+                      "sha256":  "18a334eeb10e2f8a9c5fd1194f15cff79668d39ada7228add5e0e8a55e89ee1e",
+                      "size":  922
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/schemas/evidence.schema.json",
+                      "sha256":  "6f2bce28ea0580b810179aec115a1d0a6018ae1ddb2a898620b383358e87e20f",
+                      "size":  10215
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/schemas/manifest.schema.json",
+                      "sha256":  "b80345a6c15e9d92ae7d0d09be8d2dc3907accbfb473bebcb03e5f8a90196922",
+                      "size":  11128
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/schemas/route.schema.json",
+                      "sha256":  "898ce6111b54d728a599340cad4669af83f7a7e1a8308d94a414c2a505861717",
+                      "size":  4058
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/schemas/rule.schema.json",
+                      "sha256":  "66ed95bc5691ca3ba32a2c09b2147a711fefeb1618a016ce999e469b3df3bb24",
+                      "size":  3326
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/schemas/task.schema.json",
+                      "sha256":  "c1f4b2a422ceacb7fbba90c3911f6767ea3735caa2393e1fcd9d803d9db94c6d",
+                      "size":  4714
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/spec/FORMAT.md",
+                      "sha256":  "b406e10d3346883ed18cf8d484078e586aa2a3a544f054cef0a348e4244fa1e2",
+                      "size":  9368
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/templates/capability-request.md",
+                      "sha256":  "0ea890b35becaacc209b1b33ec6b7804ffe6a66d5126da2b806e0b66a08c6933",
+                      "size":  1313
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/templates/decision-card.md",
+                      "sha256":  "5f42bc01fa5cd331738b6556603473f36e46e3bb34d16dedfa6e3b729ac4644f",
+                      "size":  1112
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/templates/evidence-card.md",
+                      "sha256":  "8c8c336a0c43509f41090a5fbee66c4212e1365f069dd8d6dc6586f3e9ee1d04",
+                      "size":  1699
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/templates/planning-bridge.md",
+                      "sha256":  "44bd1eea20191a2bca40fb12e3a7beeb2cc1893c93a3cb679400637038f9596d",
+                      "size":  1068
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/templates/project-AGENTS.md",
+                      "sha256":  "c3fe230f7407ab57b5c7787a3d12b4fcf06918026215a960fe0a8a5029a5af1e",
+                      "size":  1474
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/templates/README.md",
+                      "sha256":  "abe92cc549614382e46ffe04e4ff91477de2ace3a71d0f02022862a4518f8fd3",
+                      "size":  1187
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/templates/rule-card.md",
+                      "sha256":  "288a0a90173648a26b7ef2e9e2fb2f8af7ca294008291de65b76964516922b7a",
+                      "size":  1234
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/templates/task-card.md",
+                      "sha256":  "b628459eda9c65cb79eab4afcb6ae526673c9810791e7efd44c3f0ef9f5caab3",
+                      "size":  1556
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/tests/test_harness.py",
+                      "sha256":  "6fe4d620ea787a3f24671fc078ac96825db9ebf0b65c74300e62672869f4768b",
+                      "size":  26558
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/tools/build_assets.py",
+                      "sha256":  "592cbe18ee9f41ae80322a621a75eb9f3178ddb94e0c46bd395f737273c341f2",
+                      "size":  8774
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/tools/harness.py",
+                      "sha256":  "6d32b81d9dc3d4ad0f64cae77e0a57676926ae04db1cf2987b6b5b87aaf698ea",
+                      "size":  26832
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/.gitignore",
+                      "sha256":  "72170e3b4d87beb9edad01516bb04f550af0eaac2bebe8749878c09443690501",
+                      "size":  384
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/ACCEPTANCE.md",
+                      "sha256":  "d089980ab817e48c70f8b267f3b55194dcae97346d387fb23392060465c464b9",
+                      "size":  5178
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/AGENTS.md",
+                      "sha256":  "4d67e29398f321f437df53d79b4c0f158ee0c56aa949ed4cf3d32f00a0382a7f",
+                      "size":  1324
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/CHANGELOG.md",
+                      "sha256":  "e6942fbff94cd39988da2e6cf332ded2af76e9eabceb81ed69138f48966a6fe0",
+                      "size":  1053
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/INTEGRATION.md",
+                      "sha256":  "3380fdc331057cb017ec693f356dd546dfeb4d5fb8aa4321f75dcb2444c8ff12",
+                      "size":  5192
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/README.md",
+                      "sha256":  "f0a81e466828d00cb5525793d5d80592232801165bb3745b119774c76c348a03",
+                      "size":  5253
+                  },
+                  {
+                      "path":  "docs/harness/vendor/1.0.0/SHA256SUMS.txt",
+                      "sha256":  "a4db773feafcc4bc68ca5af22490af383753c9a4ce7dba05546d1a3dbdc7ac56",
+                      "size":  12151
+                  },
+                  {
+                      "path":  "docs/harness/BRIDGE.md",
+                      "sha256":  "32d70caae3644403b154e74cfb99844e3f7780ac9a0c9198b2fd651db1c05748",
+                      "size":  1873
+                  },
+                  {
+                      "path":  "docs/harness/OWNERS.md",
+                      "sha256":  "c230615e4a549f253dc3057db7fcc22174deddbcba76c29edc250a65272ea7ab",
+                      "size":  1389
+                  },
+                  {
+                      "path":  "docs/harness/PLAN.md",
+                      "sha256":  "7c49d891de95a514036a30125f30b4a313777b9e36520ce3c728cc5ed0ca729b",
+                      "size":  10715
+                  },
+                  {
+                      "path":  "docs/harness/REPORT.md",
+                      "sha256":  "957f5ced188ee4c17ac885d7744fd7d2666a355cebedf9ca0f6929f0593569af",
+                      "size":  9783
+                  },
+                  {
+                      "path":  "docs/harness/ROUTING.md",
+                      "sha256":  "37389b1574863226e4c285aeb93d019e4ed747633a2c6889e1463f8c64923529",
+                      "size":  2397
+                  },
+                  {
+                      "path":  "docs/harness/TASK-TOKEN-001.md",
+                      "sha256":  "793681e9e9911dfd097ce49571c8099c0cd412744797c42d702ff0f8e0f8caa9",
+                      "size":  3695
+                  },
+                  {
+                      "path":  "docs/ai-integration-design.md",
+                      "sha256":  "3b404e97ba777aac3b2ed9a6da1bfb7ccdb250e9ffb04eefe934004faecd04c5",
+                      "size":  31253
+                  },
+                  {
+                      "path":  "docs/plan-account-form.md",
+                      "sha256":  "dae44bd497198563710cf96ba4b0c74eda38efc6a4b6f1ae7de5a848164c0baf",
+                      "size":  5117
+                  },
+                  {
+                      "path":  "docs/task-summary.md",
+                      "sha256":  "392e32672f3f675d2fcd6f14c50cfb34c9e5ad83df491efb0885b3d84f3b6cfb",
+                      "size":  4078
+                  },
+                  {
+                      "path":  "frontend/src/api/modules/ai.ts",
+                      "sha256":  "bd054afd0521857126ea8fa05dc02d0bf9955cb16d316eadd660389455446153",
+                      "size":  3476
+                  },
+                  {
+                      "path":  "frontend/src/api/modules/auth.ts",
+                      "sha256":  "69d85657591122d6cac4c2742bd3a545b7a46ba6f37a40acd2699892af82dbee",
+                      "size":  284
+                  },
+                  {
+                      "path":  "frontend/src/api/modules/dashboard.ts",
+                      "sha256":  "10301529e4371f90831c7e6c692ca6aa870e4e725085fdbbee923f64c8774e8e",
+                      "size":  335
+                  },
+                  {
+                      "path":  "frontend/src/api/modules/role.ts",
+                      "sha256":  "8b1aa0c3276990572f8c7a80509403c60eca641c8a83a6bc35d89defe2c15a8c",
+                      "size":  782
+                  },
+                  {
+                      "path":  "frontend/src/api/modules/user.ts",
+                      "sha256":  "f3db6ffca0fabfb87ae92c89e838b4cc3e764105f151302cd85a0f062a2ce6b6",
+                      "size":  1127
+                  },
+                  {
+                      "path":  "frontend/src/api/client.ts",
+                      "sha256":  "1c41c6c11bab82f25adbff86c3a6494f28e0dcbf5e7f74d5d78375fc97cf7fc4",
+                      "size":  1183
+                  },
+                  {
+                      "path":  "frontend/src/components/AIProviderAlert.vue",
+                      "sha256":  "2701c6feb343148ef45b8d1bc0143fea02e5452ded67d00ae31bcc00ff355bfe",
+                      "size":  930
+                  },
+                  {
+                      "path":  "frontend/src/layouts/MainLayout.vue",
+                      "sha256":  "d1fddb75e305587acf36dba4502412ae94fda351968cb5e0700acf576a3b6985",
+                      "size":  5526
+                  },
+                  {
+                      "path":  "frontend/src/router/index.ts",
+                      "sha256":  "b22ce3553c74ee5227a31cf10a001928431e0cc728832a46d8d8ea0c7119e78c",
+                      "size":  3305
+                  },
+                  {
+                      "path":  "frontend/src/stores/ai.ts",
+                      "sha256":  "e8aecfc78995b3360f9ef41a38876f93e4c9f5f68196958aa7d7d39a02169e40",
+                      "size":  2055
+                  },
+                  {
+                      "path":  "frontend/src/stores/index.ts",
+                      "sha256":  "72db3d44d07c7ba7d4aee32fb79b7f57305fb6ba05eee8ed6f91cfec4d7336d1",
+                      "size":  143
+                  },
+                  {
+                      "path":  "frontend/src/stores/user.ts",
+                      "sha256":  "8987c3fa393878693bb1226916d94eee4353e6409ca1e90929a5e6d8d4ee4cb8",
+                      "size":  2535
+                  },
+                  {
+                      "path":  "frontend/src/types/ai.ts",
+                      "sha256":  "50c561e7b998beabc99f6b51addc122e0e542bb92fe50c344d6bd56a8b4ed13d",
+                      "size":  4003
+                  },
+                  {
+                      "path":  "frontend/src/types/role.ts",
+                      "sha256":  "b3e4835015e442a23ea1db18de69b726c7d05d9327b6e4c24cfca712b6e68ae5",
+                      "size":  577
+                  },
+                  {
+                      "path":  "frontend/src/types/user.ts",
+                      "sha256":  "065060fe18b61680a781b573d794f04ff45afa4888d1e5b3f30d9f274ad8456e",
+                      "size":  989
+                  },
+                  {
+                      "path":  "frontend/src/utils/markdown.ts",
+                      "sha256":  "1d0f05630b048b959a88ab8af0c919033a24e79fc851774b170331a12e0e62da",
+                      "size":  3797
+                  },
+                  {
+                      "path":  "frontend/src/views/ai/AIAgentTokenView.vue",
+                      "sha256":  "3adf4c98c6437d1052cfeae16afb61adab240246797e18ce85674efc57933535",
+                      "size":  4163
+                  },
+                  {
+                      "path":  "frontend/src/views/ai/AIApprovalView.vue",
+                      "sha256":  "b1c11760576865396d34c1fdaa4ce99ecc945c8e31453b9cb770b84eaa40881f",
+                      "size":  9999
+                  },
+                  {
+                      "path":  "frontend/src/views/ai/AIAuditView.vue",
+                      "sha256":  "ba47f2448628a0a317cf46f32c5baf0e3e7dba83612fdc4b0fcc3f3cc428f8cd",
+                      "size":  10717
+                  },
+                  {
+                      "path":  "frontend/src/views/ai/AIChatView.vue",
+                      "sha256":  "d391a1b1dab26c85b376f24893357182d9fcb3fcb8e9f2dd469c7ec60499f083",
+                      "size":  11908
+                  },
+                  {
+                      "path":  "frontend/src/views/ai/AINotificationView.vue",
+                      "sha256":  "44fa31a9f320ee8e6e2ad3b81ac7dfb9b6984ec79b04eadc43df9b521fce1c3f",
+                      "size":  4952
+                  },
+                  {
+                      "path":  "frontend/src/views/dashboard/DashboardView.vue",
+                      "sha256":  "5e0b5500b4296544aa1174d2ac7b183c046b1f363966a5607f21a97c0ca6a5c4",
+                      "size":  1887
+                  },
+                  {
+                      "path":  "frontend/src/views/error/ForbiddenView.vue",
+                      "sha256":  "39badf74592fb616fc71c76ca623599bc04e287918de6a29c48fc388c85b376b",
+                      "size":  492
+                  },
+                  {
+                      "path":  "frontend/src/views/error/NotFoundView.vue",
+                      "sha256":  "0053d329e0f1b1e3ce1c7e68b8171eafa9be2cbbe7529a1b009599665ca0d186",
+                      "size":  471
+                  },
+                  {
+                      "path":  "frontend/src/views/login/LoginView.vue",
+                      "sha256":  "a58ab41adfec109754b5b1ece98768aeb35399177bb75a611f1e463c420c6a24",
+                      "size":  2557
+                  },
+                  {
+                      "path":  "frontend/src/views/system/role/RoleFormDialog.vue",
+                      "sha256":  "faa2db8c645345c2a980e1bd40df217367df2b0696f1ee5048a6f59d745930a8",
+                      "size":  4509
+                  },
+                  {
+                      "path":  "frontend/src/views/system/role/RoleListView.vue",
+                      "sha256":  "fea05726ae10348645e0c6629b1fd251113e39627d432d020e5af07fa88eb0ed",
+                      "size":  4760
+                  },
+                  {
+                      "path":  "frontend/src/views/system/user/UserFormDialog.vue",
+                      "sha256":  "c6b4e1e2b3d18076a9aa06787b8656eb5c84807cae582209fbaa09cc3461f41a",
+                      "size":  5178
+                  },
+                  {
+                      "path":  "frontend/src/views/system/user/UserListView.vue",
+                      "sha256":  "f264bf03244000679288ecc34b7744321418ad86faa53a12475b3b3cdb1f8f90",
+                      "size":  7369
+                  },
+                  {
+                      "path":  "frontend/src/App.vue",
+                      "sha256":  "2872c3226f3ee1467e8370baaadc303c000493ef0cdc8adf7a66d6b3fa27ce92",
+                      "size":  43
+                  },
+                  {
+                      "path":  "frontend/src/main.ts",
+                      "sha256":  "9b99059f70734e427a5dacfdc8180f910a2f4691e418a009f8e2f010f880ad5b",
+                      "size":  300
+                  },
+                  {
+                      "path":  "frontend/env.d.ts",
+                      "sha256":  "f3e5cd9f4bcab346c4dbbd5080e77bafad0d87932076e4ef086f240e1c3c796e",
+                      "size":  192
+                  },
+                  {
+                      "path":  "frontend/index.html",
+                      "sha256":  "fd27f51eed07aa8e74d043fcc679ac2ccdcdc0c40f93c0b34b720a10111629bb",
+                      "size":  297
+                  },
+                  {
+                      "path":  "frontend/package-lock.json",
+                      "sha256":  "76d82db850286fd2dbf637199fcbdcc92f6511b512dae1c03b2d75cadaee9f83",
+                      "size":  80321
+                  },
+                  {
+                      "path":  "frontend/package.json",
+                      "sha256":  "466c8a54b5f264da2f2ad84d3fceca738dc2cbd1e21f5bb031766e8727e468f9",
+                      "size":  670
+                  },
+                  {
+                      "path":  "frontend/tsconfig.json",
+                      "sha256":  "4986aa4038aa4ad11b171d7dcb062905d808b5dfa51707401d131ab9c5deee6e",
+                      "size":  553
+                  },
+                  {
+                      "path":  "frontend/vite.config.ts",
+                      "sha256":  "d7e07d4cc1a4daeecc83d9c119eb843d7afe777e8e036c893c7ea35a48726056",
+                      "size":  742
+                  },
+                  {
+                      "path":  "tools/credential_process_probe.py",
+                      "sha256":  "0f78a631d48b702d19b55f2041388264de3e14e7aa8c4bbb4155ae7799160afa",
+                      "size":  813
+                  },
+                  {
+                      "path":  "tools/harness_checks.py",
+                      "sha256":  "3a6f3728263dd5f542607e2352b2c99703256a860c2b58b18aed4f616150186a",
+                      "size":  5283
+                  },
+                  {
+                      "path":  "tools/prepare_harness.py",
+                      "sha256":  "6f1bbb1213232d2eed28c02160f1cfecf34a9cff45d43cda03b48507f1aabfdb",
+                      "size":  3282
+                  },
+                  {
+                      "path":  "tools/reproduce_legacy_token.py",
+                      "sha256":  "1ae133cb8e6fa2809d3eaf142f80f828bbec05d453636c77df1072db1eff7725",
+                      "size":  2484
+                  },
+                  {
+                      "path":  "tools/verify.py",
+                      "sha256":  "8315964a1d3c5cdc76d26dff3526c169831b220b832c9c38973a4fe3246f9632",
+                      "size":  15146
+                  },
+                  {
+                      "path":  "tools/verify_boss.py",
+                      "sha256":  "5dace21aa0982af0bb7309af29c566d6c5e21845a2a82cc7abc9dbbc95cb9509",
+                      "size":  4351
+                  },
+                  {
+                      "path":  "tools/verify_migrations.py",
+                      "sha256":  "3a6e62559788e7fe2304cbfe7e630e5b89b65bf95c36090107660ef195012650",
+                      "size":  6116
+                  },
+                  {
+                      "path":  ".gitignore",
+                      "sha256":  "0d3d04d3cd136fe3bfd677b5b3e7a4861e20813df05950650c02077ceb8b8f69",
+                      "size":  1900
+                  },
+                  {
+                      "path":  "AGENTS.md",
+                      "sha256":  "9c116f2cb3b017945abbf5f63c4e5b496bb8602471114b656f03d53af793df10",
+                      "size":  1435
+                  },
+                  {
+                      "path":  "ARCHITECTURE.md",
+                      "sha256":  "e6670aa250c50c7836097c571170f03c570d421aad808121abb991e19c07187f",
+                      "size":  33075
+                  },
+                  {
+                      "path":  "DEVELOPMENT.md",
+                      "sha256":  "fe3d95ed98cd0278d4f1a74afda20abdefb0b0bc4e2c1c173bc1d0687f07d9ec",
+                      "size":  5297
+                  },
+                  {
+                      "path":  "harness.json",
+                      "sha256":  "c60aa6c891afc8e0b7b1bd6635a397eb35c8f1204297aade80d687560de0ef98",
+                      "size":  22450
+                  },
+                  {
+                      "path":  "README.md",
+                      "sha256":  "c2178ee372c436e9bfe1d83e122c74252cd045ca250ce2f9b2d1771189a92fdd",
+                      "size":  18044
+                  },
+                  {
+                      "path":  "release-manifest.json",
+                      "sha256":  "58c5bc4b1af39bae4ec47cf6283d66fb1ed9c1253f2f0e1124f5803cc72ca23c",
+                      "size":  624
+                  },
+                  {
+                      "path":  "VERSION",
+                      "sha256":  "db37ba1937ffae3bb3a7c124e5813c208d480b8f2a40c20d943926cd54594ae3",
+                      "size":  16
+                  }
+              ]
+}

@@ -1,0 +1,163 @@
+{
+  "mode": "patched",
+  "source": "C:\\c\\Users\\Rick\\ram-admin-review-20261117\\runtime\\backend",
+  "checks": [
+    {
+      "name": "BOSS reset root",
+      "status": 403,
+      "expected": 403,
+      "pass": true
+    },
+    {
+      "name": "BOSS update root",
+      "status": 403,
+      "expected": 403,
+      "pass": true
+    },
+    {
+      "name": "BOSS delete root",
+      "status": 403,
+      "expected": 403,
+      "pass": true
+    },
+    {
+      "name": "BOSS reset root_role",
+      "status": 403,
+      "expected": 403,
+      "pass": true
+    },
+    {
+      "name": "BOSS update root_role",
+      "status": 403,
+      "expected": 403,
+      "pass": true
+    },
+    {
+      "name": "BOSS delete root_role",
+      "status": 403,
+      "expected": 403,
+      "pass": true
+    },
+    {
+      "name": "BOSS reset boss",
+      "status": 403,
+      "expected": 403,
+      "pass": true
+    },
+    {
+      "name": "BOSS update boss",
+      "status": 403,
+      "expected": 403,
+      "pass": true
+    },
+    {
+      "name": "BOSS delete boss",
+      "status": 403,
+      "expected": 403,
+      "pass": true
+    },
+    {
+      "name": "BOSS reset peer_boss",
+      "status": 403,
+      "expected": 403,
+      "pass": true
+    },
+    {
+      "name": "BOSS update peer_boss",
+      "status": 403,
+      "expected": 403,
+      "pass": true
+    },
+    {
+      "name": "BOSS delete peer_boss",
+      "status": 403,
+      "expected": 403,
+      "pass": true
+    },
+    {
+      "name": "BOSS self grant root",
+      "status": 403,
+      "expected": 403,
+      "pass": true
+    },
+    {
+      "name": "BOSS create root account",
+      "status": 403,
+      "expected": 403,
+      "pass": true
+    },
+    {
+      "name": "BOSS edit root role",
+      "status": 403,
+      "expected": 403,
+      "pass": true
+    },
+    {
+      "name": "BOSS create role",
+      "status": 403,
+      "expected": 403,
+      "pass": true
+    },
+    {
+      "name": "ordinary reset root",
+      "status": 403,
+      "expected": 403,
+      "pass": true
+    },
+    {
+      "name": "root reset ordinary",
+      "status": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "name": "root edit ordinary",
+      "status": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "name": "BOSS edit ordinary",
+      "status": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "name": "root create custom role",
+      "status": 201,
+      "expected": 201,
+      "pass": true
+    },
+    {
+      "name": "protected identity unchanged root",
+      "pass": true
+    },
+    {
+      "name": "protected identity unchanged root_role",
+      "pass": true
+    },
+    {
+      "name": "protected identity unchanged boss",
+      "pass": true
+    },
+    {
+      "name": "protected identity unchanged peer_boss",
+      "pass": true
+    },
+    {
+      "name": "unauthenticated users list",
+      "status": 403,
+      "expected": 403,
+      "pass": true
+    },
+    {
+      "name": "README missing audit API",
+      "status": 404,
+      "expected": 404,
+      "pass": true
+    }
+  ],
+  "pass": true,
+  "temporary_database": true,
+  "model_network_calls": 0
+}

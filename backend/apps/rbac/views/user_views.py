@@ -1,3 +1,4 @@
+from apps.common.inputs import positive_int
 """User management ViewSet — CRUD + password reset."""
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
@@ -20,6 +21,7 @@ class UserViewSet(viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
     serializer_class = UserOutputSerializer
     service = UserService()
+    permission_resource = 'users'
 
     def get_serializer_class(self):
         return {
@@ -32,8 +34,8 @@ class UserViewSet(viewsets.GenericViewSet):
 
     def list(self, request):
         """用户列表（分页 + 搜索）."""
-        page = int(request.query_params.get('page', 1))
-        page_size = int(request.query_params.get('page_size', 20))
+        from apps.common.inputs import pagination
+        page, page_size = pagination(request)
         search = request.query_params.get('search', '')
 
         result = self.service.list_users(page=page, page_size=page_size, search=search)
@@ -55,7 +57,7 @@ class UserViewSet(viewsets.GenericViewSet):
         """创建用户."""
         serializer = UserCreateSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = self.service.create_user(serializer.validated_data)
+        user = self.service.create_user(serializer.validated_data, actor=request.user)
         out = UserOutputSerializer(user)
         return Response({'data': out.data}, status=status.HTTP_201_CREATED)
 
@@ -63,7 +65,7 @@ class UserViewSet(viewsets.GenericViewSet):
 
     def retrieve(self, request, pk=None):
         """用户详情."""
-        user = self.service.get_user_detail(int(pk))
+        user = self.service.get_user_detail(positive_int(pk, 'id'))
         if not user:
             return Response(
                 {'error': {'code': 'NOT_FOUND', 'message': '用户不存在'}},
@@ -78,7 +80,7 @@ class UserViewSet(viewsets.GenericViewSet):
         """更新用户."""
         serializer = UserUpdateSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = self.service.update_user(int(pk), serializer.validated_data)
+        user = self.service.update_user(positive_int(pk, 'id'), serializer.validated_data, actor=request.user)
         out = UserOutputSerializer(user)
         return Response({'data': out.data})
 
@@ -86,7 +88,7 @@ class UserViewSet(viewsets.GenericViewSet):
 
     def destroy(self, request, pk=None):
         """软删除用户."""
-        self.service.delete_user(int(pk))
+        self.service.delete_user(positive_int(pk, 'id'), actor=request.user)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     # ── POST /api/rbac/users/{id}/reset-password/ ────────
@@ -96,5 +98,5 @@ class UserViewSet(viewsets.GenericViewSet):
         """重置密码."""
         serializer = UserResetPasswordSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        self.service.reset_password(int(pk), serializer.validated_data['password'])
+        self.service.reset_password(positive_int(pk, 'id'), serializer.validated_data['password'], actor=request.user)
         return Response({'data': {'message': '密码重置成功'}})

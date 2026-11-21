@@ -1,0 +1,807 @@
+{
+  "schema_version": 1,
+  "project_id": "ram-admin-0.3.0-dev.1",
+  "owners": [
+    {
+      "id": "dev",
+      "contact": "session:ram-core-next",
+      "backup": "session:lead"
+    },
+    {
+      "id": "lead",
+      "contact": "session:lead",
+      "backup": "user-via-lead"
+    }
+  ],
+  "executors": [
+    {
+      "id": "verify",
+      "version": "1",
+      "kind": "automated"
+    }
+  ],
+  "rules": [
+    {
+      "id": "RAM-SCOPE-001",
+      "revision": 1,
+      "owner": "dev",
+      "scope": {
+        "actions": [
+          "*"
+        ],
+        "paths": [
+          "**"
+        ],
+        "platforms": [
+          "*"
+        ],
+        "tasks": [
+          "fix",
+          "feature"
+        ],
+        "lifecycle": [
+          "*"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/harness/vendor/1.0.0/docs/pr-boundaries.md",
+      "statement": "Apply SCOPE context and original acceptance without weakening scope.",
+      "enforcement": "advisory",
+      "executor_refs": [
+        "verify"
+      ],
+      "evidence_refs": [
+        "product-tests"
+      ],
+      "constraints": []
+    },
+    {
+      "id": "RAM-API-001",
+      "revision": 1,
+      "owner": "dev",
+      "scope": {
+        "actions": [
+          "*"
+        ],
+        "paths": [
+          "**"
+        ],
+        "platforms": [
+          "*"
+        ],
+        "tasks": [
+          "api",
+          "security"
+        ],
+        "lifecycle": [
+          "*"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/harness/vendor/1.0.0/docs/platforms/web/api-config.md",
+      "statement": "Apply API context and original acceptance without weakening scope.",
+      "enforcement": "advisory",
+      "executor_refs": [
+        "verify"
+      ],
+      "evidence_refs": [
+        "product-tests"
+      ],
+      "constraints": []
+    },
+    {
+      "id": "RAM-DATA-001",
+      "revision": 1,
+      "owner": "dev",
+      "scope": {
+        "actions": [
+          "*"
+        ],
+        "paths": [
+          "**"
+        ],
+        "platforms": [
+          "*"
+        ],
+        "tasks": [
+          "data"
+        ],
+        "lifecycle": [
+          "*"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/harness/vendor/1.0.0/docs/platforms/web/data.md",
+      "statement": "Apply DATA context and original acceptance without weakening scope.",
+      "enforcement": "advisory",
+      "executor_refs": [
+        "verify"
+      ],
+      "evidence_refs": [
+        "migration-tests"
+      ],
+      "constraints": []
+    },
+    {
+      "id": "RAM-UI-001",
+      "revision": 1,
+      "owner": "dev",
+      "scope": {
+        "actions": [
+          "*"
+        ],
+        "paths": [
+          "**"
+        ],
+        "platforms": [
+          "*"
+        ],
+        "tasks": [
+          "ui"
+        ],
+        "lifecycle": [
+          "*"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/harness/vendor/1.0.0/docs/platforms/web/frontend.md",
+      "statement": "Apply UI context and original acceptance without weakening scope.",
+      "enforcement": "advisory",
+      "executor_refs": [
+        "verify"
+      ],
+      "evidence_refs": [
+        "frontend-build",
+        "browser-e2e"
+      ],
+      "constraints": []
+    },
+    {
+      "id": "RAM-BUILD-001",
+      "revision": 1,
+      "owner": "dev",
+      "scope": {
+        "actions": [
+          "*"
+        ],
+        "paths": [
+          "**"
+        ],
+        "platforms": [
+          "*"
+        ],
+        "tasks": [
+          "build"
+        ],
+        "lifecycle": [
+          "*"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/harness/vendor/1.0.0/docs/test-boundaries.md",
+      "statement": "Apply BUILD context and original acceptance without weakening scope.",
+      "enforcement": "advisory",
+      "executor_refs": [
+        "verify"
+      ],
+      "evidence_refs": [
+        "frontend-build"
+      ],
+      "constraints": []
+    },
+    {
+      "id": "RAM-DOC-001",
+      "revision": 1,
+      "owner": "dev",
+      "scope": {
+        "actions": [
+          "*"
+        ],
+        "paths": [
+          "**"
+        ],
+        "platforms": [
+          "*"
+        ],
+        "tasks": [
+          "docs"
+        ],
+        "lifecycle": [
+          "*"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/harness/vendor/1.0.0/docs/adoption.md",
+      "statement": "Apply DOC context and original acceptance without weakening scope.",
+      "enforcement": "advisory",
+      "executor_refs": [
+        "verify"
+      ],
+      "evidence_refs": [
+        "harness-routing"
+      ],
+      "constraints": []
+    },
+    {
+      "id": "RAM-RELEASE-001",
+      "revision": 1,
+      "owner": "dev",
+      "scope": {
+        "actions": [
+          "*"
+        ],
+        "paths": [
+          "**"
+        ],
+        "platforms": [
+          "*"
+        ],
+        "tasks": [
+          "release"
+        ],
+        "lifecycle": [
+          "*"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/harness/vendor/1.0.0/docs/platforms/web/operations.md",
+      "statement": "Apply RELEASE context and original acceptance without weakening scope.",
+      "enforcement": "advisory",
+      "executor_refs": [
+        "verify"
+      ],
+      "evidence_refs": [
+        "deployment"
+      ],
+      "constraints": []
+    }
+  ],
+  "routes": [
+    {
+      "id": "route-scope",
+      "owner": "dev",
+      "match": {
+        "tasks": [
+          "fix",
+          "feature"
+        ],
+        "paths": [
+          "**"
+        ],
+        "platforms": [
+          "*"
+        ],
+        "domains": [
+          "*"
+        ],
+        "effects": [
+          "*"
+        ],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "AGENTS.md",
+          "docs/harness/PLAN.md",
+          "docs/harness/OWNERS.md",
+          "docs/harness/BRIDGE.md",
+          "docs/harness/ROUTING.md",
+          "docs/harness/TASK-TOKEN-001.md",
+          "docs/harness/vendor/1.0.0/docs/START-HERE.md",
+          "docs/harness/vendor/1.0.0/docs/overview.md",
+          "docs/harness/vendor/1.0.0/docs/adoption.md",
+          "docs/harness/vendor/1.0.0/docs/routing.md",
+          "docs/harness/vendor/1.0.0/docs/ownership.md",
+          "docs/harness/vendor/1.0.0/docs/pr-boundaries.md",
+          "docs/harness/vendor/1.0.0/docs/test-boundaries.md",
+          "docs/harness/vendor/1.0.0/docs/evidence.md",
+          "docs/harness/vendor/1.0.0/docs/task-lifecycle.md",
+          "docs/harness/vendor/1.0.0/docs/capabilities.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/README.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/selection.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/evidence.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/web/README.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/web/verify.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "has_frontend",
+              "equals": true
+            },
+            "add": [
+              "docs/harness/vendor/1.0.0/docs/platforms/web/frontend.md"
+            ]
+          },
+          {
+            "when": {
+              "fact": "has_database",
+              "equals": true
+            },
+            "add": [
+              "docs/harness/vendor/1.0.0/docs/platforms/web/data.md",
+              "docs/harness/vendor/1.0.0/docs/platforms/web/operations.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "RAM-SCOPE-001"
+      ],
+      "executor_refs": [
+        "verify"
+      ],
+      "evidence_refs": [
+        "product-tests"
+      ]
+    },
+    {
+      "id": "route-api",
+      "owner": "dev",
+      "match": {
+        "tasks": [
+          "api",
+          "security"
+        ],
+        "paths": [
+          "**"
+        ],
+        "platforms": [
+          "*"
+        ],
+        "domains": [
+          "*"
+        ],
+        "effects": [
+          "*"
+        ],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "AGENTS.md",
+          "docs/harness/PLAN.md",
+          "docs/harness/OWNERS.md",
+          "docs/harness/BRIDGE.md",
+          "docs/harness/ROUTING.md",
+          "docs/harness/TASK-TOKEN-001.md",
+          "docs/harness/vendor/1.0.0/docs/START-HERE.md",
+          "docs/harness/vendor/1.0.0/docs/overview.md",
+          "docs/harness/vendor/1.0.0/docs/adoption.md",
+          "docs/harness/vendor/1.0.0/docs/routing.md",
+          "docs/harness/vendor/1.0.0/docs/ownership.md",
+          "docs/harness/vendor/1.0.0/docs/pr-boundaries.md",
+          "docs/harness/vendor/1.0.0/docs/test-boundaries.md",
+          "docs/harness/vendor/1.0.0/docs/evidence.md",
+          "docs/harness/vendor/1.0.0/docs/task-lifecycle.md",
+          "docs/harness/vendor/1.0.0/docs/capabilities.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/README.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/selection.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/evidence.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/web/README.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/web/verify.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/web/api-config.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "has_frontend",
+              "equals": true
+            },
+            "add": [
+              "docs/harness/vendor/1.0.0/docs/platforms/web/frontend.md"
+            ]
+          },
+          {
+            "when": {
+              "fact": "has_database",
+              "equals": true
+            },
+            "add": [
+              "docs/harness/vendor/1.0.0/docs/platforms/web/data.md",
+              "docs/harness/vendor/1.0.0/docs/platforms/web/operations.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "RAM-API-001"
+      ],
+      "executor_refs": [
+        "verify"
+      ],
+      "evidence_refs": [
+        "product-tests"
+      ]
+    },
+    {
+      "id": "route-data",
+      "owner": "dev",
+      "match": {
+        "tasks": [
+          "data"
+        ],
+        "paths": [
+          "**"
+        ],
+        "platforms": [
+          "*"
+        ],
+        "domains": [
+          "*"
+        ],
+        "effects": [
+          "*"
+        ],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "AGENTS.md",
+          "docs/harness/PLAN.md",
+          "docs/harness/OWNERS.md",
+          "docs/harness/BRIDGE.md",
+          "docs/harness/ROUTING.md",
+          "docs/harness/TASK-TOKEN-001.md",
+          "docs/harness/vendor/1.0.0/docs/START-HERE.md",
+          "docs/harness/vendor/1.0.0/docs/overview.md",
+          "docs/harness/vendor/1.0.0/docs/adoption.md",
+          "docs/harness/vendor/1.0.0/docs/routing.md",
+          "docs/harness/vendor/1.0.0/docs/ownership.md",
+          "docs/harness/vendor/1.0.0/docs/pr-boundaries.md",
+          "docs/harness/vendor/1.0.0/docs/test-boundaries.md",
+          "docs/harness/vendor/1.0.0/docs/evidence.md",
+          "docs/harness/vendor/1.0.0/docs/task-lifecycle.md",
+          "docs/harness/vendor/1.0.0/docs/capabilities.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/README.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/selection.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/evidence.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/web/README.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/web/verify.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/web/data.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "has_frontend",
+              "equals": true
+            },
+            "add": [
+              "docs/harness/vendor/1.0.0/docs/platforms/web/frontend.md"
+            ]
+          },
+          {
+            "when": {
+              "fact": "has_database",
+              "equals": true
+            },
+            "add": [
+              "docs/harness/vendor/1.0.0/docs/platforms/web/data.md",
+              "docs/harness/vendor/1.0.0/docs/platforms/web/operations.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "RAM-DATA-001"
+      ],
+      "executor_refs": [
+        "verify"
+      ],
+      "evidence_refs": [
+        "migration-tests"
+      ]
+    },
+    {
+      "id": "route-ui",
+      "owner": "dev",
+      "match": {
+        "tasks": [
+          "ui"
+        ],
+        "paths": [
+          "**"
+        ],
+        "platforms": [
+          "*"
+        ],
+        "domains": [
+          "*"
+        ],
+        "effects": [
+          "*"
+        ],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "AGENTS.md",
+          "docs/harness/PLAN.md",
+          "docs/harness/OWNERS.md",
+          "docs/harness/BRIDGE.md",
+          "docs/harness/ROUTING.md",
+          "docs/harness/TASK-TOKEN-001.md",
+          "docs/harness/vendor/1.0.0/docs/START-HERE.md",
+          "docs/harness/vendor/1.0.0/docs/overview.md",
+          "docs/harness/vendor/1.0.0/docs/adoption.md",
+          "docs/harness/vendor/1.0.0/docs/routing.md",
+          "docs/harness/vendor/1.0.0/docs/ownership.md",
+          "docs/harness/vendor/1.0.0/docs/pr-boundaries.md",
+          "docs/harness/vendor/1.0.0/docs/test-boundaries.md",
+          "docs/harness/vendor/1.0.0/docs/evidence.md",
+          "docs/harness/vendor/1.0.0/docs/task-lifecycle.md",
+          "docs/harness/vendor/1.0.0/docs/capabilities.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/README.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/selection.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/evidence.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/web/README.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/web/verify.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/web/frontend.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "has_frontend",
+              "equals": true
+            },
+            "add": [
+              "docs/harness/vendor/1.0.0/docs/platforms/web/frontend.md"
+            ]
+          },
+          {
+            "when": {
+              "fact": "has_database",
+              "equals": true
+            },
+            "add": [
+              "docs/harness/vendor/1.0.0/docs/platforms/web/data.md",
+              "docs/harness/vendor/1.0.0/docs/platforms/web/operations.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "RAM-UI-001"
+      ],
+      "executor_refs": [
+        "verify"
+      ],
+      "evidence_refs": [
+        "frontend-build",
+        "browser-e2e"
+      ]
+    },
+    {
+      "id": "route-build",
+      "owner": "dev",
+      "match": {
+        "tasks": [
+          "build"
+        ],
+        "paths": [
+          "**"
+        ],
+        "platforms": [
+          "*"
+        ],
+        "domains": [
+          "*"
+        ],
+        "effects": [
+          "*"
+        ],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "AGENTS.md",
+          "docs/harness/PLAN.md",
+          "docs/harness/OWNERS.md",
+          "docs/harness/BRIDGE.md",
+          "docs/harness/ROUTING.md",
+          "docs/harness/TASK-TOKEN-001.md",
+          "docs/harness/vendor/1.0.0/docs/START-HERE.md",
+          "docs/harness/vendor/1.0.0/docs/overview.md",
+          "docs/harness/vendor/1.0.0/docs/adoption.md",
+          "docs/harness/vendor/1.0.0/docs/routing.md",
+          "docs/harness/vendor/1.0.0/docs/ownership.md",
+          "docs/harness/vendor/1.0.0/docs/pr-boundaries.md",
+          "docs/harness/vendor/1.0.0/docs/test-boundaries.md",
+          "docs/harness/vendor/1.0.0/docs/evidence.md",
+          "docs/harness/vendor/1.0.0/docs/task-lifecycle.md",
+          "docs/harness/vendor/1.0.0/docs/capabilities.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/README.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/selection.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/evidence.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/web/README.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/web/verify.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "has_frontend",
+              "equals": true
+            },
+            "add": [
+              "docs/harness/vendor/1.0.0/docs/platforms/web/frontend.md"
+            ]
+          },
+          {
+            "when": {
+              "fact": "has_database",
+              "equals": true
+            },
+            "add": [
+              "docs/harness/vendor/1.0.0/docs/platforms/web/data.md",
+              "docs/harness/vendor/1.0.0/docs/platforms/web/operations.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "RAM-BUILD-001"
+      ],
+      "executor_refs": [
+        "verify"
+      ],
+      "evidence_refs": [
+        "frontend-build"
+      ]
+    },
+    {
+      "id": "route-doc",
+      "owner": "dev",
+      "match": {
+        "tasks": [
+          "docs"
+        ],
+        "paths": [
+          "**"
+        ],
+        "platforms": [
+          "*"
+        ],
+        "domains": [
+          "*"
+        ],
+        "effects": [
+          "*"
+        ],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "AGENTS.md",
+          "docs/harness/PLAN.md",
+          "docs/harness/OWNERS.md",
+          "docs/harness/BRIDGE.md",
+          "docs/harness/ROUTING.md",
+          "docs/harness/TASK-TOKEN-001.md",
+          "docs/harness/vendor/1.0.0/docs/START-HERE.md",
+          "docs/harness/vendor/1.0.0/docs/overview.md",
+          "docs/harness/vendor/1.0.0/docs/adoption.md",
+          "docs/harness/vendor/1.0.0/docs/routing.md",
+          "docs/harness/vendor/1.0.0/docs/ownership.md",
+          "docs/harness/vendor/1.0.0/docs/pr-boundaries.md",
+          "docs/harness/vendor/1.0.0/docs/test-boundaries.md",
+          "docs/harness/vendor/1.0.0/docs/evidence.md",
+          "docs/harness/vendor/1.0.0/docs/task-lifecycle.md",
+          "docs/harness/vendor/1.0.0/docs/capabilities.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/README.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/selection.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/evidence.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/web/README.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/web/verify.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "has_frontend",
+              "equals": true
+            },
+            "add": [
+              "docs/harness/vendor/1.0.0/docs/platforms/web/frontend.md"
+            ]
+          },
+          {
+            "when": {
+              "fact": "has_database",
+              "equals": true
+            },
+            "add": [
+              "docs/harness/vendor/1.0.0/docs/platforms/web/data.md",
+              "docs/harness/vendor/1.0.0/docs/platforms/web/operations.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "RAM-DOC-001"
+      ],
+      "executor_refs": [
+        "verify"
+      ],
+      "evidence_refs": [
+        "harness-routing"
+      ]
+    },
+    {
+      "id": "route-release",
+      "owner": "dev",
+      "match": {
+        "tasks": [
+          "release"
+        ],
+        "paths": [
+          "**"
+        ],
+        "platforms": [
+          "*"
+        ],
+        "domains": [
+          "*"
+        ],
+        "effects": [
+          "*"
+        ],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "AGENTS.md",
+          "docs/harness/PLAN.md",
+          "docs/harness/OWNERS.md",
+          "docs/harness/BRIDGE.md",
+          "docs/harness/ROUTING.md",
+          "docs/harness/TASK-TOKEN-001.md",
+          "docs/harness/vendor/1.0.0/docs/START-HERE.md",
+          "docs/harness/vendor/1.0.0/docs/overview.md",
+          "docs/harness/vendor/1.0.0/docs/adoption.md",
+          "docs/harness/vendor/1.0.0/docs/routing.md",
+          "docs/harness/vendor/1.0.0/docs/ownership.md",
+          "docs/harness/vendor/1.0.0/docs/pr-boundaries.md",
+          "docs/harness/vendor/1.0.0/docs/test-boundaries.md",
+          "docs/harness/vendor/1.0.0/docs/evidence.md",
+          "docs/harness/vendor/1.0.0/docs/task-lifecycle.md",
+          "docs/harness/vendor/1.0.0/docs/capabilities.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/README.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/selection.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/evidence.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/web/README.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/web/verify.md",
+          "docs/harness/vendor/1.0.0/docs/platforms/web/operations.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "has_frontend",
+              "equals": true
+            },
+            "add": [
+              "docs/harness/vendor/1.0.0/docs/platforms/web/frontend.md"
+            ]
+          },
+          {
+            "when": {
+              "fact": "has_database",
+              "equals": true
+            },
+            "add": [
+              "docs/harness/vendor/1.0.0/docs/platforms/web/data.md",
+              "docs/harness/vendor/1.0.0/docs/platforms/web/operations.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "RAM-RELEASE-001"
+      ],
+      "executor_refs": [
+        "verify"
+      ],
+      "evidence_refs": [
+        "deployment"
+      ]
+    }
+  ]
+}

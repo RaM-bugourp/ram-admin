@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "project_id": "synthetic-cross-domain-demo",
+  "owners": [
+    {
+      "id": "maintainers",
+      "contact": "example-owner@example.invalid",
+      "backup": "example-backup@example.invalid"
+    }
+  ],
+  "executors": [
+    {
+      "id": "observe-target",
+      "version": "1.0.0",
+      "kind": "manual"
+    }
+  ],
+  "rules": [
+    {
+      "id": "PLUGIN-VERIFY",
+      "revision": 1,
+      "owner": "maintainers",
+      "scope": {
+        "actions": [
+          "edit",
+          "release"
+        ],
+        "paths": [
+          "src/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "tasks": [
+          "feature",
+          "release"
+        ],
+        "lifecycle": [
+          "development",
+          "release"
+        ],
+        "exclusions": []
+      },
+      "source": "pages/plugin.md",
+      "statement": "Collect representative real target evidence before claiming product pass.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "observe-target"
+      ],
+      "evidence_refs": [
+        "plugin-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-tests",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "WEB-VERIFY",
+      "revision": 1,
+      "owner": "maintainers",
+      "scope": {
+        "actions": [
+          "edit",
+          "release"
+        ],
+        "paths": [
+          "src/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "tasks": [
+          "feature",
+          "release"
+        ],
+        "lifecycle": [
+          "development",
+          "release"
+        ],
+        "exclusions": []
+      },
+      "source": "pages/web.md",
+      "statement": "Collect representative real target evidence before claiming product pass.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "observe-target"
+      ],
+      "evidence_refs": [
+        "web-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-tests",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "APP-VERIFY",
+      "revision": 1,
+      "owner": "maintainers",
+      "scope": {
+        "actions": [
+          "edit",
+          "release"
+        ],
+        "paths": [
+          "src/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "tasks": [
+          "feature",
+          "release"
+        ],
+        "lifecycle": [
+          "development",
+          "release"
+        ],
+        "exclusions": []
+      },
+      "source": "pages/app.md",
+      "statement": "Collect representative real target evidence before claiming product pass.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "observe-target"
+      ],
+      "evidence_refs": [
+        "app-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-tests",
+          "value": "required"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "route.plugin",
+      "owner": "maintainers",
+      "match": {
+        "tasks": [
+          "feature",
+          "release"
+        ],
+        "paths": [
+          "src/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "pages/core.md",
+          "pages/plugin.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "changes_persistence",
+              "equals": true
+            },
+            "add": [
+              "pages/data.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "PLUGIN-VERIFY"
+      ],
+      "executor_refs": [
+        "observe-target"
+      ],
+      "evidence_refs": [
+        "plugin-target-check"
+      ]
+    },
+    {
+      "id": "route.web",
+      "owner": "maintainers",
+      "match": {
+        "tasks": [
+          "feature",
+          "release"
+        ],
+        "paths": [
+          "src/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "pages/core.md",
+          "pages/web.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "changes_persistence",
+              "equals": true
+            },
+            "add": [
+              "pages/data.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "WEB-VERIFY"
+      ],
+      "executor_refs": [
+        "observe-target"
+      ],
+      "evidence_refs": [
+        "web-target-check"
+      ]
+    },
+    {
+      "id": "route.app",
+      "owner": "maintainers",
+      "match": {
+        "tasks": [
+          "feature",
+          "release"
+        ],
+        "paths": [
+          "src/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "pages/core.md",
+          "pages/app.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "changes_persistence",
+              "equals": true
+            },
+            "add": [
+              "pages/data.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "APP-VERIFY"
+      ],
+      "executor_refs": [
+        "observe-target"
+      ],
+      "evidence_refs": [
+        "app-target-check"
+      ]
+    }
+  ]
+}

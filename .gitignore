@@ -62,3 +62,10 @@ coverage.xml
 # ── 临时/工作日志 ───────────────────────────────────────
 task-summary*.md
 _test_*.py
+
+# Isolated local verification caches (never source deliverables)
+.npm-cache/
+.tmp/
+
+# Contains database secrets, sessions and password hashes: local operator only
+.private-ops/

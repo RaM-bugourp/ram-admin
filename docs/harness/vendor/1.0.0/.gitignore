@@ -1,0 +1,19 @@
+# Local Python/build caches; no dependencies are required for the CLI.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+node_modules/
+# Environment, credentials and local evidence never belong in a distribution.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+qa/tmp/
+qa/local-evidence/
+# Generated publication artifacts are built only after integration approval.
+release/

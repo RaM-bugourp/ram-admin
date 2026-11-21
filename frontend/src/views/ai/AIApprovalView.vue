@@ -72,7 +72,7 @@
                     </a-descriptions-item>
                     <a-descriptions-item label="原因">{{ currentApproval.reason || '-' }}</a-descriptions-item>
                 </a-descriptions>
-                <a-form layout="vertical" style="margin-top: 16px">
+                <a-form :model="{ reviewComment }" layout="vertical" style="margin-top: 16px">
                     <a-form-item label="审批备注">
                         <a-textarea
                             v-model="reviewComment"

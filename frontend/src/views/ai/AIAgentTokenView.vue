@@ -3,7 +3,8 @@
         <a-card :bordered="false" title="签发 Agent 授权 Token">
             <p class="hint">
                 root 可以为 Agent 签发授权 Token。Agent 凭借此 Token 可以提交审批请求（但所有写操作仍需 root 审批）。
-                Token 仅在签发时返回一次，请妥善保存。
+                Token 仅在签发时返回一次，请妥善保存。旧版 Token 已失效，需重新签发；签发人停用、删除或失去 root 权限后授权不可用。
+                撤销使用签发响应中的 token_id 调用 root 专属 API；本页暂不提供撤销操作。
             </p>
             <a-form :model="form" layout="inline" @submit="handleIssue">
                 <a-form-item field="agent_id" label="Agent ID" :rules="[{ required: true, message: '请输入 Agent ID' }]">

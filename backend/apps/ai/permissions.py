@@ -1,26 +1,35 @@
-"""AI permissions — root-only access + agent token verification."""
+"""AI permissions and stateful, revocable Agent credentials.
+
+v2 tokens are deliberately incompatible with legacy stateless credentials.
+Only a digest is persisted. Verification always consults the current database.
+"""
 import hashlib
 import hmac
-import json
-import time
+import re
+import uuid
+from datetime import timedelta
 
 from django.conf import settings
+from django.db import DatabaseError
+from django.utils import timezone
+from rest_framework.exceptions import APIException, PermissionDenied, ValidationError
 from rest_framework.permissions import BasePermission
 
 
 def _has_root_role(user) -> bool:
-    """检查用户是否持有 root 角色."""
-    if not user or not user.id or not getattr(user, 'is_authenticated', False):
+    """Re-read issuer state; session/permission object snapshots are not authority."""
+    if not user or not getattr(user, 'pk', None) or not getattr(user, 'is_authenticated', False):
         return False
-    if getattr(user, 'is_superuser', False):
+    from apps.rbac.models import User, UserRole
+    current = User.objects.filter(pk=user.pk, is_active=True).first()
+    if current is None:
+        return False
+    if current.is_superuser:
         return True
-    from apps.rbac.models import UserRole
-    return UserRole.objects.filter(user=user, role__code='root').exists()
+    return UserRole.objects.filter(user=current, role__code='root', role__is_deleted=False).exists()
 
 
 class RootOnlyAI(BasePermission):
-    """只有 root 角色可以调用 AI 接口."""
-
     message = '仅 root 角色可调用 AI 功能'
 
     def has_permission(self, request, view):
@@ -28,69 +37,103 @@ class RootOnlyAI(BasePermission):
 
 
 class RootOrAgentAuth(BasePermission):
-    """允许 root 直接访问，或 Agent 携带有效 root 签发的 Token 访问.
+    """A valid root session remains independent of the optional Agent header.
 
-    Token 格式: <exp_timestamp>.<root_user_id>.<signature>
-    signature = HMAC-SHA256(secret, f"{exp}.{root_user_id}")
+    Agents receive payload metadata only; they never become authenticated roots.
+    DRF SessionAuthentication and its CSRF protection remain unchanged.
     """
-
     message = '需要 root 身份或有效的 Agent 授权 Token'
 
     def has_permission(self, request, view):
-        # 1) root 直接放行
         if _has_root_role(request.user):
             return True
-
-        # 2) 检查 Agent Token
         token = request.headers.get('X-Agent-Token', '') or request.META.get('HTTP_X_AGENT_TOKEN', '')
-        if not token:
-            return False
-
         payload = AgentTokenService.verify(token)
         if payload is None:
             return False
-
-        # 把解析出的 Agent 身份挂到 request 上，供 view 使用
         request._agent_payload = payload
         return True
 
 
+class AgentTokenUnavailable(APIException):
+    status_code = 503
+    default_detail = 'Agent 授权服务不可用'
+    default_code = 'agent_token_unavailable'
+
+
 class AgentTokenService:
-    """Agent Token 签发与验证（HMAC，无状态）."""
+    """Database allowlist with random handles and an explicit dedicated secret.
+
+    Revocation prevents subsequent verifications, not requests already authorized.
+    Restoring issuer privileges can restore an unexpired, unrevoked credential.
+    Explicit revocation is permanent. Database errors never fall back to HMAC-only.
+    """
+    _TOKEN = re.compile(r'v2\.([0-9a-f]{32})\.([0-9a-f]{64})', re.ASCII)
 
     @staticmethod
-    def _secret() -> str:
-        return getattr(settings, 'AI_AGENT_TOKEN_SECRET', '') or 'insecure-default'
+    def _secret() -> str | None:
+        value = getattr(settings, 'AI_AGENT_TOKEN_SECRET', '')
+        return value if isinstance(value, str) and len(value) >= 32 else None
 
     @classmethod
     def issue(cls, *, root_user_id: int, agent_id: str, ttl_hours: int = 24) -> str:
-        """root 为某个 Agent 签发 Token."""
-        exp = int(time.time()) + ttl_hours * 3600
-        body = f"{exp}.{root_user_id}.{agent_id}"
-        sig = hmac.new(cls._secret().encode(), body.encode(), hashlib.sha256).hexdigest()
-        return f"{body}.{sig}"
+        from apps.ai.models import AgentCredential
+        from apps.rbac.models import User
+        secret = cls._secret()
+        if secret is None:
+            raise AgentTokenUnavailable()
+        if (not isinstance(agent_id, str) or not agent_id.strip() or len(agent_id) > 100
+                or isinstance(ttl_hours, bool) or not isinstance(ttl_hours, int) or not 1 <= ttl_hours <= 720):
+            raise ValidationError('无效的 Agent ID 或授权时长')
+        issuer = User.objects.filter(pk=root_user_id).first()
+        if not _has_root_role(issuer):
+            raise PermissionDenied('需要有效的 root 签发人')
+        token_id = uuid.uuid4()
+        body = f'v2.{token_id.hex}'
+        signature = hmac.new(secret.encode(), body.encode('ascii'), hashlib.sha256).hexdigest()
+        token = f'{body}.{signature}'
+        AgentCredential.objects.create(
+            id=token_id, issuer=issuer, agent_id=agent_id,
+            token_digest=hashlib.sha256(token.encode('ascii')).hexdigest(),
+            expires_at=timezone.now() + timedelta(hours=ttl_hours),
+        )
+        return token
 
     @classmethod
     def verify(cls, token: str) -> dict | None:
-        """验证 Token，成功返回 {exp, root_user_id, agent_id}，失败返回 None."""
-        if not token or token.count('.') != 3:
+        from apps.ai.models import AgentCredential
+        secret = cls._secret()
+        if secret is None or not isinstance(token, str) or len(token) > 100:
             return None
-        exp_str, root_id_str, agent_id, sig = token.split('.')
+        match = cls._TOKEN.fullmatch(token)
+        if match is None:
+            return None
+        handle, signature = match.groups()
+        expected = hmac.new(secret.encode(), f'v2.{handle}'.encode('ascii'), hashlib.sha256).hexdigest()
+        if not hmac.compare_digest(expected, signature):
+            return None
         try:
-            exp = int(exp_str)
-            root_user_id = int(root_id_str)
-        except ValueError:
+            credential = AgentCredential.objects.select_related('issuer').filter(
+                id=uuid.UUID(hex=handle),
+                token_digest=hashlib.sha256(token.encode('ascii')).hexdigest(),
+                revoked_at__isnull=True,
+                expires_at__gt=timezone.now(),
+            ).first()
+            if credential is None or not _has_root_role(credential.issuer):
+                return None
+        except DatabaseError:
             return None
+        return {'exp': int(credential.expires_at.timestamp()), 'root_user_id': credential.issuer_id,
+                'agent_id': credential.agent_id, 'token_id': str(credential.id)}
 
-        body = f"{exp_str}.{root_id_str}.{agent_id}"
-        expected = hmac.new(cls._secret().encode(), body.encode(), hashlib.sha256).hexdigest()
-        if not hmac.compare_digest(expected, sig):
-            return None
-        if exp < time.time():
-            return None
+    @classmethod
+    def revoke(cls, *, token_id, actor) -> None:
+        """Any currently valid root can revoke; unknown/already revoked is idempotent.
 
-        return {
-            'exp': exp,
-            'root_user_id': root_user_id,
-            'agent_id': agent_id,
-        }
+        This standalone UPDATE commits before an autocommit API response. There
+        is no soft-delete manager, and no code path clears revoked_at.
+        """
+        from apps.ai.models import AgentCredential
+        if not _has_root_role(actor):
+            raise PermissionDenied('需要有效的 root 身份')
+        AgentCredential.objects.filter(pk=token_id, revoked_at__isnull=True).update(revoked_at=timezone.now())

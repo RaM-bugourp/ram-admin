@@ -9,7 +9,7 @@
                     <a-input v-model="form.username" placeholder="admin" allow-clear />
                 </a-form-item>
                 <a-form-item field="password" label="密码" :rules="[{ required: true, message: '请输入密码' }]">
-                    <a-input-password v-model="form.password" placeholder="admin123" allow-clear />
+                    <a-input-password v-model="form.password" placeholder="请输入密码" allow-clear />
                 </a-form-item>
                 <a-form-item>
                     <a-button type="primary" html-type="submit" long :loading="loading">登录</a-button>
@@ -39,8 +39,9 @@ onMounted(() => {
     client.get('/auth/csrf/').catch(() => {})
 })
 
-async function handleLogin() {
-    if (!form.username || !form.password) return
+async function handleLogin(_data: unknown, ev?: Event) {
+    ev?.preventDefault()
+    if (loading.value || !form.username || !form.password) return
     loading.value = true
     errorMsg.value = ''
     try {
@@ -67,7 +68,7 @@ async function handleLogin() {
     background: var(--color-fill-2);
 }
 .login-card {
-    width: 400px;
+    width: min(400px, calc(100vw - 24px));
 }
 .login-title {
     text-align: center;

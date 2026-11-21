@@ -1,0 +1,381 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:harness:v1:evidence",
+  "title": "Harness v1 evidence",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "change_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rule_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rule_revision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "check_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "executor_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "executor_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "fail",
+              "blocked",
+              "not-run",
+              "not-applicable"
+            ]
+          },
+          "scope": {
+            "type": "object",
+            "properties": {
+              "actions": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "paths": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "platforms": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "tasks": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "lifecycle": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "exclusions": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 0,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "actions",
+              "paths",
+              "platforms",
+              "tasks",
+              "lifecycle",
+              "exclusions"
+            ],
+            "additionalProperties": false
+          },
+          "routing_digest": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "base_commit": {
+                "type": "string",
+                "minLength": 1
+              },
+              "commit": {
+                "type": "string",
+                "minLength": 1
+              },
+              "dirty_digest": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            },
+            "required": [
+              "base_commit",
+              "commit",
+              "dirty_digest"
+            ],
+            "additionalProperties": false
+          },
+          "environment": {
+            "type": "object",
+            "properties": {
+              "os": {
+                "type": "string",
+                "minLength": 1
+              },
+              "arch": {
+                "type": "string",
+                "minLength": 1
+              },
+              "shell": {
+                "type": "string",
+                "minLength": 1
+              },
+              "toolchain_digest": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "config_digest": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "permissions_digest": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "dependencies_digest": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            },
+            "required": [
+              "os",
+              "arch",
+              "shell",
+              "toolchain_digest",
+              "config_digest",
+              "permissions_digest",
+              "dependencies_digest"
+            ],
+            "additionalProperties": false
+          },
+          "target": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "minLength": 1
+              },
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1
+              },
+              "simulated": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "kind",
+              "id",
+              "version",
+              "simulated"
+            ],
+            "additionalProperties": false
+          },
+          "artifacts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
+              "required": [
+                "path",
+                "sha256"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "collected_at": {
+            "type": "string",
+            "minLength": 1
+          },
+          "valid_until": {
+            "type": "string",
+            "minLength": 1
+          },
+          "invalidation_triggers": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "change",
+                "source",
+                "environment",
+                "target",
+                "artifacts",
+                "rule",
+                "executor",
+                "scope",
+                "routing"
+              ]
+            },
+            "minItems": 9,
+            "uniqueItems": true
+          },
+          "execution": {
+            "type": "object",
+            "properties": {
+              "performed": {
+                "type": "boolean"
+              },
+              "command": {
+                "type": "string"
+              },
+              "cwd": {
+                "type": "string",
+                "minLength": 1
+              },
+              "exit_code": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "observation": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "performed",
+              "command",
+              "cwd",
+              "exit_code",
+              "observation"
+            ],
+            "additionalProperties": false
+          },
+          "na_basis": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              },
+              "scope_dimension": {
+                "type": "string",
+                "enum": [
+                  "tasks",
+                  "paths",
+                  "platforms",
+                  "actions",
+                  "lifecycle"
+                ]
+              },
+              "excluded_values": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "reason",
+              "scope_dimension",
+              "excluded_values"
+            ],
+            "additionalProperties": false
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "id",
+          "change_id",
+          "rule_id",
+          "rule_revision",
+          "check_id",
+          "executor_id",
+          "executor_version",
+          "status",
+          "scope",
+          "routing_digest",
+          "source",
+          "environment",
+          "target",
+          "artifacts",
+          "collected_at",
+          "valid_until",
+          "invalidation_triggers",
+          "execution",
+          "na_basis",
+          "limitations"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "schema_version",
+    "records"
+  ],
+  "additionalProperties": false
+}

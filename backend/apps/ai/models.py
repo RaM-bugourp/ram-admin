@@ -84,6 +84,10 @@ class AIApproval(BaseModel):
     status = models.CharField(
         max_length=20, choices=APPROVAL_STATUS_CHOICES, default='pending', verbose_name="状态"
     )
+    submitted_by = models.ForeignKey(
+        'rbac.User', null=True, blank=True, on_delete=models.SET_NULL,
+        related_name='submitted_ai_approvals', verbose_name='真实提交主体（历史可未知）',
+    )
     approved_by = models.ForeignKey(
         'rbac.User', null=True, blank=True, on_delete=models.SET_NULL,
         related_name='ai_approvals', verbose_name="审批人",
@@ -176,3 +180,21 @@ class Notification(BaseModel):
     def mark_read(self):
         self.is_read = True
         self.save(update_fields=['is_read', 'updated_at'])
+
+
+class AgentCredential(models.Model):
+    """Revocable v2 credential registry. No raw token or signing secret is stored.
+
+    Intentionally not BaseModel: revocation has no soft-delete/filter bypass.
+    """
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    token_digest = models.CharField(max_length=64, unique=True, editable=False)
+    issuer = models.ForeignKey('rbac.User', on_delete=models.CASCADE, related_name='agent_credentials')
+    agent_id = models.CharField(max_length=100)
+    expires_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    revoked_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        db_table = 'ai_agent_credentials'
+

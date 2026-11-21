@@ -7,6 +7,7 @@ export interface RoleOutput {
     code: string
     description: string
     is_unique: boolean
+    permissions: string[]
     user_count: number
     created_at: string
     updated_at: string
@@ -18,6 +19,7 @@ export interface RoleCreateInput {
     code: string
     description?: string
     is_unique?: boolean
+    permissions?: string[]
 }
 
 /** 更新角色输入（全可选） */
@@ -26,4 +28,5 @@ export interface RoleUpdateInput {
     code?: string
     description?: string
     is_unique?: boolean
+    permissions?: string[]
 }

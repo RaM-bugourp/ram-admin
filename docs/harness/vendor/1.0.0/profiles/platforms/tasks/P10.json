@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "change_id": "fixture-P10",
+  "tasks": [
+    "P10"
+  ],
+  "paths": [
+    "profiles/platforms/targets/plugin/sample.txt"
+  ],
+  "platforms": [
+    "plugin"
+  ],
+  "domains": [],
+  "effects": [],
+  "actions": [
+    "edit"
+  ],
+  "lifecycle": "development",
+  "facts": {
+    "plugin_has_resources": false,
+    "plugin_has_ui": false,
+    "plugin_uses_host_ui": false,
+    "plugin_has_requests": false,
+    "web_has_frontend": false,
+    "web_affects_api": false,
+    "web_consumes_api": false,
+    "web_has_db": false,
+    "web_affects_db": false,
+    "web_affects_ui": false,
+    "app_has_persistence": false,
+    "app_has_bridge_sdk_permissions": false,
+    "app_is_networked": false
+  },
+  "approved_paths": [
+    "profiles/platforms/targets/**"
+  ],
+  "source": {
+    "base_commit": "fixture-base-v1",
+    "commit": "fixture-target-v1",
+    "dirty_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "environment": {
+    "os": "synthetic-test-os",
+    "arch": "synthetic-test-arch",
+    "shell": "synthetic-test-shell",
+    "toolchain_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+    "config_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+    "permissions_digest": "3333333333333333333333333333333333333333333333333333333333333333",
+    "dependencies_digest": "4444444444444444444444444444444444444444444444444444444444444444"
+  },
+  "target": {
+    "kind": "synthetic-routing-fixture",
+    "id": "offline-platform-catalog-v1",
+    "version": "1",
+    "simulated": true
+  },
+  "artifacts": [
+    {
+      "path": "profiles/platforms/fixture.txt",
+      "sha256": "00513b0232ccbb39f2c95e33fa54b9d20b9b4c745b98b2384e7dcca056bf46b2"
+    }
+  ]
+}

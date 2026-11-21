@@ -1,223 +1,83 @@
-"""AI approval workflow — two-phase approval for Agent write operations."""
-import logging
-from typing import Optional
-
+"""Two-phase optional agent workflow with explicit current human authority."""
 from django.db import transaction
 from django.utils import timezone
-
-from apps.ai.models import AIApproval, AIApprovalLog
+from apps.ai.models import AIApproval,AIApprovalLog
 from apps.ai.services.ai_errors import AIApprovalError
+from apps.ai.permissions import _has_root_role
+from apps.ai.services.approval_params import prepare
 from apps.common.exceptions import BusinessError
 
-logger = logging.getLogger(__name__)
-
+def require_root(user):
+    from apps.rbac.permissions import effective_user
+    current=effective_user(user)
+    if not _has_root_role(current): raise AIApprovalError('需要有效root',code='PERMISSION_DENIED',status=403)
+    return current
 
 class AIApprovalService:
-    """Agent 操作两阶段审批.
-
-    1. Agent 提交操作 → status=pending
-    2. Root 审批：
-       - approve → status=approved → 自动执行 → status=executed
-       - reject  → status=rejected
-    """
-
-    # ── 提交 ────────────────────────────────────────────────────
-
     @transaction.atomic
-    def submit_operation(
-        self, *, agent_id: str, operation: str,
-        params: dict, reason: str, root_user=None,
-    ) -> AIApproval:
-        """Agent 提交操作（Agent 自身不能执行写操作）."""
-        if not agent_id:
-            raise AIApprovalError('agent_id 不能为空', status=400)
-        if operation not in SUPPORTED_OPERATIONS:
-            raise AIApprovalError(
-                f'不支持的操作类型: {operation}（支持: {", ".join(SUPPORTED_OPERATIONS)}）',
-                status=400,
-            )
-
-        approval = AIApproval.objects.create(
-            agent_id=agent_id,
-            operation=operation,
-            params=params or {},
-            reason=reason or '',
-            status='pending',
-        )
-
-        # 审计：提交动作
-        if root_user is not None:
-            AIApprovalLog.objects.create(
-                approval=approval, root_user=root_user,
-                action='submit', comment=reason or '',
-            )
-        else:
-            AIApprovalLog.objects.create(
-                approval=approval, root_user_id=_system_user_id(),
-                action='submit', comment=f"agent={agent_id}: {reason or ''}",
-            )
-
-        logger.info("AI approval submitted: agent=%s op=%s id=%s",
-                    agent_id, operation, approval.id)
+    def submit_operation(self,*,agent_id,operation,params,reason,root_user=None):
+        issuer=require_root(root_user)
+        if not agent_id or operation not in SUPPORTED_OPERATIONS: raise AIApprovalError('不支持的操作',status=400)
+        params=prepare(operation,params)
+        approval=AIApproval.objects.create(agent_id=agent_id,operation=operation,params=params,reason='[REDACTED submission reason]' if reason else '',status='pending',submitted_by=issuer)
+        AIApprovalLog.objects.create(approval=approval,root_user=issuer,action='submit',comment='提交审批')
+        from apps.ai.services.ai_audit import AIAuditService
+        AIAuditService.log_agent_submission(agent_id=agent_id,operation=operation,params={},approval_id=approval.pk,root_user=issuer)
         return approval
-
-    # ── 列表查询 ────────────────────────────────────────────────
-
-    def list_approvals(self, *, status_filter: str = '',
-                       agent_id: str = '', page: int = 1, page_size: int = 20) -> dict:
+    def list_approvals(self,*,status_filter='',agent_id='',page=1,page_size=20):
         from django.core.paginator import Paginator
-        qs = AIApproval.objects.all().order_by('-created_at')
-        if status_filter:
-            qs = qs.filter(status=status_filter)
-        if agent_id:
-            qs = qs.filter(agent_id=agent_id)
-
-        paginator = Paginator(qs, min(page_size, 100))
-        page_obj = paginator.get_page(page)
-        return {
-            'items': list(page_obj.object_list),
-            'page': page_obj.number,
-            'page_size': min(page_size, 100),
-            'total': paginator.count,
-            'total_pages': paginator.num_pages,
-        }
-
-    def get_detail(self, approval_id: int) -> AIApproval:
-        try:
-            return AIApproval.objects.get(id=approval_id)
-        except AIApproval.DoesNotExist:
-            raise AIApprovalError('审批记录不存在', code='APPROVAL_NOT_FOUND', status=404)
-
-    # ── 审批 ────────────────────────────────────────────────────
-
+        qs=AIApproval.objects.order_by('-created_at','-id')
+        if status_filter: qs=qs.filter(status=status_filter)
+        if agent_id: qs=qs.filter(agent_id=agent_id)
+        paginator=Paginator(qs,page_size);obj=paginator.get_page(page)
+        return {'items':list(obj.object_list),'page':obj.number,'page_size':page_size,'total':paginator.count,'total_pages':paginator.num_pages}
+    def get_detail(self,approval_id):
+        try:return AIApproval.objects.get(pk=approval_id)
+        except AIApproval.DoesNotExist:raise AIApprovalError('审批记录不存在',code='APPROVAL_NOT_FOUND',status=404)
     @transaction.atomic
-    def review(self, *, approval_id: int, root_user, action: str,
-               comment: str = '', ip_address: str = '') -> AIApproval:
-        """Root 用户审批操作."""
-        if action not in ('approve', 'reject'):
-            raise AIApprovalError('action 必须是 approve 或 reject', status=400)
-
-        try:
-            approval = AIApproval.objects.get(id=approval_id)
-        except AIApproval.DoesNotExist:
-            raise AIApprovalError('审批记录不存在', code='APPROVAL_NOT_FOUND', status=404)
-
-        if approval.status != 'pending':
-            raise AIApprovalError(
-                f'该审批已处理 (当前状态: {approval.status})',
-                code='APPROVAL_ALREADY_PROCESSED', status=409,
-            )
-
-        approval.approved_by = root_user
-        approval.approved_at = timezone.now()
-        approval.approver_comment = comment or ''
-
-        if action == 'reject':
-            approval.status = 'rejected'
-            approval.save()
-            AIApprovalLog.objects.create(
-                approval=approval, root_user=root_user,
-                action='reject', comment=comment or '', ip_address=ip_address or None,
-            )
-            logger.info("AI approval #%s REJECTED by %s", approval_id, root_user.username)
-            return approval
-
-        # approve
-        approval.status = 'approved'
-        approval.save()
-        AIApprovalLog.objects.create(
-            approval=approval, root_user=root_user,
-            action='approve', comment=comment or '', ip_address=ip_address or None,
-        )
-
-        # 自动执行（如果配置开启）
-        if getattr(__import__('django.conf', fromlist=['settings']).settings,
-                   'AI_APPROVAL_AUTO_EXECUTE', True):
+    def review(self,*,approval_id,root_user,action,comment='',ip_address=''):
+        from apps.rbac.services.locking import reserve_lifecycle_write
+        reserve_lifecycle_write()
+        reviewer=require_root(root_user)
+        if action not in ('approve','reject'):raise AIApprovalError('无效action',status=400)
+        approval=AIApproval.objects.select_for_update().filter(pk=approval_id).first()
+        if not approval:raise AIApprovalError('审批记录不存在',code='APPROVAL_NOT_FOUND',status=404)
+        # Conditional claim also prevents double execution on SQLite where row locks are no-ops.
+        state='approved' if action=='approve' else 'rejected'
+        now=timezone.now()
+        if AIApproval.objects.filter(pk=approval_id,status='pending').update(status=state,approved_by=reviewer,approved_at=now,approver_comment='[REDACTED review comment]' if comment else '')!=1:
+            raise AIApprovalError('审批已处理',code='APPROVAL_ALREADY_PROCESSED',status=409)
+        approval.refresh_from_db()
+        AIApprovalLog.objects.create(approval=approval,root_user=reviewer,action=action,comment='审批通过' if action=='approve' else '审批拒绝',ip_address=ip_address or None)
+        from django.conf import settings
+        if action=='approve' and getattr(settings,'AI_APPROVAL_AUTO_EXECUTE',True):
             try:
-                self._execute_operation(approval)
-                approval.status = 'executed'
-                approval.executed_at = timezone.now()
+                with transaction.atomic():
+                    self._execute_operation(approval,actor=reviewer)
+                    approval.status='executed';approval.executed_at=timezone.now()
+                    approval.params={k:v for k,v in approval.params.items() if k!='password_digest'}
+                    approval.save()
+                    AIApprovalLog.objects.create(approval=approval,root_user=reviewer,action='execute',comment='执行成功')
+            except Exception as error:
+                approval.refresh_from_db();approval.status='failed'
+                # Error messages may contain submitted values; store only a bounded code.
+                approval.execution_error=getattr(error,'code',None) or type(error).__name__
+                approval.params={k:v for k,v in approval.params.items() if k!='password_digest'}
                 approval.save()
-                AIApprovalLog.objects.create(
-                    approval=approval, root_user=root_user, action='execute',
-                    comment='自动执行成功',
-                )
-                logger.info("AI approval #%s EXECUTED", approval_id)
-            except Exception as e:  # noqa: BLE001 — 执行失败要落库
-                approval.status = 'failed'
-                approval.execution_error = str(e)[:1000]
-                approval.save()
-                AIApprovalLog.objects.create(
-                    approval=approval, root_user=root_user, action='execute',
-                    comment=f'执行失败: {e}',
-                )
-                logger.exception("AI approval #%s execution FAILED: %s", approval_id, e)
-
+                AIApprovalLog.objects.create(approval=approval,root_user=reviewer,action='execute',comment='执行失败')
+        if action=='reject':
+            approval.params={k:v for k,v in approval.params.items() if k!='password_digest'};approval.save(update_fields=['params'])
         return approval
+    def _execute_operation(self,approval,*,actor=None):
+        actor=require_root(actor)
+        from apps.rbac.services.user_service import UserService
+        service=UserService();params=dict(approval.params)
+        if approval.operation=='create_user': return service.create_from_approval(approval,actor=actor)
+        user_id=params.pop('user_id',None)
+        if type(user_id) is not int or user_id<=0:raise AIApprovalError('缺少有效user_id',status=400)
+        if approval.operation=='delete_user':return service.delete_user(user_id,actor=actor)
+        if approval.operation in ('update_user','assign_roles'):return service.update_user(user_id,params,actor=actor)
+        raise AIApprovalError('不支持的操作',status=400)
 
-    # ── 操作执行分发 ────────────────────────────────────────────
-
-    def _execute_operation(self, approval: AIApproval) -> None:
-        """根据 operation 类型分发到对应 Service."""
-        handler = SUPPORTED_OPERATIONS.get(approval.operation)
-        if not handler:
-            raise AIApprovalError(f'不支持的操作: {approval.operation}', status=400)
-        handler(approval.params)
-
-
-# ── 支持的操作集（白名单）─────────────────────────────────────
-
-def _op_create_user(params: dict) -> dict:
-    from apps.rbac.services.user_service import UserService
-    user = UserService().create_user(params)
-    return {'user_id': user.id, 'username': user.username}
-
-
-def _op_update_user(params: dict) -> dict:
-    from apps.rbac.services.user_service import UserService
-    user_id = params.get('user_id') or params.get('id')
-    if not user_id:
-        raise AIApprovalError('update_user 需要 user_id', status=400)
-    data = {k: v for k, v in params.items() if k not in ('user_id', 'id')}
-    user = UserService().update_user(int(user_id), data)
-    return {'user_id': user.id}
-
-
-def _op_delete_user(params: dict) -> dict:
-    from apps.rbac.services.user_service import UserService
-    user_id = params.get('user_id') or params.get('id')
-    if not user_id:
-        raise AIApprovalError('delete_user 需要 user_id', status=400)
-    UserService().delete_user(int(user_id))
-    return {'deleted': True}
-
-
-def _op_assign_roles(params: dict) -> dict:
-    from apps.rbac.services.user_service import UserService
-    user_id = params.get('user_id')
-    role_ids = params.get('role_ids', [])
-    if not user_id:
-        raise AIApprovalError('assign_roles 需要 user_id', status=400)
-    UserService().update_user(int(user_id), {'role_ids': role_ids})
-    return {'user_id': user_id, 'role_ids': role_ids}
-
-
-SUPPORTED_OPERATIONS = {
-    'create_user': _op_create_user,
-    'update_user': _op_update_user,
-    'delete_user': _op_delete_user,
-    'assign_roles': _op_assign_roles,
-}
-
-
-def _system_user_id() -> int:
-    """获取一个系统占位用户 ID（用于 Agent 提交时无 root 的审计落库）.
-
-    优先用第一个 root 用户，找不到则用第一个用户，都没有则 0。
-    """
-    from apps.rbac.models import User, UserRole
-    root = UserRole.objects.filter(role__code='root').order_by('user_id').first()
-    if root:
-        return root.user_id
-    any_user = User.objects.first()
-    return any_user.id if any_user else 0
+# Public operation names remain stable; no handler may omit an actor.
+SUPPORTED_OPERATIONS={name:None for name in ('create_user','update_user','delete_user','assign_roles')}

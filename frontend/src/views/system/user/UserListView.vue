@@ -1,12 +1,15 @@
 <template>
     <div class="user-page">
+        <a-alert v-if="error" type="error">{{ error }} <a-button @click="fetchList">重试</a-button></a-alert>
         <!-- 搜索栏 -->
         <div class="toolbar">
             <a-input-search
                 v-model="searchText"
                 placeholder="搜索用户名 / 邮箱"
-                style="width: 320px"
+                style="width: min(320px, 100%)"
                 @search="handleSearch"
+                @press-enter="handleSearch"
+                @clear="handleSearch"
                 allow-clear
             />
             <a-button v-if="isAdmin" type="primary" @click="handleCreate">
@@ -17,6 +20,7 @@
 
         <!-- 表格 -->
         <a-table
+            :scroll="{ x: 950 }"
             :columns="columns"
             :data="tableData"
             :loading="loading"
@@ -51,6 +55,7 @@
                     <a-button size="small" status="warning" @click="handleResetPwd(record)">
                         重置密码
                     </a-button>
+                    <a-popconfirm v-if="isRoot" content="撤销该用户全部会话？包括其当前会话；若是本人，确认后立即返回登录。不会改密码，仍可重新登录。" @ok="revokeAll(record.id)"><a-button size="small" status="warning" :disabled="revoking">撤销全部会话</a-button></a-popconfirm>
                     <a-popconfirm content="确定删除该用户？" @ok="handleDelete(record.id)">
                         <a-button size="small" status="danger">删除</a-button>
                     </a-popconfirm>
@@ -87,7 +92,12 @@ import type { UserOutput } from '@/types/user'
 import UserFormDialog from './UserFormDialog.vue'
 
 const store = useStore()
-const isAdmin = computed(() => store.getters['user/isAdmin'])
+const isAdmin = computed(() => store.getters['user/can']('users.write'))
+const isRoot = computed(() => store.getters['user/isRoot'])
+const revoking = ref(false)
+import client from '@/api/client'
+import router from '@/router'
+async function revokeAll(user_id:number){if(revoking.value)return;revoking.value=true;try{const r:any=await client.post('/auth/revoke-user-sessions/',{user_id});Message.success('该用户全部会话已撤销');if(r.data.current_revoked){store.commit('user/CLEAR');await router.replace('/login')}}catch(e:any){Message.error(e.message)}finally{revoking.value=false}}
 
 // ── 表格列定义 ──────────────────────────────────
 const columns = [
@@ -102,6 +112,8 @@ const columns = [
 
 // ── 数据状态 ────────────────────────────────────
 const loading = ref(false)
+const error = ref('')
+let generation = 0
 const searchText = ref('')
 const tableData = ref<UserOutput[]>([])
 const currentPage = ref(1)
@@ -123,17 +135,21 @@ const pwdForm = reactive({ password: '' })
 
 // ── 数据加载 ────────────────────────────────────
 async function fetchList() {
+    const requestId = ++generation
     loading.value = true
+    error.value = ''
     try {
         const res = await userApi.list({ page: currentPage.value, search: searchText.value })
+        if (requestId !== generation) return
         tableData.value = res.data
+        currentPage.value = res.pagination.page
         total.value = res.pagination.total
         pagination.total = res.pagination.total
         pagination.current = res.pagination.page
     } catch (e: any) {
-        Message.error(e.message || '加载失败')
+        if (requestId === generation) error.value = e.message || '加载失败'
     } finally {
-        loading.value = false
+        if (requestId === generation) loading.value = false
     }
 }
 

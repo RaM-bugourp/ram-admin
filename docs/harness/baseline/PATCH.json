@@ -1,0 +1,55 @@
+{
+  "head": "3a4fd98bb98030c67261a4973048c6ba133a828e",
+  "files": [
+    {
+      "path": "backend/apps/rbac/permissions.py",
+      "baseline_sha256": "cc389f81d7810eb91c464797a718571c162eaa913500552aa6a7692397223260",
+      "runtime_sha256": "4be4a40091012ad286c3883582439cc27a68bf86064096aafc7e9d68509b8574"
+    },
+    {
+      "path": "backend/apps/rbac/services/user_service.py",
+      "baseline_sha256": "82f4292955bbf34bb0fdb7b13f09133cdfeeb334712d653cf13e7f07ce192869",
+      "runtime_sha256": "cca66203e5d3c355f52c60eb11d27b586debfa2300481cd3fcce66c92649515d"
+    },
+    {
+      "path": "backend/apps/rbac/views/role_views.py",
+      "baseline_sha256": "dcd2297e7fbf73388bc527958c269616fd2196c58234b554728475115442dd17",
+      "runtime_sha256": "6f4a28696c46ec589b744309a37099430cac9e08e1501068ba3d521866e83669"
+    },
+    {
+      "path": "backend/apps/rbac/views/user_views.py",
+      "baseline_sha256": "7f8e0f638858c4f9c8495698aa3b892b5f7c7e23df6e9b8e84b1f0b28281de63",
+      "runtime_sha256": "8f07812526f42eabc0f166e00efa61b025ef8864df2e1e49c99b22c59d946e71"
+    },
+    {
+      "path": "frontend/src/layouts/MainLayout.vue",
+      "baseline_sha256": "1277f97ffaff055936076882133f65ff218cc6779c62196107184f6439dff8e5",
+      "runtime_sha256": "d1fddb75e305587acf36dba4502412ae94fda351968cb5e0700acf576a3b6985"
+    },
+    {
+      "path": "frontend/src/types/ai.ts",
+      "baseline_sha256": "0bf7bf4753574feb5338aa72481d86a4957e055aa7b314ba4ceb5a3c8b425220",
+      "runtime_sha256": "108c36ea43f7e1e6125301d8a31b544aaf6eb609fe53c29d2a82277278cb75c9"
+    },
+    {
+      "path": "frontend/src/views/ai/AIApprovalView.vue",
+      "baseline_sha256": "577658ad76cf8992a2633a24c5fed17ac6a27a041eb4d2102fde17f49c092138",
+      "runtime_sha256": "b1c11760576865396d34c1fdaa4ce99ecc945c8e31453b9cb770b84eaa40881f"
+    },
+    {
+      "path": "frontend/src/views/ai/AINotificationView.vue",
+      "baseline_sha256": "427df0c59c38d503a374bbdc0915a922c8aca144657f0362f0863df0aee7acc5",
+      "runtime_sha256": "44fa31a9f320ee8e6e2ad3b81ac7dfb9b6984ec79b04eadc43df9b521fce1c3f"
+    },
+    {
+      "path": "frontend/src/views/login/LoginView.vue",
+      "baseline_sha256": "990409b22d196b0313ed3b58f0f2f6818dad2aef388d11b929c1d541686e71c9",
+      "runtime_sha256": "a58ab41adfec109754b5b1ece98768aeb35399177bb75a611f1e463c420c6a24"
+    }
+  ],
+  "local_only": [
+    "backend/local_demo_settings.py (random secrets; not included in patch)",
+    "backend/db.sqlite3 (synthetic seed; not public)"
+  ],
+  "no_git_operations": true
+}

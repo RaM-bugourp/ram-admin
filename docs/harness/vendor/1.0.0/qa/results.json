@@ -1,0 +1,519 @@
+{
+  "synthetic_only": true,
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "cases": 74,
+  "passed": 74,
+  "failed": 0,
+  "results": [
+    {
+      "name": "independent fixture schema manifest",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "independent fixture schema task",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "independent fixture schema evidence",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "valid routing",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "consistent self-reported pass remains proposed",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "route union dedup and deterministic repeat",
+      "pass": true,
+      "detail": [
+        "pages/base.md",
+        "pages/second.md"
+      ]
+    },
+    {
+      "name": "conditional True",
+      "pass": true,
+      "detail": "pass"
+    },
+    {
+      "name": "conditional False",
+      "pass": true,
+      "detail": "pass"
+    },
+    {
+      "name": "conditional None",
+      "pass": true,
+      "detail": "blocked"
+    },
+    {
+      "name": "conditional absent",
+      "pass": true,
+      "detail": "blocked"
+    },
+    {
+      "name": "unknown unmatched task blocked",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "OR route positive path-only",
+      "pass": true,
+      "detail": "pass"
+    },
+    {
+      "name": "OR route positive task-only",
+      "pass": true,
+      "detail": "pass"
+    },
+    {
+      "name": "OR does not bypass AND platforms",
+      "pass": true,
+      "detail": "blocked"
+    },
+    {
+      "name": "OR does not bypass AND domains",
+      "pass": true,
+      "detail": "blocked"
+    },
+    {
+      "name": "OR does not bypass AND effects",
+      "pass": true,
+      "detail": "blocked"
+    },
+    {
+      "name": "literal brackets valid references and paths",
+      "pass": true,
+      "detail": [
+        "pages/[policy].md"
+      ]
+    },
+    {
+      "name": "approved path prefix is not authority",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "glob a.txt **/a.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "glob a/b/a.txt **/a.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "glob src/a.txt src/**",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "glob src/a/b.txt src/**",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "glob src/ab src/a",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "glob src/a src/?",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "scope dimensions AND entries OR",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "hard constraint conflict stops edit",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "duplicate ID owners",
+      "pass": true,
+      "detail": {
+        "code": "E_DUPLICATE_ID",
+        "path": "$/owners/1/id",
+        "message": "owner"
+      }
+    },
+    {
+      "name": "duplicate ID executors",
+      "pass": true,
+      "detail": {
+        "code": "E_DUPLICATE_ID",
+        "path": "$/executors/1/id",
+        "message": "observer"
+      }
+    },
+    {
+      "name": "duplicate ID rules",
+      "pass": true,
+      "detail": {
+        "code": "E_DUPLICATE_ID",
+        "path": "$/rules/1/id",
+        "message": "RULE"
+      }
+    },
+    {
+      "name": "duplicate ID routes",
+      "pass": true,
+      "detail": {
+        "code": "E_DUPLICATE_ID",
+        "path": "$/routes/1/id",
+        "message": "route"
+      }
+    },
+    {
+      "name": "unsafe/missing path ../outside.md",
+      "pass": true,
+      "detail": {
+        "code": "E_PATH",
+        "path": "$/rules/0/source",
+        "message": "expected normalized root-relative POSIX path"
+      }
+    },
+    {
+      "name": "unsafe/missing path C:/secret.txt",
+      "pass": true,
+      "detail": {
+        "code": "E_PATH",
+        "path": "$/rules/0/source",
+        "message": "expected normalized root-relative POSIX path"
+      }
+    },
+    {
+      "name": "unsafe/missing path /etc/passwd",
+      "pass": true,
+      "detail": {
+        "code": "E_PATH",
+        "path": "$/rules/0/source",
+        "message": "expected normalized root-relative POSIX path"
+      }
+    },
+    {
+      "name": "unsafe/missing path \\\\host\\secret",
+      "pass": true,
+      "detail": {
+        "code": "E_PATH",
+        "path": "$/rules/0/source",
+        "message": "expected normalized root-relative POSIX path"
+      }
+    },
+    {
+      "name": "unsafe/missing path pages\\base.md",
+      "pass": true,
+      "detail": {
+        "code": "E_PATH",
+        "path": "$/rules/0/source",
+        "message": "expected normalized root-relative POSIX path"
+      }
+    },
+    {
+      "name": "unsafe/missing path pages/missing.md",
+      "pass": true,
+      "detail": {
+        "code": "E_MISSING_FILE",
+        "path": "$/rules/0/source",
+        "message": "pages/missing.md"
+      }
+    },
+    {
+      "name": "route-only evidence cannot vanish",
+      "pass": true,
+      "detail": {
+        "code": "E_ORPHAN_CHECK",
+        "path": "$/routes/0/evidence_refs",
+        "message": "check not owned by referenced rule"
+      }
+    },
+    {
+      "name": "dangling owner reference",
+      "pass": true,
+      "detail": {
+        "code": "E_REF",
+        "path": "$/rules/0/owner",
+        "message": "unknown owners: missing"
+      }
+    },
+    {
+      "name": "unknown manifest field rejected",
+      "pass": true,
+      "detail": {
+        "code": "E_UNKNOWN_FIELD",
+        "path": "$/typo",
+        "message": "unknown field"
+      }
+    },
+    {
+      "name": "unknown schema keyword rejected",
+      "pass": true,
+      "detail": {
+        "code": "E_SCHEMA_KEYWORD",
+        "path": "$schema",
+        "message": "['anyOf']"
+      }
+    },
+    {
+      "name": "nested absent schema keyword rejected",
+      "pass": true,
+      "detail": {
+        "code": "E_SCHEMA_KEYWORD",
+        "path": "$schema/properties/absent",
+        "message": "['unknownKeyword']"
+      }
+    },
+    {
+      "name": "nested empty-array schema keyword rejected",
+      "pass": true,
+      "detail": {
+        "code": "E_SCHEMA_KEYWORD",
+        "path": "$schema/items",
+        "message": "['unknownKeyword']"
+      }
+    },
+    {
+      "name": "duplicate JSON key rejected",
+      "pass": true,
+      "detail": {
+        "code": "E_DUPLICATE_KEY",
+        "path": "$",
+        "message": "duplicate JSON key: x"
+      }
+    },
+    {
+      "name": "stale binding target.id",
+      "pass": true,
+      "detail": [
+        "target-changed"
+      ]
+    },
+    {
+      "name": "stale binding source.dirty_digest",
+      "pass": true,
+      "detail": [
+        "source-changed"
+      ]
+    },
+    {
+      "name": "stale binding environment.config_digest",
+      "pass": true,
+      "detail": [
+        "environment-changed"
+      ]
+    },
+    {
+      "name": "routing digest changes paths",
+      "pass": true,
+      "detail": [
+        "routing-changed"
+      ]
+    },
+    {
+      "name": "routing digest changes facts",
+      "pass": true,
+      "detail": [
+        "routing-changed"
+      ]
+    },
+    {
+      "name": "routing digest changes approved_paths",
+      "pass": true,
+      "detail": [
+        "routing-changed"
+      ]
+    },
+    {
+      "name": "routing digest changes source page bytes",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "expiry invalidates at exclusive end",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "changed rule_revision",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "changed executor_version",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "altered artifact rejected",
+      "pass": true,
+      "detail": {
+        "code": "E_ARTIFACT_DIGEST",
+        "path": "$/records/0/artifacts/0/sha256",
+        "message": "artifact bytes differ"
+      }
+    },
+    {
+      "name": "canonical state pass",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "canonical state fail",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "canonical state blocked",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "canonical state not-run",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "aggregate ['pass', 'fail']",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "aggregate ['not-run', 'blocked']",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "aggregate ['pass', 'not-run']",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "aggregate ['not-applicable']",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "aggregate []",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "applicable N/A rejected",
+      "pass": true,
+      "detail": {
+        "code": "E_NA_SCOPE",
+        "path": "$/records/0/na_basis",
+        "message": "N/A requires a genuinely excluded rule scope"
+      }
+    },
+    {
+      "name": "justified excluded N/A reachable",
+      "pass": true,
+      "detail": {
+        "applicable_rules": [],
+        "matched_routes": [
+          "route"
+        ]
+      }
+    },
+    {
+      "name": "invalid pass performed",
+      "pass": true,
+      "detail": {
+        "code": "E_FAKE_PASS",
+        "path": "$/records/0",
+        "message": "pass requires observed nonsimulated execution, successful exit and artifacts; schema checks are not product evidence"
+      }
+    },
+    {
+      "name": "invalid pass exit_code",
+      "pass": true,
+      "detail": {
+        "code": "E_FAKE_PASS",
+        "path": "$/records/0",
+        "message": "pass requires observed nonsimulated execution, successful exit and artifacts; schema checks are not product evidence"
+      }
+    },
+    {
+      "name": "invalid pass command",
+      "pass": true,
+      "detail": {
+        "code": "E_FAKE_PASS",
+        "path": "$/records/0",
+        "message": "pass requires observed nonsimulated execution, successful exit and artifacts; schema checks are not product evidence"
+      }
+    },
+    {
+      "name": "invalid pass observation",
+      "pass": true,
+      "detail": {
+        "code": "E_FAKE_PASS",
+        "path": "$/records/0",
+        "message": "pass requires observed nonsimulated execution, successful exit and artifacts; schema checks are not product evidence"
+      }
+    },
+    {
+      "name": "simulated target cannot product pass",
+      "pass": true,
+      "detail": {
+        "code": "E_FAKE_PASS",
+        "path": "$/records/0",
+        "message": "pass requires observed nonsimulated execution, successful exit and artifacts; schema checks are not product evidence"
+      }
+    },
+    {
+      "name": "shell payload remains inert data",
+      "pass": true,
+      "detail": "command accepted only as data; no shell execution"
+    },
+    {
+      "name": "real CLI smoke three operations",
+      "pass": true,
+      "detail": [
+        {
+          "command": "lint",
+          "exit": 0,
+          "status": "pass"
+        },
+        {
+          "command": "resolve",
+          "exit": 0,
+          "status": "pass"
+        },
+        {
+          "command": "evidence",
+          "exit": 0,
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "name": "CLI lone surrogate structured rejection",
+      "pass": true,
+      "detail": {
+        "exit": 1,
+        "status": "invalid"
+      }
+    },
+    {
+      "name": "CLI valid Chinese emoji",
+      "pass": true,
+      "detail": {
+        "exit": 0,
+        "status": "pass"
+      }
+    }
+  ]
+}

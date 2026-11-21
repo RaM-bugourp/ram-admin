@@ -1,0 +1,2663 @@
+{
+  "schema_version": 1,
+  "project_id": "synthetic-platform-routing-catalog",
+  "owners": [
+    {
+      "id": "sample-platform-owner",
+      "contact": "sample-owner@example.invalid",
+      "backup": "sample-backup@example.invalid"
+    }
+  ],
+  "executors": [
+    {
+      "id": "proposed:platform-target-observation",
+      "version": "1.0.0",
+      "kind": "manual"
+    }
+  ],
+  "rules": [
+    {
+      "id": "PLATFORM-P1",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "tasks": [
+          "P1"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/plugin/README.md",
+      "statement": "P1: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P1-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-P2",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "tasks": [
+          "P2"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/plugin/README.md",
+      "statement": "P2: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P2-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-P3",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "tasks": [
+          "P3"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/plugin/README.md",
+      "statement": "P3: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P3-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-P4",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "tasks": [
+          "P4"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/plugin/README.md",
+      "statement": "P4: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P4-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-P5",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "tasks": [
+          "P5"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/plugin/README.md",
+      "statement": "P5: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P5-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-P6",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "tasks": [
+          "P6"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/plugin/README.md",
+      "statement": "P6: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P6-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-P7",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "tasks": [
+          "P7"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/plugin/README.md",
+      "statement": "P7: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P7-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-P8",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "tasks": [
+          "P8"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/plugin/README.md",
+      "statement": "P8: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P8-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-P9",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "tasks": [
+          "P9"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/plugin/README.md",
+      "statement": "P9: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P9-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-P10",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "tasks": [
+          "P10"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/plugin/README.md",
+      "statement": "P10: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P10-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-W1",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "tasks": [
+          "W1"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/web/README.md",
+      "statement": "W1: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W1-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-W2",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "tasks": [
+          "W2"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/web/README.md",
+      "statement": "W2: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W2-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-W3",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "tasks": [
+          "W3"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/web/README.md",
+      "statement": "W3: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W3-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-W4",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "tasks": [
+          "W4"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/web/README.md",
+      "statement": "W4: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W4-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-W5",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "tasks": [
+          "W5"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/web/README.md",
+      "statement": "W5: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W5-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-W6",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "tasks": [
+          "W6"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/web/README.md",
+      "statement": "W6: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W6-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-W7",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "tasks": [
+          "W7"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/web/README.md",
+      "statement": "W7: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W7-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-W8",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "tasks": [
+          "W8"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/web/README.md",
+      "statement": "W8: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W8-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-W9",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "tasks": [
+          "W9"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/web/README.md",
+      "statement": "W9: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W9-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-W10",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "tasks": [
+          "W10"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/web/README.md",
+      "statement": "W10: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W10-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-A1",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "tasks": [
+          "A1"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/app/README.md",
+      "statement": "A1: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A1-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-A2",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "tasks": [
+          "A2"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/app/README.md",
+      "statement": "A2: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A2-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-A3",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "tasks": [
+          "A3"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/app/README.md",
+      "statement": "A3: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A3-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-A4",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "tasks": [
+          "A4"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/app/README.md",
+      "statement": "A4: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A4-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-A5",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "tasks": [
+          "A5"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/app/README.md",
+      "statement": "A5: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A5-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-A6",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "tasks": [
+          "A6"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/app/README.md",
+      "statement": "A6: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A6-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-A7",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "tasks": [
+          "A7"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/app/README.md",
+      "statement": "A7: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A7-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-A8",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "tasks": [
+          "A8"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/app/README.md",
+      "statement": "A8: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A8-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-A9",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "tasks": [
+          "A9"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/app/README.md",
+      "statement": "A9: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A9-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-A10",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "tasks": [
+          "A10"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/app/README.md",
+      "statement": "A10: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A10-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    },
+    {
+      "id": "PLATFORM-A11",
+      "revision": 1,
+      "owner": "sample-platform-owner",
+      "scope": {
+        "actions": [
+          "edit"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "tasks": [
+          "A11"
+        ],
+        "lifecycle": [
+          "development"
+        ],
+        "exclusions": []
+      },
+      "source": "docs/platforms/app/README.md",
+      "statement": "A11: load routed domain boundaries and collect real target evidence before any product pass claim; fixture itself is not product evidence.",
+      "enforcement": "proposed",
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A11-real-target-check"
+      ],
+      "constraints": [
+        {
+          "key": "preserve-authorized-scope",
+          "value": "required"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "P1",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "P1"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/plugin/README.md",
+          "docs/platforms/plugin/verify.md",
+          "docs/platforms/plugin/host-compat.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "plugin_has_resources",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/plugin/lifecycle.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "PLATFORM-P1"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P1-real-target-check"
+      ]
+    },
+    {
+      "id": "P2",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "P2"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/plugin/README.md",
+          "docs/platforms/plugin/verify.md",
+          "docs/platforms/plugin/lifecycle.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "plugin_has_ui",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/plugin/ui-isolation.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "PLATFORM-P2"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P2-real-target-check"
+      ]
+    },
+    {
+      "id": "P3",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "P3"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/plugin/README.md",
+          "docs/platforms/plugin/verify.md",
+          "docs/platforms/plugin/lifecycle.md",
+          "docs/platforms/plugin/security-protocol.md"
+        ],
+        "conditional": []
+      },
+      "rule_refs": [
+        "PLATFORM-P3"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P3-real-target-check"
+      ]
+    },
+    {
+      "id": "P4",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "P4"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/plugin/README.md",
+          "docs/platforms/plugin/verify.md",
+          "docs/platforms/plugin/ui-isolation.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "plugin_uses_host_ui",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/plugin/host-compat.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "PLATFORM-P4"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P4-real-target-check"
+      ]
+    },
+    {
+      "id": "P5",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "P5"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/plugin/README.md",
+          "docs/platforms/plugin/verify.md",
+          "docs/platforms/plugin/ui-isolation.md",
+          "docs/platforms/plugin/host-compat.md"
+        ],
+        "conditional": []
+      },
+      "rule_refs": [
+        "PLATFORM-P5"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P5-real-target-check"
+      ]
+    },
+    {
+      "id": "P6",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "P6"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/plugin/README.md",
+          "docs/platforms/plugin/verify.md",
+          "docs/platforms/plugin/host-compat.md",
+          "docs/platforms/plugin/lifecycle.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "plugin_has_ui",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/plugin/ui-isolation.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "PLATFORM-P6"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P6-real-target-check"
+      ]
+    },
+    {
+      "id": "P7",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "P7"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/plugin/README.md",
+          "docs/platforms/plugin/verify.md",
+          "docs/platforms/plugin/security-protocol.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "plugin_has_requests",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/plugin/lifecycle.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "PLATFORM-P7"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P7-real-target-check"
+      ]
+    },
+    {
+      "id": "P8",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "P8"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/plugin/README.md",
+          "docs/platforms/plugin/verify.md",
+          "docs/platforms/plugin/security-protocol.md"
+        ],
+        "conditional": []
+      },
+      "rule_refs": [
+        "PLATFORM-P8"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P8-real-target-check"
+      ]
+    },
+    {
+      "id": "P9",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "P9"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/plugin/README.md",
+          "docs/platforms/plugin/verify.md",
+          "docs/platforms/plugin/build-release.md",
+          "docs/platforms/plugin/host-compat.md"
+        ],
+        "conditional": []
+      },
+      "rule_refs": [
+        "PLATFORM-P9"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P9-real-target-check"
+      ]
+    },
+    {
+      "id": "P10",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "P10"
+        ],
+        "paths": [
+          "profiles/platforms/targets/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/plugin/README.md",
+          "docs/platforms/plugin/verify.md",
+          "docs/platforms/plugin/build-release.md",
+          "docs/platforms/plugin/lifecycle.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "plugin_has_ui",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/plugin/ui-isolation.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "PLATFORM-P10"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "P10-real-target-check"
+      ]
+    },
+    {
+      "id": "W1",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "W1"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/web/README.md",
+          "docs/platforms/web/verify.md",
+          "docs/platforms/web/api-config.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "web_has_frontend",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/web/frontend.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "PLATFORM-W1"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W1-real-target-check"
+      ]
+    },
+    {
+      "id": "W2",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "W2"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/web/README.md",
+          "docs/platforms/web/verify.md",
+          "docs/platforms/web/api-config.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "web_has_frontend",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/web/frontend.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "PLATFORM-W2"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W2-real-target-check"
+      ]
+    },
+    {
+      "id": "W3",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "W3"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/web/README.md",
+          "docs/platforms/web/verify.md",
+          "docs/platforms/web/api-config.md",
+          "docs/platforms/web/operations.md"
+        ],
+        "conditional": []
+      },
+      "rule_refs": [
+        "PLATFORM-W3"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W3-real-target-check"
+      ]
+    },
+    {
+      "id": "W4",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "W4"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/web/README.md",
+          "docs/platforms/web/verify.md",
+          "docs/platforms/web/data.md",
+          "docs/platforms/web/api-config.md",
+          "docs/platforms/web/operations.md"
+        ],
+        "conditional": []
+      },
+      "rule_refs": [
+        "PLATFORM-W4"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W4-real-target-check"
+      ]
+    },
+    {
+      "id": "W5",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "W5"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/web/README.md",
+          "docs/platforms/web/verify.md",
+          "docs/platforms/web/data.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "web_affects_api",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/web/api-config.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "PLATFORM-W5"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W5-real-target-check"
+      ]
+    },
+    {
+      "id": "W6",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "W6"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/web/README.md",
+          "docs/platforms/web/verify.md",
+          "docs/platforms/web/data.md",
+          "docs/platforms/web/operations.md"
+        ],
+        "conditional": []
+      },
+      "rule_refs": [
+        "PLATFORM-W6"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W6-real-target-check"
+      ]
+    },
+    {
+      "id": "W7",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "W7"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/web/README.md",
+          "docs/platforms/web/verify.md",
+          "docs/platforms/web/frontend.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "web_consumes_api",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/web/api-config.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "PLATFORM-W7"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W7-real-target-check"
+      ]
+    },
+    {
+      "id": "W8",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "W8"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/web/README.md",
+          "docs/platforms/web/verify.md",
+          "docs/platforms/web/operations.md",
+          "docs/platforms/web/api-config.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "web_has_db",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/web/data.md"
+            ]
+          },
+          {
+            "when": {
+              "fact": "web_has_frontend",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/web/frontend.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "PLATFORM-W8"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W8-real-target-check"
+      ]
+    },
+    {
+      "id": "W9",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "W9"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/web/README.md",
+          "docs/platforms/web/verify.md",
+          "docs/platforms/web/operations.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "web_affects_api",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/web/api-config.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "PLATFORM-W9"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W9-real-target-check"
+      ]
+    },
+    {
+      "id": "W10",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "W10"
+        ],
+        "paths": [
+          "profiles/platforms/targets/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/web/README.md",
+          "docs/platforms/web/verify.md",
+          "docs/platforms/web/operations.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "web_affects_db",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/web/data.md"
+            ]
+          },
+          {
+            "when": {
+              "fact": "web_affects_ui",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/web/frontend.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "PLATFORM-W10"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "W10-real-target-check"
+      ]
+    },
+    {
+      "id": "A1",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "A1"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/app/README.md",
+          "docs/platforms/app/device-verify.md",
+          "docs/platforms/app/build-signing.md",
+          "docs/platforms/app/release-rollout.md"
+        ],
+        "conditional": []
+      },
+      "rule_refs": [
+        "PLATFORM-A1"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A1-real-target-check"
+      ]
+    },
+    {
+      "id": "A2",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "A2"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/app/README.md",
+          "docs/platforms/app/device-verify.md",
+          "docs/platforms/app/sdk-privacy.md",
+          "docs/platforms/app/build-signing.md"
+        ],
+        "conditional": []
+      },
+      "rule_refs": [
+        "PLATFORM-A2"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A2-real-target-check"
+      ]
+    },
+    {
+      "id": "A3",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "A3"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/app/README.md",
+          "docs/platforms/app/device-verify.md",
+          "docs/platforms/app/sdk-privacy.md",
+          "docs/platforms/app/interaction.md"
+        ],
+        "conditional": []
+      },
+      "rule_refs": [
+        "PLATFORM-A3"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A3-real-target-check"
+      ]
+    },
+    {
+      "id": "A4",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "A4"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/app/README.md",
+          "docs/platforms/app/device-verify.md",
+          "docs/platforms/app/local-data.md",
+          "docs/platforms/app/release-rollout.md"
+        ],
+        "conditional": []
+      },
+      "rule_refs": [
+        "PLATFORM-A4"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A4-real-target-check"
+      ]
+    },
+    {
+      "id": "A5",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "A5"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/app/README.md",
+          "docs/platforms/app/device-verify.md",
+          "docs/platforms/app/backend-contract.md",
+          "docs/platforms/app/release-rollout.md"
+        ],
+        "conditional": []
+      },
+      "rule_refs": [
+        "PLATFORM-A5"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A5-real-target-check"
+      ]
+    },
+    {
+      "id": "A6",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "A6"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/app/README.md",
+          "docs/platforms/app/device-verify.md",
+          "docs/platforms/app/backend-contract.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "app_has_persistence",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/app/local-data.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "PLATFORM-A6"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A6-real-target-check"
+      ]
+    },
+    {
+      "id": "A7",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "A7"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/app/README.md",
+          "docs/platforms/app/device-verify.md",
+          "docs/platforms/app/interaction.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "app_has_bridge_sdk_permissions",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/app/sdk-privacy.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "PLATFORM-A7"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A7-real-target-check"
+      ]
+    },
+    {
+      "id": "A8",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "A8"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/app/README.md",
+          "docs/platforms/app/device-verify.md",
+          "docs/platforms/app/interaction.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "app_has_persistence",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/app/local-data.md"
+            ]
+          },
+          {
+            "when": {
+              "fact": "app_is_networked",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/app/backend-contract.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "PLATFORM-A8"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A8-real-target-check"
+      ]
+    },
+    {
+      "id": "A9",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "A9"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/app/README.md",
+          "docs/platforms/app/device-verify.md",
+          "docs/platforms/app/release-rollout.md"
+        ],
+        "conditional": [
+          {
+            "when": {
+              "fact": "app_is_networked",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/app/backend-contract.md"
+            ]
+          },
+          {
+            "when": {
+              "fact": "app_has_persistence",
+              "equals": true
+            },
+            "add": [
+              "docs/platforms/app/local-data.md"
+            ]
+          }
+        ]
+      },
+      "rule_refs": [
+        "PLATFORM-A9"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A9-real-target-check"
+      ]
+    },
+    {
+      "id": "A10",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "A10"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/app/README.md",
+          "docs/platforms/app/device-verify.md",
+          "docs/platforms/app/release-rollout.md",
+          "docs/platforms/app/sdk-privacy.md"
+        ],
+        "conditional": []
+      },
+      "rule_refs": [
+        "PLATFORM-A10"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A10-real-target-check"
+      ]
+    },
+    {
+      "id": "A11",
+      "owner": "sample-platform-owner",
+      "match": {
+        "tasks": [
+          "A11"
+        ],
+        "paths": [
+          "profiles/platforms/targets/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "domains": [],
+        "effects": [],
+        "mode": "all"
+      },
+      "context_set": {
+        "required": [
+          "docs/platforms/selection.md",
+          "docs/platforms/evidence.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md",
+          "docs/platforms/app/README.md",
+          "docs/platforms/app/device-verify.md",
+          "docs/platforms/app/build-signing.md",
+          "docs/platforms/app/interaction.md"
+        ],
+        "conditional": []
+      },
+      "rule_refs": [
+        "PLATFORM-A11"
+      ],
+      "executor_refs": [
+        "proposed:platform-target-observation"
+      ],
+      "evidence_refs": [
+        "A11-real-target-check"
+      ]
+    }
+  ]
+}

@@ -6,7 +6,11 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-vue-adminx-dev-insecure-key')
+# Local/test imports get process-ephemeral entropy, never a shared default.
+# Production imports explicitly validate a supplied secret in production.py.
+import secrets
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') or secrets.token_urlsafe(48)
+AI_UI_ENABLED = os.environ.get('AI_UI_ENABLED', 'false').lower() == 'true'
 
 DEBUG = False
 
@@ -157,8 +161,9 @@ AI_TIMEOUT = int(os.environ.get('AI_TIMEOUT', '30'))
 # 审计
 AI_AUDIT_RETENTION_DAYS = int(os.environ.get('AI_AUDIT_RETENTION_DAYS', '90'))
 
-# Agent Token 签发密钥（root 为 Agent 授权时使用）
-AI_AGENT_TOKEN_SECRET = os.environ.get('AI_AGENT_TOKEN_SECRET', SECRET_KEY)
+# Explicit dedicated secret (minimum 32 characters); missing disables Agent tokens.
+# Never fall back to Django SECRET_KEY or an insecure development default.
+AI_AGENT_TOKEN_SECRET = os.environ.get('AI_AGENT_TOKEN_SECRET', '')
 
 # 模拟模式 — 未配置任何 Provider Key 时启用，返回本地占位回复
 AI_MOCK_WHEN_NO_KEY = os.environ.get('AI_MOCK_WHEN_NO_KEY', 'true').lower() == 'true'

@@ -1,0 +1,251 @@
+{
+  "schema_version": 1,
+  "records": [
+    {
+      "change_id": "demo-change-001",
+      "source": {
+        "base_commit": "synthetic-base-001",
+        "commit": "synthetic-source-002",
+        "dirty_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "environment": {
+        "os": "fixture-os",
+        "arch": "fixture-arch",
+        "shell": "fixture-shell",
+        "toolchain_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+        "config_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+        "permissions_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+        "dependencies_digest": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "target": {
+        "kind": "fixture",
+        "id": "synthetic-demo-instance-001",
+        "version": "1",
+        "simulated": true
+      },
+      "artifacts": [
+        {
+          "path": "artifacts/fixture.txt",
+          "sha256": "9087324c5d173bc760fadf0913dfc92fa500d91bbd026c20e77818c921c45208"
+        }
+      ],
+      "id": "record.PLUGIN-VERIFY",
+      "rule_id": "PLUGIN-VERIFY",
+      "rule_revision": 1,
+      "routing_digest": "81380e331b0e9e1723691c8e44cfa8e0489b6b988ec0e89af9139342c6e589cf",
+      "check_id": "plugin-target-check",
+      "executor_id": "observe-target",
+      "executor_version": "1.0.0",
+      "status": "not-run",
+      "scope": {
+        "actions": [
+          "edit",
+          "release"
+        ],
+        "paths": [
+          "src/plugin/**"
+        ],
+        "platforms": [
+          "plugin"
+        ],
+        "tasks": [
+          "feature",
+          "release"
+        ],
+        "lifecycle": [
+          "development",
+          "release"
+        ],
+        "exclusions": []
+      },
+      "collected_at": "2026-11-14T09:00:00Z",
+      "valid_until": "2026-11-15T09:00:00Z",
+      "invalidation_triggers": [
+        "change",
+        "source",
+        "environment",
+        "target",
+        "artifacts",
+        "rule",
+        "executor",
+        "scope",
+        "routing"
+      ],
+      "execution": {
+        "performed": false,
+        "command": "",
+        "cwd": ".",
+        "exit_code": null,
+        "observation": "Synthetic example: real host/service/device unavailable; no product validation executed."
+      },
+      "na_basis": null,
+      "limitations": [
+        "SYNTHETIC FIXTURE ONLY; not real product evidence"
+      ]
+    },
+    {
+      "change_id": "demo-change-001",
+      "source": {
+        "base_commit": "synthetic-base-001",
+        "commit": "synthetic-source-002",
+        "dirty_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "environment": {
+        "os": "fixture-os",
+        "arch": "fixture-arch",
+        "shell": "fixture-shell",
+        "toolchain_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+        "config_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+        "permissions_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+        "dependencies_digest": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "target": {
+        "kind": "fixture",
+        "id": "synthetic-demo-instance-001",
+        "version": "1",
+        "simulated": true
+      },
+      "artifacts": [
+        {
+          "path": "artifacts/fixture.txt",
+          "sha256": "9087324c5d173bc760fadf0913dfc92fa500d91bbd026c20e77818c921c45208"
+        }
+      ],
+      "id": "record.WEB-VERIFY",
+      "rule_id": "WEB-VERIFY",
+      "rule_revision": 1,
+      "routing_digest": "81380e331b0e9e1723691c8e44cfa8e0489b6b988ec0e89af9139342c6e589cf",
+      "check_id": "web-target-check",
+      "executor_id": "observe-target",
+      "executor_version": "1.0.0",
+      "status": "not-run",
+      "scope": {
+        "actions": [
+          "edit",
+          "release"
+        ],
+        "paths": [
+          "src/web/**"
+        ],
+        "platforms": [
+          "web"
+        ],
+        "tasks": [
+          "feature",
+          "release"
+        ],
+        "lifecycle": [
+          "development",
+          "release"
+        ],
+        "exclusions": []
+      },
+      "collected_at": "2026-11-14T09:00:00Z",
+      "valid_until": "2026-11-15T09:00:00Z",
+      "invalidation_triggers": [
+        "change",
+        "source",
+        "environment",
+        "target",
+        "artifacts",
+        "rule",
+        "executor",
+        "scope",
+        "routing"
+      ],
+      "execution": {
+        "performed": false,
+        "command": "",
+        "cwd": ".",
+        "exit_code": null,
+        "observation": "Synthetic example: real host/service/device unavailable; no product validation executed."
+      },
+      "na_basis": null,
+      "limitations": [
+        "SYNTHETIC FIXTURE ONLY; not real product evidence"
+      ]
+    },
+    {
+      "change_id": "demo-change-001",
+      "source": {
+        "base_commit": "synthetic-base-001",
+        "commit": "synthetic-source-002",
+        "dirty_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "environment": {
+        "os": "fixture-os",
+        "arch": "fixture-arch",
+        "shell": "fixture-shell",
+        "toolchain_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+        "config_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+        "permissions_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+        "dependencies_digest": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "target": {
+        "kind": "fixture",
+        "id": "synthetic-demo-instance-001",
+        "version": "1",
+        "simulated": true
+      },
+      "artifacts": [
+        {
+          "path": "artifacts/fixture.txt",
+          "sha256": "9087324c5d173bc760fadf0913dfc92fa500d91bbd026c20e77818c921c45208"
+        }
+      ],
+      "id": "record.APP-VERIFY",
+      "rule_id": "APP-VERIFY",
+      "rule_revision": 1,
+      "routing_digest": "81380e331b0e9e1723691c8e44cfa8e0489b6b988ec0e89af9139342c6e589cf",
+      "check_id": "app-target-check",
+      "executor_id": "observe-target",
+      "executor_version": "1.0.0",
+      "status": "not-run",
+      "scope": {
+        "actions": [
+          "edit",
+          "release"
+        ],
+        "paths": [
+          "src/app/**"
+        ],
+        "platforms": [
+          "app"
+        ],
+        "tasks": [
+          "feature",
+          "release"
+        ],
+        "lifecycle": [
+          "development",
+          "release"
+        ],
+        "exclusions": []
+      },
+      "collected_at": "2026-11-14T09:00:00Z",
+      "valid_until": "2026-11-15T09:00:00Z",
+      "invalidation_triggers": [
+        "change",
+        "source",
+        "environment",
+        "target",
+        "artifacts",
+        "rule",
+        "executor",
+        "scope",
+        "routing"
+      ],
+      "execution": {
+        "performed": false,
+        "command": "",
+        "cwd": ".",
+        "exit_code": null,
+        "observation": "Synthetic example: real host/service/device unavailable; no product validation executed."
+      },
+      "na_basis": null,
+      "limitations": [
+        "SYNTHETIC FIXTURE ONLY; not real product evidence"
+      ]
+    }
+  ]
+}

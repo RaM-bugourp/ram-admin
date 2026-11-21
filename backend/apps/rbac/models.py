@@ -2,6 +2,28 @@
 from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
+import uuid
+
+
+class LoginWindow(models.Model):
+    key = models.CharField(max_length=64, primary_key=True)
+    kind = models.CharField(max_length=8)
+    attempts = models.PositiveIntegerField(default=0)
+    limited_reported = models.BooleanField(default=False)
+    expires_at = models.DateTimeField(db_index=True)
+
+    class Meta:
+        db_table = 'rbac_login_windows'
+
+
+class ManagedSession(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey('User', on_delete=models.CASCADE)
+    session = models.OneToOneField('sessions.Session', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'rbac_managed_sessions'
 from apps.common.base_model import BaseModel
 from apps.common.managers import BaseManager
 

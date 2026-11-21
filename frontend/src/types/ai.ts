@@ -53,7 +53,7 @@ export interface AIInsightsResponse {
 }
 
 /** 分析 */
-export interface AIAnalyzeResponse extends AIChatResponse {
+export interface AIAnalyzeResponse extends Omit<AIChatResponse, 'data'> {
     data?: Record<string, any>
 }
 
@@ -176,6 +176,7 @@ export interface AgentTokenIssueInput {
 
 export interface AgentTokenIssueResponse {
     token: string
+    token_id: string
     agent_id: string
     expires_in_hours: number
     note: string

@@ -1,0 +1,1686 @@
+{
+  "source": "C:\\c\\Users\\Rick\\ram-admin-0.2.0-harness.2",
+  "digest": "fc36e69bb2638991437a384257d0e5f89b02215b2e97b26fc5eb431f55774941",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "0d3d04d3cd136fe3bfd677b5b3e7a4861e20813df05950650c02077ceb8b8f69",
+      "size": 1900
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "58bca7af2875d67728a4d03d50b657f0fc75e45745b3ff300068e0e2ec98452c",
+      "size": 1702
+    },
+    {
+      "path": "ARCHITECTURE.md",
+      "sha256": "e6670aa250c50c7836097c571170f03c570d421aad808121abb991e19c07187f",
+      "size": 33075
+    },
+    {
+      "path": "DEVELOPMENT.md",
+      "sha256": "3ee5ce241944b56219b604888e59624c649b377f4c980b60cb421d63c967cb30",
+      "size": 6091
+    },
+    {
+      "path": "README.md",
+      "sha256": "320c070274a57b474ddb20d8f4d279557dbd252d1c9a97151fbf96627490eadb",
+      "size": 18566
+    },
+    {
+      "path": "VERSION",
+      "sha256": "64baa110b7aec3a2fd174650662ddada1f2054a60860266e98caba737267a437",
+      "size": 17
+    },
+    {
+      "path": "harness.json",
+      "sha256": "adffb8668c8a136c10d23c5763bd9fa79e6dca29168ee7e3f03bff250fe81975",
+      "size": 22449
+    },
+    {
+      "path": "backend/manage.py",
+      "sha256": "4a41d18002c6294061031c74fb0ac25d6541a0ef61827c9ab37a46c2088a12be",
+      "size": 666
+    },
+    {
+      "path": "backend/requirements.txt",
+      "sha256": "9f4cda0727d4f8a21bf176aa1aebbe0d83411127640caa7fe2d9c53dcbafb3df",
+      "size": 88
+    },
+    {
+      "path": "backend/apps/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "backend/apps/ai/__init__.py",
+      "sha256": "8033120e01f521b92a25046da569050e706777efdde36800af6a49a26a85de86",
+      "size": 74
+    },
+    {
+      "path": "backend/apps/ai/apps.py",
+      "sha256": "de6d7ba5761f17449262a13d007563768a30e2381ea09a55013085351a30bffa",
+      "size": 172
+    },
+    {
+      "path": "backend/apps/ai/models.py",
+      "sha256": "ce94e2742103ae8df4c4e2fa7f3b7e33ff25f213d249ddccdbbfdb6d40f5ae3d",
+      "size": 8016
+    },
+    {
+      "path": "backend/apps/ai/permissions.py",
+      "sha256": "1164fde7c70138163bf6aa0695cdf31f52af642e52521ca61ba03a1dde6ba46a",
+      "size": 5831
+    },
+    {
+      "path": "backend/apps/ai/tests.py",
+      "sha256": "f5b6fbc07fee81538747c5224eafb0a3bbe42041ff14d1b815c0ef3e90588e5b",
+      "size": 14982
+    },
+    {
+      "path": "backend/apps/ai/urls.py",
+      "sha256": "b4d5d66626cb10164ad97621520f859dce3d21031c3be655e3593c7e325fce6c",
+      "size": 1368
+    },
+    {
+      "path": "backend/apps/ai/management/__init__.py",
+      "sha256": "cb770cc9681fd717f4a9e34c4e1fc63728e26a15a6c1c3597c158ad308bb5fe9",
+      "size": 38
+    },
+    {
+      "path": "backend/apps/ai/management/commands/__init__.py",
+      "sha256": "28a1300d60697a5e8e0b40fcf8cb26589581ba36f681f7b48fa40caef888f5de",
+      "size": 30
+    },
+    {
+      "path": "backend/apps/ai/management/commands/ai_status.py",
+      "sha256": "6c83153494c2f7f05e8b61a58892e9f6943739280e0c7e34a29b39cd46817b6d",
+      "size": 1496
+    },
+    {
+      "path": "backend/apps/ai/management/commands/cleanup_ai_audit.py",
+      "sha256": "c09f7fa276ed0f88c5f9d806650188f1edf0eab6d298dece95fd26c0ee74ac0b",
+      "size": 1664
+    },
+    {
+      "path": "backend/apps/ai/migrations/0001_initial.py",
+      "sha256": "0d5fe213368fd65693a50b2b23094d4335e5472d44f6bd81b928533e118857a4",
+      "size": 8270
+    },
+    {
+      "path": "backend/apps/ai/migrations/0002_agent_credentials.py",
+      "sha256": "cf66886c83204b96994737ca7ce945bb88ff42ffd3982cc8fd3ec63783b2a039",
+      "size": 1233
+    },
+    {
+      "path": "backend/apps/ai/migrations/0003_aiapproval_submitted_by.py",
+      "sha256": "57ebf27a9aa6d9f77008c29e54b7220176d70b4f32c561e62491948369a387f8",
+      "size": 2679
+    },
+    {
+      "path": "backend/apps/ai/migrations/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "backend/apps/ai/serializers/__init__.py",
+      "sha256": "596d0f7680592afcdf7453c9fcb142d8c7a231ca593b7d63232e2b43aa848dc9",
+      "size": 30
+    },
+    {
+      "path": "backend/apps/ai/serializers/ai_serializers.py",
+      "sha256": "f118a2b66bef339b1e60ab7e6e7024ec865aeeb5382276d7a2fc279d0fb0077c",
+      "size": 6611
+    },
+    {
+      "path": "backend/apps/ai/services/__init__.py",
+      "sha256": "7a18ee9efba1f13ac722b60ce91bb45f3fa7664165bf24e8612be99540a02bdb",
+      "size": 27
+    },
+    {
+      "path": "backend/apps/ai/services/ai_approval.py",
+      "sha256": "0e4249c7b1e1a10d0d26d7e51699cb23f178cfa4d064d83430ed721885c0c985",
+      "size": 5805
+    },
+    {
+      "path": "backend/apps/ai/services/ai_audit.py",
+      "sha256": "d241e01c33555ec629f5adac2670415ba338978a657de11c896d42f7b066842a",
+      "size": 3985
+    },
+    {
+      "path": "backend/apps/ai/services/ai_client.py",
+      "sha256": "1b774e5ce2a781a05fa0fd0b11cf43df27673636f122caec0ed98da4843dd63d",
+      "size": 3384
+    },
+    {
+      "path": "backend/apps/ai/services/ai_errors.py",
+      "sha256": "25215fa11133ad37e179cb9aabc49fb8297452a9450e3767164abd478e0c10df",
+      "size": 1263
+    },
+    {
+      "path": "backend/apps/ai/services/ai_failover.py",
+      "sha256": "bf9c3f3f0d8e30569e58c323c844c144016edfdfbc18b492c896e8d385c6512c",
+      "size": 5461
+    },
+    {
+      "path": "backend/apps/ai/services/ai_service.py",
+      "sha256": "74ba7effe66a04a7c89fa544162f17b282aa926592200e2b34c364a4dc17503f",
+      "size": 7969
+    },
+    {
+      "path": "backend/apps/ai/services/approval_params.py",
+      "sha256": "2fafe88b94933e905f37dc36ce540faf0369f2611150db39efd24f975680e03d",
+      "size": 2592
+    },
+    {
+      "path": "backend/apps/ai/services/data_formatter.py",
+      "sha256": "1116a653caeb6e9b3c3a200f650718db39c4d88eb4a524ed38cb3984e3f1f1d8",
+      "size": 1704
+    },
+    {
+      "path": "backend/apps/ai/services/notification_service.py",
+      "sha256": "5c641c37825da77102805d55a690b4fda3a9b079926f11eb8fad15b1ac2948b6",
+      "size": 3052
+    },
+    {
+      "path": "backend/apps/ai/services/prompt_builder.py",
+      "sha256": "38d6a494b36b6a083b7745a8135ccb37e527b6e0d39bc33c61fad01c5a496629",
+      "size": 3258
+    },
+    {
+      "path": "backend/apps/ai/services/stats_service.py",
+      "sha256": "f2279d8b4288bc08c1cd8e8025174c3754fccc7312d7fd1384d7cee174ae33ff",
+      "size": 2550
+    },
+    {
+      "path": "backend/apps/ai/views/__init__.py",
+      "sha256": "bf2946110fbb17ec7a14c110176cb77b87a33f5adadebdedbfdbef4dbcd5aad4",
+      "size": 544
+    },
+    {
+      "path": "backend/apps/ai/views/agent_views.py",
+      "sha256": "b1deca9b0368d8e399c1e545a058305c5307288639299697b6784faa98b79ddb",
+      "size": 2142
+    },
+    {
+      "path": "backend/apps/ai/views/analyze_views.py",
+      "sha256": "79d39bf386dd6fd74292cc9ab300df9355c611473de8fcd0e7f241238a28909a",
+      "size": 5307
+    },
+    {
+      "path": "backend/apps/ai/views/approval_views.py",
+      "sha256": "60bc7da48c16556521bf820b9229c27f125b9b75f9ee0c9054b64d462aa18418",
+      "size": 4252
+    },
+    {
+      "path": "backend/apps/ai/views/audit_views.py",
+      "sha256": "326fe3b49212a6b0bb33e63a7c797bf2ddd6a6d3e02ea140ea4fbe2c21e55f96",
+      "size": 2985
+    },
+    {
+      "path": "backend/apps/ai/views/chat_views.py",
+      "sha256": "39e8c66bbd5a849f127753b2982afb2eac8345336b4bd3b4f72fc9c58bdf42b4",
+      "size": 2675
+    },
+    {
+      "path": "backend/apps/ai/views/notification_views.py",
+      "sha256": "80d76a9d9af29226e3f48ce0dbe127d5695f91e630a39a3f1319acd42918fdc5",
+      "size": 2580
+    },
+    {
+      "path": "backend/apps/audit/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "backend/apps/audit/apps.py",
+      "sha256": "23d337eb41bdee77384b6424643fb688d6f31f975e2497d7e6382deb4c006614",
+      "size": 147
+    },
+    {
+      "path": "backend/apps/audit/models.py",
+      "sha256": "ee930ff5407ce09165021be28a8c2508ff38a5c43052948b8c8d90b1fe07b04a",
+      "size": 622
+    },
+    {
+      "path": "backend/apps/audit/service.py",
+      "sha256": "14f7ce323a7d1ffce94d03bfbc3e903206399810282cef5c35a99d7e4ca596df",
+      "size": 305
+    },
+    {
+      "path": "backend/apps/audit/views.py",
+      "sha256": "d40ed3b5c0b9179a46f52c6202ea8138b90f65bd7a22bf39b156a6e52ea57c7e",
+      "size": 2206
+    },
+    {
+      "path": "backend/apps/audit/migrations/0001_initial.py",
+      "sha256": "988a65a76995cbd38bbcb427fa75d3b034a9f9e6f91b5138fc4990938ce30df5",
+      "size": 1260
+    },
+    {
+      "path": "backend/apps/audit/migrations/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "backend/apps/common/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "backend/apps/common/apps.py",
+      "sha256": "4a7757c07f3c8dafefa9e52f03fe843f9e23715102df13a37deb0b9d58475718",
+      "size": 149
+    },
+    {
+      "path": "backend/apps/common/base_model.py",
+      "sha256": "a7571b75ff7f1a66fbe569e406d1ed5444a5f8bdd30e5661d2a3369782b863fb",
+      "size": 669
+    },
+    {
+      "path": "backend/apps/common/exceptions.py",
+      "sha256": "9b40c1f0493c366d3943d61807e3462b6d782bafdc080d2c25d8429e2e9d41e0",
+      "size": 1578
+    },
+    {
+      "path": "backend/apps/common/inputs.py",
+      "sha256": "400e3b8f76553e8030efdcad46ca2060a6792b13e08e3b09ffa5c48f12a9bf38",
+      "size": 578
+    },
+    {
+      "path": "backend/apps/common/managers.py",
+      "sha256": "7fc7bb45e93d28d6293576c4b1e89a1882b4e93a027259eb59d69714bae4da34",
+      "size": 406
+    },
+    {
+      "path": "backend/apps/common/serializers.py",
+      "sha256": "673c8ea9705ec289ba320d79fb2e3c7b303f71f63753afbd1d0d55b6d52497ff",
+      "size": 410
+    },
+    {
+      "path": "backend/apps/rbac/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "backend/apps/rbac/apps.py",
+      "sha256": "9875507494939f733ce5739b29d846f0873cc8d169b064e08bf51509965c7056",
+      "size": 145
+    },
+    {
+      "path": "backend/apps/rbac/backends.py",
+      "sha256": "826d4cc94829b93dc61cbdb1bdd891288a284742c50ed8868406fe86fc57851a",
+      "size": 728
+    },
+    {
+      "path": "backend/apps/rbac/models.py",
+      "sha256": "1f6f7e9bee08d9ae2e37d7d99743a08b201fd23730006e49e6238bb7cf954167",
+      "size": 4884
+    },
+    {
+      "path": "backend/apps/rbac/permissions.py",
+      "sha256": "ac94fcdf2b23a0fe95d84eefc3cc87054580cd1488f644ea9d238f4b0c53a68c",
+      "size": 3650
+    },
+    {
+      "path": "backend/apps/rbac/test_concurrency.py",
+      "sha256": "a02adef684cdd0ac83f2fefcec9de8f8c35f1cc5daf7b299702aac437ab04762",
+      "size": 3423
+    },
+    {
+      "path": "backend/apps/rbac/test_core.py",
+      "sha256": "744d2477af30a5a10d8d91b0c16a47353179a4a4f80dd9c676f95c342a5ae9d0",
+      "size": 16434
+    },
+    {
+      "path": "backend/apps/rbac/tests.py",
+      "sha256": "8c10c5643ff4d3b9f502642863b6b9cd973f751cd47c74391a73816918e1a12a",
+      "size": 3261
+    },
+    {
+      "path": "backend/apps/rbac/urls_auth.py",
+      "sha256": "51c9287519052e4f0709f427f1792d49f9a3b127f63a28f2c26b844142282d69",
+      "size": 283
+    },
+    {
+      "path": "backend/apps/rbac/urls_dashboard.py",
+      "sha256": "a9e908ff00cbc69283c660d8598a1e12cf04f8832df5b95b9cf9330a2762066f",
+      "size": 279
+    },
+    {
+      "path": "backend/apps/rbac/urls_role.py",
+      "sha256": "00fbcc52cf141eb839e90c143b13840406a640c6561e2e2220f1fd786b468e84",
+      "size": 305
+    },
+    {
+      "path": "backend/apps/rbac/urls_user.py",
+      "sha256": "7dc45bd8d601f86468260f75f120469e6cc2a92e2b16f57b7754b4e199c417b7",
+      "size": 294
+    },
+    {
+      "path": "backend/apps/rbac/management/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "backend/apps/rbac/management/commands/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "backend/apps/rbac/management/commands/init_rbac.py",
+      "sha256": "590448b354277aa332801516351a425aefccdcaa69910a7f8d03f9059ceebaf6",
+      "size": 2183
+    },
+    {
+      "path": "backend/apps/rbac/migrations/0001_initial.py",
+      "sha256": "b73c691e4c5ab2cebd6407d28824de76caa484b46be8bdd4a9d2e1ef91a0d628",
+      "size": 2299
+    },
+    {
+      "path": "backend/apps/rbac/migrations/0002_add_role_userrole.py",
+      "sha256": "91231e34eba3b941729ac065e7bbf9bf02bb54250de17992a0c9ac196ca33498",
+      "size": 2303
+    },
+    {
+      "path": "backend/apps/rbac/migrations/0003_add_role_is_unique_and_permission.py",
+      "sha256": "b9ed156f7d42d496cd9c5bac801420c7a569ed26c59cfc86dfd6d76d5b70ec93",
+      "size": 1540
+    },
+    {
+      "path": "backend/apps/rbac/migrations/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "backend/apps/rbac/serializers/__init__.py",
+      "sha256": "98568b678b47368f004f6340439cb83df357e4e97953ee3caa03f608344184a8",
+      "size": 22
+    },
+    {
+      "path": "backend/apps/rbac/serializers/role_serializers.py",
+      "sha256": "85d807201cc6a451ba8f109a9ea656fec47131505e09668284b3414f6800f5c7",
+      "size": 2746
+    },
+    {
+      "path": "backend/apps/rbac/serializers/user_serializers.py",
+      "sha256": "e589d9e57b93c40fcb7b6247b06313963cfe6c97d258a8f9a70fd6588d3beb3c",
+      "size": 2304
+    },
+    {
+      "path": "backend/apps/rbac/services/locking.py",
+      "sha256": "102c49cb7a3645e90884991f94af662e6c8b1bbcf4c340a8a0e96af86d6a95bb",
+      "size": 1014
+    },
+    {
+      "path": "backend/apps/rbac/services/role_service.py",
+      "sha256": "63be505346f1cb1f6e38c11382dda6990ddb9bd0904e0c889b858fbfa7a9ad54",
+      "size": 6363
+    },
+    {
+      "path": "backend/apps/rbac/services/user_service.py",
+      "sha256": "04b6cf735fe3d35412565d5c06aea0e2b06eee3ca2604f68e14672ebc48ca455",
+      "size": 8396
+    },
+    {
+      "path": "backend/apps/rbac/views/__init__.py",
+      "sha256": "015d95f8c1d438a04404b1aa892cb89347d4b242d08a0c434c847e3ddb80dc65",
+      "size": 144
+    },
+    {
+      "path": "backend/apps/rbac/views/auth_views.py",
+      "sha256": "7bc3433632c0fdfc40638488115a42ecca64abd8b911b07c46e33a070993ab6b",
+      "size": 4268
+    },
+    {
+      "path": "backend/apps/rbac/views/dashboard_views.py",
+      "sha256": "15d272ce5cad2534a49170e145dc2435b39342b205eb8e24924e06a06ac1168f",
+      "size": 1361
+    },
+    {
+      "path": "backend/apps/rbac/views/role_views.py",
+      "sha256": "5e9344d40687d8447fc34393c4808ad50b916fb24ddff7c25441cd7d7c297c1c",
+      "size": 3368
+    },
+    {
+      "path": "backend/apps/rbac/views/user_views.py",
+      "sha256": "4382f6ab2a160e0ed4a540c9f12b010f22d75e6a813d56c28a79864201ea4d40",
+      "size": 4343
+    },
+    {
+      "path": "backend/config/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "backend/config/urls.py",
+      "sha256": "4e825fe6c259a1dbb9a75c24d5cf592921447e5561b2990cabc815c4f4cc5bcc",
+      "size": 634
+    },
+    {
+      "path": "backend/config/wsgi.py",
+      "sha256": "baede32ecc662af986b53f62c6c0d9f2f3c6fae213e53fdabdf510de1dfc9e57",
+      "size": 188
+    },
+    {
+      "path": "backend/config/settings/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "backend/config/settings/base.py",
+      "sha256": "88c644cdcbca0adb4f6725c7026682befd52fee26384a06090aea0e7df63ba1c",
+      "size": 5826
+    },
+    {
+      "path": "backend/config/settings/dev.py",
+      "sha256": "62d4e6d8ff78c85952110f7d1d77b49dbd0a46b983da258a3d1d1dc8fe7a5d6f",
+      "size": 314
+    },
+    {
+      "path": "backend/config/settings/integration.py",
+      "sha256": "64b7210c9a730653635023bdeeeb07d2116190ce67c385f6e478f086a2baaca6",
+      "size": 908
+    },
+    {
+      "path": "backend/config/settings/production.py",
+      "sha256": "79b77a2f8297599b1334fa3171f555de005b5015e386fb12b9b013f6735dcff6",
+      "size": 1258
+    },
+    {
+      "path": "backend/config/settings/test.py",
+      "sha256": "6f96e12f7569b80703a1c6c00652988a2f74d8690f46aff92a0d4684fb506dae",
+      "size": 503
+    },
+    {
+      "path": "changelog/2026-06-09_P0权限修复.md",
+      "sha256": "cb289901771272b048e44efe3d1e9240c01e2cfa05de46267b1a46464e86c468",
+      "size": 1126
+    },
+    {
+      "path": "changelog/2026-06-09_P1P2修复.md",
+      "sha256": "ec6b233d57954287f528cb1514f1f33ee028da1b18c562fd3a169fb346219d84",
+      "size": 2312
+    },
+    {
+      "path": "changelog/2026-06-09_v0.3.0_更新总结.md",
+      "sha256": "fb91310ea39ef6eb5b53bd7f67961e0e9819d0d803eee279c2bda371d4a370dd",
+      "size": 2742
+    },
+    {
+      "path": "changelog/2026-06-09_权限管理_v0.3.0.md",
+      "sha256": "f0c7645bddd4786bcb47e14d329280f80bb01a5dae44bf0bb490a2f315428dd5",
+      "size": 2626
+    },
+    {
+      "path": "changelog/2026-06-16_v1.0.2_审计日志.md",
+      "sha256": "255e36749f8f4e562b7bb19249be099bfebcd46d5e0ef1897fbd5af3b85a9d55",
+      "size": 4666
+    },
+    {
+      "path": "changelog/CHANGELOG.md",
+      "sha256": "089908fbb8e97622a3cbaef0b1e06a694e7cd69ea8923aeea55d34d31279bb02",
+      "size": 4117
+    },
+    {
+      "path": "changelog/CONFIG.md",
+      "sha256": "353e3653828e0bbaaf459e60b28866ba07e1271907150010de365cf466f45745",
+      "size": 6401
+    },
+    {
+      "path": "docs/ai-integration-design.md",
+      "sha256": "3b404e97ba777aac3b2ed9a6da1bfb7ccdb250e9ffb04eefe934004faecd04c5",
+      "size": 31253
+    },
+    {
+      "path": "docs/plan-account-form.md",
+      "sha256": "dae44bd497198563710cf96ba4b0c74eda38efc6a4b6f1ae7de5a848164c0baf",
+      "size": 5117
+    },
+    {
+      "path": "docs/task-summary.md",
+      "sha256": "392e32672f3f675d2fcd6f14c50cfb34c9e5ad83df491efb0885b3d84f3b6cfb",
+      "size": 4078
+    },
+    {
+      "path": "docs/backend/01-项目初始化与配置.md",
+      "sha256": "a7f67cd7c4e91ff32abc31875875706ba43f2a0f7b41e7818b2fd0a752534d74",
+      "size": 8736
+    },
+    {
+      "path": "docs/backend/02-Model层开发.md",
+      "sha256": "c6a1b45f283a975e52b43fa795138653d9a959464f624b457ecdb870b3220e89",
+      "size": 4589
+    },
+    {
+      "path": "docs/backend/03-Repository层开发.md",
+      "sha256": "30717c35b2cac246683a51b93295801df90a9531c6bed3ffc081662838b14468",
+      "size": 6978
+    },
+    {
+      "path": "docs/backend/04-Service层开发.md",
+      "sha256": "80cca094f76f3f3ca3a7aa9d83c2ee8b702d1a788c3fb8e71ffec6c4f568529f",
+      "size": 7304
+    },
+    {
+      "path": "docs/backend/05-Serializer契约层开发.md",
+      "sha256": "738144c8c6c27c4873e9fb4cd7686d5583c813ac29e00d5c479904b01bbd2dbe",
+      "size": 4541
+    },
+    {
+      "path": "docs/backend/06-ViewSet接口层开发.md",
+      "sha256": "4a28fc45ebbc894301bb37cd25f549ce59c66952b613b80e39f82d471265f242",
+      "size": 5174
+    },
+    {
+      "path": "docs/backend/07-权限与安全开发.md",
+      "sha256": "fe18daee11d00eeef1c78cd46bc3f752af5cad74637ab0d9999f9c1aae80415e",
+      "size": 4161
+    },
+    {
+      "path": "docs/backend/08-中间件开发.md",
+      "sha256": "099a429dc41dba6503702619a56e2300252ea414ca985eb2e94acd17954d12af",
+      "size": 4539
+    },
+    {
+      "path": "docs/backend/09-审计与日志开发.md",
+      "sha256": "b198aca447ee718cceecfec27b9e6d1f2e9384de90e89edc9a28a0f137e71ca5",
+      "size": 4947
+    },
+    {
+      "path": "docs/backend/10-测试开发.md",
+      "sha256": "da46076e87ac546d022416a8f5174fa16a25e28c1da3ae4d69b8e19a9df91a43",
+      "size": 6173
+    },
+    {
+      "path": "docs/backend/11-代码生成器开发.md",
+      "sha256": "c34924d65358e2033bb9b78c4752942fa4302515ea9f1cb6b09ff2f67e329d86",
+      "size": 6142
+    },
+    {
+      "path": "docs/backend/17-文件管理与存储.md",
+      "sha256": "bf489fc257ad120677182db5c83fa9bfe06c42fb96b488fb927ff5569caf668e",
+      "size": 7456
+    },
+    {
+      "path": "docs/backend/19-数据导出与报表.md",
+      "sha256": "13991d5c431eade94eaa6fa93a0db38634da1f860357bd11e2885b6a2c426d9a",
+      "size": 6633
+    },
+    {
+      "path": "docs/backend/20-错误码体系.md",
+      "sha256": "6fbfad18845fdd6ab144dfb0f8d40d151f9df98a4a6bf2d7c846f6e523b4056f",
+      "size": 6667
+    },
+    {
+      "path": "docs/backend/21-数据权限设计.md",
+      "sha256": "f2a9ef51fc7a8e642e5fda0899e28e6fd50e711fcd760bcb220da2b034d1f6b8",
+      "size": 6578
+    },
+    {
+      "path": "docs/backend/22-国际化方案.md",
+      "sha256": "9fa05b72fe0ee98c95bb8a1ece8f6eccbf3d63b6fe0ce6dae866cc6e9ec4e094",
+      "size": 4236
+    },
+    {
+      "path": "docs/devops/16-部署与CI-CD.md",
+      "sha256": "17df8ff9c38c56c6a033cca6a108c0a73b8d39e058e59512f2eb86cb97a799f7",
+      "size": 9137
+    },
+    {
+      "path": "docs/devops/23-可观测性与监控.md",
+      "sha256": "a1e70cdb314cbee508499b8d6151487d07d68ebc7e0b891e6719472347de2d15",
+      "size": 4680
+    },
+    {
+      "path": "docs/frontend/12-前端基础架构.md",
+      "sha256": "eeabaa45e1d628980e05a8f512df4c3fa6f4e0c7685f96c5f2b6754c59131fa9",
+      "size": 8877
+    },
+    {
+      "path": "docs/frontend/13-前端API层与类型.md",
+      "sha256": "0af304ed9456d1f12982391bb623ec2278f2650ceb10ca6a95cd5846228759e7",
+      "size": 5840
+    },
+    {
+      "path": "docs/frontend/14-前端页面组件开发.md",
+      "sha256": "ca9ae4c56b090d6b0dbe84a2c533c8d944cd18496af441af75a5fea22fc5a5f2",
+      "size": 7852
+    },
+    {
+      "path": "docs/frontend/15-前端安全与优化.md",
+      "sha256": "5d800649e7d683a16c61d34093254afe30779081323b98e963dbf405ed32667d",
+      "size": 4880
+    },
+    {
+      "path": "docs/frontend/18-动态路由与菜单管理.md",
+      "sha256": "5edcffd48aed311513e2036742603aa438dba0108bc63af09de342e155c10a03",
+      "size": 10578
+    },
+    {
+      "path": "docs/harness/BRIDGE.md",
+      "sha256": "32d70caae3644403b154e74cfb99844e3f7780ac9a0c9198b2fd651db1c05748",
+      "size": 1873
+    },
+    {
+      "path": "docs/harness/COMPLETENESS.md",
+      "sha256": "352563b440029f622c415cea707556aca595d489b1d124847845e84f5690f011",
+      "size": 9579
+    },
+    {
+      "path": "docs/harness/CORE-REPORT.md",
+      "sha256": "c40ef3e85e8ec66b2554cb6e870bf5b4081959e57876ca31877cd409863671a2",
+      "size": 6489
+    },
+    {
+      "path": "docs/harness/OWNERS.md",
+      "sha256": "01e376aceabdc714e01f2c125145fab9d1f56476b01df2a3ac3095f08d54796e",
+      "size": 2142
+    },
+    {
+      "path": "docs/harness/PLAN.md",
+      "sha256": "6a15ce0c36293eeb8f0ee21af8e7d0e997671ac3ce4a394ce921d47539d2fa83",
+      "size": 12375
+    },
+    {
+      "path": "docs/harness/REPORT.md",
+      "sha256": "957f5ced188ee4c17ac885d7744fd7d2666a355cebedf9ca0f6929f0593569af",
+      "size": 9783
+    },
+    {
+      "path": "docs/harness/ROUTING.md",
+      "sha256": "64864f84f970482bac2d9a1139708fb7aec13ba53ba1e193ea3731e6cec4a1a1",
+      "size": 2829
+    },
+    {
+      "path": "docs/harness/TASK-CORE-002.md",
+      "sha256": "1a3ba780fb951ee68070cf18b6753e18e5c457bd9f4a2951f089ff5063b79ed0",
+      "size": 5915
+    },
+    {
+      "path": "docs/harness/TASK-TOKEN-001.md",
+      "sha256": "793681e9e9911dfd097ce49571c8099c0cd412744797c42d702ff0f8e0f8caa9",
+      "size": 3695
+    },
+    {
+      "path": "docs/harness/baseline/PATCH.diff",
+      "sha256": "f3798950788c9295f21b3c378b1f661f60388722ab52e03215959ecbb7063a27",
+      "size": 11378
+    },
+    {
+      "path": "docs/harness/baseline/PATCH.json",
+      "sha256": "619600ed73b0e4f234c56f15c5d6f15ed0f3b54f3a0d846e1cd462ecd5d4e027",
+      "size": 2575
+    },
+    {
+      "path": "docs/harness/baseline/PLAN-20261117.md",
+      "sha256": "ea426fc43da770f9d24f9acde8c466994112dd8fab6aca401776d0a120655809",
+      "size": 1681
+    },
+    {
+      "path": "docs/harness/baseline/QA.json",
+      "sha256": "f4581d11c2e2d6c91ee9a89fd8114c19a3b23c77ae172dccbcb243a164e65f4b",
+      "size": 6910
+    },
+    {
+      "path": "docs/harness/baseline/REVIEW.md",
+      "sha256": "d3d20699fd5c6b2f821fb55fde8b8b7ad3c3f85a4df632d5bbcd74a3e66ad1b4",
+      "size": 5182
+    },
+    {
+      "path": "docs/harness/baseline/RUNBOOK.md",
+      "sha256": "7dfd40dec0341e8f7447fc40a806d371f6c7aa993b36fd201d4a506ff2e969ca",
+      "size": 3619
+    },
+    {
+      "path": "docs/harness/baseline/harness.1-protection.json",
+      "sha256": "366739c2692c141e78bdb92903338d6d61db22c1ed7d8d12b518d7df8f115fc5",
+      "size": 149138
+    },
+    {
+      "path": "docs/harness/baseline/security-patched.json",
+      "sha256": "e8a20a65c8c51d538b56920f97b24939f834fb8f808d8c8bb9af88c62c985eb2",
+      "size": 3304
+    },
+    {
+      "path": "docs/harness/baseline/source-files.json",
+      "sha256": "5052ea0b811a994684c2dab2936100d8cb5d36906079614d5749426d137f4bbe",
+      "size": 26630
+    },
+    {
+      "path": "docs/harness/baseline/verify_boss-harness.1.py",
+      "sha256": "5dace21aa0982af0bb7309af29c566d6c5e21845a2a82cc7abc9dbbc95cb9509",
+      "size": 4351
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/.gitignore",
+      "sha256": "72170e3b4d87beb9edad01516bb04f550af0eaac2bebe8749878c09443690501",
+      "size": 384
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/ACCEPTANCE.md",
+      "sha256": "d089980ab817e48c70f8b267f3b55194dcae97346d387fb23392060465c464b9",
+      "size": 5178
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/AGENTS.md",
+      "sha256": "4d67e29398f321f437df53d79b4c0f158ee0c56aa949ed4cf3d32f00a0382a7f",
+      "size": 1324
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/CHANGELOG.md",
+      "sha256": "e6942fbff94cd39988da2e6cf332ded2af76e9eabceb81ed69138f48966a6fe0",
+      "size": 1053
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/INTEGRATION.md",
+      "sha256": "3380fdc331057cb017ec693f356dd546dfeb4d5fb8aa4321f75dcb2444c8ff12",
+      "size": 5192
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/README.md",
+      "sha256": "f0a81e466828d00cb5525793d5d80592232801165bb3745b119774c76c348a03",
+      "size": 5253
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/SHA256SUMS.txt",
+      "sha256": "a4db773feafcc4bc68ca5af22490af383753c9a4ce7dba05546d1a3dbdc7ac56",
+      "size": 12151
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/START-HERE.md",
+      "sha256": "4623a033af2d2b7e5a6b30253f08b6a233d8dacd714e66afde6288fafdabd5a7",
+      "size": 3208
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/adoption.md",
+      "sha256": "a1c0bf454f03c5e54f4325564fc141f5b8055d915b8f25783041117ccf430d9f",
+      "size": 3031
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/capabilities.md",
+      "sha256": "4261d77290c0e134608fd993c39f716f48c10f69d9b73e8d0b416f1f91c38a9b",
+      "size": 2250
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/evidence.md",
+      "sha256": "b61728978ec4816cc2255532cf237020254a5dc9185fbb3917e08fa26b26b9e1",
+      "size": 4280
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/maintenance.md",
+      "sha256": "dca306cd3341f8223de8398cd91d48b4aea8a4284989d436c154f90ab92308ee",
+      "size": 2068
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/overview.md",
+      "sha256": "6b4a14f6f3facd9064b597b93cfdc1ee46183070ebaed5409632ccc3055b7be0",
+      "size": 2721
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/ownership.md",
+      "sha256": "d1b62257faea289052e1e9c66f81a437b4e1023c3da5d53b95e66fface30e68b",
+      "size": 3012
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/pr-boundaries.md",
+      "sha256": "4885070b754c6fd6f34d18447a56a2319ef3f22f4b9ad340bac1cbb997ae004b",
+      "size": 2296
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/routing.md",
+      "sha256": "6cc0e9dc681cd96aaa9ce890757ec6016a9df6165d0b50516d2b249fee863201",
+      "size": 4046
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/task-lifecycle.md",
+      "sha256": "07bb542a2a4873b3322c10df0aff1bfc1ec98de6d354ef8f6627616e79b113cb",
+      "size": 2977
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/test-boundaries.md",
+      "sha256": "96b8c1b2c5a9a5156601976d5f276e20b9069e17e6498b9c4ada528a93601330",
+      "size": 2562
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/README.md",
+      "sha256": "c8ce7d40662a8393ce7a53d3823171b33830683e510859a4f9c545f09aadd54a",
+      "size": 3088
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/evidence.md",
+      "sha256": "87d80838e3fdc717a7ebb7f0c427ebe3eed9ed41078253ec0ab8e1b61c01e953",
+      "size": 2820
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/extensions.md",
+      "sha256": "e51b38e734b381749a4308e6dc15e6e86aafb2a71c3dbd6176943f173d46588b",
+      "size": 2753
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/selection.md",
+      "sha256": "e5b3ba78e90c77e67a3541c6e22a95d1f6567de96df9d1e2f69b918b59cc8b76",
+      "size": 2697
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/app/README.md",
+      "sha256": "37d3e555416f7aa5502f5c6d3589e1ffaf0b944c913c894e50eb151e47469ecf",
+      "size": 3321
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/app/backend-contract.md",
+      "sha256": "c7325a34a241605ab39681845ffb5317398b7109c892642448433bb33f791755",
+      "size": 1195
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/app/build-signing.md",
+      "sha256": "513c7bc7efa92d05ca31d77b9b2cd16c4376e8238d2d890628b2fda43236de63",
+      "size": 1275
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/app/device-verify.md",
+      "sha256": "245bb4a784481786432c441f27dc1d54b638ec63e446384ca533fc4702da158c",
+      "size": 1186
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/app/interaction.md",
+      "sha256": "8f86958f887a25ab69d213ed98220a059338508e83534c02a303ed2229832f52",
+      "size": 1200
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/app/local-data.md",
+      "sha256": "366319e98a2a88fd3fd72d89525ca5251fea54b6cd2b3f9254dab5eb67ae300c",
+      "size": 1249
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/app/release-rollout.md",
+      "sha256": "c9fb7211b8a2851953d9cb4e66dad5a75443438f2feb5a3372ec1e69233f4748",
+      "size": 1327
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/app/sdk-privacy.md",
+      "sha256": "076534ab01aadc2ee9628187bf2173c2c2fd76f849bc17e21ae1784f48eecc92",
+      "size": 1373
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/plugin/README.md",
+      "sha256": "49b231f1e08da80bff344c8bd63a7048a842a7f11b6108f80690dc7a48706063",
+      "size": 3032
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/plugin/build-release.md",
+      "sha256": "1dcf858d34b2155c4849b54d02c9eee49a439700d468df869d5a9d135b8b5f6d",
+      "size": 1271
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/plugin/host-compat.md",
+      "sha256": "41b1e7f1f51bf8f4231bb34bbbe1b13cf52321a9db1cf964865a76859d82b906",
+      "size": 1194
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/plugin/lifecycle.md",
+      "sha256": "514d4b5ca59bff3543d62a0bcd009b475ca07609673db48c8e30c3de87b92a11",
+      "size": 1473
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/plugin/security-protocol.md",
+      "sha256": "4fe0fdbf5d74d63ddafe5c6e3977be15c4e56b13c28f49bd5010de62d85a9054",
+      "size": 1261
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/plugin/ui-isolation.md",
+      "sha256": "c8d47cfb829a9b81beaa3f7392339ff3fa65e81293723136b53744f1d47565c5",
+      "size": 1265
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/plugin/verify.md",
+      "sha256": "1cb88fe77a423ca6be2cc639c19b9883091297af513a32e946014ad75557d2d7",
+      "size": 1126
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/web/README.md",
+      "sha256": "68d04d8124b326a88b1e204da3509c0bf27189c87c82a5db33e3d1d9160d19ab",
+      "size": 2847
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/web/api-config.md",
+      "sha256": "430336b335dc7b2b56a21916b2731779a179d40e2e100ccdd6e1f9ba391573e8",
+      "size": 1494
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/web/data.md",
+      "sha256": "54e7ba92afb48c132f8d40807a078e30e758140591bb58f97c5658145acef096",
+      "size": 2012
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/web/frontend.md",
+      "sha256": "b02680e3d399db998396dcad4182e84b7be07eaec90d2d65d0b5ec50a1264eef",
+      "size": 1164
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/web/operations.md",
+      "sha256": "3539de2d9593a5d69fd64cf7d7cfe937e6e20ece2dc62a1e394f8f1b3923e1f1",
+      "size": 1422
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/docs/platforms/web/verify.md",
+      "sha256": "4598c0c2b9f64e437999b31813cb998ed8caeb6a10d6a8fb9d6df4fe93d62bd8",
+      "size": 1192
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/drafts/00-core.md",
+      "sha256": "30e536d3918ae5481ec44ce1922bb01267e5c68e5fc47941901c3238d4d85008",
+      "size": 13908
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/drafts/10-platforms.md",
+      "sha256": "58fe6cd4c7e521fb198e04b35d3dceee1dd9c4de49a2b4b4e00a7cae66639326",
+      "size": 16948
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/drafts/90-redteam.md",
+      "sha256": "b633186387dc7ffa1874f77282721fbc270cf196747210e69ec7ecfd5aadb9e9",
+      "size": 17773
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/examples/demo/harness.json",
+      "sha256": "8234bb666a705c2a17791cf08e38f05b9d282acdb7172af43ed809a29fa5cb2b",
+      "size": 5848
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/examples/demo/artifacts/fixture.txt",
+      "sha256": "9087324c5d173bc760fadf0913dfc92fa500d91bbd026c20e77818c921c45208",
+      "size": 48
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/examples/demo/evidence/records.json",
+      "sha256": "4a6240c6d4ae1e547adeb883ba6d048252ecf50fb0572da553575e3a29cbb1f9",
+      "size": 7661
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/examples/demo/pages/app.md",
+      "sha256": "66c4c627b1feb2965938c1a4d33a01fdff55c8ce34e46d4b7a34a1f127870ad2",
+      "size": 102
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/examples/demo/pages/core.md",
+      "sha256": "d504ea4a53a684a4776cf0240909700bb7d7402b7d9a937025878f421763d98e",
+      "size": 103
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/examples/demo/pages/data.md",
+      "sha256": "cd8aea473c27608e1d02e8eb65df17cc9a21f926f02c316afb60b3c13ad0fd17",
+      "size": 103
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/examples/demo/pages/plugin.md",
+      "sha256": "111ac7ff3170dec153540f45e2ccaf4a8dc9be1924f6fc5f2c2a015a34337567",
+      "size": 105
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/examples/demo/pages/web.md",
+      "sha256": "5741b459b804708aed83e1eec9e1c2ef80a5c97daa0e6a78ed93050999653619",
+      "size": 102
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/examples/demo/tasks/app.json",
+      "sha256": "f2433143f4a57a2bd6045bd92f675e359b6536be7653dc536a627b2941e440d8",
+      "size": 1359
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/examples/demo/tasks/hybrid.json",
+      "sha256": "2ae4ba0a2b6c81ca8c446ffc6abac7dc32e450ebdcfe27a823f5b3da0c948db0",
+      "size": 1445
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/examples/demo/tasks/plugin.json",
+      "sha256": "8a7f0e98d8853e5e600d0fbf0c9d379c2ccd57f278070994ef1ba3d8e4daac0c",
+      "size": 1365
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/examples/demo/tasks/web.json",
+      "sha256": "e445e0cbb03ac9841075055ab0eb6d4d7e30c1af44fbc803ed14b9425f4cb9f4",
+      "size": 1359
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/README.md",
+      "sha256": "0d33d30822ff67de543d27b51912ae863d7e55695f9ab7793108d1cbf526f1e5",
+      "size": 3708
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/VALIDATION.md",
+      "sha256": "93c4654404d65c4eee977d1b1fff67f698cc65950624ad146680ca132d207056",
+      "size": 2670
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/check_platforms.py",
+      "sha256": "faf1f36ab34ab7ff10b6ccda7d48e8667cd1d5119c366763facdf9b339d71bb6",
+      "size": 7887
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/context.md",
+      "sha256": "9fc3eb9fb093a1838c87e08174d380f8e4f0d119ea74f5730c7cf743b78207bb",
+      "size": 1233
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/fixture.txt",
+      "sha256": "00513b0232ccbb39f2c95e33fa54b9d20b9b4c745b98b2384e7dcca056bf46b2",
+      "size": 72
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/harness.json",
+      "sha256": "44662b0ff68754dfff50234a8b5c7f1c7d04236981bb9205f30c6cdc3a3b562d",
+      "size": 67692
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/evidence/records.json",
+      "sha256": "785d8805edded4c4ca6328b8248b1ea914b77869211a18d1e8e7fd1b26b14207",
+      "size": 47
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/targets/app/sample.txt",
+      "sha256": "c530fafe0cb121bedb67407ff6de881fc990635c014463e7f93da879c1aa1afa",
+      "size": 54
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/targets/plugin/sample.txt",
+      "sha256": "c530fafe0cb121bedb67407ff6de881fc990635c014463e7f93da879c1aa1afa",
+      "size": 54
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/targets/web/sample.txt",
+      "sha256": "c530fafe0cb121bedb67407ff6de881fc990635c014463e7f93da879c1aa1afa",
+      "size": 54
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A1.json",
+      "sha256": "53b71adb3d5f5da35673ef0f047a1134190efea91bcd119077c7c682c4c8a66e",
+      "size": 1817
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A10.json",
+      "sha256": "e6ffc901db53da12e257b71471d77a691ffc18c31a259a071219d241695f688d",
+      "size": 1819
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A11.json",
+      "sha256": "c40750fbb6914785a4431df0b3a2c9832cd1e29f0ebb761a3397b06922b25ba1",
+      "size": 1819
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A2.json",
+      "sha256": "3c342efd00fbe68773647da2431768006cfbb0492384ab6f783e2fb7b9daeef2",
+      "size": 1817
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A3.json",
+      "sha256": "42b28e27d731159661f1db6cb321b1bcfbcbac4b28fac4c6f114b132266186bf",
+      "size": 1817
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A4.json",
+      "sha256": "ad78d1cd00a99f727324b2d82f781b59d025514c0722cd1d9fb886920ca04a78",
+      "size": 1817
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A5.json",
+      "sha256": "6baac0f566a8b54fef9097c7b2299788c1c70f800c6a11484a3d0ebaa18af576",
+      "size": 1817
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A6.json",
+      "sha256": "848642e589415486e9dc8e4113f913090072f1404c325dc1362c31dcd5dc5197",
+      "size": 1817
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A7.json",
+      "sha256": "bfba49c5f786eee0b1c450d5ad8bdc356d8b2b3bba95e755c339e85bb4743e0d",
+      "size": 1817
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A8.json",
+      "sha256": "432f6bb63884a92faff135f862ba5f26027add8e73e9138fb90f5fe7a5a5b0eb",
+      "size": 1817
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/A9.json",
+      "sha256": "a95d365d80a81c90b3516ec65f8992a84c21b3daa62598e8432957c30676dfbc",
+      "size": 1817
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P1.json",
+      "sha256": "645e3440eccc9b747b9348e94e440b21b73dc878857b18e6e18d9f13df4442c7",
+      "size": 1823
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P10.json",
+      "sha256": "a66b730030078309546ca387bd83bfbf717f9fa4d22103a2c110a5dbf7f7fdb4",
+      "size": 1825
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P2.json",
+      "sha256": "2d30159648e4a534c0d534600fc34c45b16265417000045e412c0719c55ee57b",
+      "size": 1823
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P3.json",
+      "sha256": "89153a9fcfe6d6ef2b98fc53622041e8c7ca7e15b9ddfa49f94a6afdf44f7db4",
+      "size": 1823
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P4.json",
+      "sha256": "dc533ec9784d74c7f829954f5530d6ec975cc226b958f859d67318f3d9adba7c",
+      "size": 1823
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P5.json",
+      "sha256": "6d2ba4cc1fb328d5ad165f29b089457d48662776bcc92fd9d3aec75ca667eb09",
+      "size": 1823
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P6.json",
+      "sha256": "5a50534b7be28ddd18994fdd024d879a1dd9cf560a1c5a582ac16fb4045b9c2e",
+      "size": 1823
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P7.json",
+      "sha256": "8a1c9adaea26e4b783fd940dd9f430db5330868061ba1c48c7b861f027772887",
+      "size": 1823
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P8.json",
+      "sha256": "927e51ef8fc64fd19c53c62d13901eba78464d31d78400f22fd5312ed14ef1da",
+      "size": 1823
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/P9.json",
+      "sha256": "f827cc626455d5b24927dee246f7632b0d893049f6b47c39e8a8fe696d4fc6d7",
+      "size": 1823
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W1.json",
+      "sha256": "fb9cbc336938a365c86d2cd3a71110e1765b783334251f70090072b6aa153baa",
+      "size": 1817
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W10.json",
+      "sha256": "009771affe352d4b8cc4abfe5c4ded5914180d127b0490e87c0c96f0bba8f79c",
+      "size": 1819
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W2.json",
+      "sha256": "0a3d60f982c040f4ff2f15ea34679c90fa2647615719097c36ac7bb6b538833f",
+      "size": 1817
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W3.json",
+      "sha256": "005de680d61161d180e18c1a4ca804cc61bcdddf67c46d372bb0a065b4d3abc1",
+      "size": 1817
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W4.json",
+      "sha256": "c3d547c22943ff70112131cfc563168ad6b4143a557b61803b8232ed299c3705",
+      "size": 1817
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W5.json",
+      "sha256": "4887a0efcfb8c5d3efc6bba75306d893b90381476a15533b5cf44be34cff9ad7",
+      "size": 1817
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W6.json",
+      "sha256": "d105ca737b138ea7e159ab8f554eb491a5fcb44506fb811cb662c811f25b9f3f",
+      "size": 1817
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W7.json",
+      "sha256": "89cb1b6ecf4f840992cb0b558ce8c43623668f7b651c19098bcb9cb12481a229",
+      "size": 1817
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W8.json",
+      "sha256": "c55199017bf436b8ad92d51d46aa2662fa13eb12add0c1ca3b92a36f6196010a",
+      "size": 1817
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/W9.json",
+      "sha256": "50baa1ea2d23d6d9f33d0ad19741f0dad2732f932a35beb5633f7aaa0d5672dd",
+      "size": 1817
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/hybrid.json",
+      "sha256": "fe287bf4bbd504d8b8a4e952edc49885678f1be6b198140f0fc16048606eafb3",
+      "size": 1971
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/static-web-release.json",
+      "sha256": "bd7b682582381c560e45a5fb5e94e97592fc2d43ced3e5463e3df8f3a783e6c6",
+      "size": 1832
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/profiles/platforms/tasks/unknown-web-db.json",
+      "sha256": "8f2ec052181796c65da4c40765719080332f63b9a847edc8be1235ac9deb307c",
+      "size": 1827
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/qa/CASES.md",
+      "sha256": "2a5505f67101c0ec793fa0863fcc128be707b7fdefc22e4d0d4b7ed18e1dd324",
+      "size": 2744
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/qa/RELEASE.md",
+      "sha256": "469785875d874236926933ba2ee691a559aa23f3723b98600aca4eccf5d2e15d",
+      "size": 1240
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/qa/REPORT.md",
+      "sha256": "33d481f88a40c4df5b8c521f8f70085c3fa90fc5c04f2dc1834c440c1ac66ffb",
+      "size": 5049
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/qa/SECURITY-REVIEW.md",
+      "sha256": "760eb0173560ebd4aaa8ae46db0d729894c52d2e496454cf44d890bbe32ba016",
+      "size": 11418
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/qa/acceptance.py",
+      "sha256": "b61e552150cb05d2fb9141fa72431afe7d85d47475b7913cbaaeba9fcac8a22c",
+      "size": 16728
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/qa/check_links.py",
+      "sha256": "7ab0b8f3b0a60b906b78a76fac76c45566b7e34a4cc53c45b4372b228625112d",
+      "size": 3308
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/qa/integration-results.json",
+      "sha256": "aec5898603aaf982987499c3f39228770d6b7739b60715eedfafb68fc88b0590",
+      "size": 21616
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/qa/integration.py",
+      "sha256": "ecd25a71569bf6c2de48de4c0d51536c1632fbf68326479c5e7c7ba57c57613e",
+      "size": 3379
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/qa/package.py",
+      "sha256": "f305f72ce1285b3107df0865d5df9db51bbbe6704f9d9f5c720f168340d7606d",
+      "size": 2906
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/qa/results.json",
+      "sha256": "34983c72e8a6427d066a810171beb1eb82b21b5ea5a273c3d9ceb365fab0ce9f",
+      "size": 12231
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/qa/unit-output.txt",
+      "sha256": "18a334eeb10e2f8a9c5fd1194f15cff79668d39ada7228add5e0e8a55e89ee1e",
+      "size": 922
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/schemas/evidence.schema.json",
+      "sha256": "6f2bce28ea0580b810179aec115a1d0a6018ae1ddb2a898620b383358e87e20f",
+      "size": 10215
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/schemas/manifest.schema.json",
+      "sha256": "b80345a6c15e9d92ae7d0d09be8d2dc3907accbfb473bebcb03e5f8a90196922",
+      "size": 11128
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/schemas/route.schema.json",
+      "sha256": "898ce6111b54d728a599340cad4669af83f7a7e1a8308d94a414c2a505861717",
+      "size": 4058
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/schemas/rule.schema.json",
+      "sha256": "66ed95bc5691ca3ba32a2c09b2147a711fefeb1618a016ce999e469b3df3bb24",
+      "size": 3326
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/schemas/task.schema.json",
+      "sha256": "c1f4b2a422ceacb7fbba90c3911f6767ea3735caa2393e1fcd9d803d9db94c6d",
+      "size": 4714
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/spec/FORMAT.md",
+      "sha256": "b406e10d3346883ed18cf8d484078e586aa2a3a544f054cef0a348e4244fa1e2",
+      "size": 9368
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/templates/README.md",
+      "sha256": "abe92cc549614382e46ffe04e4ff91477de2ace3a71d0f02022862a4518f8fd3",
+      "size": 1187
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/templates/capability-request.md",
+      "sha256": "0ea890b35becaacc209b1b33ec6b7804ffe6a66d5126da2b806e0b66a08c6933",
+      "size": 1313
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/templates/decision-card.md",
+      "sha256": "5f42bc01fa5cd331738b6556603473f36e46e3bb34d16dedfa6e3b729ac4644f",
+      "size": 1112
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/templates/evidence-card.md",
+      "sha256": "8c8c336a0c43509f41090a5fbee66c4212e1365f069dd8d6dc6586f3e9ee1d04",
+      "size": 1699
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/templates/planning-bridge.md",
+      "sha256": "44bd1eea20191a2bca40fb12e3a7beeb2cc1893c93a3cb679400637038f9596d",
+      "size": 1068
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/templates/project-AGENTS.md",
+      "sha256": "c3fe230f7407ab57b5c7787a3d12b4fcf06918026215a960fe0a8a5029a5af1e",
+      "size": 1474
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/templates/rule-card.md",
+      "sha256": "288a0a90173648a26b7ef2e9e2fb2f8af7ca294008291de65b76964516922b7a",
+      "size": 1234
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/templates/task-card.md",
+      "sha256": "b628459eda9c65cb79eab4afcb6ae526673c9810791e7efd44c3f0ef9f5caab3",
+      "size": 1556
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/tests/test_harness.py",
+      "sha256": "6fe4d620ea787a3f24671fc078ac96825db9ebf0b65c74300e62672869f4768b",
+      "size": 26558
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/tools/build_assets.py",
+      "sha256": "592cbe18ee9f41ae80322a621a75eb9f3178ddb94e0c46bd395f737273c341f2",
+      "size": 8774
+    },
+    {
+      "path": "docs/harness/vendor/1.0.0/tools/harness.py",
+      "sha256": "6d32b81d9dc3d4ad0f64cae77e0a57676926ae04db1cf2987b6b5b87aaf698ea",
+      "size": 26832
+    },
+    {
+      "path": "frontend/env.d.ts",
+      "sha256": "f3e5cd9f4bcab346c4dbbd5080e77bafad0d87932076e4ef086f240e1c3c796e",
+      "size": 192
+    },
+    {
+      "path": "frontend/index.html",
+      "sha256": "fd27f51eed07aa8e74d043fcc679ac2ccdcdc0c40f93c0b34b720a10111629bb",
+      "size": 297
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "sha256": "c3f8b7ed833c608a8b71322d9da95a07795c7f81aed8d79142cb082903fc5d39",
+      "size": 82313
+    },
+    {
+      "path": "frontend/package.json",
+      "sha256": "bb47fe880cd08fa151a5076eb8465fa5bf541d8fcc5f979a6cec079e6a05bac5",
+      "size": 696
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "sha256": "4986aa4038aa4ad11b171d7dcb062905d808b5dfa51707401d131ab9c5deee6e",
+      "size": 553
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "sha256": "d7e07d4cc1a4daeecc83d9c119eb843d7afe777e8e036c893c7ea35a48726056",
+      "size": 742
+    },
+    {
+      "path": "frontend/src/App.vue",
+      "sha256": "468923f6ffaff41b49964b34ff74abd95f227b04d529746871d17353ddf6a7f0",
+      "size": 270
+    },
+    {
+      "path": "frontend/src/main.ts",
+      "sha256": "9b99059f70734e427a5dacfdc8180f910a2f4691e418a009f8e2f010f880ad5b",
+      "size": 300
+    },
+    {
+      "path": "frontend/src/api/client.ts",
+      "sha256": "e546365f3afab52ec3cb107aa4808b4b6ee189b77a41ef135b0d15bf1a37a8c2",
+      "size": 888
+    },
+    {
+      "path": "frontend/src/api/modules/ai.ts",
+      "sha256": "bd054afd0521857126ea8fa05dc02d0bf9955cb16d316eadd660389455446153",
+      "size": 3476
+    },
+    {
+      "path": "frontend/src/api/modules/auth.ts",
+      "sha256": "69d85657591122d6cac4c2742bd3a545b7a46ba6f37a40acd2699892af82dbee",
+      "size": 284
+    },
+    {
+      "path": "frontend/src/api/modules/dashboard.ts",
+      "sha256": "10301529e4371f90831c7e6c692ca6aa870e4e725085fdbbee923f64c8774e8e",
+      "size": 335
+    },
+    {
+      "path": "frontend/src/api/modules/role.ts",
+      "sha256": "8b1aa0c3276990572f8c7a80509403c60eca641c8a83a6bc35d89defe2c15a8c",
+      "size": 782
+    },
+    {
+      "path": "frontend/src/api/modules/user.ts",
+      "sha256": "f3db6ffca0fabfb87ae92c89e838b4cc3e764105f151302cd85a0f062a2ce6b6",
+      "size": 1127
+    },
+    {
+      "path": "frontend/src/components/AIProviderAlert.vue",
+      "sha256": "2701c6feb343148ef45b8d1bc0143fea02e5452ded67d00ae31bcc00ff355bfe",
+      "size": 930
+    },
+    {
+      "path": "frontend/src/layouts/MainLayout.vue",
+      "sha256": "d8fb912308e395d1c4002fdb05a8f873141fa4f9ea845baabb72ab3724eaf894",
+      "size": 2602
+    },
+    {
+      "path": "frontend/src/router/index.ts",
+      "sha256": "403011d73cbbde6b2433998a299bd0aa96ca6230dc7553aa0ffaedcddf5d3487",
+      "size": 4071
+    },
+    {
+      "path": "frontend/src/stores/ai.ts",
+      "sha256": "e8aecfc78995b3360f9ef41a38876f93e4c9f5f68196958aa7d7d39a02169e40",
+      "size": 2055
+    },
+    {
+      "path": "frontend/src/stores/index.ts",
+      "sha256": "72db3d44d07c7ba7d4aee32fb79b7f57305fb6ba05eee8ed6f91cfec4d7336d1",
+      "size": 143
+    },
+    {
+      "path": "frontend/src/stores/user.ts",
+      "sha256": "301f10c1dc1178ab395e482225411e95aa2abfdc5cd7ab9518f4dbcdf42c7177",
+      "size": 2018
+    },
+    {
+      "path": "frontend/src/types/ai.ts",
+      "sha256": "50c561e7b998beabc99f6b51addc122e0e542bb92fe50c344d6bd56a8b4ed13d",
+      "size": 4003
+    },
+    {
+      "path": "frontend/src/types/role.ts",
+      "sha256": "024bcd8a2b1c27f6f4540ce2b9b7a6b37af2dcebcea380c6f35ae6ecd2dbe942",
+      "size": 689
+    },
+    {
+      "path": "frontend/src/types/user.ts",
+      "sha256": "065060fe18b61680a781b573d794f04ff45afa4888d1e5b3f30d9f274ad8456e",
+      "size": 989
+    },
+    {
+      "path": "frontend/src/utils/markdown.ts",
+      "sha256": "1d0f05630b048b959a88ab8af0c919033a24e79fc851774b170331a12e0e62da",
+      "size": 3797
+    },
+    {
+      "path": "frontend/src/views/ai/AIAgentTokenView.vue",
+      "sha256": "3adf4c98c6437d1052cfeae16afb61adab240246797e18ce85674efc57933535",
+      "size": 4163
+    },
+    {
+      "path": "frontend/src/views/ai/AIApprovalView.vue",
+      "sha256": "b1c11760576865396d34c1fdaa4ce99ecc945c8e31453b9cb770b84eaa40881f",
+      "size": 9999
+    },
+    {
+      "path": "frontend/src/views/ai/AIAuditView.vue",
+      "sha256": "ba47f2448628a0a317cf46f32c5baf0e3e7dba83612fdc4b0fcc3f3cc428f8cd",
+      "size": 10717
+    },
+    {
+      "path": "frontend/src/views/ai/AIChatView.vue",
+      "sha256": "d391a1b1dab26c85b376f24893357182d9fcb3fcb8e9f2dd469c7ec60499f083",
+      "size": 11908
+    },
+    {
+      "path": "frontend/src/views/ai/AINotificationView.vue",
+      "sha256": "44fa31a9f320ee8e6e2ad3b81ac7dfb9b6984ec79b04eadc43df9b521fce1c3f",
+      "size": 4952
+    },
+    {
+      "path": "frontend/src/views/dashboard/DashboardView.vue",
+      "sha256": "ea0aab84ddd3119e7371ab92456be1d3f4d92a422ffaf68a2323b623eee9374c",
+      "size": 1458
+    },
+    {
+      "path": "frontend/src/views/error/ForbiddenView.vue",
+      "sha256": "39badf74592fb616fc71c76ca623599bc04e287918de6a29c48fc388c85b376b",
+      "size": 492
+    },
+    {
+      "path": "frontend/src/views/error/NotFoundView.vue",
+      "sha256": "0053d329e0f1b1e3ce1c7e68b8171eafa9be2cbbe7529a1b009599665ca0d186",
+      "size": 471
+    },
+    {
+      "path": "frontend/src/views/login/LoginView.vue",
+      "sha256": "872f0e6cef4b1d10112b5720aed0098efc5bdee47f68dcba5628552da825c3bf",
+      "size": 2599
+    },
+    {
+      "path": "frontend/src/views/system/AuditView.vue",
+      "sha256": "aa7ec13a9e5e203027411bc3830cdbcdab70280c57d6e7fa73c34cb6d997f2cf",
+      "size": 1984
+    },
+    {
+      "path": "frontend/src/views/system/SettingsView.vue",
+      "sha256": "d5fd493f9fc50ece079a7278166e3df8a56ce727c680e3b03a3b271cd7af229b",
+      "size": 1994
+    },
+    {
+      "path": "frontend/src/views/system/role/RoleFormDialog.vue",
+      "sha256": "c0fed92afbeca119c51189cf458af85919f63b8aefef2b25a7f060dad9843ab8",
+      "size": 5497
+    },
+    {
+      "path": "frontend/src/views/system/role/RoleListView.vue",
+      "sha256": "d85cfe1d5faa5af8f338198bf96ef29de4793211543ff6f42c16f4b494362b7f",
+      "size": 5074
+    },
+    {
+      "path": "frontend/src/views/system/user/UserFormDialog.vue",
+      "sha256": "b9ff0533f9ea59e550766b321cce79cf5453d09c6d617ead7d786e9ec92ff875",
+      "size": 6076
+    },
+    {
+      "path": "frontend/src/views/system/user/UserListView.vue",
+      "sha256": "7e6b03761f2efb3b8ff4613160de3e7775cb2125af7eaed8afa4ee16c9a6036b",
+      "size": 8093
+    },
+    {
+      "path": "tools/browser_core.py",
+      "sha256": "2818acf627c060bb5024eaf701a2a058d586fadec2e10d1ea63182998cd65744",
+      "size": 11927
+    },
+    {
+      "path": "tools/credential_process_probe.py",
+      "sha256": "0f78a631d48b702d19b55f2041388264de3e14e7aa8c4bbb4155ae7799160afa",
+      "size": 813
+    },
+    {
+      "path": "tools/finalize_verify.py",
+      "sha256": "ccb1be7ad5843860b67114b0540f5978bac7a218a0065b3914e6513787da5a59",
+      "size": 4614
+    },
+    {
+      "path": "tools/harness_checks.py",
+      "sha256": "3a6f3728263dd5f542607e2352b2c99703256a860c2b58b18aed4f616150186a",
+      "size": 5283
+    },
+    {
+      "path": "tools/patch_core_api.py",
+      "sha256": "132c8992acb3f71181e0682efc931018f6b664df0d3d0c9962b2831154891640",
+      "size": 4421
+    },
+    {
+      "path": "tools/patch_core_ui.py",
+      "sha256": "53a96063b6cf08de2c9eb84693897ea060a4e44a0e10d3f67a867ffb8d00b491",
+      "size": 5781
+    },
+    {
+      "path": "tools/patch_ids.py",
+      "sha256": "330ff5e852b733b3cbab738bb63657741625da14e8860c669525ef15c2d66489",
+      "size": 453
+    },
+    {
+      "path": "tools/patch_lifecycle_lock.py",
+      "sha256": "3618d90a1c65dbe7f99419fcad3279cf6171f99152b9e4725e2a7e7d7a5383ea",
+      "size": 1391
+    },
+    {
+      "path": "tools/prepare_harness.py",
+      "sha256": "6f1bbb1213232d2eed28c02160f1cfecf34a9cff45d43cda03b48507f1aabfdb",
+      "size": 3282
+    },
+    {
+      "path": "tools/reproduce_legacy_token.py",
+      "sha256": "1ae133cb8e6fa2809d3eaf142f80f828bbec05d453636c77df1072db1eff7725",
+      "size": 2484
+    },
+    {
+      "path": "tools/run_logged.py",
+      "sha256": "e1014c67db48b04c98cb0657e69160fd1ee0cf92f58792d80461ffa6247c9db8",
+      "size": 1595
+    },
+    {
+      "path": "tools/seed_integration.py",
+      "sha256": "faeeff91bf19c272bec0083df7d441db1a31e4d1864caaaedf3d4e5051e97de7",
+      "size": 1168
+    },
+    {
+      "path": "tools/verify.py",
+      "sha256": "1caea82e9bb0e0487e8706c21fc50a62e58c0d780518e95f2e06a6be38a43b12",
+      "size": 17463
+    },
+    {
+      "path": "tools/verify_boss.py",
+      "sha256": "f9286303016005c28e9c98cc295c6f36132b7d1333f71e471867aff5e31429a7",
+      "size": 4662
+    },
+    {
+      "path": "tools/verify_core_boundaries.py",
+      "sha256": "72224d8f97963bb5e7cafe77bae95fd1519a85d5648902cf5eccd01a80214d26",
+      "size": 5349
+    },
+    {
+      "path": "tools/verify_live.py",
+      "sha256": "95ae6cd8e3b302d9e1034c0b45ea74598187e9a8c97300f1e7ed3c6af422343e",
+      "size": 8335
+    },
+    {
+      "path": "tools/verify_migrations.py",
+      "sha256": "3a6e62559788e7fe2304cbfe7e630e5b89b65bf95c36090107660ef195012650",
+      "size": 6116
+    }
+  ]
+}

@@ -11,6 +11,8 @@ class UserBackend:
         try:
             user = User.objects.get(username=username, is_deleted=False)
         except User.DoesNotExist:
+            # Match Django ModelBackend's dummy hash work; no custom sleeps.
+            User().set_password(password)
             return None
         if user.check_password(password):
             return user
@@ -18,6 +20,6 @@ class UserBackend:
 
     def get_user(self, user_id):
         try:
-            return User.objects.get(pk=user_id)
+            return User.objects.get(pk=user_id, is_active=True)
         except User.DoesNotExist:
             return None

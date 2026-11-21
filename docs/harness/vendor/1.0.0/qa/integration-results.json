@@ -1,0 +1,767 @@
+{
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "executable": "C:\\Users\\Rick\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+  "commands": [
+    {
+      "command": "python --version",
+      "expected_exit": 0,
+      "exit": 0,
+      "expected_status": null,
+      "status": null,
+      "pass": true,
+      "output": "Python 3.11.9\n"
+    },
+    {
+      "command": "python tools/harness.py --help",
+      "expected_exit": 0,
+      "exit": 0,
+      "expected_status": null,
+      "status": null,
+      "pass": true,
+      "output": "usage: harness.py [-h] {lint,resolve,evidence} ...\n\nOffline, read-only Harness v1 checker. Never executes manifest commands.\n\npositional arguments:\n  {lint,resolve,evidence}\n    lint                validate manifest shape and references only\n    resolve             union task context and detect blocked actions\n    evidence            check current evidence bindings without running\n                        commands\n\noptions:\n  -h, --help            show this help message and exit\n"
+    },
+    {
+      "command": "python tools/harness.py lint --root examples/demo --manifest harness.json",
+      "expected_exit": 0,
+      "exit": 0,
+      "expected_status": "pass",
+      "status": "pass",
+      "pass": true,
+      "output": {
+        "schema_version": 1,
+        "status": "pass",
+        "errors": [],
+        "counts": {
+          "owners": 1,
+          "executors": 1,
+          "rules": 3,
+          "routes": 3
+        },
+        "limitations": [
+          "structure/reference validation only, not execution evidence or authorization"
+        ]
+      }
+    },
+    {
+      "command": "python tools/harness.py resolve --root examples/demo --manifest harness.json --task tasks/hybrid.json",
+      "expected_exit": 0,
+      "exit": 0,
+      "expected_status": "pass",
+      "status": "pass",
+      "pass": true,
+      "output": {
+        "schema_version": 1,
+        "status": "pass",
+        "errors": [],
+        "matched_routes": [
+          "route.app",
+          "route.plugin",
+          "route.web"
+        ],
+        "unmatched_routes": [],
+        "context_files": [
+          "pages/app.md",
+          "pages/core.md",
+          "pages/data.md",
+          "pages/plugin.md",
+          "pages/web.md"
+        ],
+        "rule_refs": [
+          "APP-VERIFY",
+          "PLUGIN-VERIFY",
+          "WEB-VERIFY"
+        ],
+        "applicable_rules": [
+          "APP-VERIFY",
+          "PLUGIN-VERIFY",
+          "WEB-VERIFY"
+        ],
+        "executor_refs": [
+          "observe-target"
+        ],
+        "evidence_refs": [
+          "app-target-check",
+          "plugin-target-check",
+          "web-target-check"
+        ],
+        "conflicts": [],
+        "stopped_actions": [],
+        "routing_digest": "81380e331b0e9e1723691c8e44cfa8e0489b6b988ec0e89af9139342c6e589cf",
+        "reroute_on": [
+          "task dimensions or facts change",
+          "diff expands or source changes",
+          "environment target artifacts or rules change"
+        ],
+        "limitations": [
+          "declared task state is not external authorization",
+          "only explicit constraint-key conflicts detected"
+        ]
+      }
+    },
+    {
+      "command": "python tools/harness.py evidence --root examples/demo --manifest harness.json --task tasks/hybrid.json --records evidence/records.json --now 2026-11-14T10:00:00Z",
+      "expected_exit": 2,
+      "exit": 2,
+      "expected_status": "not-run",
+      "status": "not-run",
+      "pass": true,
+      "output": {
+        "schema_version": 1,
+        "status": "not-run",
+        "errors": [],
+        "records": [
+          {
+            "id": "record.PLUGIN-VERIFY",
+            "rule_id": "PLUGIN-VERIFY",
+            "check_id": "plugin-target-check",
+            "historical_status": "not-run",
+            "current_status": "not-run",
+            "invalidation_reasons": [],
+            "enforcement": "proposed",
+            "required": true,
+            "scope_basis": null
+          },
+          {
+            "id": "record.WEB-VERIFY",
+            "rule_id": "WEB-VERIFY",
+            "check_id": "web-target-check",
+            "historical_status": "not-run",
+            "current_status": "not-run",
+            "invalidation_reasons": [],
+            "enforcement": "proposed",
+            "required": true,
+            "scope_basis": null
+          },
+          {
+            "id": "record.APP-VERIFY",
+            "rule_id": "APP-VERIFY",
+            "check_id": "app-target-check",
+            "historical_status": "not-run",
+            "current_status": "not-run",
+            "invalidation_reasons": [],
+            "enforcement": "proposed",
+            "required": true,
+            "scope_basis": null
+          }
+        ],
+        "routing_digest": "81380e331b0e9e1723691c8e44cfa8e0489b6b988ec0e89af9139342c6e589cf",
+        "scope_basis": {
+          "applicable_rules": [
+            "APP-VERIFY",
+            "PLUGIN-VERIFY",
+            "WEB-VERIFY"
+          ],
+          "matched_routes": [
+            "route.app",
+            "route.plugin",
+            "route.web"
+          ]
+        },
+        "limitations": [
+          "unverified declarations: offline consistency only; performed/target/authorization are not authenticated",
+          "does not execute tests, authorize actions or verify external enforcement"
+        ]
+      }
+    },
+    {
+      "command": "python tools/harness.py lint --root . --manifest profiles/platforms/harness.json",
+      "expected_exit": 0,
+      "exit": 0,
+      "expected_status": "pass",
+      "status": "pass",
+      "pass": true,
+      "output": {
+        "schema_version": 1,
+        "status": "pass",
+        "errors": [],
+        "counts": {
+          "owners": 1,
+          "executors": 1,
+          "rules": 31,
+          "routes": 31
+        },
+        "limitations": [
+          "structure/reference validation only, not execution evidence or authorization"
+        ]
+      }
+    },
+    {
+      "command": "python tools/harness.py resolve --root . --manifest profiles/platforms/harness.json --task profiles/platforms/tasks/static-web-release.json",
+      "expected_exit": 0,
+      "exit": 0,
+      "expected_status": "pass",
+      "status": "pass",
+      "pass": true,
+      "output": {
+        "schema_version": 1,
+        "status": "pass",
+        "errors": [],
+        "matched_routes": [
+          "W8"
+        ],
+        "unmatched_routes": [
+          "A1",
+          "A10",
+          "A11",
+          "A2",
+          "A3",
+          "A4",
+          "A5",
+          "A6",
+          "A7",
+          "A8",
+          "A9",
+          "P1",
+          "P10",
+          "P2",
+          "P3",
+          "P4",
+          "P5",
+          "P6",
+          "P7",
+          "P8",
+          "P9",
+          "W1",
+          "W10",
+          "W2",
+          "W3",
+          "W4",
+          "W5",
+          "W6",
+          "W7",
+          "W9"
+        ],
+        "context_files": [
+          "docs/platforms/evidence.md",
+          "docs/platforms/selection.md",
+          "docs/platforms/web/README.md",
+          "docs/platforms/web/api-config.md",
+          "docs/platforms/web/frontend.md",
+          "docs/platforms/web/operations.md",
+          "docs/platforms/web/verify.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md"
+        ],
+        "rule_refs": [
+          "PLATFORM-W8"
+        ],
+        "applicable_rules": [
+          "PLATFORM-W8"
+        ],
+        "executor_refs": [
+          "proposed:platform-target-observation"
+        ],
+        "evidence_refs": [
+          "W8-real-target-check"
+        ],
+        "conflicts": [],
+        "stopped_actions": [],
+        "routing_digest": "065e517b5fd49f5c919d1910b1e93f48ec0272dcdd1f28e298d0ef3ea4522ce7",
+        "reroute_on": [
+          "task dimensions or facts change",
+          "diff expands or source changes",
+          "environment target artifacts or rules change"
+        ],
+        "limitations": [
+          "declared task state is not external authorization",
+          "only explicit constraint-key conflicts detected"
+        ]
+      }
+    },
+    {
+      "command": "python tools/harness.py resolve --root . --manifest profiles/platforms/harness.json --task profiles/platforms/tasks/hybrid.json",
+      "expected_exit": 0,
+      "exit": 0,
+      "expected_status": "pass",
+      "status": "pass",
+      "pass": true,
+      "output": {
+        "schema_version": 1,
+        "status": "pass",
+        "errors": [],
+        "matched_routes": [
+          "A4",
+          "P5",
+          "W8"
+        ],
+        "unmatched_routes": [
+          "A1",
+          "A10",
+          "A11",
+          "A2",
+          "A3",
+          "A5",
+          "A6",
+          "A7",
+          "A8",
+          "A9",
+          "P1",
+          "P10",
+          "P2",
+          "P3",
+          "P4",
+          "P6",
+          "P7",
+          "P8",
+          "P9",
+          "W1",
+          "W10",
+          "W2",
+          "W3",
+          "W4",
+          "W5",
+          "W6",
+          "W7",
+          "W9"
+        ],
+        "context_files": [
+          "docs/platforms/app/README.md",
+          "docs/platforms/app/device-verify.md",
+          "docs/platforms/app/local-data.md",
+          "docs/platforms/app/release-rollout.md",
+          "docs/platforms/evidence.md",
+          "docs/platforms/plugin/README.md",
+          "docs/platforms/plugin/host-compat.md",
+          "docs/platforms/plugin/ui-isolation.md",
+          "docs/platforms/plugin/verify.md",
+          "docs/platforms/selection.md",
+          "docs/platforms/web/README.md",
+          "docs/platforms/web/api-config.md",
+          "docs/platforms/web/data.md",
+          "docs/platforms/web/frontend.md",
+          "docs/platforms/web/operations.md",
+          "docs/platforms/web/verify.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md"
+        ],
+        "rule_refs": [
+          "PLATFORM-A4",
+          "PLATFORM-P5",
+          "PLATFORM-W8"
+        ],
+        "applicable_rules": [
+          "PLATFORM-A4",
+          "PLATFORM-P5",
+          "PLATFORM-W8"
+        ],
+        "executor_refs": [
+          "proposed:platform-target-observation"
+        ],
+        "evidence_refs": [
+          "A4-real-target-check",
+          "P5-real-target-check",
+          "W8-real-target-check"
+        ],
+        "conflicts": [],
+        "stopped_actions": [],
+        "routing_digest": "778e27e3edebd228b83d03b67285c346a701179d2ede6a86694e1200fb6479b8",
+        "reroute_on": [
+          "task dimensions or facts change",
+          "diff expands or source changes",
+          "environment target artifacts or rules change"
+        ],
+        "limitations": [
+          "declared task state is not external authorization",
+          "only explicit constraint-key conflicts detected"
+        ]
+      }
+    },
+    {
+      "command": "python tools/harness.py resolve --root . --manifest profiles/platforms/harness.json --task profiles/platforms/tasks/unknown-web-db.json",
+      "expected_exit": 2,
+      "exit": 2,
+      "expected_status": "blocked",
+      "status": "blocked",
+      "pass": true,
+      "output": {
+        "schema_version": 1,
+        "status": "blocked",
+        "errors": [
+          {
+            "code": "E_CONDITION_UNKNOWN",
+            "path": "$/facts/web_has_db",
+            "message": "cannot determine conditional context for W8"
+          }
+        ],
+        "matched_routes": [
+          "W8"
+        ],
+        "unmatched_routes": [
+          "A1",
+          "A10",
+          "A11",
+          "A2",
+          "A3",
+          "A4",
+          "A5",
+          "A6",
+          "A7",
+          "A8",
+          "A9",
+          "P1",
+          "P10",
+          "P2",
+          "P3",
+          "P4",
+          "P5",
+          "P6",
+          "P7",
+          "P8",
+          "P9",
+          "W1",
+          "W10",
+          "W2",
+          "W3",
+          "W4",
+          "W5",
+          "W6",
+          "W7",
+          "W9"
+        ],
+        "context_files": [
+          "docs/platforms/evidence.md",
+          "docs/platforms/selection.md",
+          "docs/platforms/web/README.md",
+          "docs/platforms/web/api-config.md",
+          "docs/platforms/web/frontend.md",
+          "docs/platforms/web/operations.md",
+          "docs/platforms/web/verify.md",
+          "docs/pr-boundaries.md",
+          "docs/test-boundaries.md",
+          "profiles/platforms/context.md"
+        ],
+        "rule_refs": [
+          "PLATFORM-W8"
+        ],
+        "applicable_rules": [
+          "PLATFORM-W8"
+        ],
+        "executor_refs": [
+          "proposed:platform-target-observation"
+        ],
+        "evidence_refs": [
+          "W8-real-target-check"
+        ],
+        "conflicts": [],
+        "stopped_actions": [
+          "edit"
+        ],
+        "routing_digest": "2e3198febd20dd360c84291f5813a20e8c00e8f9d39357b080ae469227d8b7e5",
+        "reroute_on": [
+          "task dimensions or facts change",
+          "diff expands or source changes",
+          "environment target artifacts or rules change"
+        ],
+        "limitations": [
+          "declared task state is not external authorization",
+          "only explicit constraint-key conflicts detected"
+        ]
+      }
+    },
+    {
+      "command": "python tools/harness.py evidence --root . --manifest profiles/platforms/harness.json --task profiles/platforms/tasks/hybrid.json --records profiles/platforms/evidence/records.json --now 2026-11-14T10:00:00Z",
+      "expected_exit": 2,
+      "exit": 2,
+      "expected_status": "not-run",
+      "status": "not-run",
+      "pass": true,
+      "output": {
+        "schema_version": 1,
+        "status": "not-run",
+        "errors": [],
+        "records": [
+          {
+            "id": null,
+            "rule_id": "PLATFORM-A4",
+            "check_id": "A4-real-target-check",
+            "historical_status": null,
+            "current_status": "not-run",
+            "invalidation_reasons": [
+              "missing-record"
+            ],
+            "enforcement": "proposed",
+            "required": true
+          },
+          {
+            "id": null,
+            "rule_id": "PLATFORM-P5",
+            "check_id": "P5-real-target-check",
+            "historical_status": null,
+            "current_status": "not-run",
+            "invalidation_reasons": [
+              "missing-record"
+            ],
+            "enforcement": "proposed",
+            "required": true
+          },
+          {
+            "id": null,
+            "rule_id": "PLATFORM-W8",
+            "check_id": "W8-real-target-check",
+            "historical_status": null,
+            "current_status": "not-run",
+            "invalidation_reasons": [
+              "missing-record"
+            ],
+            "enforcement": "proposed",
+            "required": true
+          }
+        ],
+        "routing_digest": "778e27e3edebd228b83d03b67285c346a701179d2ede6a86694e1200fb6479b8",
+        "scope_basis": {
+          "applicable_rules": [
+            "PLATFORM-A4",
+            "PLATFORM-P5",
+            "PLATFORM-W8"
+          ],
+          "matched_routes": [
+            "A4",
+            "P5",
+            "W8"
+          ]
+        },
+        "limitations": [
+          "unverified declarations: offline consistency only; performed/target/authorization are not authenticated",
+          "does not execute tests, authorize actions or verify external enforcement"
+        ]
+      }
+    },
+    {
+      "command": "python profiles/check_platforms.py",
+      "expected_exit": 0,
+      "exit": 0,
+      "expected_status": null,
+      "status": "pass",
+      "pass": true,
+      "output": {
+        "status": "pass",
+        "assertions": 124,
+        "routes": 31,
+        "conditional_routes": 17,
+        "internal_links": 199,
+        "hybrid_context_files": 19,
+        "limitations": [
+          "offline document/routing validation only",
+          "no real product, CI, host, device or production check executed"
+        ]
+      }
+    }
+  ],
+  "instances": [
+    {
+      "path": "examples/demo/evidence/records.json",
+      "schema": "evidence",
+      "pass": true
+    },
+    {
+      "path": "examples/demo/harness.json",
+      "schema": "manifest",
+      "pass": true
+    },
+    {
+      "path": "examples/demo/tasks/app.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "examples/demo/tasks/hybrid.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "examples/demo/tasks/plugin.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "examples/demo/tasks/web.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/evidence/records.json",
+      "schema": "evidence",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/harness.json",
+      "schema": "manifest",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/A1.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/A10.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/A11.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/A2.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/A3.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/A4.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/A5.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/A6.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/A7.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/A8.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/A9.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/hybrid.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/P1.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/P10.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/P2.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/P3.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/P4.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/P5.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/P6.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/P7.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/P8.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/P9.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/static-web-release.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/unknown-web-db.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/W1.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/W10.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/W2.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/W3.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/W4.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/W5.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/W6.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/W7.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/W8.json",
+      "schema": "task",
+      "pass": true
+    },
+    {
+      "path": "profiles/platforms/tasks/W9.json",
+      "schema": "task",
+      "pass": true
+    }
+  ],
+  "failed": 0,
+  "scope": "published CLI command behavior and shipped JSON shape; not product execution or remote CI"
+}

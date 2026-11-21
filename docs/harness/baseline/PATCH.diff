@@ -1,0 +1,256 @@
+--- a/backend/apps/rbac/permissions.py
++++ b/backend/apps/rbac/permissions.py
+@@ -44,3 +44,30 @@
+             user=user,
+             role__code__in=self.ADMIN_ROLES,
+         ).exists()
++
++
++def has_role(user, code: str) -> bool:
++    """Return whether a live user has the given RBAC role."""
++    if not user or not getattr(user, 'id', None):
++        return False
++    from apps.rbac.models import UserRole
++    return UserRole.objects.filter(user=user, role__code=code).exists()
++
++
++def boss_can_manage_user(actor, target) -> bool:
++    """BOSS may manage ordinary users, never root/BOSS identities."""
++    if not has_role(actor, 'boss') or getattr(actor, 'is_superuser', False):
++        return True
++    return not (
++        getattr(target, 'is_superuser', False)
++        or has_role(target, 'root')
++        or has_role(target, 'boss')
++    )
++
++
++def boss_can_assign_roles(actor, role_ids) -> bool:
++    """Prevent BOSS from granting root/BOSS privileges to any account."""
++    if not has_role(actor, 'boss') or getattr(actor, 'is_superuser', False):
++        return True
++    from apps.rbac.models import Role
++    return not Role.objects.filter(id__in=list(role_ids or []), code__in={'root', 'boss'}).exists()
+--- a/backend/apps/rbac/services/user_service.py
++++ b/backend/apps/rbac/services/user_service.py
+@@ -5,6 +5,7 @@
+ from django.db.models import Q
+ from apps.common.exceptions import BusinessError
+ from apps.rbac.models import User, UserRole
++from apps.rbac.permissions import boss_can_manage_user, boss_can_assign_roles
+ 
+ logger = logging.getLogger(__name__)
+ 
+@@ -52,7 +53,7 @@
+     # ── 写操作 ──────────────────────────────────────────────
+ 
+     @transaction.atomic
+-    def create_user(self, data: dict) -> User:
++    def create_user(self, data: dict, *, actor=None) -> User:
+         """
+         创建用户 + 分配角色.
+ 
+@@ -62,6 +63,7 @@
+         Raises:
+             BusinessError: 用户名/邮箱重复
+         """
++        self._check_assignment(actor, data.get('role_ids', []))
+         username = data['username']
+         email = data['email']
+ 
+@@ -89,7 +91,7 @@
+         return user
+ 
+     @transaction.atomic
+-    def update_user(self, user_id: int, data: dict) -> User:
++    def update_user(self, user_id: int, data: dict, *, actor=None) -> User:
+         """
+         更新用户信息.
+ 
+@@ -99,6 +101,10 @@
+         user = User.objects.filter(id=user_id).first()
+         if not user:
+             raise BusinessError(message='用户不存在', code='USER_NOT_FOUND', status=404)
++        if not boss_can_manage_user(actor, user):
++            raise BusinessError(message='BOSS 不能管理管理员账号', code='ADMIN_TARGET_PROTECTED', status=403)
++
++        self._check_assignment(actor, data.get('role_ids', []))
+ 
+         # 用户名去重检查
+         if 'username' in data and data['username'] != user.username:
+@@ -129,19 +135,28 @@
+         logger.info('User updated', extra={'user_id': user_id})
+         return user
+ 
+-    def delete_user(self, user_id: int) -> None:
++    def delete_user(self, user_id: int, *, actor=None) -> None:
+         """软删除用户."""
+         user = User.objects.filter(id=user_id).first()
+         if not user:
+             raise BusinessError(message='用户不存在', code='USER_NOT_FOUND', status=404)
++        if not boss_can_manage_user(actor, user):
++            raise BusinessError(message='BOSS 不能管理管理员账号', code='ADMIN_TARGET_PROTECTED', status=403)
+         user.soft_delete()
+         logger.info('User soft-deleted', extra={'user_id': user_id})
+ 
+-    def reset_password(self, user_id: int, new_password: str) -> None:
++    def reset_password(self, user_id: int, new_password: str, *, actor=None) -> None:
+         """重置密码."""
+         user = User.objects.filter(id=user_id).first()
+         if not user:
+             raise BusinessError(message='用户不存在', code='USER_NOT_FOUND', status=404)
++        if not boss_can_manage_user(actor, user):
++            raise BusinessError(message='BOSS 不能管理管理员账号', code='ADMIN_TARGET_PROTECTED', status=403)
+         user.set_password(new_password)
+         user.save(update_fields=['password_hash'])
+         logger.info('Password reset', extra={'user_id': user_id})
++
++    @staticmethod
++    def _check_assignment(actor, role_ids):
++        if not boss_can_assign_roles(actor, role_ids):
++            raise BusinessError(message='BOSS 不能授予管理员角色', code='ADMIN_ROLE_PROTECTED', status=403)
+--- a/backend/apps/rbac/views/role_views.py
++++ b/backend/apps/rbac/views/role_views.py
+@@ -3,7 +3,8 @@
+ from rest_framework.permissions import IsAuthenticated
+ from rest_framework.response import Response
+ 
+-from apps.rbac.permissions import IsAdminOrReadOnly
++from apps.rbac.permissions import IsAdminOrReadOnly, has_role
++from rest_framework.exceptions import PermissionDenied
+ from apps.rbac.serializers.role_serializers import (
+     RoleCreateSerializer,
+     RoleUpdateSerializer,
+@@ -18,6 +19,13 @@
+     permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
+     serializer_class = RoleOutputSerializer
+     service = RoleService()
++
++    def initial(self, request, *args, **kwargs):
++        super().initial(request, *args, **kwargs)
++        if request.method not in ('GET', 'HEAD', 'OPTIONS') and not (
++            request.user.is_superuser or has_role(request.user, 'root')
++        ):
++            raise PermissionDenied('仅 root 可以修改角色定义')
+ 
+     def get_serializer_class(self):
+         return {
+--- a/backend/apps/rbac/views/user_views.py
++++ b/backend/apps/rbac/views/user_views.py
+@@ -55,7 +55,7 @@
+         """创建用户."""
+         serializer = UserCreateSerializer(data=request.data)
+         serializer.is_valid(raise_exception=True)
+-        user = self.service.create_user(serializer.validated_data)
++        user = self.service.create_user(serializer.validated_data, actor=request.user)
+         out = UserOutputSerializer(user)
+         return Response({'data': out.data}, status=status.HTTP_201_CREATED)
+ 
+@@ -78,7 +78,7 @@
+         """更新用户."""
+         serializer = UserUpdateSerializer(data=request.data)
+         serializer.is_valid(raise_exception=True)
+-        user = self.service.update_user(int(pk), serializer.validated_data)
++        user = self.service.update_user(int(pk), serializer.validated_data, actor=request.user)
+         out = UserOutputSerializer(user)
+         return Response({'data': out.data})
+ 
+@@ -86,7 +86,7 @@
+ 
+     def destroy(self, request, pk=None):
+         """软删除用户."""
+-        self.service.delete_user(int(pk))
++        self.service.delete_user(int(pk), actor=request.user)
+         return Response(status=status.HTTP_204_NO_CONTENT)
+ 
+     # ── POST /api/rbac/users/{id}/reset-password/ ────────
+@@ -96,5 +96,5 @@
+         """重置密码."""
+         serializer = UserResetPasswordSerializer(data=request.data)
+         serializer.is_valid(raise_exception=True)
+-        self.service.reset_password(int(pk), serializer.validated_data['password'])
++        self.service.reset_password(int(pk), serializer.validated_data['password'], actor=request.user)
+         return Response({'data': {'message': '密码重置成功'}})
+--- a/frontend/src/layouts/MainLayout.vue
++++ b/frontend/src/layouts/MainLayout.vue
+@@ -34,7 +34,7 @@
+                             AI 审计
+                         </a-menu-item>
+                         <a-menu-item key="/ai/notifications">
+-                            <template #icon><icon-bell /></template>
++                            <template #icon><icon-notification /></template>
+                             AI 通知
+                             <a-badge v-if="unreadCount" :count="unreadCount" :offset="[6, -4]" />
+                         </a-menu-item>
+@@ -72,7 +72,7 @@
+ import { useStore } from 'vuex'
+ import {
+     IconApps, IconUserGroup, IconSafe,
+-    IconRobot, IconCheckSquare, IconHistory, IconBell, IconLock,
++    IconRobot, IconCheckSquare, IconHistory, IconNotification, IconLock,
+ } from '@arco-design/web-vue/es/icon'
+ import AIProviderAlert from '@/components/AIProviderAlert.vue'
+ import { aiApi } from '@/api/modules/ai'
+--- a/frontend/src/types/ai.ts
++++ b/frontend/src/types/ai.ts
+@@ -53,7 +53,7 @@
+ }
+ 
+ /** 分析 */
+-export interface AIAnalyzeResponse extends AIChatResponse {
++export interface AIAnalyzeResponse extends Omit<AIChatResponse, 'data'> {
+     data?: Record<string, any>
+ }
+ 
+--- a/frontend/src/views/ai/AIApprovalView.vue
++++ b/frontend/src/views/ai/AIApprovalView.vue
+@@ -72,7 +72,7 @@
+                     </a-descriptions-item>
+                     <a-descriptions-item label="原因">{{ currentApproval.reason || '-' }}</a-descriptions-item>
+                 </a-descriptions>
+-                <a-form layout="vertical" style="margin-top: 16px">
++                <a-form :model="{ reviewComment }" layout="vertical" style="margin-top: 16px">
+                     <a-form-item label="审批备注">
+                         <a-textarea
+                             v-model="reviewComment"
+--- a/frontend/src/views/ai/AINotificationView.vue
++++ b/frontend/src/views/ai/AINotificationView.vue
+@@ -29,7 +29,7 @@
+                     </template>
+                     <template #avatar>
+                         <a-avatar :style="{ backgroundColor: avatarColor(n.level) }">
+-                            <icon-bell />
++                            <icon-notification />
+                         </a-avatar>
+                     </template>
+                 </a-list-item-meta>
+@@ -47,7 +47,7 @@
+ <script setup lang="ts">
+ import { ref, onMounted } from 'vue'
+ import { Message } from '@arco-design/web-vue'
+-import { IconCheck, IconBell } from '@arco-design/web-vue/es/icon'
++import { IconCheck, IconNotification } from '@arco-design/web-vue/es/icon'
+ import { useStore } from 'vuex'
+ import { aiApi } from '@/api/modules/ai'
+ import type { AINotification, NotificationLevel } from '@/types/ai'
+--- a/frontend/src/views/login/LoginView.vue
++++ b/frontend/src/views/login/LoginView.vue
+@@ -9,7 +9,7 @@
+                     <a-input v-model="form.username" placeholder="admin" allow-clear />
+                 </a-form-item>
+                 <a-form-item field="password" label="密码" :rules="[{ required: true, message: '请输入密码' }]">
+-                    <a-input-password v-model="form.password" placeholder="admin123" allow-clear />
++                    <a-input-password v-model="form.password" placeholder="请输入密码" allow-clear />
+                 </a-form-item>
+                 <a-form-item>
+                     <a-button type="primary" html-type="submit" long :loading="loading">登录</a-button>
+@@ -39,7 +39,8 @@
+     client.get('/auth/csrf/').catch(() => {})
+ })
+ 
+-async function handleLogin() {
++async function handleLogin(_data: unknown, ev?: Event) {
++    ev?.preventDefault()
+     if (!form.username || !form.password) return
+     loading.value = true
+     errorMsg.value = ''

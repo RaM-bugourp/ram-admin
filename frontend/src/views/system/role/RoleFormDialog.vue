@@ -42,12 +42,14 @@
                     开启后，全局只能有一个用户持有该角色（如 BOSS）
                 </template>
             </a-form-item>
+            <a-form-item label="后台权限"><a-select v-model="form.permissions" multiple :disabled="isEdit && isSystemRole" placeholder="选择闭集后台权限"><a-option v-for="p in catalog" :key="p.code" :value="p.code" :disabled="!p.grantable">{{p.name}} ({{p.code}})</a-option></a-select></a-form-item>
         </a-form>
     </a-modal>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive, watch, computed } from 'vue'
+import client from '@/api/client'
 import { Message } from '@arco-design/web-vue'
 import { roleApi } from '@/api/modules/role'
 import type { RoleOutput } from '@/types/role'
@@ -71,11 +73,14 @@ const isSystemRole = computed(() => {
 
 const formRef = ref()
 const submitting = ref(false)
+const catalog = ref<any[]>([])
+watch(() => props.visible, async (visible) => { if (visible) { try { const r: any = await client.get('/rbac/permissions/'); catalog.value = r.data } catch(e: any) { Message.error(e.message) } } })
 const form = reactive({
     name: '',
     code: '',
     description: '',
     is_unique: false as boolean,
+    permissions: [] as string[],
 })
 
 const rules = {
@@ -97,11 +102,13 @@ watch(
             form.code = role.code
             form.description = role.description || ''
             form.is_unique = role.is_unique
+            form.permissions = role.permissions || []
         } else {
             form.name = ''
             form.code = ''
             form.description = ''
             form.is_unique = false
+            form.permissions = []
         }
     },
     { immediate: true }
@@ -113,6 +120,7 @@ function handleClose() {
 }
 
 async function handleSubmit() {
+    if (submitting.value) return
     const valid = await formRef.value?.validate()
     if (valid !== undefined) return
 
@@ -125,6 +133,7 @@ async function handleSubmit() {
                 payload.name = form.name
                 payload.code = form.code
                 payload.is_unique = form.is_unique
+                payload.permissions = form.permissions
             }
             await roleApi.update(props.role!.id, payload)
             Message.success('角色已更新')
@@ -134,6 +143,7 @@ async function handleSubmit() {
                 code: form.code,
                 description: form.description,
                 is_unique: form.is_unique,
+                permissions: form.permissions,
             })
             Message.success('角色已创建')
         }

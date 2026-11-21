@@ -13,6 +13,8 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/layouts/MainLayout.vue'),
         meta: { requiresAuth: true },
         children: [
+            { path: 'system/audit', name: 'CoreAudit', component: () => import('@/views/system/AuditView.vue'), meta: { title: '操作审计', permission: 'audit.read' } },
+            { path: 'settings', name: 'Settings', component: () => import('@/views/system/SettingsView.vue'), meta: { title: '个人设置' } },
             { path: '', redirect: '/dashboard' },
             {
                 path: 'dashboard',
@@ -84,7 +86,12 @@ const router = createRouter({
     routes,
 })
 
-router.beforeEach((to, _from, next) => {
+router.beforeEach(async (to, _from, next) => {
+    await store.dispatch('user/bootstrap')
+    if (to.meta.requiresAuth !== false && !store.getters['user/isAuthenticated']) return next('/login')
+    const required = to.path === '/system/users' ? 'users.read' : to.path === '/system/roles' ? 'roles.read' : to.meta.permission
+    if (required && !store.getters['user/can'](required)) return next('/403')
+    if (to.path.startsWith('/ai/') && !store.state.user.aiEnabled) return next('/403')
     if (to.meta.requiresAuth !== false && !store.getters['user/isAuthenticated']) {
         return next('/login')
     }

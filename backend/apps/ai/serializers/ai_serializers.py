@@ -54,6 +54,22 @@ class AIApprovalReviewSerializer(serializers.Serializer):
 
 
 class AIApprovalOutputSerializer(serializers.ModelSerializer):
+    params = serializers.SerializerMethodField()
+
+    def get_params(self, obj):
+        from apps.ai.services.approval_params import safe_params
+        return safe_params(obj.operation, obj.params)
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data['submitted_by'] = instance.submitted_by_id
+        data['attribution'] = 'known' if instance.submitted_by_id else 'unknown-legacy'
+        # Free text may contain historical secrets; never echo it through audit/review APIs.
+        data['reason'] = '[REDACTED]' if instance.reason else ''
+        data['approver_comment'] = '[REDACTED]' if instance.approver_comment else ''
+        data['execution_error'] = 'EXECUTION_FAILED' if instance.execution_error else ''
+        return data
+
     approved_by_name = serializers.SerializerMethodField()
     approval_uid = serializers.CharField(read_only=True)
 
@@ -88,6 +104,13 @@ class AIApprovalLogOutputSerializer(serializers.ModelSerializer):
 
 class AICallLogOutputSerializer(serializers.ModelSerializer):
     root_user_name = serializers.SerializerMethodField()
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        if instance.call_type == 'agent_submission':
+            data['prompt'] = '[REDACTED agent submission]'
+            data['response'] = '[REDACTED]'
+        return data
 
     class Meta:
         model = AICallLog
@@ -133,5 +156,10 @@ class AgentTokenIssueSerializer(serializers.Serializer):
 
 class AgentTokenIssueResponseSerializer(serializers.Serializer):
     token = serializers.CharField()
-    expires_at = serializers.IntegerField()
+    token_id = serializers.UUIDField()
+    expires_in_hours = serializers.IntegerField()
     agent_id = serializers.CharField()
+
+
+class AgentTokenRevokeSerializer(serializers.Serializer):
+    token_id = serializers.UUIDField()

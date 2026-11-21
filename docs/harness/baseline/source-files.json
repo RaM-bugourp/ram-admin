@@ -1,0 +1,732 @@
+﻿[
+    {
+        "path":  ".gitignore",
+        "sha256":  "b0374ee3bbcdb2b6788deaa0e534412505dbd9b49e48f9b112392f2ae38bbd1d",
+        "size":  1816
+    },
+    {
+        "path":  "ARCHITECTURE.md",
+        "sha256":  "e6670aa250c50c7836097c571170f03c570d421aad808121abb991e19c07187f",
+        "size":  33075
+    },
+    {
+        "path":  "README.md",
+        "sha256":  "00ca98a5f3ad3cdb1c68e964e9632add0a682987ad68503f360d118797b239ad",
+        "size":  17307
+    },
+    {
+        "path":  "backend/manage.py",
+        "sha256":  "4a41d18002c6294061031c74fb0ac25d6541a0ef61827c9ab37a46c2088a12be",
+        "size":  666
+    },
+    {
+        "path":  "backend/requirements.txt",
+        "sha256":  "9f4cda0727d4f8a21bf176aa1aebbe0d83411127640caa7fe2d9c53dcbafb3df",
+        "size":  88
+    },
+    {
+        "path":  "backend/apps/__init__.py",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size":  0
+    },
+    {
+        "path":  "backend/apps/ai/apps.py",
+        "sha256":  "de6d7ba5761f17449262a13d007563768a30e2381ea09a55013085351a30bffa",
+        "size":  172
+    },
+    {
+        "path":  "backend/apps/ai/models.py",
+        "sha256":  "be9f45dd328f4cacecd0786ebbe798d65a9871a9276cd28590c25e23d3a537e0",
+        "size":  7059
+    },
+    {
+        "path":  "backend/apps/ai/permissions.py",
+        "sha256":  "15bcbb74c10939aa1912475f41ccf3fd1c5e0a316d7e50cd4c9f154c6b96273d",
+        "size":  3124
+    },
+    {
+        "path":  "backend/apps/ai/urls.py",
+        "sha256":  "b4d5d66626cb10164ad97621520f859dce3d21031c3be655e3593c7e325fce6c",
+        "size":  1368
+    },
+    {
+        "path":  "backend/apps/ai/__init__.py",
+        "sha256":  "8033120e01f521b92a25046da569050e706777efdde36800af6a49a26a85de86",
+        "size":  74
+    },
+    {
+        "path":  "backend/apps/ai/management/__init__.py",
+        "sha256":  "cb770cc9681fd717f4a9e34c4e1fc63728e26a15a6c1c3597c158ad308bb5fe9",
+        "size":  38
+    },
+    {
+        "path":  "backend/apps/ai/management/commands/ai_status.py",
+        "sha256":  "6c83153494c2f7f05e8b61a58892e9f6943739280e0c7e34a29b39cd46817b6d",
+        "size":  1496
+    },
+    {
+        "path":  "backend/apps/ai/management/commands/cleanup_ai_audit.py",
+        "sha256":  "c09f7fa276ed0f88c5f9d806650188f1edf0eab6d298dece95fd26c0ee74ac0b",
+        "size":  1664
+    },
+    {
+        "path":  "backend/apps/ai/management/commands/__init__.py",
+        "sha256":  "28a1300d60697a5e8e0b40fcf8cb26589581ba36f681f7b48fa40caef888f5de",
+        "size":  30
+    },
+    {
+        "path":  "backend/apps/ai/migrations/0001_initial.py",
+        "sha256":  "0d5fe213368fd65693a50b2b23094d4335e5472d44f6bd81b928533e118857a4",
+        "size":  8270
+    },
+    {
+        "path":  "backend/apps/ai/migrations/__init__.py",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size":  0
+    },
+    {
+        "path":  "backend/apps/ai/serializers/ai_serializers.py",
+        "sha256":  "409adbf2e9980cce0160a4baf5e28f4cc878ee0e71258a150e611c6d2db195a3",
+        "size":  5404
+    },
+    {
+        "path":  "backend/apps/ai/serializers/__init__.py",
+        "sha256":  "596d0f7680592afcdf7453c9fcb142d8c7a231ca593b7d63232e2b43aa848dc9",
+        "size":  30
+    },
+    {
+        "path":  "backend/apps/ai/services/ai_approval.py",
+        "sha256":  "49731fe9fbdd9c0371ad953669a4eb61ca00c04b7dae7d645c1217e7d84b62ca",
+        "size":  8970
+    },
+    {
+        "path":  "backend/apps/ai/services/ai_audit.py",
+        "sha256":  "d23059032a88cca55193dcb34aac3f694ec6689891a9a2e1159d4a6abd53bfde",
+        "size":  3991
+    },
+    {
+        "path":  "backend/apps/ai/services/ai_client.py",
+        "sha256":  "1b774e5ce2a781a05fa0fd0b11cf43df27673636f122caec0ed98da4843dd63d",
+        "size":  3384
+    },
+    {
+        "path":  "backend/apps/ai/services/ai_errors.py",
+        "sha256":  "25215fa11133ad37e179cb9aabc49fb8297452a9450e3767164abd478e0c10df",
+        "size":  1263
+    },
+    {
+        "path":  "backend/apps/ai/services/ai_failover.py",
+        "sha256":  "bf9c3f3f0d8e30569e58c323c844c144016edfdfbc18b492c896e8d385c6512c",
+        "size":  5461
+    },
+    {
+        "path":  "backend/apps/ai/services/ai_service.py",
+        "sha256":  "74ba7effe66a04a7c89fa544162f17b282aa926592200e2b34c364a4dc17503f",
+        "size":  7969
+    },
+    {
+        "path":  "backend/apps/ai/services/data_formatter.py",
+        "sha256":  "1116a653caeb6e9b3c3a200f650718db39c4d88eb4a524ed38cb3984e3f1f1d8",
+        "size":  1704
+    },
+    {
+        "path":  "backend/apps/ai/services/notification_service.py",
+        "sha256":  "5c641c37825da77102805d55a690b4fda3a9b079926f11eb8fad15b1ac2948b6",
+        "size":  3052
+    },
+    {
+        "path":  "backend/apps/ai/services/prompt_builder.py",
+        "sha256":  "38d6a494b36b6a083b7745a8135ccb37e527b6e0d39bc33c61fad01c5a496629",
+        "size":  3258
+    },
+    {
+        "path":  "backend/apps/ai/services/stats_service.py",
+        "sha256":  "f2279d8b4288bc08c1cd8e8025174c3754fccc7312d7fd1384d7cee174ae33ff",
+        "size":  2550
+    },
+    {
+        "path":  "backend/apps/ai/services/__init__.py",
+        "sha256":  "7a18ee9efba1f13ac722b60ce91bb45f3fa7664165bf24e8612be99540a02bdb",
+        "size":  27
+    },
+    {
+        "path":  "backend/apps/ai/views/agent_views.py",
+        "sha256":  "6eafae53c8f2b78e65ae53c400891d570314b49853581f908775745f9909fe0e",
+        "size":  1666
+    },
+    {
+        "path":  "backend/apps/ai/views/analyze_views.py",
+        "sha256":  "79d39bf386dd6fd74292cc9ab300df9355c611473de8fcd0e7f241238a28909a",
+        "size":  5307
+    },
+    {
+        "path":  "backend/apps/ai/views/approval_views.py",
+        "sha256":  "a822215f216fe4c43b51e9b39287821e1827c47790c1a2ead22f350df2496205",
+        "size":  4275
+    },
+    {
+        "path":  "backend/apps/ai/views/audit_views.py",
+        "sha256":  "326fe3b49212a6b0bb33e63a7c797bf2ddd6a6d3e02ea140ea4fbe2c21e55f96",
+        "size":  2985
+    },
+    {
+        "path":  "backend/apps/ai/views/chat_views.py",
+        "sha256":  "39e8c66bbd5a849f127753b2982afb2eac8345336b4bd3b4f72fc9c58bdf42b4",
+        "size":  2675
+    },
+    {
+        "path":  "backend/apps/ai/views/notification_views.py",
+        "sha256":  "80d76a9d9af29226e3f48ce0dbe127d5695f91e630a39a3f1319acd42918fdc5",
+        "size":  2580
+    },
+    {
+        "path":  "backend/apps/ai/views/__init__.py",
+        "sha256":  "bf2946110fbb17ec7a14c110176cb77b87a33f5adadebdedbfdbef4dbcd5aad4",
+        "size":  544
+    },
+    {
+        "path":  "backend/apps/audit/apps.py",
+        "sha256":  "23d337eb41bdee77384b6424643fb688d6f31f975e2497d7e6382deb4c006614",
+        "size":  147
+    },
+    {
+        "path":  "backend/apps/audit/__init__.py",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size":  0
+    },
+    {
+        "path":  "backend/apps/common/apps.py",
+        "sha256":  "4a7757c07f3c8dafefa9e52f03fe843f9e23715102df13a37deb0b9d58475718",
+        "size":  149
+    },
+    {
+        "path":  "backend/apps/common/base_model.py",
+        "sha256":  "a7571b75ff7f1a66fbe569e406d1ed5444a5f8bdd30e5661d2a3369782b863fb",
+        "size":  669
+    },
+    {
+        "path":  "backend/apps/common/exceptions.py",
+        "sha256":  "0078ed5ed30e345ded4769df1d55b052dc1225ed4d1590f5c24ee03d25995808",
+        "size":  1060
+    },
+    {
+        "path":  "backend/apps/common/managers.py",
+        "sha256":  "7fc7bb45e93d28d6293576c4b1e89a1882b4e93a027259eb59d69714bae4da34",
+        "size":  406
+    },
+    {
+        "path":  "backend/apps/common/__init__.py",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size":  0
+    },
+    {
+        "path":  "backend/apps/rbac/apps.py",
+        "sha256":  "9875507494939f733ce5739b29d846f0873cc8d169b064e08bf51509965c7056",
+        "size":  145
+    },
+    {
+        "path":  "backend/apps/rbac/backends.py",
+        "sha256":  "f0f2c1717f88694436a39461fec403754c0aadba8586ec6368daeb1f1b9c024c",
+        "size":  712
+    },
+    {
+        "path":  "backend/apps/rbac/models.py",
+        "sha256":  "1f6f7e9bee08d9ae2e37d7d99743a08b201fd23730006e49e6238bb7cf954167",
+        "size":  4884
+    },
+    {
+        "path":  "backend/apps/rbac/permissions.py",
+        "sha256":  "4be4a40091012ad286c3883582439cc27a68bf86064096aafc7e9d68509b8574",
+        "size":  2370
+    },
+    {
+        "path":  "backend/apps/rbac/urls_auth.py",
+        "sha256":  "51c9287519052e4f0709f427f1792d49f9a3b127f63a28f2c26b844142282d69",
+        "size":  283
+    },
+    {
+        "path":  "backend/apps/rbac/urls_dashboard.py",
+        "sha256":  "a9e908ff00cbc69283c660d8598a1e12cf04f8832df5b95b9cf9330a2762066f",
+        "size":  279
+    },
+    {
+        "path":  "backend/apps/rbac/urls_role.py",
+        "sha256":  "00fbcc52cf141eb839e90c143b13840406a640c6561e2e2220f1fd786b468e84",
+        "size":  305
+    },
+    {
+        "path":  "backend/apps/rbac/urls_user.py",
+        "sha256":  "7dc45bd8d601f86468260f75f120469e6cc2a92e2b16f57b7754b4e199c417b7",
+        "size":  294
+    },
+    {
+        "path":  "backend/apps/rbac/__init__.py",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size":  0
+    },
+    {
+        "path":  "backend/apps/rbac/management/__init__.py",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size":  0
+    },
+    {
+        "path":  "backend/apps/rbac/management/commands/init_rbac.py",
+        "sha256":  "590448b354277aa332801516351a425aefccdcaa69910a7f8d03f9059ceebaf6",
+        "size":  2183
+    },
+    {
+        "path":  "backend/apps/rbac/management/commands/__init__.py",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size":  0
+    },
+    {
+        "path":  "backend/apps/rbac/migrations/0001_initial.py",
+        "sha256":  "b73c691e4c5ab2cebd6407d28824de76caa484b46be8bdd4a9d2e1ef91a0d628",
+        "size":  2299
+    },
+    {
+        "path":  "backend/apps/rbac/migrations/0002_add_role_userrole.py",
+        "sha256":  "91231e34eba3b941729ac065e7bbf9bf02bb54250de17992a0c9ac196ca33498",
+        "size":  2303
+    },
+    {
+        "path":  "backend/apps/rbac/migrations/0003_add_role_is_unique_and_permission.py",
+        "sha256":  "b9ed156f7d42d496cd9c5bac801420c7a569ed26c59cfc86dfd6d76d5b70ec93",
+        "size":  1540
+    },
+    {
+        "path":  "backend/apps/rbac/migrations/__init__.py",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size":  0
+    },
+    {
+        "path":  "backend/apps/rbac/serializers/role_serializers.py",
+        "sha256":  "79f92d2b6636deb72f7f6c94b5d7f03b624e02b5fa1f9688ee5126dbb31c8a71",
+        "size":  1776
+    },
+    {
+        "path":  "backend/apps/rbac/serializers/user_serializers.py",
+        "sha256":  "02cd8a55a894aa53c18446a8d54da37a192f03f3fb395bbc2aa5b64d742a0cb5",
+        "size":  2185
+    },
+    {
+        "path":  "backend/apps/rbac/serializers/__init__.py",
+        "sha256":  "98568b678b47368f004f6340439cb83df357e4e97953ee3caa03f608344184a8",
+        "size":  22
+    },
+    {
+        "path":  "backend/apps/rbac/services/role_service.py",
+        "sha256":  "69b9dbe1d1c4b8d0223347cf28f05d8b5549940eaca1bf3dfcd6ce1eba5a3f55",
+        "size":  5383
+    },
+    {
+        "path":  "backend/apps/rbac/services/user_service.py",
+        "sha256":  "cca66203e5d3c355f52c60eb11d27b586debfa2300481cd3fcce66c92649515d",
+        "size":  6756
+    },
+    {
+        "path":  "backend/apps/rbac/views/auth_views.py",
+        "sha256":  "a272cc7917ed07b63678798913c64cc54990a8f2773a07b23d2b9a3f2351beb3",
+        "size":  2814
+    },
+    {
+        "path":  "backend/apps/rbac/views/dashboard_views.py",
+        "sha256":  "5e6fc3e9cb3dac448f9a06a26c112158b35db7079bd3194f827048b7370360db",
+        "size":  1003
+    },
+    {
+        "path":  "backend/apps/rbac/views/role_views.py",
+        "sha256":  "6f4a28696c46ec589b744309a37099430cac9e08e1501068ba3d521866e83669",
+        "size":  3412
+    },
+    {
+        "path":  "backend/apps/rbac/views/user_views.py",
+        "sha256":  "8f07812526f42eabc0f166e00efa61b025ef8864df2e1e49c99b22c59d946e71",
+        "size":  4230
+    },
+    {
+        "path":  "backend/apps/rbac/views/__init__.py",
+        "sha256":  "015d95f8c1d438a04404b1aa892cb89347d4b242d08a0c434c847e3ddb80dc65",
+        "size":  144
+    },
+    {
+        "path":  "backend/config/urls.py",
+        "sha256":  "31f7b3aa1db113dcd0a5fd24be6ffc26bd670086ca8e2d1dc9d57b81c1684467",
+        "size":  445
+    },
+    {
+        "path":  "backend/config/wsgi.py",
+        "sha256":  "baede32ecc662af986b53f62c6c0d9f2f3c6fae213e53fdabdf510de1dfc9e57",
+        "size":  188
+    },
+    {
+        "path":  "backend/config/__init__.py",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size":  0
+    },
+    {
+        "path":  "backend/config/settings/base.py",
+        "sha256":  "a6e276feb7cc7ca5138ba73d9f07480910f55186fc2ea3b8904689054a1d1fa1",
+        "size":  5504
+    },
+    {
+        "path":  "backend/config/settings/dev.py",
+        "sha256":  "62d4e6d8ff78c85952110f7d1d77b49dbd0a46b983da258a3d1d1dc8fe7a5d6f",
+        "size":  314
+    },
+    {
+        "path":  "backend/config/settings/__init__.py",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size":  0
+    },
+    {
+        "path":  "changelog/2026-06-09_P0权限修复.md",
+        "sha256":  "cb289901771272b048e44efe3d1e9240c01e2cfa05de46267b1a46464e86c468",
+        "size":  1126
+    },
+    {
+        "path":  "changelog/2026-06-09_P1P2修复.md",
+        "sha256":  "ec6b233d57954287f528cb1514f1f33ee028da1b18c562fd3a169fb346219d84",
+        "size":  2312
+    },
+    {
+        "path":  "changelog/2026-06-09_v0.3.0_更新总结.md",
+        "sha256":  "fb91310ea39ef6eb5b53bd7f67961e0e9819d0d803eee279c2bda371d4a370dd",
+        "size":  2742
+    },
+    {
+        "path":  "changelog/2026-06-09_权限管理_v0.3.0.md",
+        "sha256":  "f0c7645bddd4786bcb47e14d329280f80bb01a5dae44bf0bb490a2f315428dd5",
+        "size":  2626
+    },
+    {
+        "path":  "changelog/2026-06-16_v1.0.2_审计日志.md",
+        "sha256":  "255e36749f8f4e562b7bb19249be099bfebcd46d5e0ef1897fbd5af3b85a9d55",
+        "size":  4666
+    },
+    {
+        "path":  "changelog/CHANGELOG.md",
+        "sha256":  "089908fbb8e97622a3cbaef0b1e06a694e7cd69ea8923aeea55d34d31279bb02",
+        "size":  4117
+    },
+    {
+        "path":  "changelog/CONFIG.md",
+        "sha256":  "353e3653828e0bbaaf459e60b28866ba07e1271907150010de365cf466f45745",
+        "size":  6401
+    },
+    {
+        "path":  "docs/ai-integration-design.md",
+        "sha256":  "3b404e97ba777aac3b2ed9a6da1bfb7ccdb250e9ffb04eefe934004faecd04c5",
+        "size":  31253
+    },
+    {
+        "path":  "docs/plan-account-form.md",
+        "sha256":  "dae44bd497198563710cf96ba4b0c74eda38efc6a4b6f1ae7de5a848164c0baf",
+        "size":  5117
+    },
+    {
+        "path":  "docs/task-summary.md",
+        "sha256":  "392e32672f3f675d2fcd6f14c50cfb34c9e5ad83df491efb0885b3d84f3b6cfb",
+        "size":  4078
+    },
+    {
+        "path":  "docs/backend/01-项目初始化与配置.md",
+        "sha256":  "a7f67cd7c4e91ff32abc31875875706ba43f2a0f7b41e7818b2fd0a752534d74",
+        "size":  8736
+    },
+    {
+        "path":  "docs/backend/02-Model层开发.md",
+        "sha256":  "c6a1b45f283a975e52b43fa795138653d9a959464f624b457ecdb870b3220e89",
+        "size":  4589
+    },
+    {
+        "path":  "docs/backend/03-Repository层开发.md",
+        "sha256":  "30717c35b2cac246683a51b93295801df90a9531c6bed3ffc081662838b14468",
+        "size":  6978
+    },
+    {
+        "path":  "docs/backend/04-Service层开发.md",
+        "sha256":  "80cca094f76f3f3ca3a7aa9d83c2ee8b702d1a788c3fb8e71ffec6c4f568529f",
+        "size":  7304
+    },
+    {
+        "path":  "docs/backend/05-Serializer契约层开发.md",
+        "sha256":  "738144c8c6c27c4873e9fb4cd7686d5583c813ac29e00d5c479904b01bbd2dbe",
+        "size":  4541
+    },
+    {
+        "path":  "docs/backend/06-ViewSet接口层开发.md",
+        "sha256":  "4a28fc45ebbc894301bb37cd25f549ce59c66952b613b80e39f82d471265f242",
+        "size":  5174
+    },
+    {
+        "path":  "docs/backend/07-权限与安全开发.md",
+        "sha256":  "fe18daee11d00eeef1c78cd46bc3f752af5cad74637ab0d9999f9c1aae80415e",
+        "size":  4161
+    },
+    {
+        "path":  "docs/backend/08-中间件开发.md",
+        "sha256":  "099a429dc41dba6503702619a56e2300252ea414ca985eb2e94acd17954d12af",
+        "size":  4539
+    },
+    {
+        "path":  "docs/backend/09-审计与日志开发.md",
+        "sha256":  "b198aca447ee718cceecfec27b9e6d1f2e9384de90e89edc9a28a0f137e71ca5",
+        "size":  4947
+    },
+    {
+        "path":  "docs/backend/10-测试开发.md",
+        "sha256":  "da46076e87ac546d022416a8f5174fa16a25e28c1da3ae4d69b8e19a9df91a43",
+        "size":  6173
+    },
+    {
+        "path":  "docs/backend/11-代码生成器开发.md",
+        "sha256":  "c34924d65358e2033bb9b78c4752942fa4302515ea9f1cb6b09ff2f67e329d86",
+        "size":  6142
+    },
+    {
+        "path":  "docs/backend/17-文件管理与存储.md",
+        "sha256":  "bf489fc257ad120677182db5c83fa9bfe06c42fb96b488fb927ff5569caf668e",
+        "size":  7456
+    },
+    {
+        "path":  "docs/backend/19-数据导出与报表.md",
+        "sha256":  "13991d5c431eade94eaa6fa93a0db38634da1f860357bd11e2885b6a2c426d9a",
+        "size":  6633
+    },
+    {
+        "path":  "docs/backend/20-错误码体系.md",
+        "sha256":  "6fbfad18845fdd6ab144dfb0f8d40d151f9df98a4a6bf2d7c846f6e523b4056f",
+        "size":  6667
+    },
+    {
+        "path":  "docs/backend/21-数据权限设计.md",
+        "sha256":  "f2a9ef51fc7a8e642e5fda0899e28e6fd50e711fcd760bcb220da2b034d1f6b8",
+        "size":  6578
+    },
+    {
+        "path":  "docs/backend/22-国际化方案.md",
+        "sha256":  "9fa05b72fe0ee98c95bb8a1ece8f6eccbf3d63b6fe0ce6dae866cc6e9ec4e094",
+        "size":  4236
+    },
+    {
+        "path":  "docs/devops/16-部署与CI-CD.md",
+        "sha256":  "17df8ff9c38c56c6a033cca6a108c0a73b8d39e058e59512f2eb86cb97a799f7",
+        "size":  9137
+    },
+    {
+        "path":  "docs/devops/23-可观测性与监控.md",
+        "sha256":  "a1e70cdb314cbee508499b8d6151487d07d68ebc7e0b891e6719472347de2d15",
+        "size":  4680
+    },
+    {
+        "path":  "docs/frontend/12-前端基础架构.md",
+        "sha256":  "eeabaa45e1d628980e05a8f512df4c3fa6f4e0c7685f96c5f2b6754c59131fa9",
+        "size":  8877
+    },
+    {
+        "path":  "docs/frontend/13-前端API层与类型.md",
+        "sha256":  "0af304ed9456d1f12982391bb623ec2278f2650ceb10ca6a95cd5846228759e7",
+        "size":  5840
+    },
+    {
+        "path":  "docs/frontend/14-前端页面组件开发.md",
+        "sha256":  "ca9ae4c56b090d6b0dbe84a2c533c8d944cd18496af441af75a5fea22fc5a5f2",
+        "size":  7852
+    },
+    {
+        "path":  "docs/frontend/15-前端安全与优化.md",
+        "sha256":  "5d800649e7d683a16c61d34093254afe30779081323b98e963dbf405ed32667d",
+        "size":  4880
+    },
+    {
+        "path":  "docs/frontend/18-动态路由与菜单管理.md",
+        "sha256":  "5edcffd48aed311513e2036742603aa438dba0108bc63af09de342e155c10a03",
+        "size":  10578
+    },
+    {
+        "path":  "frontend/env.d.ts",
+        "sha256":  "f3e5cd9f4bcab346c4dbbd5080e77bafad0d87932076e4ef086f240e1c3c796e",
+        "size":  192
+    },
+    {
+        "path":  "frontend/index.html",
+        "sha256":  "fd27f51eed07aa8e74d043fcc679ac2ccdcdc0c40f93c0b34b720a10111629bb",
+        "size":  297
+    },
+    {
+        "path":  "frontend/package-lock.json",
+        "sha256":  "55046eeadeb8cda50553ea7f252867963a2ecc98ed9f9e84290de4ec097187a5",
+        "size":  80301
+    },
+    {
+        "path":  "frontend/package.json",
+        "sha256":  "a67a2ee563ac5ea84b59f7a4fdfd968c9138b254318b8b823db7ea776f6a1fda",
+        "size":  619
+    },
+    {
+        "path":  "frontend/tsconfig.json",
+        "sha256":  "4986aa4038aa4ad11b171d7dcb062905d808b5dfa51707401d131ab9c5deee6e",
+        "size":  553
+    },
+    {
+        "path":  "frontend/vite.config.ts",
+        "sha256":  "d7e07d4cc1a4daeecc83d9c119eb843d7afe777e8e036c893c7ea35a48726056",
+        "size":  742
+    },
+    {
+        "path":  "frontend/src/App.vue",
+        "sha256":  "2872c3226f3ee1467e8370baaadc303c000493ef0cdc8adf7a66d6b3fa27ce92",
+        "size":  43
+    },
+    {
+        "path":  "frontend/src/main.ts",
+        "sha256":  "9b99059f70734e427a5dacfdc8180f910a2f4691e418a009f8e2f010f880ad5b",
+        "size":  300
+    },
+    {
+        "path":  "frontend/src/api/client.ts",
+        "sha256":  "1c41c6c11bab82f25adbff86c3a6494f28e0dcbf5e7f74d5d78375fc97cf7fc4",
+        "size":  1183
+    },
+    {
+        "path":  "frontend/src/api/modules/ai.ts",
+        "sha256":  "bd054afd0521857126ea8fa05dc02d0bf9955cb16d316eadd660389455446153",
+        "size":  3476
+    },
+    {
+        "path":  "frontend/src/api/modules/auth.ts",
+        "sha256":  "69d85657591122d6cac4c2742bd3a545b7a46ba6f37a40acd2699892af82dbee",
+        "size":  284
+    },
+    {
+        "path":  "frontend/src/api/modules/dashboard.ts",
+        "sha256":  "10301529e4371f90831c7e6c692ca6aa870e4e725085fdbbee923f64c8774e8e",
+        "size":  335
+    },
+    {
+        "path":  "frontend/src/api/modules/role.ts",
+        "sha256":  "8b1aa0c3276990572f8c7a80509403c60eca641c8a83a6bc35d89defe2c15a8c",
+        "size":  782
+    },
+    {
+        "path":  "frontend/src/api/modules/user.ts",
+        "sha256":  "f3db6ffca0fabfb87ae92c89e838b4cc3e764105f151302cd85a0f062a2ce6b6",
+        "size":  1127
+    },
+    {
+        "path":  "frontend/src/components/AIProviderAlert.vue",
+        "sha256":  "2701c6feb343148ef45b8d1bc0143fea02e5452ded67d00ae31bcc00ff355bfe",
+        "size":  930
+    },
+    {
+        "path":  "frontend/src/layouts/MainLayout.vue",
+        "sha256":  "d1fddb75e305587acf36dba4502412ae94fda351968cb5e0700acf576a3b6985",
+        "size":  5526
+    },
+    {
+        "path":  "frontend/src/router/index.ts",
+        "sha256":  "b22ce3553c74ee5227a31cf10a001928431e0cc728832a46d8d8ea0c7119e78c",
+        "size":  3305
+    },
+    {
+        "path":  "frontend/src/stores/ai.ts",
+        "sha256":  "e8aecfc78995b3360f9ef41a38876f93e4c9f5f68196958aa7d7d39a02169e40",
+        "size":  2055
+    },
+    {
+        "path":  "frontend/src/stores/index.ts",
+        "sha256":  "72db3d44d07c7ba7d4aee32fb79b7f57305fb6ba05eee8ed6f91cfec4d7336d1",
+        "size":  143
+    },
+    {
+        "path":  "frontend/src/stores/user.ts",
+        "sha256":  "8987c3fa393878693bb1226916d94eee4353e6409ca1e90929a5e6d8d4ee4cb8",
+        "size":  2535
+    },
+    {
+        "path":  "frontend/src/types/ai.ts",
+        "sha256":  "108c36ea43f7e1e6125301d8a31b544aaf6eb609fe53c29d2a82277278cb75c9",
+        "size":  3981
+    },
+    {
+        "path":  "frontend/src/types/role.ts",
+        "sha256":  "b3e4835015e442a23ea1db18de69b726c7d05d9327b6e4c24cfca712b6e68ae5",
+        "size":  577
+    },
+    {
+        "path":  "frontend/src/types/user.ts",
+        "sha256":  "065060fe18b61680a781b573d794f04ff45afa4888d1e5b3f30d9f274ad8456e",
+        "size":  989
+    },
+    {
+        "path":  "frontend/src/utils/markdown.ts",
+        "sha256":  "1d0f05630b048b959a88ab8af0c919033a24e79fc851774b170331a12e0e62da",
+        "size":  3797
+    },
+    {
+        "path":  "frontend/src/views/ai/AIAgentTokenView.vue",
+        "sha256":  "d0d0d960d1332cd884385aadc40c1ac9ee0096cb2a0a68d36670f63bc23670dd",
+        "size":  3939
+    },
+    {
+        "path":  "frontend/src/views/ai/AIApprovalView.vue",
+        "sha256":  "b1c11760576865396d34c1fdaa4ce99ecc945c8e31453b9cb770b84eaa40881f",
+        "size":  9999
+    },
+    {
+        "path":  "frontend/src/views/ai/AIAuditView.vue",
+        "sha256":  "ba47f2448628a0a317cf46f32c5baf0e3e7dba83612fdc4b0fcc3f3cc428f8cd",
+        "size":  10717
+    },
+    {
+        "path":  "frontend/src/views/ai/AIChatView.vue",
+        "sha256":  "d391a1b1dab26c85b376f24893357182d9fcb3fcb8e9f2dd469c7ec60499f083",
+        "size":  11908
+    },
+    {
+        "path":  "frontend/src/views/ai/AINotificationView.vue",
+        "sha256":  "44fa31a9f320ee8e6e2ad3b81ac7dfb9b6984ec79b04eadc43df9b521fce1c3f",
+        "size":  4952
+    },
+    {
+        "path":  "frontend/src/views/dashboard/DashboardView.vue",
+        "sha256":  "5e0b5500b4296544aa1174d2ac7b183c046b1f363966a5607f21a97c0ca6a5c4",
+        "size":  1887
+    },
+    {
+        "path":  "frontend/src/views/error/ForbiddenView.vue",
+        "sha256":  "39badf74592fb616fc71c76ca623599bc04e287918de6a29c48fc388c85b376b",
+        "size":  492
+    },
+    {
+        "path":  "frontend/src/views/error/NotFoundView.vue",
+        "sha256":  "0053d329e0f1b1e3ce1c7e68b8171eafa9be2cbbe7529a1b009599665ca0d186",
+        "size":  471
+    },
+    {
+        "path":  "frontend/src/views/login/LoginView.vue",
+        "sha256":  "a58ab41adfec109754b5b1ece98768aeb35399177bb75a611f1e463c420c6a24",
+        "size":  2557
+    },
+    {
+        "path":  "frontend/src/views/system/role/RoleFormDialog.vue",
+        "sha256":  "faa2db8c645345c2a980e1bd40df217367df2b0696f1ee5048a6f59d745930a8",
+        "size":  4509
+    },
+    {
+        "path":  "frontend/src/views/system/role/RoleListView.vue",
+        "sha256":  "fea05726ae10348645e0c6629b1fd251113e39627d432d020e5af07fa88eb0ed",
+        "size":  4760
+    },
+    {
+        "path":  "frontend/src/views/system/user/UserFormDialog.vue",
+        "sha256":  "c6b4e1e2b3d18076a9aa06787b8656eb5c84807cae582209fbaa09cc3461f41a",
+        "size":  5178
+    },
+    {
+        "path":  "frontend/src/views/system/user/UserListView.vue",
+        "sha256":  "f264bf03244000679288ecc34b7744321418ad86faa53a12475b3b3cdb1f8f90",
+        "size":  7369
+    }
+]

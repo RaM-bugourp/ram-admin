@@ -39,15 +39,12 @@ class AIAuditService:
 
     @staticmethod
     def log_agent_submission(*, agent_id: str, operation: str,
-                             params: dict, approval_id) -> AICallLog:
-        """Agent 提交审批时记录."""
-        import json
+                             params: dict, approval_id, root_user=None) -> AICallLog:
+        """Fixed safe metadata only: arbitrary params are never audit input."""
         return AICallLog.objects.create(
-            call_id=uuid.uuid4(),
-            agent_id=agent_id,
-            call_type='agent_submission',
-            prompt=f"{operation}: {json.dumps(params, ensure_ascii=False)[:1500]}",
-            response=f"approval_id={approval_id}",
+            call_id=uuid.uuid4(), root_user=root_user, agent_id=agent_id,
+            call_type='agent_submission', prompt='Agent operation submitted',
+            response=f'approval_id={approval_id}',
         )
 
     @staticmethod

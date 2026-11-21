@@ -1,9 +1,11 @@
+from apps.common.inputs import positive_int
 """Role management ViewSet — CRUD."""
 from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from apps.rbac.permissions import IsAdminOrReadOnly
+from apps.rbac.permissions import IsAdminOrReadOnly, has_role
+from rest_framework.exceptions import PermissionDenied
 from apps.rbac.serializers.role_serializers import (
     RoleCreateSerializer,
     RoleUpdateSerializer,
@@ -18,6 +20,10 @@ class RoleViewSet(viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
     serializer_class = RoleOutputSerializer
     service = RoleService()
+    permission_resource = 'roles'
+
+    def initial(self, request, *args, **kwargs):
+        super().initial(request, *args, **kwargs)
 
     def get_serializer_class(self):
         return {
@@ -39,7 +45,7 @@ class RoleViewSet(viewsets.GenericViewSet):
         """创建角色."""
         serializer = RoleCreateSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        role = self.service.create_role(serializer.validated_data)
+        role = self.service.create_role(serializer.validated_data, actor=request.user)
         out = RoleOutputSerializer(role)
         # 新角色无用户
         out_data = dict(out.data)
@@ -50,7 +56,7 @@ class RoleViewSet(viewsets.GenericViewSet):
 
     def retrieve(self, request, pk=None):
         """角色详情."""
-        role = self.service.get_role_detail(int(pk))
+        role = self.service.get_role_detail(positive_int(pk, 'id'))
         if not role:
             return Response(
                 {'error': {'code': 'NOT_FOUND', 'message': '角色不存在'}},
@@ -65,7 +71,7 @@ class RoleViewSet(viewsets.GenericViewSet):
         """更新角色."""
         serializer = RoleUpdateSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        role = self.service.update_role(int(pk), serializer.validated_data)
+        role = self.service.update_role(positive_int(pk, 'id'), serializer.validated_data, actor=request.user)
         out = RoleOutputSerializer(role)
         return Response({'data': out.data})
 
@@ -73,5 +79,5 @@ class RoleViewSet(viewsets.GenericViewSet):
 
     def destroy(self, request, pk=None):
         """删除角色."""
-        self.service.delete_role(int(pk))
+        self.service.delete_role(positive_int(pk, 'id'), actor=request.user)
         return Response(status=status.HTTP_204_NO_CONTENT)
